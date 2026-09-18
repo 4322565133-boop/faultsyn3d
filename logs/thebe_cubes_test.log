@@ -1,0 +1,10 @@
+== test
+  test1: (100, 3174, 1537) float64
+  test2: (100, 3174, 1537) float64
+  test3: (100, 3174, 1537) float64
+  test4: (100, 3174, 1537) float64
+  test5: (100, 3174, 1537) float64
+  test6: (100, 3174, 1537) float64
+  test7: (103, 3174, 1537) float64
+  volume (1537, 3174, 703), fault fraction 0.0168, labelled depth band (519, 1527), 232s
+  718 cubes, fault fraction mean 0.0336, empty (<0.5%) 0.49, 242s

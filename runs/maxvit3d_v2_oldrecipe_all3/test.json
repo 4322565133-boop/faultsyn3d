@@ -1,0 +1,22 @@
+{
+  "loss": 0.5472579051554203,
+  "iou": 0.8325868632244817,
+  "dice": 0.9086465476015959,
+  "precision": 0.9112664880992203,
+  "recall": 0.9060416288572143,
+  "ap": 0.9560102934247912,
+  "iou_en_echelon": 0.9138172411357974,
+  "ap_en_echelon": 0.9897432980035417,
+  "iou_horsetail": 0.7956604736800084,
+  "ap_horsetail": 0.932371779866721,
+  "iou_negative_flower": 0.8280011212880187,
+  "ap_negative_flower": 0.9515607920523208,
+  "iou_positive_flower": 0.8448711652828741,
+  "ap_positive_flower": 0.9666695943175639,
+  "iou_listric_assemblage": 0.7557947485831603,
+  "ap_listric_assemblage": 0.9135741723403026,
+  "model": "maxvit3d",
+  "run": "maxvit3d_v2_oldrecipe_all3",
+  "epoch": 200,
+  "n_test": 100
+}

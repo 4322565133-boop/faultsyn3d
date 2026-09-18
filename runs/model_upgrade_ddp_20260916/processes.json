@@ -1,0 +1,98 @@
+{
+  "supervisor_pid": 2182213,
+  "epochs": 20,
+  "started_unix": 1789512620.9390175,
+  "order": [
+    "combined",
+    "baseline"
+  ],
+  "world_size": 4,
+  "global_batch": 8,
+  "runs": [
+    {
+      "variant": "combined",
+      "pid": 2182216,
+      "command": [
+        "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/bin/python",
+        "-m",
+        "torch.distributed.run",
+        "--nnodes=1",
+        "--nproc_per_node=4",
+        "--master_addr=127.0.0.1",
+        "--master_port=29617",
+        "train/train_model_upgrade_ddp.py",
+        "--variant",
+        "combined",
+        "--out",
+        "/hdd1/hukaixiao/projects/faultsyn3d/runs/model_upgrade_ddp_20260916/combined",
+        "--epochs",
+        "20",
+        "--resume",
+        "--resume-numerics-fix"
+      ],
+      "started_unix": 1789512620.9403543,
+      "returncode": 0,
+      "finished_unix": 1789513068.9709082
+    },
+    {
+      "variant": "baseline",
+      "pid": 2183164,
+      "command": [
+        "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/bin/python",
+        "-m",
+        "torch.distributed.run",
+        "--nnodes=1",
+        "--nproc_per_node=4",
+        "--master_addr=127.0.0.1",
+        "--master_port=29617",
+        "train/train_model_upgrade_ddp.py",
+        "--variant",
+        "baseline",
+        "--out",
+        "/hdd1/hukaixiao/projects/faultsyn3d/runs/model_upgrade_ddp_20260916/baseline",
+        "--epochs",
+        "20"
+      ],
+      "started_unix": 1789513068.9859338,
+      "returncode": 0,
+      "finished_unix": 1789514184.881882
+    }
+  ],
+  "previous_attempts": {
+    "supervisor_pid": 2178954,
+    "epochs": 20,
+    "started_unix": 1789509565.7614846,
+    "order": [
+      "combined",
+      "baseline"
+    ],
+    "world_size": 4,
+    "global_batch": 8,
+    "runs": [
+      {
+        "variant": "combined",
+        "pid": 2178957,
+        "command": [
+          "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/bin/python",
+          "-m",
+          "torch.distributed.run",
+          "--nnodes=1",
+          "--nproc_per_node=4",
+          "--master_addr=127.0.0.1",
+          "--master_port=29617",
+          "train/train_model_upgrade_ddp.py",
+          "--variant",
+          "combined",
+          "--out",
+          "/hdd1/hukaixiao/projects/faultsyn3d/runs/model_upgrade_ddp_20260916/combined",
+          "--epochs",
+          "20"
+        ],
+        "started_unix": 1789509565.7624419,
+        "returncode": 1,
+        "finished_unix": 1789510429.4890292
+      }
+    ]
+  },
+  "resumed_unix": 1789512620.9391127
+}

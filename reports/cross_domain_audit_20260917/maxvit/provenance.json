@@ -1,0 +1,37 @@
+{
+  "model": "maxvit",
+  "run": "runs/maxvit3d_v2_oldrecipe_all3",
+  "checkpoint": "best.pt",
+  "checkpoint_sha256": "fec4e77e63b10661da4c0350070f04c38956236f90fed2209e16e436985262ee",
+  "epoch": 200,
+  "selection": "historical_val_loss",
+  "args": {
+    "model": "maxvit3d",
+    "data": "data/dataset_reproduction_v2",
+    "gpu": 0,
+    "tag": "v2_oldrecipe_all3",
+    "epochs": 200,
+    "patience": 20,
+    "global_batch": 8,
+    "per_step": 2,
+    "lr": 0.0001,
+    "warmup_epochs": 10,
+    "warmup_start_lr": 1e-06,
+    "min_lr": 1e-07,
+    "seed": 2026,
+    "workers": 4,
+    "mkw": [
+      "full_res_skip=1",
+      "drop_path_rate=0.2",
+      "img_size=128"
+    ]
+  },
+  "params": 40164233,
+  "torch": "2.10.0+cu128",
+  "gpu": "NVIDIA GeForce RTX 2080 Ti",
+  "threshold": 0.5,
+  "normalization": "per-volume z-score",
+  "ap": "2000-bin histogram approximation",
+  "tolerance": "Chebyshev <=2 voxels; separate predicted and GT matches",
+  "script_sha256": "cc373c0ee322abd4b165ce0b0826090163fd5bd2eeed66cb4680430a45249bd5"
+}

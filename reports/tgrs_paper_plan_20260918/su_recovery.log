@@ -1,0 +1,10 @@
+   **** Error: Cannot find a 'startxref' anywhere in the file.
+               Output may be incorrect.
+   **** Error:  An error occurred while reading an XREF table.
+   **** The file has been damaged.  This may have been caused
+   **** by a problem while converting or transferring the file.
+   **** Ghostscript will attempt to recover the data.
+   **** However, the output may be incorrect.
+   **** Error:  Trailer dictionary not found.
+                Output may be incorrect.
+   No pages will be processed (FirstPage > LastPage).

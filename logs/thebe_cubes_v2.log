@@ -1,0 +1,18 @@
+== train
+  train1: (100, 3174, 1537) float64
+  train2: (100, 3174, 1537) float64
+  train3: (100, 3174, 1537) float64
+  train4: (100, 3174, 1537) float64
+  train5: (100, 3174, 1537) float64
+  train6: (100, 3174, 1537) float64
+  train7: (100, 3174, 1537) float64
+  train8: (100, 3174, 1537) float64
+  train9: (100, 3174, 1537) float64
+  volume (1537, 3174, 900), fault fraction 0.0105, labelled depth band (488, 1512), 315s
+  exported train volume to data/thebe_cubes/train_seis.npy (17.6 GB)
+  2400 cubes, fault fraction mean 0.0360, empty (<0.5%) 0.38, 676s
+== val
+  val1: (100, 3174, 1537) float64
+  val2: (100, 3174, 1537) float64
+  volume (1537, 3174, 200), fault fraction 0.0176, labelled depth band (545, 1536), 56s
+  600 cubes, fault fraction mean 0.0349, empty (<0.5%) 0.45, 79s

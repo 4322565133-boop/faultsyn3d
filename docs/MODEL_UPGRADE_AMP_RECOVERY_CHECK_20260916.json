@@ -1,0 +1,6 @@
+{
+  "injected_overflow_skipped": true,
+  "scale_before": 65536.0,
+  "scale_after": 32768.0,
+  "next_finite_step_succeeded": true
+}

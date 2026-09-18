@@ -1,0 +1,101 @@
+{
+  "reason": "user requested stop current training and start compact MaxViT v2",
+  "processes": [
+    [
+      2257164,
+      1,
+      2257164,
+      "/bin/bash -c source /home/hukaixiao/.claude/shell-snapshots/snapshot-bash-1789517629333-l62i07.sh 2>/dev/null || true && shopt -u extglob 2>/dev/null || true && { \\builtin unalias -- 'unsetenv'; \\builtin unset -f -- 'unsetenv'; } >/dev/null 2>&1 || true && eval 'cat > scripts/launch_dbvit_legacy.sh <<'\"'\"'EOF'\"'\"' #!/bin/bash # UNet-L stopped by user at epoch 55 (val IoU 0.819 > UNet-S final).  Order now: # 1) test-set number for the UNet-L checkpoint we have  2) DoubleBlock-ViT on the archived dataset # (same 880/110/110 split as the archived MaxViT 0.611 run, old recipe) + live curve  3) its legacy test # 4) dbvit_frs on v2  5) six-model v2 test table cd /hdd1/hukaixiao/projects/faultsyn3d PY=/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/bin/python export OMP_NUM_THREADS=8 ARCH_HIST=/hdd1/hukaixiao/projects/_archive_20260908_faultsyn_stage1/runs/maxvit_faultvitnet_fullvol_200ep/history.csv  CUDA_VISIBLE_DEVICES=0 $PY train/evaluate.py --gpu 0 --runs runs/maxvit3d_unet_l_ddp > logs/eval_unet_l_partial.log 2>&1  $PY -m torch.distributed.run --nproc_per_node 4 --master_addr 127.0.0.1 --master_port 29664 \\     train/train_old_recipe_ddp.py --variant dbvit --tag dbvit_legacy_ddp --legacy --per-rank 1 --accum 2 > logs/train_dbvit_legacy_ddp.log 2>&1 & TPID=$! sleep 90 $PY qc/live_curves.py --old $ARCH_HIST --new runs/maxvit3d_dbvit_legacy_ddp --out runs/maxvit3d_dbvit_legacy_ddp/live_curves.png \\     --labels \"MaxViT (archived run, test 0.611)\" \"DoubleBlock-ViT (legacy data)\" --watch dbvit_legacy_ddp > logs/live_dbvit_legacy.log 2>&1 & wait $TPID CUDA_VISIBLE_DEVICES=0 $PY train/evaluate.py --gpu 0 --legacy --runs runs/maxvit3d_dbvit_legacy_ddp > logs/eval_dbvit_legacy.log 2>&1  $PY -m torch.distributed.run --nproc_per_node 4 --master_addr 127.0.0.1 --master_port 29665 \\     train/train_old_recipe_ddp.py --variant dbvit_frs --tag dbvit_frs_ddp --per-rank 1 --accum 2 > logs/train_dbvit_frs_ddp.log 2>&1 CUDA_VISIBLE_DEVICES=0 $PY train/evaluate.py --gpu 0 --runs runs/unet3d_v2_oldrecipe runs/maxvit3d_unet_l_ddp runs/resnet3d_v2_oldrecipe runs/maxvit3d_v2_oldrecipe_all3 runs/maxvit3d_dbvit_ddp runs/maxvit3d_dbvit_frs_ddp > logs/eval_v2_six.log 2>&1 EOF chmod +x scripts/launch_dbvit_legacy.sh && nohup scripts/launch_dbvit_legacy.sh > logs/launch_dbvit_legacy.out 2>&1 & echo launched $!' && pwd -P >| /tmp/claude-13e4-cwd"
+    ],
+    [
+      2257166,
+      2257164,
+      2257164,
+      "/bin/bash scripts/launch_dbvit_legacy.sh"
+    ],
+    [
+      2257214,
+      2257166,
+      2257164,
+      "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/bin/python -m torch.distributed.run --nproc_per_node 4 --master_addr 127.0.0.1 --master_port 29664 train/train_old_recipe_ddp.py --variant dbvit --tag dbvit_legacy_ddp --legacy --per-rank 1 --accum 2"
+    ],
+    [
+      2257240,
+      2257214,
+      2257240,
+      "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/bin/python -u train/train_old_recipe_ddp.py --variant dbvit --tag dbvit_legacy_ddp --legacy --per-rank 1 --accum 2"
+    ],
+    [
+      2257241,
+      2257214,
+      2257241,
+      "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/bin/python -u train/train_old_recipe_ddp.py --variant dbvit --tag dbvit_legacy_ddp --legacy --per-rank 1 --accum 2"
+    ],
+    [
+      2257242,
+      2257214,
+      2257242,
+      "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/bin/python -u train/train_old_recipe_ddp.py --variant dbvit --tag dbvit_legacy_ddp --legacy --per-rank 1 --accum 2"
+    ],
+    [
+      2257243,
+      2257214,
+      2257243,
+      "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/bin/python -u train/train_old_recipe_ddp.py --variant dbvit --tag dbvit_legacy_ddp --legacy --per-rank 1 --accum 2"
+    ],
+    [
+      2257636,
+      2257166,
+      2257164,
+      "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/bin/python qc/live_curves.py --old /hdd1/hukaixiao/projects/_archive_20260908_faultsyn_stage1/runs/maxvit_faultvitnet_fullvol_200ep/history.csv --new runs/maxvit3d_dbvit_legacy_ddp --out runs/maxvit3d_dbvit_legacy_ddp/live_curves.png --labels MaxViT (archived run, test 0.611) DoubleBlock-ViT (legacy data) --watch dbvit_legacy_ddp"
+    ],
+    [
+      2272230,
+      2257243,
+      2257243,
+      "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/bin/python -u train/train_old_recipe_ddp.py --variant dbvit --tag dbvit_legacy_ddp --legacy --per-rank 1 --accum 2"
+    ],
+    [
+      2272231,
+      2257242,
+      2257242,
+      "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/bin/python -u train/train_old_recipe_ddp.py --variant dbvit --tag dbvit_legacy_ddp --legacy --per-rank 1 --accum 2"
+    ],
+    [
+      2272232,
+      2257240,
+      2257240,
+      "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/bin/python -u train/train_old_recipe_ddp.py --variant dbvit --tag dbvit_legacy_ddp --legacy --per-rank 1 --accum 2"
+    ],
+    [
+      2272233,
+      2257241,
+      2257241,
+      "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/bin/python -u train/train_old_recipe_ddp.py --variant dbvit --tag dbvit_legacy_ddp --legacy --per-rank 1 --accum 2"
+    ],
+    [
+      2272234,
+      2257243,
+      2257243,
+      "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/bin/python -u train/train_old_recipe_ddp.py --variant dbvit --tag dbvit_legacy_ddp --legacy --per-rank 1 --accum 2"
+    ],
+    [
+      2272235,
+      2257240,
+      2257240,
+      "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/bin/python -u train/train_old_recipe_ddp.py --variant dbvit --tag dbvit_legacy_ddp --legacy --per-rank 1 --accum 2"
+    ],
+    [
+      2272236,
+      2257242,
+      2257242,
+      "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/bin/python -u train/train_old_recipe_ddp.py --variant dbvit --tag dbvit_legacy_ddp --legacy --per-rank 1 --accum 2"
+    ],
+    [
+      2272246,
+      2257241,
+      2257241,
+      "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/bin/python -u train/train_old_recipe_ddp.py --variant dbvit --tag dbvit_legacy_ddp --legacy --per-rank 1 --accum 2"
+    ]
+  ]
+}

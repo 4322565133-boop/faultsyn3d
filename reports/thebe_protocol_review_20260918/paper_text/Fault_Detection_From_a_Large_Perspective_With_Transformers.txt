@@ -1,0 +1,781 @@
+IEEE TRANSACTIONS ON GEOSCIENCE AND REMOTE SENSING, VOL. 62, 2024                                                                                        4512315
+
+
+
+
+       Fault Detection From a Large Perspective With
+                        Transformers
+                  Cheng Zhou , Yifeng Fei , Dajun Li, Xin He , Hanpeng Cai , and Guangmin Hu
+
+
+   Abstract— Fault detection is one of the core tasks in fault                   Bahorich and Farmer [1] propose the first generation of
+interpretation, which is of great significance to the study of                   coherence technique based on cross-correlation of adjacent
+underground oil and gas transport and reservoir distribution.                    seismic traces. Marfurt et al. [2] propose the second generation
+In recent years, with the development of artificial intelligence
+(AI), especially artificial neural network technology, many new                  of coherence technique, which uses multitrance seismic data
+intelligent fault detection methods have emerged. They often                     to calculate similarity and can enhance noise resistance, but
+have fixed input sizes. When detecting faults in field seismic                   with relatively low resolution. A third generation of coherence
+data, it is necessary to split the data into patches that fit the                technique is introduced based on eigenstructure [3], which out-
+input size and then combine the detection results. Thus, the                     performs the first and second generation coherent techniques
+information used for fault detection is derived from a single
+data patch at most, without considering the relations between                    in both resolution and noise resistance. Additionally, other
+patches. We propose a Transformer-based network that considers                   variants of coherence methods have improved fault imaging
+relations between patches and incorporates a larger range of                     results [4], [5], [6], [7], [8]. Besides coherence techniques,
+information for 3-D fault detection. Our network employs an                      methods like variance [9], [10] and curvature [11], [12],
+encoder–decoder architecture. We construct the encoder using
+                                                                                 [13], [14] also effectively depict faults. However, these meth-
+Transformers, which are more effective at extracting global
+features compared to convolutional neural networks. Moreover,                    ods indirectly identify faults in seismic data by recognizing
+we propose a feature fusion block based on Transformers, which                   features such as lateral discontinuities, which may lead to
+is able to introduce the relations between adjacent data patches,                misidentifying features like geological layers or noise as faults.
+allowing our network to utilize information beyond a single                      Therefore, methods like ant tracking [15] and optimum surface
+patch and extend to multiple patches. Compared to some existing
+                                                                                 voting [16] have been developed to enhance fault imaging
+studies, our network can cover a larger perspective. We apply our
+method on several datasets, including synthetic and field data,                  results.
+and our method performs well and shows improvements in noise                        In recent years, with the advancement of artificial intel-
+resistance, fault continuity, and the ability to handle complex                  ligence (AI) technology, more researchers have focused on
+fault situations.                                                                detecting faults from seismic data using AI techniques. Some
+   Index Terms— Artificial intelligence (AI), fault, fault detection,            researchers treat fault detection as an image classification
+seismic interpretation, transformer.                                             problem, where the classification result of a 2-D or 3-D
+                                                                                 seismic data patch is used to determine the classification of
+                          I. I NTRODUCTION                                       the center of this data patch [17], [18], [19], [20], [21], [22].
+                                                                                 Among them, Liu et al. [22] introduce interpretability into the
+F    AULT interpretation is a crucial aspect of seismic inter-
+     pretation, significantly contributing to the understanding
+of underground geological structures and the study of oil and
+                                                                                 fault detection network to improve the performance of the net-
+                                                                                 work. Increasingly, researchers are approaching fault detection
+gas transport and reservoirs. Fault detection is the foundation                  as a semantic segmentation issue. Wu et al. [23] introduce the
+and core of fault interpretation, aiming to obtain the results                   UNet into fault detection, proposing the FaultSeg3D network,
+of fault imaging from seismic data. Faults usually mani-                         which achieves end-to-end 3-D fault detection. The Fault-
+fest in seismic data as lateral discontinuities. Consequently,                   Seg3D network, trained using synthetic data, achieves good
+some studies focus on identifying lateral discontinuities from                   results across multiple datasets. Zhou et al. [24] introduce
+seismic data as fault imaging results, among which the coher-                    transfer learning into the fault detection network to alleviate
+ence techniques are the most representative research results.                    the problem of poor network generalization due to differences
+                                                                                 between synthetic and field data. Wu et al. [25] develop a mul-
+  Received 6 May 2024; revised 31 August 2024; accepted
+20 September 2024. Date of publication 30 September 2024; date of
+                                                                                 titask network based on the UNet to simultaneously perform
+current version 21 October 2024. This work was supported by the National         fault detection and estimate fault orientations. Wang et al. [26]
+Natural Science Foundation of China under Grant 42130812 and Grant               distill knowledge from an ensemble of convolutional neural
+42374144. (Corresponding author: Guangmin Hu.)
+  Cheng Zhou is with the School of Information and Communication Engi-
+                                                                                 networks for seismic fault detection. Gao et al. [27] propose
+neering, University of Electronic Science and Technology of China, Chengdu       a multiscale attention convolutional neural network for auto-
+611731, China (e-mail: cheng_zhou@std.uestc.edu.cn).                             matic fault detection on seismic images. Zhou et al. [28]
+  Yifeng Fei, Xin He, Hanpeng Cai, and Guangmin Hu are with the School of
+Resources and Environment, University of Electronic Science and Technol-
+                                                                                 achieve frequency adaptive fault detection using a feature
+ogy of China, Chengdu 611731, China (e-mail: yifengfei1995@gmail.com;            pyramid network combined with wavelet transform.
+hxadolf@163.com; hanpengcai@uestc.edu.cn; hgm@uestc.edu.cn).                        Most of these researches exhibit two main characteristics:
+  Dajun Li is with PetroChina, Tarim Oilfield Company, Xinjiang 841000,
+China (e-mail: Lidajun-tlm@petrochina.com.cn).
+                                                                                 first, their networks are constructed with convolutional neural
+  Digital Object Identifier 10.1109/TGRS.2024.3470536                            networks; second, when applying these networks to fault
+                      1558-0644 © 2024 IEEE. Personal use is permitted, but republication/redistribution requires IEEE permission.
+                                    See https://www.ieee.org/publications/rights/index.html for more information.
+
+        Authorized licensed use limited to: University of Tokyo. Downloaded on September 17,2026 at 10:41:41 UTC from IEEE Xplore. Restrictions apply.
+4512315                                                                          IEEE TRANSACTIONS ON GEOSCIENCE AND REMOTE SENSING, VOL. 62, 2024
+
+
+
+detection of 3-D seismic data, the seismic data needs to be                        performance and capabilities in the field of computer
+split into patches to match the input size of networks, and                        vision.
+the fault detection results from all patches are combined to                          Currently, several studies have incorporated Transformers
+produce the final results for the entire 3-D seismic dataset.                      into fault research. Tang et al. [36] incorporate the Trans-
+Regarding the first characteristic, although increasing the depth                  former module in UNet for feature extraction in 2.5-D fault
+of convolutional neural networks theoretically expands the                         detection, that is, to predict a 2-D fault section using multiple
+receptive field to cover the entire input data size, the effective                 neighboring seismic profiles, and the continuity of predictions
+receptive field in practice is much smaller [29]. This limitation                  has been enhanced. A novel approach has been introduced
+somewhat restricts the network’s ability to use information                        by combining a standard UNet with a Transformer UNet
+from the entire data patch for fault detection at each pixel.                      to create a parallel dual UNet model, called dual UNet
+The second characteristic means that the information available                     with Transformer, which is more accurate in predicting the
+to the networks for intelligent fault detection is limited to the                  fault system compared to the classic UNet and conventional
+size of one data patch. It is conceivable that the introduc-                       coherence cube algorithms [37]. Zhou et al. [38] develop a
+tion of a broader range of information could enhance fault                         new deep neural network with transformers and a UNet-like
+detection performance and reduce noise. Especially for some                        structure to perform the fault detection task, which outper-
+complex faults, relying solely on local features is insufficient;                  forms the traditional UNet in the application with synthetic
+it is also necessary to consider fault distribution on a larger                    datasets. Zu et al. [39] propose a U-shaped hybrid architecture
+scale for effective detection. Therefore, there is a need to                       model named ResACEUnet (Attention-Convolution UNet with
+explore an intelligent fault detection method with a larger                        Efficient block) to detect fault of 3-D seismic data, which
+perspective, capable of effectively utilizing a wider range of                     integrates the local feature extraction capabilities of CNN
+data information for fault detection.                                              with the global feature extraction prowess of transformer.
+   The Transformer is a deep learning architecture based on the                    ResACEUnet demonstrates superior capabilities in capturing
+multihead attention mechanism, introduced by Google in 2017                        more features and identifying fault with higher accuracy and
+[30]. Compared with convolutional neural networks, it uses                         continuity. Zhang et al. [40] apply self-supervised pre-training
+the attention mechanism to extract features and is capable                         methods to seismic fault recognition, exploring the transfer
+of handling long-distance dependencies. It can associate all                       of 3-D Transformer-based backbone networks and different
+tokens in the input sequence data through one layer and                            pre-training methods for fault recognition tasks, enabling
+has a better ability to extract global information. Therefore,                     the model to learn more robust feature representations from
+we consider incorporating the Transformer into our fault                           large amounts of unlabeled data. The Swin UNEt TRans-
+detection network to enhance its ability to capture more                           former (Swin-UNETR) [41] has been innovatively improved to
+global features. Currently, more Transformer-based methods                         achieve multiscale decoding and fusion, resulting in FaultSeg
+are being proposed for vision tasks. Dosovitskiy et al. [31]                       Swin-UNETR, which demonstrates excellent adaptability and
+introduce the vision transformer (ViT) for image classification,                   precision in detecting seismic faults [40]. It is evident that
+which is similar to the transformer design in natural language                     Transformers have a promising application outlook in the field
+processing (NLP), where images are divided into multiple                           of fault detection.
+linearly embedded patches and then feed into a standard                               In this article, we propose a 3-D fault detection network
+transformer network with positional embedding added. ViT                           with a larger perspective based on Transformer. Like the UNet,
+has an impressive performance on ImageNet dataset. Based                           we adopt an encoder–decoder structure and introduce skip
+on ViT, the segmentation transformer (SETR) [32] is proposed                       connections to construct our fault detection network. However,
+for semantic segmentation, in which the encoder is constructed                     there are distinct differences. First, our encoder is constructed
+using Transformer. Unlike ViT, which is designed for image                         with Transformers as the backbone, which has better capabili-
+classification specifically, Wang et al. [33] introduce the pyra-                  ties for handling long-distance dependencies than CNN-based
+mid vision transformer (PVT) for dense prediction, in which                        networks and can more effectively integrate information from
+a progressive shrinking pyramid and a spatial-reduction                            one entire data patch to extract features. Second, our network
+attention layer are developed to obtain high-resolution and                        includes a feature fusion block based on Transformers that
+multiscale feature maps under limited computation/memory                           can consider the relations between adjacent data patches and
+resources. PVT shows considerable improvements over coun-                          fuse their features. This enables our fault detection network
+terpart ResNet methods in object detection and semantic                            to utilize information beyond a single data patch, extending
+segmentation tasks. Liu et al. [34] proposed the Swin Trans-                       to multiple data patches and achieving a larger perspective.
+former, which uses shifted windows to generate hierarchical                        The major advantage of our method compared with existing
+feature representations. It achieved state-of-art performance on                   methods is that it can exploit global relation of a seismic
+COCO and ADE20K. Xie et al. [35] introduce SegFormer,                              image and therefore produce more accurate fault detection,
+in which a novel hierarchical structured Transformer encoder                       particularly for complex fault network.
+that outputs multiscale features and a lightweight multilayer
+perceptron decoder are used. It achieved new state-of-art                                                    II. M ETHODOLOGY
+results on several common datasets. These studies demon-                             In this section, we present our method in detail. The
+strate that compared to traditional models like CNN-based                          proposed network for fault detection from a large perspective
+models, the Transformer-based models have shown superior                           with Transformers is shown in Fig. 1, which consists of
+
+          Authorized licensed use limited to: University of Tokyo. Downloaded on September 17,2026 at 10:41:41 UTC from IEEE Xplore. Restrictions apply.
+ZHOU et al.: FAULT DETECTION FROM A LARGE PERSPECTIVE WITH TRANSFORMERS                                                                                    4512315
+
+
+
+
+Fig. 1.   Illustration of the proposed network for fault detection from a large perspective with transformers.
+
+
+three components: encoder, decoder, and feature fusion part.
+Among these three components, the encoder and the feature
+fusion part are based on Transformers.
+
+
+A. Encoder
+                                                                                   Fig. 2.   Illustration of the transformer block module.
+   Similar to the encoder in the UNet, the encoder in our net-
+work can yield hierarchical feature representations. As shown                      sequential data but also implements the downsampling of the
+in Fig. 1, the encoder consists of two modules: overlapped                         data, which introduces multiscale information to our network.
+patch embedding and transformer block. Overlapped patch                            As shown in Fig. 1, in the encoder of our networks, we use
+embedding is responsible for converting multichannel 3-D                           three overlapped patch embedding modules, which enable
+data into multichannel sequential data while also changing                         the encoder to obtain three scales of features. The number
+the feature scale, and transformer block is a transformer-based                    of output channels used by these three overlapped patch
+feature extractor.                                                                 embedding modules is 32, 64, and 128.
+   1) Overlapped Patch Embedding: Given data with size                                2) Transformer Block: The transformer block module is
+H × W × L × C, where H × W × L is the resolution and                               mainly used for feature extraction. Fig. 2 shows our trans-
+C is the number of channels, we need to convert it into                            former block module, where S efficient-self attention and
+sequential data for feature extraction by Transformers. In the                     Mix-FFN modules are used to extract features from multichan-
+field of image processing, a common approach is to split an                        nel sequential data, and the Reshape module is used to convert
+image into fixed-size patches and linearly embed each of them                      multichannel sequential data into multichannel 3-D data.
+into sequential data [31]. Here, we adopt a similar idea to pro-                         a) Efficient self-attention: This module is proposed
+cess multichannel 3-D data. Considering that non-overlapped                        in [33] and [35], which can effectively reduce the complexity
+patch partitioning would fail to maintain the local continuity                     of multihead attention modules in feature extraction for long
+around the patches, we use overlapped patch partitioning for                       sequence inputs. In the original multihead self-attention, each
+multichannel 3-D data. We divide the 3-D data into overlapped                      of the heads Q, K , V have the dimensions N × C, where N
+patches with sliding windows of size K × K × K , which                             is the length of the sequence. The self-attention is formulated
+means that the sliding step is less than K . For each patch of                     as
+size K × K × K × C, we reshape it into a vector of 1 × C1 ,
+                                                                                                                               QK T
+                                                                                                                                     
+where C1 = K × K × K × C. By an MLP layer, we obtain                                         Attention(Q, K , V ) = Softmax √           V      (1)
+a vector of 1 × C2 , where C2 is the number of channels in                                                                      dhead
+the output. Specifically, we use convolution to implement this                     where dhead is the number of channels in each head. The
+process in our network. We use a convolution kernel with                           complexity of the original multihead self-attention is O(N 2 ),
+size 3 × 3 × 3, step size 2, and number of output channels                         and it is a bit large for long sequence inputs. The efficient
+C2 to perform a convolution operation on multichannel 3-D                          self-attention uses a reduction ratio R to reduce the length of
+data (of size H × W × L × C) to obtain an output of size                           the input sequence as follows:
+(H/2) × (W/2) × (L/2) × C2 and reshape it into a 2-D                                                                         
+vector of M × C2 , where M = (H/2) × (W/2) × (L/2).                                                  ˆI = Reshape N , C · R (I )
+                                                                                                                    R
+In fact, the overlapped patch embedding not only realizes
+the conversion of multichannel 3-D data into multichannel                                            I = Linear(C · R, C)( Iˆ)                 (2)
+
+          Authorized licensed use limited to: University of Tokyo. Downloaded on September 17,2026 at 10:41:41 UTC from IEEE Xplore. Restrictions apply.
+4512315                                                                          IEEE TRANSACTIONS ON GEOSCIENCE AND REMOTE SENSING, VOL. 62, 2024
+
+
+
+where I is the input sequence to be reduced,
+Reshape((N /R), C · r )(I ) refers to reshape I with a size
+of N × C into the one with the size of (N /R) × (C · R),
+and Linear(C · R, C)( Iˆ) refers to a linear layer whose input
+dimensions are C · R and output dimensions are C. Therefore,
+the new I has dimensions (N /R) × C. For each of the
+heads Q, K , V , we let I be K and V , respectively, to obtain
+the new K and the new V , both of which have dimensions
+(N /R) × C. We perform the self-attention operation on Q,
+the new K , and the new V to get the result of the efficient
+self-attention. The complexity of the efficient self-attention
+is O(N 2 /R), which is much smaller than O(N 2 ), the
+complexity of the original self-attention. In our experiment,
+we set R to [83 , 43 , 23 ] from the first stage to the third stage
+in the encoder.
+      b) Mix-FFN: This module is used in [35] to provide
+positional information for 2-D Transformers. We extend this
+module to 3-D data. By using a 3 × 3 × 3 convolution in the
+FFN to provide positional information for 3-D Transformers.
+This module is formulated as
+          xout = MLP(GELU(Conv3×3×3 (MLP(xin )))) + xin                    (3)
+where xin is the feature from the efficient self-attention, MLP
+is multilayer perceptron, GELU, whose full name is Gaussian
+error linear units [42], is an activation function, and Conv3×3×3
+is a 3 × 3 × 3 convolution operation. This module mixes a
+3 × 3 × 3 convolution and an MLP into each FFN, and it has                         Fig. 3. Illustration of data patches for the fault fusion block. (a) Target
+been shown in [35] that this approach is sufficient to provide                     data path in a seismic data volume. (b) Twenty-six adjacent data patches.
+positional information for Transformers.                                           (c) Highest-level features of the target data patch and the adjacent data patches
+                                                                                   obtained through the encoder.
+     c) Reshape: This module is to reshape the feature from
+the Mix-FFN into multichannel 3-D data.
+                                                                                   32 × 32 × 32 × 64, and 16 × 16 × 16 × 128, respectively.
+                                                                                   Considering the complexity of the network and the fact that the
+B. Fault Fusion                                                                    highest-level features are more advanced, our feature fusion
+   Since the input size of most neural networks is fixed, when                     block targets the highest-level features. Therefore, as shown
+detecting faults in seismic data, it is necessary to divide the                    in Fig. 3(c), we use the encoder to obtain the highest-level
+seismic data into data patches for fault detection and then                        features of these data patches, which are denoted as F V and
+these results are combined to obtain the fault detection results                   F Vi , i = 1, . . . , 26.
+for the whole data. This leads to the fact that the information                       For the feature F V , the features of its adjacent data patches
+that can be utilized by the neural network for fault detection                     are F Vi , i = 1, . . . , 26. Assume that the dimension of
+comes from the size of one data patch at most. Considering                         the feature is H × W × L × C, where H × W × L is the
+that when detecting faults in complex regions, we need to                          resolution of the feature and C is the number of channels.
+consider the distribution pattern of faults on a larger scale in                   For our network, H × W × L × C is 16 × 16 × 16 × 128.
+order to make correct judgments, rather than relying only on                       Fig. 4(a) shows the structure of our feature fusion block. F V
+local features. Therefore, we propose a feature fusion block to                    and F Vi are fed into a Flatten module to obtain the vectors H V
+fuse features between different data patches, thus expanding                       and H Vi with a size of M × C, where M = H × W × L.
+the range of data that can be utilized by the neural network                       Through the position embedding module, we add a trainable
+for fault detection.                                                               position encoding to H Vi to obtain H ′Vi , which is used to
+   The input size of our network is 128 × 128 × 128. When                          encode the relative position relation between the data patch
+we perform fault detection on a target data patch [see                             corresponding to H Vi and the target data patch. H V and H ′Vi
+Fig. 3(a)], we can get 26 data patches adjacent to the target                      are fed into a module called feature aggregation to obtain the
+data patch from the seismic data [see Fig. 3(b)]. If the target                    fused feature, which are then reshaped into a multichannel 3-D
+data patch is located at the edge of the seismic data, zero                        feature Ĥ Vi with a size of H × W × L × C. Ĥ V1 , . . . , Ĥ V26
+padding can be used to obtain its adjacent data patches.                           are concatenated, and through two layers containing a convo-
+As shown in Fig. 3(c), we denote the target data patch and                         lution and a ReLU activation, we obtain F̂ V . Furthermore, F V
+the 26 adjacent data patches as V , V1 , . . . , V26 . Our encoder’s               is concatenated with F̂ V , and through two layers containing a
+architecture, as shown in Fig. 1, processed a data patch to yield                  convolution and a ReLU activation, we obtain the output of the
+three levels of features with sizes of 64 × 64 × 64 × 32,                          feature fusion block, whose dimension is H × W × L × C.
+
+          Authorized licensed use limited to: University of Tokyo. Downloaded on September 17,2026 at 10:41:41 UTC from IEEE Xplore. Restrictions apply.
+ZHOU et al.: FAULT DETECTION FROM A LARGE PERSPECTIVE WITH TRANSFORMERS                                                                                  4512315
+
+
+
+
+Fig. 4. Illustration of the fault fusion block. (a) Architecture of the fault
+fusion block. (b) Architecture of the fault aggregation module.
+
+
+
+Specifically, the 26 feature aggregation modules share parame-                   Fig. 5.    Illustration of the two synthetic seismic data volumes designed
+ters. The structure of the feature aggregation module is shown                   for training. (a) and (c) Seismic data. (b) and (d) Seismic data with the
+                                                                                 corresponding fault labels.
+in Fig. 4(b), which includes an efficient self-attention module
+that takes H V corresponding to the target data patch as V
+in attention mechanism, and takes H ′Vi corresponding to an                      faults in seismic data, we need some training data with a
+adjacent data patch as Q and K in attention mechanism.                           larger size. For this purpose, we have made two synthetic
+   Obviously, our feature fusion block incorporates the impact                   seismic data volumes, both with sizes of 600 × 600 × 600,
+of adjacent data patches on the target data patch by introducing                 using the method in [23]. First, a 1-D horizontal reflectivity
+feature aggregation modules based on efficient self-attention.                   model is generated, then some folding structures are created
+This ensures that the output feature contains information from                   by vertically shearing the model and some planar faulting
+both the target data patch and the adjacent data patches,                        is added to the model. Finally, we convolve this folded and
+empowering our network to make decisions using a wider                           faulted reflectivity model with a Ricker wavelet to obtain a
+range of data.                                                                   3-D synthetic seismic data volume. More details about this
+                                                                                 method can be found in [23]. To further improve the realism
+                                                                                 of the synthetic seismic data, we add some noise to it. The
+C. Decoder
+                                                                                 two synthetic seismic data volumes with the corresponding
+   As shown in Fig. 1, the decoder we use is the same                            fault labels are shown in Fig. 5.
+as the decoder in the UNet, which mainly consists of
+3 × 3 × 3 convolution, ReLU activation, and upsampling,
+and also introduces skip connections. Unlike the UNet                            E. Loss function
+decoder, the highest-level features do not come directly from                       Fault detection is actually a semantic segmentation task
+the encoder, but they are the features obtained by the fault                     for 3-D seismic data, where each data point is classified
+fusion block. These features are obtained on a larger range                      into one of two categories: fault point and non-fault point.
+of data, allowing the network to utilize a larger range of                       In general, the number of fault points is much smaller than
+information to make a judgment on the presence or absence                        the number of non-fault points in seismic data. Considering
+of faults in the data, which gives our network better global                     this situation, we adopt the balanced cross-entropy function
+properties.                                                                      discussed by [43] as our loss function, which can effectively
+                                                                                 deal with the problem of large differences in the number of
+D. Training Data                                                                 positive and negative samples in a binary classification task.
+                                                                                 The loss function is formulated as
+   We use synthetic seismic data to train our network, which
+                                                                                              N                              N
+consists of two parts, one provided by [23] and the other                                     X                              X
+provided by ourselves. The synthetic dataset provided by [23]                      L = −β           yi log( pi ) − (1 − β)     (1 − yi )log(1 − pi ) (4)
+                                                                                              i=1                            i=1
+contains 200 training data and 20 validation data with corre-
+sponding fault labels, respectively. The size of these data is                   where N denotes the number of data points in the input
+128 × 128 × 128. Since our proposed network is designed                          seismic data, yi denotes the true binary labels (the true data
+to utilize a large range of seismic information for detecting                    points), pi denotes the prediction probabilities of the network
+
+        Authorized licensed use limited to: University of Tokyo. Downloaded on September 17,2026 at 10:41:41 UTC from IEEE Xplore. Restrictions apply.
+4512315                                                                          IEEE TRANSACTIONS ON GEOSCIENCE AND REMOTE SENSING, VOL. 62, 2024
+
+
+
+                                                                                   The network structures of model A and model B are shown in
+                                                                                   Fig. 7. It can be seen that model A is a CNN-based network,
+                                                                                   while model B is a Transformer-based network. Both models
+                                                                                   are trained using the same training data and loss function as
+                                                                                   our proposed model.
+                                                                                      1) Training and Testing Information: Our experiments are
+                                                                                   implemented on PyTorch with NVIDIA A100 GPU. During
+                                                                                   the training, all three models use the same training data (see
+                                                                                   Section II-D) and loss function (see Section II-E), and the
+                                                                                   optimizer is also the same, which is Adam with β1 = 0.9,
+                                                                                   β2 = 0.999, and ε = 1e − 8 [44]. Since our proposed
+                                                                                   network requires integrating features from 27 data patches, the
+                                                                                   network needs to invoke the encoder 27 times during forward
+                                                                                   propagation, resulting in significant memory overhead during
+                                                                                   gradient computation in backpropagation. To address this,
+                                                                                   we use a technique where only the parameters of the encoder
+                                                                                   for the target data patch participate in backpropagation, while
+                                                                                   the encoders for the 26 adjacent data patches do not. After
+                                                                                   each backpropagation step, we ensure that the parameters of
+                                                                                   the encoders for the 26 adjacent data patches are synchronized
+                                                                                   with those of the target data patch. The training curves for
+Fig. 6. Illustration of the four seismic data volumes in our experiment, which
+                                                                                   model A, model B, and our proposed network are shown
+are (a) synthetic data volume, (b) data volume from the F3 data, (c) data          in Fig. 8, where Fig. 8(a) and (b) corresponds to model A,
+volume from the Kerry3D data, and (d) data volume from a work area in              Fig. 8(c) and (d) corresponds to model B, and Fig. 8(e) and (f)
+Eastern China.
+                                                                                   corresponds to our network. For model A, with a batch size
+                                                                                   of 5, the time cost per epoch is approximately 7 min, and the
+(0 ≤ pi ≤ 1), and β = i=1    (1 − yi )/N represents the ratio
+                       PN
+                                                                                   memory usage is about 15 137 MB. For model B, with a batch
+between non-fault points and the total data points.                                size of 3, the time cost per epoch is approximately 15 min, and
+                                                                                   the memory usage is about 27 811 MB. For our network, with
+                            III. E XPERIMENT                                       a batch size of 3, the time cost per epoch is approximately
+A. Data Illustration                                                               60 min, and the memory usage is about 29 801 MB. Our
+   Our experiments are conducted on four data, including one                       network has the highest training time and memory usage,
+synthetic data and three field data. The synthetic data is used to                 followed by model B, with model A having the lowest.
+quantitatively evaluate the effectiveness of our method, while                        We test the three models on the four data volumes shown
+the three field data are utilized to test the fault detection                      in Fig. 6. Since these data volumes are larger than the input
+performance of our network under different fault situations.                       size of the models, we use a chunked prediction strategy. This
+Two of the field data are from two public datasets, F3 and                         involves dividing the data into overlapping chunks, detecting
+Kerry3D, and another field data is from Eastern China. These                       faults for each chunk, and then stitching the results together.
+four data are displayed in Fig. 6.                                                 Our network requires inputting the target data patch (each
+   As shown in Fig. 6, the amplitude values of seismic data                        chunk) along with its 26 adjacent data patches simultaneously.
+across different data vary significantly. Therefore, we first nor-                 Performing feature extraction for each adjacent data patch
+malize these seismic data with z-score normalization, whose                        with the encoder for every target data patch would lead to
+formula is                                                                         significant redundant computations, as one data patch may
+                                 S−µ                                               be an adjacent data patch for multiple target data patches.
+                           Sz =                                (5)                 To address this, we pre-extract all target data patches and
+                                   σ
+                                                                                   their adjacent data patches from the data, remove duplicate
+where S denotes the seismic data, µ is the mean value of S, σ
+                                                                                   patches, use the encoder to extract features from all patches,
+is the standard deviation of S, and Sz is the seismic data after
+                                                                                   and save these features into binary files. When processing a
+z-score normalization. The amplitudes of the seismic data after
+                                                                                   specific target data patch, we read the required features from
+normalization are essentially on the same order of magnitude.
+                                                                                   the files, then use the feature fusion module and the decoder to
+                                                                                   obtain the prediction results for that target data patch. Finally,
+B. Experimental Results                                                            we stitch the prediction results of all target data patches to get
+  In Section III, we will not only present the results of our                      the fault detection result for the whole data.
+proposed model but also compare its performance with two                              During testing, the memory usage for model A, model B,
+other models. One is the UNet model, which is commonly                             and our network is 5665, 13 367, and 11 557 MB, respectively.
+used in the field of fault detection, and the other is our model                   Our network’s memory usage is lower than that of model
+with the fault fusion block removed. For the sake of later                         B because our network employs the aforementioned strategy
+description, we call these two models model A and model B.                         during testing, with the network divided into separate encoder,
+
+          Authorized licensed use limited to: University of Tokyo. Downloaded on September 17,2026 at 10:41:41 UTC from IEEE Xplore. Restrictions apply.
+ZHOU et al.: FAULT DETECTION FROM A LARGE PERSPECTIVE WITH TRANSFORMERS                                                                                  4512315
+
+
+
+
+Fig. 7. Illustration of the structures of (a) model A and (b) model B. Model A is the UNet model, and model B is our proposed model with the fault fusion
+block removed.
+
+
+feature fusion module, and decoder components, rather than                       A (0.9655), model B (0.9672), and our network (0.9752).
+being integrated together. The testing times for the three                       At the same time, we calculate the optimal F1-score for model
+models on the four data volumes are shown in Table I, where                      A, model B, and our network, which are 0.6778, 0.8256, and
+model A has the shortest time, followed by model B, and our                      0.8409, respectively. Our network achieves the highest F1-
+network takes the longest. This is because our network has the                   score, while model A has the lowest. Additionally, we plot
+highest complexity.                                                              the receiver operating characteristic (ROC) curves of the three
+   2) Synthetic Data: The synthetic data we used for testing                     networks [see Fig. 10(b)] and derive the AUC values, which
+is shown in Fig. 6(a), with the corresponding fault labels                       are 0.9655, 0.9672, and 0.9752 for model A, model B, and
+displayed in Fig. 9(a). We utilize model A, model B, and our                     our network, respectively. The ROC curves lead to the same
+proposed network to process the synthetic data and the results                   conclusion: our method performs better than both model A
+are shown in Fig. 9(b)–(d), respectively. Intuitively, the results               and model B, with model B outperforming model A.
+obtained by all three networks align well with the fault labels                     For detail inspection, we display the results in inline 50 (see
+in Fig. 9(a), but the results from our network demonstrate                       Fig. 11) and inline 505 (see Fig. 12). In the results in inline 50,
+better continuity.                                                               it can be seen that the faults detected by our network and
+   We quantitatively evaluate the fault detection results                        model B are more continuous than model A by comparing
+obtained by the three networks. First, based on the fault                        the fault detection results in the areas marked with yellow
+labels, we calculate the precision–recall (PR) curves of the                     rectangles. And by comparing the fault detection results in
+three networks and plot them in Fig. 10(a). It can be seen                       the areas marked with a blue rectangle, it is evident that our
+in Fig. 10(a) that our network has the best performance and                      network shows better continuity than model B.
+model A’s performance is the worst, which is also proved by                         In the results in inline 505 (see Fig. 12), we mark three
+the area under curve (AUC) values of the PR curves of model                      areas with green rectangles, where the fault situations are more
+
+        Authorized licensed use limited to: University of Tokyo. Downloaded on September 17,2026 at 10:41:41 UTC from IEEE Xplore. Restrictions apply.
+4512315                                                                           IEEE TRANSACTIONS ON GEOSCIENCE AND REMOTE SENSING, VOL. 62, 2024
+
+
+
+
+                                                                                   Fig. 9. Illustration of (a) fault labels and (b) fault detection results of model
+                                                                                   A, (c) model B, and (d) our network for the synthetic data in Fig. 6(a).
+
+
+
+
+Fig. 8.     Illustration of the training curves for three models. (a) and
+(b) correspond to model A, (c) and (d) correspond to model B, and (e) and
+(f) correspond to our network. (a), (c), and (e) are loss curves, and (b), (d),
+and (f) are accuracy curves.
+
+                                TABLE I
+             T ESTING T IMES FOR THE T HREE M ODELS ON THE
+                          F OUR DATA VOLUMES
+
+
+
+
+complex as indicated by the fault labels [see Fig. 12(b)]. In the
+area marked by the green rectangle 1, our network shows more
+continuity in the fault detection results compared to model B.
+Although the faults detected by model A in the area marked
+by the green rectangle 1 are all relatively continuous, the
+positional relations are clearly incorrect, such as the locations
+of the fault crossings are far from those in the fault labels.
+In the area marked by the green rectangle 2, our network can
+clearly identify three intersecting faults, whereas both model
+A and model B show deficiencies in their results. In the area
+marked by the green rectangle 3, both our network and model
+B’s results align better with the intersecting fault situations in
+the fault labels compared to model A, but our network shows
+better continuity of faults than model B. Overall, in the results                  Fig. 10.   Illustration of (a) PR curves and (b) ROC curves.
+in inline 505, our network demonstrates a superior ability to
+handle complex fault situations, followed by model B, with                           3) F3 Data: We apply model A, model B, and our network
+model A performing the poorest.                                                    to detect faults for the seismic data in Fig. 6(b) from the
+
+          Authorized licensed use limited to: University of Tokyo. Downloaded on September 17,2026 at 10:41:41 UTC from IEEE Xplore. Restrictions apply.
+ZHOU et al.: FAULT DETECTION FROM A LARGE PERSPECTIVE WITH TRANSFORMERS                                                                                  4512315
+
+
+
+
+Fig. 11. Illustration of (a) seismic data, (b) fault labels, and (c) fault detection results of model A, (d) model B, and (e) our network in inline 50 for the
+synthetic data in Fig. 6(a).
+
+
+
+
+Fig. 12. Illustration of (a) seismic data, (b) fault labels, and (c) fault detection results of model A, (d) model B, and (e) our network in inline 505 for the
+synthetic data in Fig. 6(a).
+
+
+
+F3 dataset, whose size is 500 [inline] × 350 [crossline] ×                       results, although having the least noise, show slightly insuf-
+128 time samples, and the results are shown in Fig. 13.                          ficient fault continuity [see Fig. 13(b)]. To further examine
+By comparing Fig. 13(a)–(c), it can be seen that there is more                   the results of the three networks, we show the results in time
+noise in model A’s results [see Fig. 13(b)], while model B’s                     100 in Fig. 14. We mark two areas using a green ellipse and
+
+        Authorized licensed use limited to: University of Tokyo. Downloaded on September 17,2026 at 10:41:41 UTC from IEEE Xplore. Restrictions apply.
+4512315                                                                           IEEE TRANSACTIONS ON GEOSCIENCE AND REMOTE SENSING, VOL. 62, 2024
+
+
+
+
+Fig. 13.    Illustration of the fault detection results of (a) model A, (b) model B, and (c) our network for the F3 data in Fig. 6(b).
+
+
+
+
+Fig. 14.    Illustration of (a) seismic data, (b) fault detection results of model A, (c) model B, and (d) our network in time 100 for the F3 data in Fig. 6(b).
+
+
+a yellow ellipse. In the area marked by the green ellipse,                          [see Fig. 14(d)] are continuous and complete, effectively
+the faults detected by model A [see Fig. 14(b)] are more                            delineating the fault structures.
+broken, making it difficult to determine the fault structures
+and orientations. In contrast, both model B [see Fig. 14(c)]                           4) Kerry3D Data: The data from the Kerry3D dataset that
+and our network [see Fig. 14(d)] identify clear and continuous                      we use for testing is shown in Fig. 6(c), whose size is 287
+faults, with easily discernible fault structures and orientations.                  [inline] × 735 [crossline] × 600 time samples. We process
+In the area marked by the yellow ellipse, where the fault                           this data using model A, model B, and our network. And their
+structures are more complex with multiple faults intersecting                       results are shown in Fig. 15(a)–(c), respectively. It can be seen
+to form a mesh structure, model A’s results [see Fig. 14(b)]                        that our network performs well in terms of fault continuity and
+are broken and model B’s results [see Fig. 14(c)] are more                          noise resistance, while model A’s results are lacking in both
+continuous but lack some faults and do not fully capture the                        fault continuity and noise resistance, and model B’s results,
+complex fault structures. In comparison, our network’s results                      although less noisy, show some deficiencies in fault continuity.
+
+           Authorized licensed use limited to: University of Tokyo. Downloaded on September 17,2026 at 10:41:41 UTC from IEEE Xplore. Restrictions apply.
+ZHOU et al.: FAULT DETECTION FROM A LARGE PERSPECTIVE WITH TRANSFORMERS                                                                                     4512315
+
+
+
+
+Fig. 15.    Illustration of the fault detection results of (a) model A, (b) model B, and (c) our network for the Kerry3D data in Fig. 6(c).
+
+
+
+
+Fig. 16. Illustration of (a)–(c) seismic data, and (d)–(f) fault detection results of model A, (g)–(i) model B and (j)–(l) our network in time slices for the
+Kerry3D data in Fig. 6(c). In these figures, (a), (d), (g), (j) are for time 210, (b), (e), (h), (k) are for time 220, and (c), (f), (i), (l) are for time 225.
+
+
+
+   To further analyze the results from the three networks,                          our network [Fig. 16(j)–(l)] exhibit less noise in the yellow
+we show the results in time 210 [Fig. 16(a), (d), (g), and (j)],                    rectangle marked area, and can image multiple intersecting
+time 220 [Fig. 16(b), (e), (h), and (k)] and time 225 [Fig. 16(c),                  faults and branching faults well with good continuity, which
+(f), (i), and (l)]. We mark an area with a yellow rectangle                         can facilitate the analysis of fault structures and orientations.
+where the fault structures are relatively complex, featuring
+intersecting and branching faults. It can be seen that the results                     5) Data From Eastern China: The seismic data from East-
+obtained by model A [Fig. 16(d)–(f)] are with some noise in                         ern China for testing is shown in Fig. 6(d), whose size is 601
+the yellow rectangle marked area, making it difficult to clearly                    [inline] × 351 [crossline] × 1101 time samples. The fault
+distinguish multiple branching faults. The results obtained by                      detection results from model A, model B, and our network
+model B [Fig. 16(g)–(i)] have less noise in the yellow rectangle                    are displayed in Fig. 17(a)–(c), respectively. It can be observed
+marked area, but there are issues with fault continuity and                         that the results from model A are very noisy. In comparison,
+multiple faults are segmented. In comparison, the results from                      model B and our network demonstrate better noise resistance.
+
+           Authorized licensed use limited to: University of Tokyo. Downloaded on September 17,2026 at 10:41:41 UTC from IEEE Xplore. Restrictions apply.
+4512315                                                                           IEEE TRANSACTIONS ON GEOSCIENCE AND REMOTE SENSING, VOL. 62, 2024
+
+
+
+
+Fig. 17.    Illustration of the fault detection results of (a) model A, (b) model B, and (c) our network for the data from Eastern China in Fig. 6(d).
+
+
+
+
+Fig. 18. Illustration of (a) and (e) seismic data, and (b) and (f) fault detection results of model A, (c) and (g) model B, and (d) and (h) our network in inline
+sections for the data from Eastern China in Fig. 6(d). (a)–(d) are for inline 200, and (e)–(h) are for inline 500.
+
+
+
+   For detail inspection, we display the fault detection results                    Similarly, by comparing the performance in time slices of
+from the three networks in two inline sections and two                              model A [Fig. 19(b) and (f)], model B [Fig. 19(c) and (g)], and
+time slices, including inline 200 [Fig. 18(a)–(d)], inline 500                      our network [Fig. 19(d) and (h)], it is apparent that model A
+[Fig. 18(e)–(h)], time 100 [Fig. 19(a)–(d)], and time 600                           has poorer noise resistance. From the yellow rectangle marked
+[Fig. 19(e)–(h)]. Comparing the performance in inline sections                      areas in Fig. 19(c), (d), (g), and (h), we can see that the fault
+of model A [Fig. 18(b) and (f)], model B [Fig. 18(c) and (g)],                      detection results of model B are more broken, while the results
+and our network [Fig. 18(d) and (h)], it can be observed that                       obtained by our network have better fault continuity compared
+our network and model B demonstrate better noise resistance                         to model B and can be more helpful for analyzing the spatial
+than model A. In the results in inline 200, it can be seen from                     distribution of faults.
+the yellow rectangle marked area in Fig. 18(c) and (d) that
+our network has better fault continuity than model B, and it
+                                                                                                                IV. D ISCUSSION
+can be observed from the two green ellipse marked areas in
+Fig. 18(c) and (d) that our network shows an improvement in                            We evaluate the effectiveness of our network by applying
+detection accuracy over model B, as some faults incorrectly                         it to four data including synthetic and field data. In the
+identified by model B are not detected by our network.                              experiment with the synthetic data, we demonstrate both
+
+           Authorized licensed use limited to: University of Tokyo. Downloaded on September 17,2026 at 10:41:41 UTC from IEEE Xplore. Restrictions apply.
+ZHOU et al.: FAULT DETECTION FROM A LARGE PERSPECTIVE WITH TRANSFORMERS                                                                                  4512315
+
+
+
+
+Fig. 19. Illustration of (a) and (e) seismic data, and (b) and (f) fault detection results of model A, (c) and (g) model B, and (d) and (h) our network in time
+slices for the data from Eastern China in Fig. 6(d). (a)–(d) are for time 100, and (e)–(h) are for time 600.
+
+
+
+quantitatively and qualitatively that our network outperforms                    from the data from Eastern China, where the fault detection
+the two networks for comparison. Our network achieves better                     results from model B are significantly less noisy than those
+results on the PR and ROC curves [see Fig. 10(a) and (b)],                       from model A [see Figs. 17(a) and (b), 18(b) and (c), (f)
+shows better fault continuity [see Fig. 11(c)–(e)], and exhibits                 and (g), (b) and 19(c), as well as Fig. 19(f) and (g)]. Therefore,
+enhanced capabilities in handling complex fault situations                       we can conclude that model B performs better than model
+[see Fig. 12(c)–(e)]. Furthermore, in the experiments with the                   A, especially in terms of noise resistance. This improvement
+data from F3 dataset, Kerry3D dataset and Eastern China,                         is due to the introduction of Transformers to construct the
+our network exhibits excellent performance in terms of noise                     encoder in the network. The self-attention mechanism in
+resistance, fault continuity, and handling of complex fault                      Transformers utilizes information from the entire input space
+situations [see Figs. 13–19].                                                    for each feature, unlike convolution which relies on local
+   In Section III, we have two networks for comparison, model                    information (the size of the convolutional kernel). An encoder
+A and model B. Model A is an UNet network based on                               based on Transformers can better extract features from the
+convolutional neural networks, which is widely used in the                       entire input space, thereby reducing fault misidentification
+field of fault detection, and model B is a Transformer-based                     caused by some local lateral discontinuities to some extent,
+network that we construct. The key difference between model                      resulting in improved noise resistance.
+B and model A is that model B uses the Transformer to                               Our network differs from model B in that it contains a
+construct the encoder. In the quantitative analyses of the                       feature fusion block based on Transformers, which can fuse
+experiment with the synthetic data [see Fig. 10(a) and (b)],                     features from adjacent data patches, thereby expanding the
+our network performs the best on the PR and ROC curves,                          range of data the network can utilize. As mentioned earlier, our
+followed by model B and finally model A. In the qualitative                      method shows better results on the synthetic data as well as the
+analysis of the experiment with the synthetic data, model B                      three field data including F3 dataset, Kerry3D dataset, and the
+demonstrates better continuity than model A in some areas [see                   data from eastern China. Compared to model B, our method
+the areas marked by yellow rectangles in Fig. 11(c) and (d)].                    demonstrates better fault continuity and a greater capability to
+It should be noticed that model B shows a slightly better                        handle complex fault situations [see Figs. 11(d) and (e), 12(d)
+ability to handle complex fault situations than model A [see                     and (e), 14(c) and (d), 16(g) and (j), (h) and (k), (i) and (l),
+Fig. 12(c) and (d)], although neither of them is as effective                    18(c) and (d), (g) and (h), 19(c) and (d), as well as Fig. 19(g)
+as our network. In the experiment with F3 data, it can be                        and (h)]. This improvement is due to the introduction of the
+observed that model B has better noise resistance than model                     feature fusion block. The incorporation of a broader range of
+A [see Fig. 13(a) and (b)]. The same conclusion can be drawn                     data allows our network to have a larger perspective. When
+
+
+        Authorized licensed use limited to: University of Tokyo. Downloaded on September 17,2026 at 10:41:41 UTC from IEEE Xplore. Restrictions apply.
+4512315                                                                          IEEE TRANSACTIONS ON GEOSCIENCE AND REMOTE SENSING, VOL. 62, 2024
+
+
+
+analyzing faults in a target data patch, it can simultaneously                     [10] T. Randen, S. I. Pedersen, and L. Sønneland, “Automatic extraction of
+consider fault information from surrounding data patches,                               fault surfaces from three-dimensional seismic data,” in Proc. SEG Tech.
+                                                                                        Program Expanded Abstracts, 2001, pp. 551–554.
+leading to more consistent fault detection results, which is                       [11] A. Roberts, “Curvature attributes and their application to 3D interpreted
+manifested in better fault continuity as well as the ability to                         horizons,” 1st Break, vol. 19, no. 2, pp. 85–100, 2001.
+deal with complex fault situations.                                                [12] S. Al-Dossary and K. J. Marfurt, “3D volumetric multispectral esti-
+                                                                                        mates of reflector curvature and rotation,” Geophysics, vol. 71, no. 5,
+   It should also be noted that our network has relatively high                         pp. P41–P51, Sep. 2006.
+complexity. Compared to model A and model B, our network                           [13] H. Di and D. Gao, “A new algorithm for evaluating 3D curvature and
+has higher training costs (in terms of both time and memory).                           curvature gradient for improved fracture detection,” Comput. Geosci.,
+During testing, by using an appropriate strategy, our network’s                         vol. 70, pp. 15–25, Sep. 2014.
+                                                                                   [14] H. Di and D. Gao, “Efficient volumetric extraction of most posi-
+memory usage is lower than that of model B. Although the                                tive/negative curvature and flexure for fracture characterization from
+computation time is somewhat longer—approximately four                                  3D seismic data,” Geophys. Prospecting, vol. 64, no. 6, pp. 1454–1468,
+times that of model B—it is not excessively high. We will                               Nov. 2016.
+                                                                                   [15] S. I. Pedersen, T. Randen, L. Sønneland, and Ø. Steen, “Automatic fault
+focus on optimizing this aspect in future research.                                     extraction using artificial ants,” in Proc. SEG Int. Expo. Annu. Meeting.
+                                                                                        Richardson, TX, USA: OnePetro, 2002, pp. 512–515.
+                                                                                   [16] X. Wu and S. Fomel, “Automatic fault interpretation with optimal
+                             V. C ONCLUSION                                             surface voting,” Geophysics, vol. 83, no. 5, pp. O67–O82, Sep. 2018.
+   We propose a fault detection network with a larger                              [17] L. Huang, X. Dong, and T. E. Clee, “A scalable deep learning platform
+                                                                                        for identifying geologic features from seismic attributes,” Lead. Edge,
+perspective with Transformers. Our network utilizes an                                  vol. 36, no. 3, pp. 249–256, Mar. 2017.
+encoder–decoder structure, with the encoder built on the                           [18] H. Di, M. Shafiq, and G. AlRegib, “Patch-level MLP classification
+Transformer framework, enabling the extraction of hierarchical                          for improved fault detection,” in Proc. SEG Tech. Program Expanded
+                                                                                        Abstracts, 2018, pp. 2211–2215.
+features. Additionally, we integrate a feature fusion block                        [19] A. Guitton, “3D convolutional neural networks for fault interpretation,”
+based on Transformers into our network, allowing it to utilize                          in Proc. 80th EAGE Conf. Exhib., 2018, vol. 2018, no. 1, pp. 1–5.
+information beyond a single data patch and extend to multiple                      [20] B. Guo, L. Li, and Y. Luo, “A new method for automatic seismic
+                                                                                        fault detection using convolutional neural network,” in Proc. SEG Tech.
+data patches, thus achieving a larger perspective. We test                              Program Expanded Abstracts, 2018, pp. 1951–1955.
+our network on several data including synthetic data and                           [21] T. Zhao and P. Mukhopadhyay, “A fault-detection workflow using deep
+field data. The results show that the introduction of the                               learning and image processing,” in Proc. SEG Tech. Program Expanded
+Transformer-based encoder structure improves our network’s                              Abstracts, Aug. 2018, pp. 1966–1970.
+                                                                                   [22] Z. Liu, C. Zhou, G. Hu, and C. Song, “Interpretability-guided con-
+noise resistance, significantly reducing incorrect fault detection                      volutional neural networks for seismic fault segmentation,” in Proc.
+results caused by some local lateral discontinuities. Moreover,                         IEEE Int. Conf. Acoust., Speech Signal Process. (ICASSP), May 2020,
+the introduction of the feature fusion block results in more                            pp. 4312–4316.
+                                                                                   [23] X. Wu, L. Liang, Y. Shi, and S. Fomel, “FaultSeg3D: Using synthetic
+continuous fault detection outcomes, especially in regions with                         data sets to train an end-to-end convolutional neural network for 3D
+complex fault situations, where fault structures and orienta-                           seismic fault segmentation,” Geophysics, vol. 84, no. 3, pp. IM35–IM45,
+tions are delineated more clearly. Therefore, our network is                            May 2019.
+better equipped to utilize information from a broader range                        [24] R. Zhou, X. Yao, G. Hu, and F. Yu, “Learning from unlabelled real
+                                                                                        seismic data: Fault detection based on transfer learning,” Geophys.
+to make more accurate fault decisions, demonstrating its                                Prospecting, vol. 69, no. 6, pp. 1218–1234, Jul. 2021.
+capability to handle faults in more complex situations.                            [25] X. Wu, Y. Shi, S. Fomel, L. Liang, Q. Zhang, and A. Z. Yusifov,
+                                                                                        “FaultNet3D: Predicting fault probabilities, strikes, and dips with a
+                                                                                        single convolutional neural network,” IEEE Trans. Geosci. Remote Sens.,
+                               R EFERENCES                                              vol. 57, no. 11, pp. 9138–9155, Nov. 2019.
+                                                                                   [26] Z. Wang, B. Li, N. Liu, B. Wu, and X. Zhu, “Distilling knowledge
+ [1] M. Bahorich and S. Farmer, “3-D seismic discontinuity for faults and               from an ensemble of convolutional neural networks for seismic fault
+     stratigraphic features: The coherence cube,” Lead. Edge, vol. 14, no. 10,          detection,” IEEE Geosci. Remote Sens. Lett., vol. 19, pp. 1–5, 2022.
+     pp. 1053–1058, Oct. 1995.                                                     [27] K. Gao, L. Huang, Y. Zheng, R. Lin, H. Hu, and T. Cladohous,
+ [2] K. J. Marfurt, R. L. Kirlin, S. L. Farmer, and M. S. Bahorich,                     “Automatic fault detection on seismic images using a multiscale attention
+     “3-D seismic attributes using a semblance-based coherency algorithm,”              convolutional neural network,” Geophysics, vol. 87, no. 1, pp. N13–N29,
+     Geophysics, vol. 63, no. 4, pp. 1150–1165, Jul. 1998.                              Jan. 2022.
+ [3] A. Gersztenkorn and K. J. Marfurt, “Eigenstructure-based coherence            [28] R. Zhou, C. Zhou, Y. Wang, X. Yao, G. Hu, and F. Yu, “Frequency adap-
+     computations as an aid to 3-D structural and stratigraphic mapping,”               tive fault detection by feature pyramid network with wavelet transform,”
+     Geophysics, vol. 64, no. 5, pp. 1468–1479, Sep. 1999.                              Geophysics, vol. 88, no. 6, pp. IM113–IM130, Nov. 2023.
+ [4] I. Cohen and R. R. Coifman, “Local discontinuity measures for 3-D             [29] W. Luo, Y. Li, R. Urtasun, and R. Zemel, “Understanding the effective
+     seismic data,” Geophysics, vol. 67, no. 6, pp. 1933–1945, 2002.                    receptive field in deep convolutional neural networks,” in Proc. Adv.
+ [5] A. A. Aqrawi and T. H. Boe, “Improved fault segmentation using a                   Neural Inf. Process. Syst., vol. 29, 2016, pp. 1–9.
+     dip guided and modified 3D Sobel filter,” in Proc. SEG Tech. Program          [30] A. Vaswani et al., “Attention is all you need,” in Proc. Adv. Neural Inf.
+     Expanded Abstracts, 2011, pp. 999–1003.                                            Process. Syst., vol. 30, 2017, pp. 1–11.
+ [6] D. Hale, “Methods to compute fault images, extract fault surfaces, and        [31] A. Dosovitskiy et al., “An image is worth 16×16 words: Transformers
+     estimate fault throws from 3D seismic images,” Geophysics, vol. 78,                for image recognition at scale,” 2020, arXiv:2010.11929.
+     no. 2, pp. O33–O43, Mar. 2013.                                                [32] S. Zheng et al., “Rethinking semantic segmentation from a sequence-
+ [7] X. Wu, “Directional structure-tensor-based coherence to detect seismic             to-sequence perspective with transformers,” in Proc. IEEE/CVF Conf.
+     faults and channels,” Geophysics, vol. 82, no. 2, p. A-13, 2017.                   Comput. Vis. Pattern Recognit. (CVPR), Jun. 2021, pp. 6881–6890.
+ [8] Y. Alaudah and G. AlRegib, “A directional coherence attribute for seis-       [33] W. Wang et al., “Pyramid vision transformer: A versatile backbone for
+     mic interpretation,” in Proc. SEG Tech. Program Expanded Abstracts,                dense prediction without convolutions,” in Proc. IEEE/CVF Int. Conf.
+     Aug. 2017, pp. 2102–2106.                                                          Comput. Vis. (ICCV), Oct. 2021, pp. 568–578.
+ [9] P. P. Van Bemmel and R. E. Pepper, “Seismic signal processing                 [34] Z. Liu et al., “Swin transformer: Hierarchical vision transformer using
+     method and apparatus for generating a cube of variance values,”                    shifted windows,” in Proc. IEEE/CVF Int. Conf. Comput. Vis. (ICCV),
+     U.S. Patent 6 151 555, Nov. 21, 2000.                                              Oct. 2021, pp. 10012–10022.
+
+          Authorized licensed use limited to: University of Tokyo. Downloaded on September 17,2026 at 10:41:41 UTC from IEEE Xplore. Restrictions apply.
+ZHOU et al.: FAULT DETECTION FROM A LARGE PERSPECTIVE WITH TRANSFORMERS                                                                                    4512315
+
+
+
+[35] E. Xie et al., “SegFormer: Simple and efficient design for semantic                                    Dajun Li received the master’s degree in
+     segmentation with transformers,” in Proc. Adv. Neural Inf. Process. Sys.                               geo-information and exploration technology from
+     (NIPS), vol. 34, Dec. 2021, pp. 12077–12090.                                                           Southwest Petroleum Institute (now Southwest
+[36] Z. Tang, B. Wu, W. Wu, and D. Ma, “Fault detection via 2.5D                                            Petroleum University), Chengdu, China, in 2003.
+     transformer U-Net with seismic data pre-processing,” Remote Sens.,                                       Since graduation, he has successively worked
+     vol. 15, no. 4, p. 1039, Feb. 2023.                                                                    with Chuanqing Geophysical Exploration Company,
+[37] Z. Wang, J. You, W. Liu, and X. Wang, “Transformer assisted dual U-                                    Xinjiang Geological Survey Office of BGP, Tarim
+     net for seismic fault detection,” Frontiers Earth Sci., vol. 11, Mar. 2023,                            Oilfield, Xinjiang, China, and other units. At present,
+     Art. no. 1047626.                                                                                      he is engaged in the management of geophys-
+[38] T. Zhou, Y. Ma, Y. Sui, and N. M. AlbinHassan, “Fault-transformer:                                     ical industry at Tarim Oilfield, Senior Engineer
+     An automatic fault detection algorithm on seismic images using a                                       Qualification.
+     transformer enhanced neural network,” Interpretation, vol. 12, no. 3,
+     pp. 1–38, 2024.
+[39] S. Zu, P. Zhao, C. Ke, and C. Junxing, “ResACEUnet: An
+     improved transformer Unet model for 3D seismic fault detection,”
+     J. Geophys. Res., Mach. Learn. Comput., vol. 1, no. 3, 2024,                                           Xin He received the B.E. degree in communication
+     Art. no. e2024JH000232.                                                                                engineering from Nanchang University, Nanchang,
+[40] Z. Zhang, R. Chen, and J. Ma, “Improving seismic fault recognition                                     China, in 2017, and the M.E. degree in electronics
+     with self-supervised pre-training: A study of 3D transformer-based with                                and communication engineering from the University
+     multi-scale decoding and fusion,” Remote Sens., vol. 16, no. 5, p. 922,                                of Electronic Science and Technology of China,
+     Mar. 2024.                                                                                             Chengdu, China, in 2020, where he is currently
+[41] Y. Tang et al., “Self-supervised pre-training of Swin transformers for 3D                              pursuing the Ph.D. degree.
+     medical image analysis,” in Proc. IEEE/CVF Conf. Comput. Vis. Pattern                                    His research interests include seismic data
+     Recognit., Jun. 2022, pp. 20730–20740.                                                                 processing and machine learning.
+[42] D. Hendrycks and K. Gimpel, “Gaussian error linear units (gelus),” arXiv
+     preprint arXiv:1606.08415, 2016.
+[43] S. Xie and Z. Tu, “Holistically-nested edge detection,” in Proc. IEEE
+     Int. Conf. Comput. Vis. (ICCV), Dec. 2015, pp. 1395–1403.
+[44] D. P. Kingma, “Adam: A method for stochastic optimization,” 2014,
+     arXiv:1412.6980.                                                                                          Hanpeng Cai received the Ph.D. degree in
+                                                                                                               Earth exploration and information technique from
+                                                                                                               Chengdu University of Technology, Chengdu, China,
+                                                                                                               in 2012.
+                                                                                                                 From 2012 to 2014, he worked with the Post-
+                                                                                                               Doctoral Workstation, CNPC Chuanqing Drilling
+                          Cheng Zhou received the bachelor’s degree from
+                                                                                                               Engineering Company Ltd., Chengdu, and the
+                          Nankai University, Tianjin, China, in 2017. He is
+                                                                                                               Post-Doctoral Mobile Station, Chengdu University
+                          currently pursuing the Ph.D. degree with the
+                                                                                                               of Technology. Since 2015, he has been working
+                          University of Electronic Science and Technology of
+                                                                                                               with the Department of Geo-Information Science
+                          China, Chengdu, China.
+                                                                                                               and Technology, School of Resources and Environ-
+                            His research interests include seismic data
+                                                                                   ment, University of Electronic Science and Technology of China, Chengdu.
+                          interpretation, computer vision, and machine
+                                                                                   His research interests include multidisciplinary integration technology, such
+                          learning.
+                                                                                   as artificial intelligence, signal process and analysis, and geophysics.
+
+
+
+
+                                                                                                             Guangmin Hu received the B.S. degree from the
+                                                                                                             Department of Computer Science, Nanjing Uni-
+                                                                                                             versity, Nanjing, China, in 1986, and the M.S.
+                                                                                                             and Ph.D. degrees in geophysical prospecting from
+                                                                                                             Chengdu University of Technology, Chengdu, China,
+                          Yifeng Fei received the bachelor’s degree from
+                                                                                                             in 1992 and 2000, respectively.
+                          Wuhan University of Technology, Wuhan, China,
+                                                                                                               He was a Post-Doctoral Researcher with the
+                          in 2018. He is currently pursuing the Ph.D. degree
+                                                                                                             School of Communication and Information Engi-
+                          with the University of Electronic Science and
+                                                                                                             neering, University of Electronic Science and Tech-
+                          Technology of China, Chengdu, China.
+                                                                                                             nology of China, Chengdu, from 2000 to 2003.
+                            His research interests include seismic attributes,
+                                                                                                             From 2002 to 2003, he was also a Visiting Scholar
+                          pre-stack seismic analysis, and deep learning.
+                                                                                   with Hong Kong Polytechnic University, Hong Kong. He is currently a Full
+                                                                                   Professor and serves as the Dean of the School of Resources and Environment,
+                                                                                   University of Electronic Science and Technology of China. His research
+                                                                                   interests include seismic data processing and signal processing.
+
+
+
+
+        Authorized licensed use limited to: University of Tokyo. Downloaded on September 17,2026 at 10:41:41 UTC from IEEE Xplore. Restrictions apply.
+

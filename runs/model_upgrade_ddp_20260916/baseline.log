@@ -1,0 +1,127 @@
+/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+[rank0]:[W916 07:57:53.293073375 ProcessGroupNCCL.cpp:5138] Guessing device ID based on global rank. This can cause a hang if rank to GPU mapping is heterogeneous. You can specify device_id in init_process_group()
+INITIAL baseline val_iou=0.820698
+DDP baseline: world=4, global_batch=8, epochs=20
+baseline epoch=1 step=1/100 loss=0.03074 profile=-0.00000 trace=-0.00000
+baseline epoch=1 step=25/100 loss=0.07633 profile=-0.00000 trace=-0.00000
+baseline epoch=1 step=50/100 loss=0.07600 profile=-0.00000 trace=-0.00000
+baseline epoch=1 step=75/100 loss=0.08174 profile=-0.00000 trace=-0.00000
+baseline epoch=1 step=100/100 loss=0.07806 profile=-0.00000 trace=-0.00000
+EPOCH baseline {"epoch": 1, "loss": 0.07557650217786431, "seg": 0.07557650217786431, "profile": 0.0, "trace": 0.0, "valid_profiles": 1024.0, "valid_windows": 0.0, "aux_ramp": 0, "val_iou": 0.8198048085890374, "val_dice": 0.9009810334820059, "val_precision": 0.9101394540783855, "val_recall": 0.8920050927327593, "old_lr": 5e-06, "seconds": 61.55352854728699, "updates": 100, "peak_memory_mib": 9492.2041015625, "max_rank_parameter_difference": 0.0} best=0.820698
+baseline epoch=2 step=1/100 loss=0.13426 profile=-0.00000 trace=-0.00000
+baseline epoch=2 step=25/100 loss=0.06128 profile=-0.00000 trace=-0.00000
+baseline epoch=2 step=50/100 loss=0.11635 profile=-0.00000 trace=-0.00000
+baseline epoch=2 step=75/100 loss=0.06518 profile=-0.00000 trace=-0.00000
+baseline epoch=2 step=100/100 loss=0.04738 profile=-0.00000 trace=-0.00000
+EPOCH baseline {"epoch": 2, "loss": 0.07749832473695278, "seg": 0.07749832473695278, "profile": 0.0, "trace": 0.0, "valid_profiles": 1024.0, "valid_windows": 0.0, "aux_ramp": 0.0, "val_iou": 0.8185766042011717, "val_dice": 0.9002387936918828, "val_precision": 0.9082990463410258, "val_recall": 0.8923203362377896, "old_lr": 9.932488451843475e-06, "seconds": 51.867541551589966, "updates": 200, "peak_memory_mib": 7762.90380859375, "max_rank_parameter_difference": 0.0} best=0.820698
+baseline epoch=3 step=1/100 loss=0.04899 profile=-0.00000 trace=-0.00000
+baseline epoch=3 step=25/100 loss=0.05546 profile=-0.00000 trace=-0.00000
+baseline epoch=3 step=50/100 loss=0.05100 profile=-0.00000 trace=-0.00000
+baseline epoch=3 step=75/100 loss=0.04289 profile=-0.00000 trace=-0.00000
+baseline epoch=3 step=100/100 loss=0.05295 profile=-0.00000 trace=-0.00000
+EPOCH baseline {"epoch": 3, "loss": 0.07602156515233219, "seg": 0.07602156515233219, "profile": 0.0, "trace": 0.0, "valid_profiles": 1024.0, "valid_windows": 0.0, "aux_ramp": 0.25, "val_iou": 0.8195780119524394, "val_dice": 0.9008440490803883, "val_precision": 0.904464817121604, "val_recall": 0.8972521548841549, "old_lr": 9.73179534641814e-06, "seconds": 52.38759422302246, "updates": 300, "peak_memory_mib": 7762.90380859375, "max_rank_parameter_difference": 0.0} best=0.820698
+baseline epoch=4 step=1/100 loss=0.10741 profile=-0.00000 trace=-0.00000
+baseline epoch=4 step=25/100 loss=0.09061 profile=-0.00000 trace=-0.00000
+baseline epoch=4 step=50/100 loss=0.08484 profile=-0.00000 trace=-0.00000
+baseline epoch=4 step=75/100 loss=0.10221 profile=-0.00000 trace=-0.00000
+baseline epoch=4 step=100/100 loss=0.05251 profile=-0.00000 trace=-0.00000
+EPOCH baseline {"epoch": 4, "loss": 0.0757325156405568, "seg": 0.0757325156405568, "profile": 0.0, "trace": 0.0, "valid_profiles": 1024.0, "valid_windows": 0.0, "aux_ramp": 0.5, "val_iou": 0.8188828455213716, "val_dice": 0.9004239580770182, "val_precision": 0.9048329615549833, "val_recall": 0.89605771397976, "old_lr": 9.403395068472121e-06, "seconds": 52.31411051750183, "updates": 400, "peak_memory_mib": 7762.90380859375, "max_rank_parameter_difference": 0.0} best=0.820698
+baseline epoch=5 step=1/100 loss=0.05744 profile=-0.00000 trace=-0.00000
+baseline epoch=5 step=25/100 loss=0.09066 profile=-0.00000 trace=-0.00000
+baseline epoch=5 step=50/100 loss=0.05642 profile=-0.00000 trace=-0.00000
+baseline epoch=5 step=75/100 loss=0.06855 profile=-0.00000 trace=-0.00000
+baseline epoch=5 step=100/100 loss=0.08762 profile=-0.00000 trace=-0.00000
+EPOCH baseline {"epoch": 5, "loss": 0.07704516469035297, "seg": 0.07704516469035297, "profile": 0.0, "trace": 0.0, "valid_profiles": 1024.0, "valid_windows": 0.0, "aux_ramp": 0.75, "val_iou": 0.8200572528698497, "val_dice": 0.9011334688255447, "val_precision": 0.9046438191191815, "val_recall": 0.8976502561250592, "old_lr": 8.956245521512148e-06, "seconds": 52.2341730594635, "updates": 500, "peak_memory_mib": 7762.90380859375, "max_rank_parameter_difference": 0.0} best=0.820698
+baseline epoch=6 step=1/100 loss=0.04452 profile=-0.00000 trace=-0.00000
+baseline epoch=6 step=25/100 loss=0.15164 profile=-0.00000 trace=-0.00000
+baseline epoch=6 step=50/100 loss=0.13218 profile=-0.00000 trace=-0.00000
+baseline epoch=6 step=75/100 loss=0.06903 profile=-0.00000 trace=-0.00000
+baseline epoch=6 step=100/100 loss=0.13087 profile=-0.00000 trace=-0.00000
+EPOCH baseline {"epoch": 6, "loss": 0.0767887058807537, "seg": 0.0767887058807537, "profile": 0.0, "trace": 0.0, "valid_profiles": 1024.0, "valid_windows": 0.0, "aux_ramp": 1.0, "val_iou": 0.8195630263152903, "val_dice": 0.9008349966034955, "val_precision": 0.9129466879869452, "val_recall": 0.8890404594049909, "old_lr": 8.402543779547419e-06, "seconds": 52.877108335494995, "updates": 600, "peak_memory_mib": 7762.90380859375, "max_rank_parameter_difference": 0.0} best=0.820698
+baseline epoch=7 step=1/100 loss=0.07472 profile=-0.00000 trace=-0.00000
+baseline epoch=7 step=25/100 loss=0.10206 profile=-0.00000 trace=-0.00000
+baseline epoch=7 step=50/100 loss=0.05675 profile=-0.00000 trace=-0.00000
+baseline epoch=7 step=75/100 loss=0.08221 profile=-0.00000 trace=-0.00000
+baseline epoch=7 step=100/100 loss=0.10199 profile=-0.00000 trace=-0.00000
+EPOCH baseline {"epoch": 7, "loss": 0.07608535159844905, "seg": 0.07608535159844905, "profile": 0.0, "trace": 0.0, "valid_profiles": 1024.0, "valid_windows": 0.0, "aux_ramp": 1, "val_iou": 0.8191996399768952, "val_dice": 0.9006154376627948, "val_precision": 0.9073485995679326, "val_recall": 0.8939814692240442, "old_lr": 7.757393382706015e-06, "seconds": 54.526946783065796, "updates": 700, "peak_memory_mib": 7762.90380859375, "max_rank_parameter_difference": 0.0} best=0.820698
+baseline epoch=8 step=1/100 loss=0.10455 profile=-0.00000 trace=-0.00000
+baseline epoch=8 step=25/100 loss=0.12294 profile=-0.00000 trace=-0.00000
+baseline epoch=8 step=50/100 loss=0.05521 profile=-0.00000 trace=-0.00000
+baseline epoch=8 step=75/100 loss=0.04534 profile=-0.00000 trace=-0.00000
+baseline epoch=8 step=100/100 loss=0.08019 profile=-0.00000 trace=-0.00000
+EPOCH baseline {"epoch": 8, "loss": 0.07685422071255743, "seg": 0.07685422071255743, "profile": 0.0, "trace": 0.0, "valid_profiles": 1024.0, "valid_windows": 0.0, "aux_ramp": 1, "val_iou": 0.819540011299137, "val_dice": 0.90082109347405, "val_precision": 0.9109460342752626, "val_recall": 0.8909187509937098, "old_lr": 7.0383923520322e-06, "seconds": 52.12782120704651, "updates": 800, "peak_memory_mib": 7762.90380859375, "max_rank_parameter_difference": 0.0} best=0.820698
+baseline epoch=9 step=1/100 loss=0.05532 profile=-0.00000 trace=-0.00000
+baseline epoch=9 step=25/100 loss=0.09742 profile=-0.00000 trace=-0.00000
+baseline epoch=9 step=50/100 loss=0.04544 profile=-0.00000 trace=-0.00000
+baseline epoch=9 step=75/100 loss=0.08938 profile=-0.00000 trace=-0.00000
+baseline epoch=9 step=100/100 loss=0.05281 profile=-0.00000 trace=-0.00000
+EPOCH baseline {"epoch": 9, "loss": 0.0768130913330242, "seg": 0.0768130913330242, "profile": 0.0, "trace": 0.0, "valid_profiles": 1024.0, "valid_windows": 0.0, "aux_ramp": 1, "val_iou": 0.8204056383927942, "val_dice": 0.9013437676639111, "val_precision": 0.9087733335527239, "val_recall": 0.8940346957166254, "old_lr": 6.265153161346956e-06, "seconds": 51.9915874004364, "updates": 900, "peak_memory_mib": 7762.90380859375, "max_rank_parameter_difference": 0.0} best=0.820698
+baseline epoch=10 step=1/100 loss=0.07150 profile=-0.00000 trace=-0.00000
+baseline epoch=10 step=25/100 loss=0.09295 profile=-0.00000 trace=-0.00000
+baseline epoch=10 step=50/100 loss=0.05302 profile=-0.00000 trace=-0.00000
+baseline epoch=10 step=75/100 loss=0.07310 profile=-0.00000 trace=-0.00000
+baseline epoch=10 step=100/100 loss=0.08859 profile=-0.00000 trace=-0.00000
+EPOCH baseline {"epoch": 10, "loss": 0.07743223995901644, "seg": 0.07743223995901644, "profile": 0.0, "trace": 0.0, "valid_profiles": 1024.0, "valid_windows": 0.0, "aux_ramp": 1, "val_iou": 0.819221780491393, "val_dice": 0.9006288175267028, "val_precision": 0.9083692985297119, "val_recall": 0.8930191397254419, "old_lr": 5.458767760088047e-06, "seconds": 52.046857833862305, "updates": 1000, "peak_memory_mib": 7762.90380859375, "max_rank_parameter_difference": 0.0} best=0.820698
+baseline epoch=11 step=1/100 loss=0.05838 profile=-0.00000 trace=-0.00000
+baseline epoch=11 step=25/100 loss=0.06142 profile=-0.00000 trace=-0.00000
+baseline epoch=11 step=50/100 loss=0.07293 profile=-0.00000 trace=-0.00000
+baseline epoch=11 step=75/100 loss=0.10449 profile=-0.00000 trace=-0.00000
+baseline epoch=11 step=100/100 loss=0.08685 profile=-0.00000 trace=-0.00000
+EPOCH baseline {"epoch": 11, "loss": 0.07615880671422928, "seg": 0.07615880671422928, "profile": 0.0, "trace": 0.0, "valid_profiles": 1024.0, "valid_windows": 0.0, "aux_ramp": 1, "val_iou": 0.8200271154918024, "val_dice": 0.9011152729669273, "val_precision": 0.9076252992543464, "val_recall": 0.8946979691486628, "old_lr": 4.641232239911956e-06, "seconds": 52.234424114227295, "updates": 1100, "peak_memory_mib": 7762.90380859375, "max_rank_parameter_difference": 0.0} best=0.820698
+baseline epoch=12 step=1/100 loss=0.09282 profile=-0.00000 trace=-0.00000
+baseline epoch=12 step=25/100 loss=0.06854 profile=-0.00000 trace=-0.00000
+baseline epoch=12 step=50/100 loss=0.10195 profile=-0.00000 trace=-0.00000
+baseline epoch=12 step=75/100 loss=0.08275 profile=-0.00000 trace=-0.00000
+baseline epoch=12 step=100/100 loss=0.04894 profile=-0.00000 trace=-0.00000
+EPOCH baseline {"epoch": 12, "loss": 0.0751800867728889, "seg": 0.0751800867728889, "profile": 0.0, "trace": 0.0, "valid_profiles": 1024.0, "valid_windows": 0.0, "aux_ramp": 1, "val_iou": 0.8205075820458807, "val_dice": 0.9014052895333694, "val_precision": 0.9098817951440077, "val_recall": 0.8930852612961228, "old_lr": 3.8348468386530454e-06, "seconds": 52.24348044395447, "updates": 1200, "peak_memory_mib": 7762.90380859375, "max_rank_parameter_difference": 0.0} best=0.820698
+baseline epoch=13 step=1/100 loss=0.05856 profile=-0.00000 trace=-0.00000
+baseline epoch=13 step=25/100 loss=0.09776 profile=-0.00000 trace=-0.00000
+baseline epoch=13 step=50/100 loss=0.08099 profile=-0.00000 trace=-0.00000
+baseline epoch=13 step=75/100 loss=0.06762 profile=-0.00000 trace=-0.00000
+baseline epoch=13 step=100/100 loss=0.06811 profile=-0.00000 trace=-0.00000
+EPOCH baseline {"epoch": 13, "loss": 0.07648477219045162, "seg": 0.07648477219045162, "profile": 0.0, "trace": 0.0, "valid_profiles": 1024.0, "valid_windows": 0.0, "aux_ramp": 1, "val_iou": 0.8204545034509629, "val_dice": 0.9013732580469987, "val_precision": 0.9076134380150347, "val_recall": 0.8952182992681494, "old_lr": 3.061607647967802e-06, "seconds": 52.33669328689575, "updates": 1300, "peak_memory_mib": 7762.90380859375, "max_rank_parameter_difference": 0.0} best=0.820698
+baseline epoch=14 step=1/100 loss=0.08763 profile=-0.00000 trace=-0.00000
+baseline epoch=14 step=25/100 loss=0.04266 profile=-0.00000 trace=-0.00000
+baseline epoch=14 step=50/100 loss=0.06816 profile=-0.00000 trace=-0.00000
+baseline epoch=14 step=75/100 loss=0.07788 profile=-0.00000 trace=-0.00000
+AMP_RECOVERED {"epoch": 14, "step": 98, "old_scale": 65536.0, "new_scale": 32768.0, "action": "all ranks skipped parameter update", "loss": 0.07429623603820801, "norm": "inf"}
+baseline epoch=14 step=100/100 loss=0.04429 profile=-0.00000 trace=-0.00000
+EPOCH baseline {"epoch": 14, "loss": 0.07660000415984541, "seg": 0.07660000415984541, "profile": 0.0, "trace": 0.0, "valid_profiles": 1024.0, "valid_windows": 0.0, "aux_ramp": 1, "val_iou": 0.820581661685233, "val_dice": 0.9014499914556499, "val_precision": 0.910077594594145, "val_recall": 0.8929844327599185, "old_lr": 2.3426066172939865e-06, "seconds": 55.17364239692688, "updates": 1399, "peak_memory_mib": 7762.90380859375, "max_rank_parameter_difference": 0.0} best=0.820698
+baseline epoch=15 step=1/100 loss=0.05686 profile=-0.00000 trace=-0.00000
+baseline epoch=15 step=25/100 loss=0.06299 profile=-0.00000 trace=-0.00000
+baseline epoch=15 step=50/100 loss=0.07217 profile=-0.00000 trace=-0.00000
+baseline epoch=15 step=75/100 loss=0.04215 profile=-0.00000 trace=-0.00000
+baseline epoch=15 step=100/100 loss=0.07873 profile=-0.00000 trace=-0.00000
+EPOCH baseline {"epoch": 15, "loss": 0.0758384048845619, "seg": 0.0758384048845619, "profile": 0.0, "trace": 0.0, "valid_profiles": 1024.0, "valid_windows": 0.0, "aux_ramp": 1, "val_iou": 0.8197494182272254, "val_dice": 0.9009475810420249, "val_precision": 0.9072615589548358, "val_recall": 0.8947208784895418, "old_lr": 1.6974562204525829e-06, "seconds": 55.315836668014526, "updates": 1499, "peak_memory_mib": 7762.90380859375, "max_rank_parameter_difference": 0.0} best=0.820698
+baseline epoch=16 step=1/100 loss=0.07973 profile=-0.00000 trace=-0.00000
+baseline epoch=16 step=25/100 loss=0.06323 profile=-0.00000 trace=-0.00000
+baseline epoch=16 step=50/100 loss=0.08811 profile=-0.00000 trace=-0.00000
+baseline epoch=16 step=75/100 loss=0.04906 profile=-0.00000 trace=-0.00000
+baseline epoch=16 step=100/100 loss=0.05397 profile=-0.00000 trace=-0.00000
+EPOCH baseline {"epoch": 16, "loss": 0.07437809826806188, "seg": 0.07437809826806188, "profile": 0.0, "trace": 0.0, "valid_profiles": 1024.0, "valid_windows": 0.0, "aux_ramp": 1, "val_iou": 0.8207410889055303, "val_dice": 0.901546182383227, "val_precision": 0.9092468221395769, "val_recall": 0.8939748845033124, "old_lr": 1.1437544784878524e-06, "seconds": 54.557430028915405, "updates": 1599, "peak_memory_mib": 7762.90380859375, "max_rank_parameter_difference": 0.0} best=0.820741
+baseline epoch=17 step=1/100 loss=0.05872 profile=-0.00000 trace=-0.00000
+baseline epoch=17 step=25/100 loss=0.05983 profile=-0.00000 trace=-0.00000
+baseline epoch=17 step=50/100 loss=0.04781 profile=-0.00000 trace=-0.00000
+baseline epoch=17 step=75/100 loss=0.07295 profile=-0.00000 trace=-0.00000
+baseline epoch=17 step=100/100 loss=0.09527 profile=-0.00000 trace=-0.00000
+EPOCH baseline {"epoch": 17, "loss": 0.0765589556004852, "seg": 0.0765589556004852, "profile": 0.0, "trace": 0.0, "valid_profiles": 1024.0, "valid_windows": 0.0, "aux_ramp": 1, "val_iou": 0.8202989228828249, "val_dice": 0.9012793586491933, "val_precision": 0.9095227704880752, "val_recall": 0.8931840321070983, "old_lr": 6.966049315278797e-07, "seconds": 54.63805675506592, "updates": 1699, "peak_memory_mib": 7762.90380859375, "max_rank_parameter_difference": 0.0} best=0.820741
+baseline epoch=18 step=1/100 loss=0.08191 profile=-0.00000 trace=-0.00000
+baseline epoch=18 step=25/100 loss=0.08020 profile=-0.00000 trace=-0.00000
+baseline epoch=18 step=50/100 loss=0.07860 profile=-0.00000 trace=-0.00000
+baseline epoch=18 step=75/100 loss=0.08431 profile=-0.00000 trace=-0.00000
+baseline epoch=18 step=100/100 loss=0.06463 profile=-0.00000 trace=-0.00000
+EPOCH baseline {"epoch": 18, "loss": 0.07587767714168876, "seg": 0.07587767714168876, "profile": 0.0, "trace": 0.0, "valid_profiles": 1024.0, "valid_windows": 0.0, "aux_ramp": 1, "val_iou": 0.8212561165325645, "val_dice": 0.9018568108873448, "val_precision": 0.9093804245315255, "val_recall": 0.8944566665701822, "old_lr": 3.68204653581858e-07, "seconds": 54.48490238189697, "updates": 1799, "peak_memory_mib": 7762.90380859375, "max_rank_parameter_difference": 0.0} best=0.821256
+baseline epoch=19 step=1/100 loss=0.06567 profile=-0.00000 trace=-0.00000
+baseline epoch=19 step=25/100 loss=0.08629 profile=-0.00000 trace=-0.00000
+baseline epoch=19 step=50/100 loss=0.05835 profile=-0.00000 trace=-0.00000
+baseline epoch=19 step=75/100 loss=0.05282 profile=-0.00000 trace=-0.00000
+baseline epoch=19 step=100/100 loss=0.06379 profile=-0.00000 trace=-0.00000
+EPOCH baseline {"epoch": 19, "loss": 0.07526615270413459, "seg": 0.07526615270413459, "profile": 0.0, "trace": 0.0, "valid_profiles": 1024.0, "valid_windows": 0.0, "aux_ramp": 1, "val_iou": 0.8210933779548408, "val_dice": 0.9017586773907891, "val_precision": 0.9085965538471651, "val_recall": 0.8950229525531088, "old_lr": 1.6751154815652454e-07, "seconds": 54.48628306388855, "updates": 1899, "peak_memory_mib": 7762.90380859375, "max_rank_parameter_difference": 0.0} best=0.821256
+baseline epoch=20 step=1/100 loss=0.06839 profile=-0.00000 trace=-0.00000
+baseline epoch=20 step=25/100 loss=0.08438 profile=-0.00000 trace=-0.00000
+baseline epoch=20 step=50/100 loss=0.09794 profile=-0.00000 trace=-0.00000
+baseline epoch=20 step=75/100 loss=0.07856 profile=-0.00000 trace=-0.00000
+baseline epoch=20 step=100/100 loss=0.04587 profile=-0.00000 trace=-0.00000
+EPOCH baseline {"epoch": 20, "loss": 0.07560458204708993, "seg": 0.07560458204708993, "profile": 0.0, "trace": 0.0, "valid_profiles": 1024.0, "valid_windows": 0.0, "aux_ramp": 1, "val_iou": 0.8204113486732965, "val_dice": 0.9013472139373409, "val_precision": 0.9090062500444698, "val_recall": 0.893816165297342, "old_lr": 1.0000000000000001e-07, "seconds": 54.48873519897461, "updates": 1999, "peak_memory_mib": 7762.90380859375, "max_rank_parameter_difference": 0.0} best=0.821256
+COMPLETE baseline {"loss": 0.5509022594988346, "iou": 0.8325403247925446, "dice": 0.9086188320432114, "precision": 0.9115809311004409, "recall": 0.9056759207782137, "ap": 0.9557781424268723, "iou_en_echelon": 0.9139893709273804, "ap_en_echelon": 0.989633725598464, "iou_horsetail": 0.7951330626791538, "ap_horsetail": 0.9318781113946146, "iou_negative_flower": 0.8283306746899384, "ap_negative_flower": 0.9514939532199084, "iou_positive_flower": 0.8441848697573318, "ap_positive_flower": 0.9660194374697493, "iou_listric_assemblage": 0.7563660690909387, "ap_listric_assemblage": 0.9139040940081804, "variant": "baseline", "epoch": 18, "n_test": 100, "reference_historical_test_iou": 0.8325868632244817, "difference_from_historical_iou": -4.653843193713758e-05, "checkpoint_sha256": "16e269b114ee2d8819c7deb286c9d013daca133f9d8bc834d854744cb5759350", "selection": "maximum validation voxel IoU at threshold .5, including epoch 0"}

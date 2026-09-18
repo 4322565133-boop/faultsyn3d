@@ -1,0 +1,1 @@
+{"epoch": 14, "step": 98, "old_scale": 65536.0, "new_scale": 32768.0, "action": "all ranks skipped parameter update", "loss": 0.08076471090316772, "norm": "inf"}

@@ -1,0 +1,128 @@
+{
+  "checked_at": "2026-09-15T21:39:39.881865+00:00",
+  "project": "/hdd1/hukaixiao/projects/faultsyn3d",
+  "purpose": "Read-only evidence snapshot for model upgrade handoff; existing reports not re-evaluated",
+  "files": {
+    "models/maxvit3d.py": {
+      "sha256": "e5eb289262199d36aa623682f6e09a6e619782114f38f7c99512b2c0e4aac024",
+      "mtime_utc": "2026-09-15T02:58:26.304540+00:00"
+    },
+    "train/train_old_recipe.py": {
+      "sha256": "8e8ba98b9301a78ba096ea08fbb39737f67cc21436b7cbbf6cfd4ad3ad5f8158",
+      "mtime_utc": "2026-09-15T09:23:34.258109+00:00"
+    },
+    "train/evaluate.py": {
+      "sha256": "94af6c39d4082d335ad5c8721e6fba67d3c72a69e0eaa3a6b1330f68a62a9089",
+      "mtime_utc": "2026-09-15T21:24:20.313208+00:00"
+    },
+    "train/dataset.py": {
+      "sha256": "fcc6381d91f24e321928882e4207abe5906a39194a7d7712a2ba86ccb56cb98c",
+      "mtime_utc": "2026-09-15T03:06:11.529441+00:00"
+    },
+    "data/dataset_reproduction_v2/manifest.json": {
+      "sha256": "8255016ce917b483cda0dc3471b5e984f086b23184965082bff4cee44a632af3",
+      "mtime_utc": "2026-09-14T23:25:35.955591+00:00"
+    },
+    "runs/unet3d_v2_oldrecipe/test.json": {
+      "sha256": "074ffe063dbcf8742360bc7801a3f9bcca8070fe5bdf57e3d00137d17b8577cf",
+      "mtime_utc": "2026-09-15T21:24:27.213305+00:00"
+    },
+    "runs/unet3d_v2_oldrecipe/args.json": {
+      "sha256": "cb0d3015a8e2e6d060f15103347c2de34d901a54b76c8307e3b58d7303af1069",
+      "mtime_utc": "2026-09-15T05:30:16.375416+00:00"
+    },
+    "runs/resnet3d_v2_oldrecipe/test.json": {
+      "sha256": "ceb686f34c725fa7622366594ce58e0ccb622398445531c1500ec51e4e4e552a",
+      "mtime_utc": "2026-09-15T21:24:35.761427+00:00"
+    },
+    "runs/resnet3d_v2_oldrecipe/args.json": {
+      "sha256": "6d4edae900f58f5eb267ff97930e7e14928313a6becee5a05c52fbe410e74e64",
+      "mtime_utc": "2026-09-15T06:00:17.546597+00:00"
+    },
+    "runs/maxvit3d_v2_oldrecipe_all3/test.json": {
+      "sha256": "3fc21928eb8cc6ea5057c762c4610019294a0bb067e9cea27a837bc695efc566",
+      "mtime_utc": "2026-09-15T21:24:44.049544+00:00"
+    },
+    "runs/maxvit3d_v2_oldrecipe_all3/args.json": {
+      "sha256": "46c3db1139e7ab94f0579fa7c16b200bd36a74310de59e270154e695de86a926",
+      "mtime_utc": "2026-09-15T05:24:43.289133+00:00"
+    }
+  },
+  "reports": {
+    "unet3d_v2_oldrecipe": {
+      "loss": 0.4658926324546337,
+      "iou": 0.81990651547842,
+      "dice": 0.901042453010705,
+      "precision": 0.891920881931289,
+      "recall": 0.9103525223318708,
+      "ap": 0.950097689187879,
+      "iou_en_echelon": 0.9062097915643736,
+      "ap_en_echelon": 0.9903448158072363,
+      "iou_horsetail": 0.7836252633736358,
+      "ap_horsetail": 0.9273416969265195,
+      "iou_negative_flower": 0.8241506195367738,
+      "ap_negative_flower": 0.9533335073902796,
+      "iou_positive_flower": 0.8230202252934565,
+      "ap_positive_flower": 0.9576128517171671,
+      "iou_listric_assemblage": 0.7431133609991631,
+      "ap_listric_assemblage": 0.9026874966368406,
+      "model": "unet3d",
+      "run": "unet3d_v2_oldrecipe",
+      "epoch": 197,
+      "n_test": 100
+    },
+    "resnet3d_v2_oldrecipe": {
+      "loss": 0.7006764923036098,
+      "iou": 0.8200373375090492,
+      "dice": 0.9011214447186823,
+      "precision": 0.8896841452622857,
+      "recall": 0.9128566372320935,
+      "ap": 0.9472417966103925,
+      "iou_en_echelon": 0.9042292566762847,
+      "ap_en_echelon": 0.9876825989747303,
+      "iou_horsetail": 0.7854460354967485,
+      "ap_horsetail": 0.9276115410761681,
+      "iou_negative_flower": 0.8146076854334227,
+      "ap_negative_flower": 0.9431548966358377,
+      "iou_positive_flower": 0.8250245560243032,
+      "ap_positive_flower": 0.9523835856040683,
+      "iou_listric_assemblage": 0.7512491521673422,
+      "ap_listric_assemblage": 0.9098183922263439,
+      "model": "resnet3d",
+      "run": "resnet3d_v2_oldrecipe",
+      "epoch": 199,
+      "n_test": 100
+    },
+    "maxvit3d_v2_oldrecipe_all3": {
+      "loss": 0.5472579051554203,
+      "iou": 0.8325868632244817,
+      "dice": 0.9086465476015959,
+      "precision": 0.9112664880992203,
+      "recall": 0.9060416288572143,
+      "ap": 0.9560102934247912,
+      "iou_en_echelon": 0.9138172411357974,
+      "ap_en_echelon": 0.9897432980035417,
+      "iou_horsetail": 0.7956604736800084,
+      "ap_horsetail": 0.932371779866721,
+      "iou_negative_flower": 0.8280011212880187,
+      "ap_negative_flower": 0.9515607920523208,
+      "iou_positive_flower": 0.8448711652828741,
+      "ap_positive_flower": 0.9666695943175639,
+      "iou_listric_assemblage": 0.7557947485831603,
+      "ap_listric_assemblage": 0.9135741723403026,
+      "model": "maxvit3d",
+      "run": "maxvit3d_v2_oldrecipe_all3",
+      "epoch": 200,
+      "n_test": 100
+    }
+  },
+  "dataset": {
+    "n_volumes": 1000,
+    "splits": {
+      "train": 800,
+      "val": 100,
+      "test": 100
+    }
+  },
+  "document_sha256": "6463d0d49dbbf13c452d53d0a3e14e808dd6a323226bc7adc32d0e7e2b24f3cc"
+}

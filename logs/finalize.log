@@ -1,0 +1,15 @@
+=== generation done Tue Sep 15 02:15:13 AM JST 2026 ===
+complete: 5 categories x 200 volumes, all 5 kinds present
+split: {'train': 800, 'val': 100, 'test': 100}
+
+category              fault%  full%  kept   λ/4  topo=0  iters  s/vol
+en_echelon              1.19   2.17  0.55  2.35    100%    1.1   44.9
+horsetail               1.30   1.92  0.69  2.36    100%    1.5   46.8
+negative_flower         1.42   2.09  0.68  2.35     86%   41.3   47.0
+positive_flower         1.29   2.34  0.55  2.39     99%    7.2   43.4
+listric_assemblage      0.94   1.90  0.54  2.41     92%   27.0   60.1
+
+wrote data/dataset_v1/manifest.json and summary.json
+=== gallery Tue Sep 15 02:15:14 AM JST 2026 ===
+qc/out/dataset_v1_gallery/gallery_3col.png
+=== all done Tue Sep 15 02:19:36 AM JST 2026 ===

@@ -1,0 +1,144 @@
+{
+  "decision": "End warm-start pilot; next stage is random-initialized baseline versus architecture-only under matched protocol. Do not launch full compound loss experiments yet.",
+  "next_stage_status": "planned_not_launched",
+  "results": {
+    "historical_iou": 0.8325868632244817,
+    "runs": {
+      "baseline": {
+        "loss": 0.5509022594988346,
+        "iou": 0.8325403247925446,
+        "dice": 0.9086188320432114,
+        "precision": 0.9115809311004409,
+        "recall": 0.9056759207782137,
+        "ap": 0.9557781424268723,
+        "iou_en_echelon": 0.9139893709273804,
+        "ap_en_echelon": 0.989633725598464,
+        "iou_horsetail": 0.7951330626791538,
+        "ap_horsetail": 0.9318781113946146,
+        "iou_negative_flower": 0.8283306746899384,
+        "ap_negative_flower": 0.9514939532199084,
+        "iou_positive_flower": 0.8441848697573318,
+        "ap_positive_flower": 0.9660194374697493,
+        "iou_listric_assemblage": 0.7563660690909387,
+        "ap_listric_assemblage": 0.9139040940081804,
+        "variant": "baseline",
+        "epoch": 18,
+        "n_test": 100,
+        "reference_historical_test_iou": 0.8325868632244817,
+        "difference_from_historical_iou": -4.653843193713758e-05,
+        "checkpoint_sha256": "16e269b114ee2d8819c7deb286c9d013daca133f9d8bc834d854744cb5759350",
+        "selection": "maximum validation voxel IoU at threshold .5, including epoch 0"
+      },
+      "combined": {
+        "loss": 0.5419233919680119,
+        "iou": 0.8323998649366265,
+        "dice": 0.9085351738610994,
+        "precision": 0.909789697089807,
+        "recall": 0.9072841056316033,
+        "ap": 0.9558114447653048,
+        "iou_en_echelon": 0.9140148694973546,
+        "ap_en_echelon": 0.9897195420772024,
+        "iou_horsetail": 0.7948387252399121,
+        "ap_horsetail": 0.931784699605883,
+        "iou_negative_flower": 0.8280708330569682,
+        "ap_negative_flower": 0.9514338411018172,
+        "iou_positive_flower": 0.8441250199251573,
+        "ap_positive_flower": 0.9660399262670114,
+        "iou_listric_assemblage": 0.7564474022652755,
+        "ap_listric_assemblage": 0.9142165132579168,
+        "variant": "combined",
+        "epoch": 18,
+        "n_test": 100,
+        "reference_historical_test_iou": 0.8325868632244817,
+        "difference_from_historical_iou": -0.00018699828785517791,
+        "checkpoint_sha256": "d5dc7e32d88fd9843b91c2d0094a910dc994bbe4acdfdb020dbf4aebb8fea320",
+        "selection": "maximum validation voxel IoU at threshold .5, including epoch 0"
+      }
+    },
+    "delta_vs_historical": -0.00018699828785517791,
+    "delta_vs_matched_control": -0.00014045985591804033,
+    "kind": "single-seed warm-start four-GPU experiment"
+  },
+  "validation_intervention": {
+    "split": "val",
+    "n_volumes": 100,
+    "checkpoint_epoch": 18,
+    "kind": "inference intervention in the same trained model; not retraining ablation",
+    "metrics": {
+      "on": {
+        "iou": 0.8210510586256686,
+        "precision": 0.907327073474616,
+        "recall": 0.8962077907397701,
+        "tp": 6532999,
+        "fp": 667270,
+        "fn": 756604
+      },
+      "off": {
+        "iou": 0.8210444651896046,
+        "precision": 0.9073260518911778,
+        "recall": 0.8962009316556745,
+        "tp": 6532949,
+        "fp": 667273,
+        "fn": 756654
+      }
+    },
+    "module_on_minus_off_iou": 6.5934360640174106e-06,
+    "mean_absolute_probability_change": 2.036917030636687e-05,
+    "threshold_prediction_flip_fraction": 2.0098686218261718e-05,
+    "fusion_relative_l2_change": {
+      "fusion32": {
+        "mean": 0.0023401495325379076,
+        "max": 0.002628749469295144
+      },
+      "fusion64": {
+        "mean": 0.003065344891510904,
+        "max": 0.003997592255473137
+      }
+    }
+  },
+  "test_changes_in_percentage_points": {
+    "iou": -0.014045985591804033,
+    "dice": -0.008365818211197862,
+    "precision": -0.17912340106339686,
+    "recall": 0.16081848533896492,
+    "ap": 0.0033302338432461553
+  },
+  "class_iou_changes_in_percentage_points": {
+    "en_echelon": 0.002549856997413613,
+    "horsetail": -0.029433743924178746,
+    "negative_flower": -0.025984163297021468,
+    "positive_flower": -0.0059849832174441175,
+    "listric_assemblage": 0.0081333174336784
+  },
+  "mean_epoch_seconds": {
+    "baseline": 53.694337689876555,
+    "combined": 60.436252617836
+  },
+  "proposed_protocol": {
+    "initialization": "random; no pretrained or historical weights",
+    "groups": [
+      "B0 baseline",
+      "D2S architecture only"
+    ],
+    "data": "dataset_reproduction_v2 unchanged manifest 800/100/100",
+    "epochs": 200,
+    "world_size": 4,
+    "per_rank_batch": 2,
+    "global_batch": 8,
+    "optimizer": "AdamW",
+    "lr": 0.0001,
+    "weight_decay": 0.01,
+    "warmup_epochs": 10,
+    "min_lr": 1e-07,
+    "segmentation_loss": "FP32 0.6 Dice + 0.4 Focal(alpha=0.75,gamma=2)",
+    "auxiliary_loss_weights": {
+      "profile": 0,
+      "trace": 0
+    },
+    "seed": 2026,
+    "selection": "maximum validation IoU at 0.5; do not select using test",
+    "d2s_initial_context_coefficient": 0.1,
+    "d2s_initial_gate_modulation_bound": 0.1,
+    "note": "Starting coefficients are design choices to test, not validated optimal settings. Current trainer needs a random-init mode and initializer option before execution."
+  }
+}

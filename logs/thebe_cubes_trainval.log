@@ -1,0 +1,17 @@
+== train
+  train1: (100, 3174, 1537) float64
+  train2: (100, 3174, 1537) float64
+  train3: (100, 3174, 1537) float64
+  train4: (100, 3174, 1537) float64
+  train5: (100, 3174, 1537) float64
+  train6: (100, 3174, 1537) float64
+  train7: (100, 3174, 1537) float64
+  train8: (100, 3174, 1537) float64
+  train9: (100, 3174, 1537) float64
+  volume (1537, 3174, 900), fault fraction 0.0105, labelled depth band (488, 1512), 248s
+  2400 cubes, fault fraction mean 0.0506, empty (<0.5%) 0.12, 298s
+== val
+  val1: (100, 3174, 1537) float64
+  val2: (100, 3174, 1537) float64
+  volume (1537, 3174, 200), fault fraction 0.0176, labelled depth band (545, 1536), 48s
+  240 cubes, fault fraction mean 0.0669, empty (<0.5%) 0.12, 52s

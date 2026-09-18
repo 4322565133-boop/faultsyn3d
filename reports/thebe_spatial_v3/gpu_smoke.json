@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "world_size": 4,
+  "effective_batch": 8,
+  "params": 9643495,
+  "train_steps_per_rank": 4,
+  "skipped_optimizer_steps": 0,
+  "training_loss": 0.6124430298805237,
+  "note": "Small GPU workflow check only; selected eight smoke validation cores have no positives, not an accuracy experiment."
+}

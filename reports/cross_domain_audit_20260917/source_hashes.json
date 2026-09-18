@@ -1,0 +1,17 @@
+{
+  "scripts/audit_cross_domain.py": "cc373c0ee322abd4b165ce0b0826090163fd5bd2eeed66cb4680430a45249bd5",
+  "scripts/report_cross_domain_audit.py": "6d76695c2fd07f872a3db654a184546d8456b2f790309067f7be655f61990cbe",
+  "scripts/finalize_cross_domain_audit.py": "1a38bcbb8973b21b62becff23b2e8d85260599e3c826c3739d8aa1996bb99ca1",
+  "scripts/check_wu_axis_audit.py": "10c46744110db295c8b3009be9545d1c5efd7bda5d9381c41f6e93faf44c47f7",
+  "scripts/check_audit_metrics.py": "424103d1db10a161aeb09ccd8e5df12e7c785c1a22438aa161712a6914eefdac",
+  "train/eval_cross.py": "143bf64a2d75379f6c25924a0359cd3b04aa305d2b48711464aedf58c8b36ee2",
+  "train/evaluate.py": "a5b7ffb68373b85d004a0612177245303c9d9e342b18a329d478e4f24108b7af",
+  "train/train_old_recipe_ddp.py": "5fea01f1092b60c0b734844cdb294817790fb335ddc92ec58dc131e6867d72f5",
+  "train/analyze_loss_vs_iou.py": "b43b36d292d51dce28a0f6b8f2f13bca5ab8f9fee31e2316500ad7ece00b8c70",
+  "train/dataset.py": "fcc6381d91f24e321928882e4207abe5906a39194a7d7712a2ba86ccb56cb98c",
+  "train/dataset_wu.py": "d0f6e2e34e2a25ba50f776de3f80d2b939b158556a81dde4e49af8ce53b9836d",
+  "models/maxvit3d.py": "e5eb289262199d36aa623682f6e09a6e619782114f38f7c99512b2c0e4aac024",
+  "models/unet3d.py": "61a8e1ea5a4e79db1365266cff5eaa1781899b15f9d7bd5122c1dad0ffea0251",
+  "models/unet_maxvit3d.py": "e204b1efc1f3c890b7fd546fa4757e6f805f53e88a0c089ab250ad676632e407",
+  "models/__init__.py": "3d188833645259ed24bf0e396fbd34cea752704995d3658fa1f3f178fcb54fb5"
+}

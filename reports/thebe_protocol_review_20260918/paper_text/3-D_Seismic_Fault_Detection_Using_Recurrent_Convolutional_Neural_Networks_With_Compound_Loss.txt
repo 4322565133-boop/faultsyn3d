@@ -1,0 +1,660 @@
+IEEE TRANSACTIONS ON GEOSCIENCE AND REMOTE SENSING, VOL. 61, 2023                                                                                      5909815
+
+
+
+
+         3-D Seismic Fault Detection Using Recurrent
+               Convolutional Neural Networks
+                    With Compound Loss
+                                  Xiao Ma, Gang Yao , Member, IEEE, Feng Zhang, and Di Wu
+
+
+
+   Abstract— Fault detection is an essential component of seismic                                       I. I NTRODUCTION
+interpretation and plays a crucial role in industrial processes.
+However, it is also one of the main challenges, especially in delin-
+eating faults in 3-D seismic data. Recently, the rapidly developing
+                                                                                 F    AULTS are an important geotectonic feature formed by
+                                                                                      the brittle deformation of subsurface rock formations
+                                                                                 under the action of compressional or tensile forces [1]. Fault
+technology, deep learning, has proven to be a powerful tool for
+this task. A number of neural networks have been proposed                        detection and interpretation are essential in understanding
+for this purpose by regarding 3-D fault detection as a semantic                  the underground structure and reservoir locations from seis-
+segmentation task. To further enhance the effectiveness of the                   mic profiles and are crucial to geological hazard prevention
+deep learning methods, we propose a novel network architecture,                  and control. In seismic migration images, faults are usually
+named R2SE-Unet, to solve the 3-D segmentation problem. In the
+                                                                                 depicted as lateral discontinuities. Traditional fault detection
+neural network, we design a recurrent residual-SE convolu-
+tional unit (RRCU-SE) that integrates the residual learning and                  methods analyze and calculate the properties of seismic migra-
+squeeze-excitation module to store the information in 3-D seismic                tion images to find these discontinuities. Several methods for
+data. This component promotes the spread of 3-D volumetric                       fault identification have been proposed in previous investi-
+information and aids in learning spatial dependencies in 3-D                     gations, including similarity [2], coherence [2], variance [4],
+images. In addition, to reduce the impact of insufficient spatial
+resolution resulting from the base architecture of U-net, we add
+                                                                                 and curvature [5]. In the application of complex geological
+an attention unit between skip connection operations. These two                  tectonic zones, however, the accuracy and dependability of
+new units enable our R2SE-Unet to exploit semantic information                   these methods are still problematic.
+more accurately in the feature maps. After many experiments on                      With the continuous development of artificial intel-
+region-based loss functions and distribution-based loss functions,               ligence, deep learning is becoming increasingly popu-
+we also propose a novel loss function, which takes the advantage
+of generalized dice (GDice) loss and balanced binary cross
+                                                                                 lar among geophysicists [6]. The techniques of deep
+entropy (b-BCE) loss, named GDice-bce, to effectively train                      learning for computer vision have delivered very good
+R2SE-Unet. Although only synthetic seismic data samples are                      results in identifying subsurface geological phenomena,
+used to train the network parameters, our R2SE-Unet could                        such as seismic facies [7], [8], [9], [10], [11], seismic
+produce more reliable fault feature maps on field seismic data                   faults [12], [13], [14], [15], and salt bodies [16], [17], [18].
+than two other conventional fault detection neural networks.
+Thus, the proposed neural network is easy to train and reliably                  Convolutional neural networks (CNNs) are the most frequently
+works for seismic fault interpretation on field seismic data.                    used networks in computer vision. CNNs utilize multiple
+                                                                                 convolution operators as “kernels” to extract useful “features”
+  Index Terms— 3-D fault detection, compound loss function,
+deep learning, field data, recurrent network.                                    from the input images. The kernel is presented by a matrix
+                                                                                 or tensor, which is convolved with the input image. Thus,
+  Manuscript received 4 November 2022; revised 5 April 2023;                     it performs as a filter to enhance a certain desirable feature in
+accepted 8 May 2023. Date of publication 15 May 2023; date of current            the output image. By repeatedly using the convolution kernels
+version 25 May 2023. This work was supported in part by the National Key
+Research and Development Program of China under Grant 2018YFA0702502,            in the input image, CNNs are capable of discovering features
+in part by the Research and Development Department of China National             at arbitrary locations in the image [19].
+Petroleum Corporation (Investigations on Fundamental Experiments and                Fault detection is commonly considered as a semantic seg-
+Advanced Theoretical Methods in Geophysical Prospecting Applications)
+under Grant 2022DQ0604-02, in part by NSFC under Grant 41974142 and              mentation problem by many researchers [20], [21]. Semantic
+Grant 42074129, in part by the Science Foundation of China University            segmentation classifies an image at the pixel level: the pixels
+of Petroleum (Beijing) under Grant 2462020YXZZ005, and in part by the            in each sample belonging to a fault are classified as the fault
+State Key Laboratory of Petroleum Resources and Prospecting under Grant
+PRP/indep-4-2012. (Corresponding author: Gang Yao.)                              class; the rest pixels are classified as the nonfault class. The
+  Xiao Ma, Feng Zhang, and Di Wu are with the State Key Laboratory               network produces a probability map with the same size as
+of Petroleum Resources and Prospecting and the College of Geophysics,            the input image. The value of each pixel in the probability
+China University of Petroleum (Beijing), Beijing 102249, China (e-mail:
+mx297759805@163.com; zhangfeng@cup.edu.cn; wudi@cup.edu.cn).                     map shows the likelihood of the pixel being associated with a
+  Gang Yao is with the State Key Laboratory of Petroleum Resources and           fault. As semantic segmentation-based neural networks under-
+Prospecting and the Unconventional Petroleum Research Institute, China           stand images at the pixel level, they utilize the information
+University of Petroleum (Beijing), Beijing 102249, China (e-mail: yao-
+gang@cup.edu.cn).                                                                provided in the image more effectively than classification
+  Digital Object Identifier 10.1109/TGRS.2023.3275951                            methods [22], [23].
+                      1558-0644 © 2023 IEEE. Personal use is permitted, but republication/redistribution requires IEEE permission.
+                                    See https://www.ieee.org/publications/rights/index.html for more information.
+
+           Authorized licensed use limited to: University of Tokyo. Downloaded on July 17,2026 at 01:46:57 UTC from IEEE Xplore. Restrictions apply.
+5909815                                                                        IEEE TRANSACTIONS ON GEOSCIENCE AND REMOTE SENSING, VOL. 61, 2023
+
+
+
+
+Fig. 1. Architecture of our R2SE-Unet. The input image of the network is 3-D synthetic seismic data, and the last layer of our network outputs a fault
+probability map with a value ranging from 0 to 1. The black arrows represent the RRCU-SE units. The purple arrow represents the combined operation of
+a convolutional layer with 1 × 1 kernel size and the Sigmoid activation function. The tuple (C, D, H , and W ) represents a set of feature maps, where C
+denotes a number of channels in the feature maps, and the dimension of the feature map is D × H × W . The upsampling layers in our R2SE-Unet use the
+nearest interpolation.
+
+
+
+
+Fig. 2. Architecture of the: (a) RRCU-SE unit and (b) SE-Res block. Note that every yellow cuboid contains a convolutional layer, group normalization,
+and an ELU, while the white cuboid represents the feature map with C channels generated by the yellow cuboid. As shown in (a), the efficient feature
+accumulation operator is included in the RRCU-SE units.
+
+
+
+   Currently, the U-net network proposed by Ronneberger et                       U-net architecture includes an encoding–decoding architecture
+al. [24] is widely used in the fault segmentation problem. The                   and a skip connection operation. In the encoding process, the
+
+           Authorized licensed use limited to: University of Tokyo. Downloaded on July 17,2026 at 01:46:57 UTC from IEEE Xplore. Restrictions apply.
+MA et al.: 3-D SEISMIC FAULT DETECTION USING RECURRENT CNNs WITH COMPOUND LOSS                                                                        5909815
+
+
+
+U-net compresses the features of the input image. In the decod-                 good results in natural language processing tasks because
+ing process, the U-net progressively upsamples the compressed                   their looping operation allows the network to remember the
+feature maps to the shape of the input training data. U-net uses                information more effectively [38]. We take the advantage of
+the skip connection mechanism to fuse the feature maps in the                   this operation by combining RNNs with CNNs to make the
+downsampling process with those in the upsampling process,                      model remember “where” is the most essential characteristic of
+which effectively mitigates the information loss caused by                      faults. In addition, we use the squeeze-and-excitation residual
+downsampling. Therefore, U-net performs well in various                         (SE-Res) module in the convolution units to enhance the
+semantic segmentation applications.                                             neural network’s capability to focus on the channels where
+   In the field of geophysics, Wu et al. [25], [26] trained U-net               the information of faults lies. We then add attention units
+using 3-D synthetic seismic data and tested it on 3-D field                     between the feature maps during the concatenation operations.
+seismic data. The test results show that the U-net outperformed                 The attention units can add weight to each pixel in the feature
+the traditional fault identification methods on both synthetic                  map, thus allowing the network to focus more on the pixels
+and field seismic data, thus demonstrating the great capability                 belonging to the fault. We also notice that most researchers
+of the U-net for the fault identification problem. Some scholars                use only distribution-based loss functions or region-based loss
+modified the original U-net to achieve even better results. For                 functions as the loss function. In this article, we propose a type
+instance, Gao et al. [27], [28] added a multiscale attention                    of loss function named generalized dice balanced binary cross
+module to the original U-net architecture, thus resulting in                    entropy (GDice-bce) that combines the region-based loss func-
+more continuous fault prediction.                                               tion and the distribution-based loss functions. Applications on
+   The loss functions also play a crucial role in the training                  both synthetic and field data demonstrate that our R2SE-Unet
+process. In general, loss functions are classified into two types:              trained by GDice-bce can achieve excellent results.
+region-based loss and distribution-based loss. Distribution-                       The rest of this article is structured as follows. We out-
+based loss, such as focal loss [29], aims to minimize dissimi-                  line the R2SE-Unet architecture for fault segmentation in
+larity between the predicted output and the label. Region-based                 Section II. Then, in Section III, in order to demonstrate
+loss, such as dice loss [30], aims to maximize the overlap                      the advantages of our network, we compare it against two
+regions between the predicted output and the label. Methods                     other conventional U-Net architectures using a variety of
+that focus on other technologies are also proposed in recent                    synthetic and field seismic data. In Section V, we conclude
+works [31], [32], [33].                                                         our investigation.
+   We believe that two important issues constrain the effec-
+tiveness of using deep learning methods for fault detection.                                               II. M ETHODOLOGY
+First, the fault systems in the field seismic data are very                        We regard 3-D seismic fault detection problem as an image
+complex; thus, U-net does not completely distinguish a fault                    segmentation task and propose a novel convolutional network
+and its adjacent ones. This phenomenon may be caused by                         called R2SE-Unet that combines the RNN with CNN. The
+the structure of the convolutional units inside the U-net and                   distribution-based loss functions, such as balanced binary
+the raw skip connection mechanism used in most U-net-                           cross entropy (b-BCE) loss, could produce less noise but
+based networks. That is, the convolutional units consisting                     low-probability fault feature maps while the region-based loss
+of simple convolution operations may be inefficient for fault                   functions, such as GDice loss, could produce high-probability
+detection, and the raw skip connection likely causes the U-net                  fault feature maps but are sensitive to noise. Therefore,
+vulnerable to noise. Second, fault detection is a problem with                  we combine them to form a compound loss, named GDice-bce
+a highly unbalanced number of positive and negative points.                     loss, to improve the performance of our R2SE-Unet.
+That is, the “nonfault” class has much more 3-D points than
+the “fault” class, which is typically of the most interest. The
+abundance of 3-D points from the “nonfault” can overwhelm                       A. Architecture
+the “fault” class. Most deep learning algorithms for semantic                      U-net is a popular network for fault detection
+segmentation models, including our R2SE-Unet, are designed                      tasks [39], [40]. It provides substantial benefits for
+on the assumption that classes are distributed equally. This                    segmentation problems: first, the network combines the
+means that most of the deep learning algorithms may only                        information from different spatial parts of the feature maps
+concentrate on learning the characteristics of the “nonfault”                   using concatenate operation; this operation allows it to
+class, neglecting the samples from the “fault” class. Thus, it is               precisely localize the regions of interest and receive useful
+crucial to design a misfit function to mitigate the imbalance                   information. Second, it can learn features using few labeled
+problem.                                                                        images, which is well-suited for our experiment considering
+   To solve the two issues mentioned above, we design a                         the sparsity of the training data. However, as noted in
+new network named R2SE-Unet, which uses the architecture                        the “Introduction,” U-net is vulnerable to seismic noise
+of recurrent neural networks (RNNs) and squeeze-excitation                      and the fault prediction results in field seismic data can
+architecture. R2SE-Unet is inspired by medical segmenta-                        be discontinuous. To improve the antinoise performance
+tion tasks such as lung segmentation [34], [35] and brain                       and accuracy of fault prediction results on seismic images,
+tumor segmentation [36], [37]. Yet, we consolidate crucial                      we design an advanced deep learning architecture named
+modifications and improvements for seismic fault detection                      R2SE-Unet. The architecture of our R2SE-Unet is displayed
+tasks. In more detail, we consider that the RNNs achieved                       in Fig. 1, which is different from the conventional U-net.
+
+          Authorized licensed use limited to: University of Tokyo. Downloaded on July 17,2026 at 01:46:57 UTC from IEEE Xplore. Restrictions apply.
+5909815                                                                           IEEE TRANSACTIONS ON GEOSCIENCE AND REMOTE SENSING, VOL. 61, 2023
+
+
+
+
+                                                                                   Fig. 4. Architecture of the spatial attention gate. The input feature map
+                                                                                   is decomposed into two channels, where each of the channels refers to
+Fig. 3. Schematic of the unfolded recurrent convolution layer. The yellow
+                                                                                   max-pooling and average pooling. A convolution layer is then added to output
+rectangle represents the convolutional layer. Here, t = [1], [2] represents the
+                                                                                   a one-channel feature map. Then, the Sigmoid activation function will weigh
+recurrent convolutional operation that consists of one single convolution layer
+                                                                                   all the values to a range between 0 and 1.
+followed by two subsequential recurrent convolutional layers.
+
+
+                                                                                                                     TABLE I
+In U-net, each unit in the encoder branch and decoder branch                                C OMPUTATIONAL C OST OF T HREE N EURAL N ETWORKS
+is a simple double convolution. Instead, our R2SE-Unet
+contains an advanced unit called recurrent residual-SE
+convolutional unit (RRCU-SE) to take the advantage of the
+RNN, which has successful applications in the modeling
+of sequential data, such as speech recognition. In addition,
+we add spatial attention gates during the concatenation
+operation. These gates produce a spatial attention map by
+exploiting the interspatial relationship of features, making
+our R2SE-Unet learn and concentrate more on the important
+information, rather than learning nonuseful background                                With minimal computational expense, SE-Res which is
+information.                                                                       depicted in Fig. 2(b) enhances nonlinear interdependencies and
+   The architecture of RRCU-SE is displayed in Fig. 2(a).                          channel interactions between the channels. By adding a global
+It consists of three modules. This first module is represented                     pooling layer, the SE-Res module squeezes each channel in the
+by the yellow cuboids, which contains a convolutional layer,                       feature maps to a single numeric value to get a global under-
+a group normalization layer, and an exponential linear unit                        standing. This operation results in a vector of size C, where C
+(ELU). The second module is represented by the yellow                              represents the number of convolution channels. A second fully
+cuboids with a circular arrow. Compared to the first module,                       connected layer followed by a Sigmoid activation outputs a
+it uses a recurrent convolutional layer instead. The third                         vector that can be used as weights on the original feature maps.
+module is the SE-Res module.                                                       At last, we weigh each feature map based on the side network
+   The recurrent convolutional layer in the second module                          to improve the representational power of our R2SE-Unet.
+helps extract context information, which are crucial for fault                     SE-Res also utilizes the characteristics of the deep residual
+segmentation tasks considering faults exhibit discontinuities                      model to overcome the overfitting problem [42], [43] and
+in seismic profiles. More specifically, as shown in Fig. 3, the                    efficiently backpropagates the gradient information throughout
+recurrent convolution layer enables every kernel to incorporate                    the network.
+context information in an arbitrarily large region in the current                     In addition to the RRCU-SE unit, we also propose a
+layer. The accumulation of context information in relation                         spatial-attention gate using the network architecture displayed
+to different time steps ensures richer and stronger feature                        in Fig. 4. Unlike the channel attention gate, the spatial attention
+representation. This recurrent operation is also regarded as a                     gate directs the model to focus on relevant regions while
+data augmentation technique [41].                                                  suppressing feature activation in unrelated regions of the
+   It is noteworthy that we use group normalization instead                        feature maps. We accumulate channel information of a feature
+of batch normalization in the RRCU-SE unit because batch                           map by using two pooling processes, i.e., average pooling
+normalization is not very effective if the batch size is too small.                operation and max pooling operation, generating two feature
+Unfortunately, due to the limitation of GPU memory size for 3-                     maps, i.e., average-pooled features and max-pooled features.
+D fault images, we set the batch size to 2. Group normalization                    Then, these two feature maps are concatenated and convolved
+does not exploit the batch dimension, and its computation is                       by a conventional convolution layer, generating the spatial
+independent of batch sizes.                                                        attention map. The representational capability of the neural
+
+            Authorized licensed use limited to: University of Tokyo. Downloaded on July 17,2026 at 01:46:57 UTC from IEEE Xplore. Restrictions apply.
+MA et al.: 3-D SEISMIC FAULT DETECTION USING RECURRENT CNNs WITH COMPOUND LOSS                                                                         5909815
+
+
+
+
+Fig. 5. (a) Validation loss curves. (b) IoU. (c) F1-score. (d) Precision. The blue, yellow, and green curves represent R2SE-Unet, R2-Unet, and U-net,
+respectively.
+
+
+                                                                                                              ω i=1
+                                                                                                                PN
+network is significantly improved by the spatial attention gate                                                         ŷ i yi
+                                                                                               LGDice = 1 − P N                                          (2)
+without significantly raising the cost of computing.                                                           i=1 ŷ i + yi
+   Overall, the R2SE-Unet has an encoder branch and a                                                    (
+                                                                                                           1, fault
+decoder branch. The encoder consists of the RRCU-SE and                                           ŷ i =                                                  (3)
+the max-pooling layer followed by 1 × 1 × 1 convolution.                                                   0, else
+The decoders consist of the RRCU-SE and the concatena-                                    LGDice−bce = Lb-BCE + LGDice                                    (4)
+tion operation which combines the feature maps from the
+encoders. The parameter size of each encoder in R2SE-Unet
+is 0.055, 0.324, 0.9, and 3.6 M, respectively. The parameter
+size of each decoder in R2SE-Unet is 1.8, 0.552, 0.11,                           where yi = sigmoid(xi ), xi is the input of the network, ŷ i is
+and 352 M, respectively. Although our R2SE-Unet architecture                     the label of the pixel, β denotes the ratio between the nonfault
+seems complex, it only contains approximately 7.2-M learn-                       pixels and the total pixels, and N denotes the number of pixels
+able weights, whereas U-net contains approximately 9.7-M                         in the input 3-D seismic image. b-BCE loss works well in fault
+learnable weights.                                                               segmentation tasks, but this function yields low-probability
+                                                                                 fault feature maps, which hinder the accuracy of interpretation.
+                                                                                 As for the region-based loss function, in (2), we use GDice
+B. Loss Function
+                                                                                 loss to alleviate the problem of sample imbalance inP  fault seg-
+  An appropriate loss function is important for fault detection.                 mentation tasks. More specifically, we set ω = 1/( i=1   N
+                                                                                                                                              ŷ i )2
+After many experiments, we mix the GDice loss function [44]                      to mitigate the high imbalance in our experiment. It should
+and the b-BCE loss function [45] to form the compound loss                       be noted that there are other definitions for the GDice loss
+function, GDice-bce. These loss functions are defined as                         function, and the one we proposed is appropriate for our
+                             N
+                                                                                 fault detection experiment. In our experiment, GDice could
+            Lb-BCE = −β
+                             X
+                                    ŷ i log(yi )                                yield high-probability fault feature maps but is vulnerable to
+                              i=1
+                                                                                 noise. Through extensive numerical tests, as shown in (4),
+                                       N                                         we find that the combination of the GDice loss and b-BCE loss
+                                       X
+                        − (1 − β)             1 − ŷ i log(1 − yi )              could produce stable segmentation results with better antinoise
+                                                      
+                                                                          (1)
+                                       i=1                                       performance.
+
+           Authorized licensed use limited to: University of Tokyo. Downloaded on July 17,2026 at 01:46:57 UTC from IEEE Xplore. Restrictions apply.
+5909815                                                                         IEEE TRANSACTIONS ON GEOSCIENCE AND REMOTE SENSING, VOL. 61, 2023
+
+
+
+
+Fig. 6. Fault detection on the synthetic validation volume: (a) represents the synthetic images; (b) represents the corresponding labels; and (c)–(e) represent
+the faults detected using U-net, R2-Unet, and R2SE-Unet, respectively.
+
+
+                                                                                                        N
+C. Accuracy Measurement                                                                                 X
+                                                                                              n TN =          (label = 0)&& (prediction = 0)
+  We use the following accuracy measurements to assess the                                              i=1
+performance of the trained network.                                                                     XN
+  1) Intersection over union (IoU)                                                             n FP =         (label = 0)&& (prediction = 1)
+                                      n TP                                                              i=1
+                      IoU =                        .    (5)                                              N
+                              n FP + n TP + n FN                                                        X
+                                                                                              n FN =          (label = 1)&& (prediction = 0)               (9)
+  2) Precision
+                                                                                                        i=1
+                                         n TP
+                       precision =               .      (6)
+                                     n TP + n FP
+  3) F1-score
+                                                                                  where “&&” denotes the logical operation “AND.” According
+                              n TP                                                to the definitions, precision indicates how many of the pixels
+           sensitivity =                                (7)
+                          n TP + n FN                                             predicted by the network as faults are correct, and sensitivity
+                          2 · precision · sensitivity                             represents the percentage of the fault pixels that are correctly
+            F1-score =                                . (8)
+                           precision + sensitivity                                predicted by the network and measures the network’s ability to
+  Here,                                                                           identify the faults. F1-score combines accuracy and specificity.
+                     N                                                            As a result, a higher F1-score indicates that the network
+                     X
+            n TP =         (label = 1)&& (prediction = 1)                         predicts a lot of positive pixels and ensures that a high
+                     i=1                                                          percentage of the predicted positive pixels is correct.
+
+            Authorized licensed use limited to: University of Tokyo. Downloaded on July 17,2026 at 01:46:57 UTC from IEEE Xplore. Restrictions apply.
+MA et al.: 3-D SEISMIC FAULT DETECTION USING RECURRENT CNNs WITH COMPOUND LOSS                                                                          5909815
+
+
+
+
+Fig. 7.   (a) Synthetic seismic data and ground truth. (b)–(d) Represent the fault detection result of U-net, R2-Unet, and R2SE-Unet, respectively.
+
+
+
+D. Data Preparation and Training Settings                                            We implement two different Unet-based networks in order
+                                                                                  to evaluate the effectiveness of our R2SE-Unet for fault
+   In our training process, we use only synthetic seismic data                    detection. The first neural network is the conventional U-net
+and corresponding labels to train the R2SE-Unet. We generate                      presented by Wu et al. [26]. This neural network is known
+the training data that contain multiple types of faults using the                 as U-net. The second neural network is the same R2SE-
+method proposed by Wu et al. [26]. We randomly generate                           Unet except that we remove the SE-Res module in every
+800 pairs of synthetic 3-D seismic images and 100 pairs of 3-D                    unit. We denote this architecture as R2-Unet. We train and
+images as the validation dataset for the R2SE-Unet. To prevent                    validate these two networks using the same synthetic datasets
+ambivalence due to the seismic amplitude variations across                        for R2SE-Unet. The loss function we used in this experiment
+different datasets, both synthetic seismic data and field seismic                 is our GDice-bce loss function. In addition, the computational
+data are normalized: subtracted by the mean value and then                        cost of these three models is listed in Table I. Fig. 5 displays
+divided by the standard deviation value.                                          the loss and metrics curves of the validation phase. The metrics
+   We deploy R2SE-Unet in PyTorch Lightning, which is a                           indicate that our R2SE-Unet performs better than the other
+PyTorch-based deep learning framework with maximal flexi-                         two models. We also observe that our R2SE-Unet has higher
+bility. We train networks using two RTX 3090 GPUs. We use                         noise resistance and can predict more faults in field seismic
+the Adam optimizer [46] to update the parameters inside the                       data tests. More details about the performance are described
+neural network, and the initial learning rate we used is 0.0008.                  in Section III.
+A large learning rate typically enables the model to learn more
+quickly at the expense of producing a suboptimal final set of                                                III. A PPLICATIONS
+weights. By contrary, a small learning rate has a tendency
+to produce weights that are globally optimal, but the training                       In this section, we test the generalization ability and perfor-
+process may take much longer. To overcome this problem,                           mance stability of our network and loss function on the seismic
+we presume that the learning algorithm can keep track of the                      images of one synthetic dataset and two field datasets. The
+model’s performance on the training dataset and modify the                        datasets used in this section are directly fed to the networks
+learning rate accordingly. In other words, when the validation                    after standardization. Despite the model being trained using
+accuracy appears to plateau, then the learning rate will be                       only synthetic datasets, it has outstanding performance on both
+reduced by a factor of 0.5.                                                       synthetic and field seismic data.
+
+            Authorized licensed use limited to: University of Tokyo. Downloaded on July 17,2026 at 01:46:57 UTC from IEEE Xplore. Restrictions apply.
+5909815                                                                       IEEE TRANSACTIONS ON GEOSCIENCE AND REMOTE SENSING, VOL. 61, 2023
+
+
+
+
+Fig. 8. (a) Slice of Kerry seismic data is overlaid with faults detected by using: (b) U-net + b-BCE; (c) R2-Unet + b-BCE; (d) R2SE-Unet + b-BCE;
+(e) R2SE-Unet + GDice; and (f) R2SE-Unet + GDice-bce.
+
+
+
+A. Synthetic Seismic Data                                                          To better visualize the advancement of our R2SE-Unet
+                                                                                compared with the U-net and R2-Unet, Fig. 7 shows one
+   The comparison among U-net, R2-Unet, and our R2SE-Unet                       synthetic seismic image from the validation dataset in a 3-D
+for the 3-D synthetic seismic data is shown in Fig. 6. The                      view. It is obvious that U-net has a very ambiguous prediction,
+first column displays the synthetic seismic images, the second                  and R2-Unet gives a low-continuity prediction. In contrast,
+column shows the ground-truth fault probability maps, and the                   the R2SE-Unet produces a much better prediction in terms
+third–fifth columns show the faults prediction results using U-                 of resolution and continuity than the other two models, thus
+net, R2-Unet, and our R2SE-Unet, respectively. Despite the                      demonstrating its superior performance.
+U-net and R2-Uet can predict many faults, these two models                         Then, we demonstrate the superiority of R2SE-Unet and
+miss minor faults or make incorrect fault prediction, especially                the proposed loss functions on field data. In the experiment
+when several faults are clustered. For example, on the third                    of different field data, we find that R2SE-Unet trained by
+image, the red arrow indicates that these two faults are close                  the compound loss function could produce more geological
+to each other, and U-net and R2-Unet produce erroneous                          interpretable faults than other networks trained by a single
+predictions in this area. In contrast, our R2SE-Unet detects                    loss function. To demonstrate this finding, in the following
+these faults precisely.                                                         examples, we use different combinations of networks and loss
+
+          Authorized licensed use limited to: University of Tokyo. Downloaded on July 17,2026 at 01:46:57 UTC from IEEE Xplore. Restrictions apply.
+MA et al.: 3-D SEISMIC FAULT DETECTION USING RECURRENT CNNs WITH COMPOUND LOSS                                                                         5909815
+
+
+
+
+Fig. 9. (a) Horizontal slice of Kerry seismic data is overlaid with faults detected by using: (b) U-net + b-BCE; (c) R2-Unet + b-BCE; (d) R2SE-Unet +
+b-BCE; (e) R2SE-Unet + GDice; and (f) R2SE-Unet + GDice-bce.
+
+
+
+           Authorized licensed use limited to: University of Tokyo. Downloaded on July 17,2026 at 01:46:57 UTC from IEEE Xplore. Restrictions apply.
+5909815                                                                         IEEE TRANSACTIONS ON GEOSCIENCE AND REMOTE SENSING, VOL. 61, 2023
+
+
+
+
+Fig. 10.   Subset of Kerry seismic data wrapped by the fault prediction results using: (a) U-net + b-BCE and (b) our R2SE-Unet + b-BCE.
+
+
+
+
+Fig. 11.   Subset of Kerry seismic data wrapped by the fault prediction results using: (a) R2SE-Unet + b-BCE and (b) R2SE-Unet + GDice-bce.
+
+
+
+
+Fig. 12. (a) Horizontal slice of Opunake seismic data is overlaid with faults detected by using: (b) U-net + b-BCE; (c) R2-Unet + b-BCE; (d) R2SE-Unet +
+b-BCE; (e) R2SE-Unet + GDice; and (f) R2SE-Unet + GDice-bce.
+
+
+functions to compare with the combination of our R2SE-                            loss function” in the captions of Figs. 8–15 represents the
+Unet network and GDice-bce loss function. The “network +                          “network” trained by the “loss function.”
+
+
+            Authorized licensed use limited to: University of Tokyo. Downloaded on July 17,2026 at 01:46:57 UTC from IEEE Xplore. Restrictions apply.
+MA et al.: 3-D SEISMIC FAULT DETECTION USING RECURRENT CNNs WITH COMPOUND LOSS                                                                         5909815
+
+
+
+
+Fig. 13. (a) Slice of Opunake seismic data is overlaid with faults detected by using: (b) U-net + b-BCE; (c) R2-Unet + b-BCE; (d) R2SE-Unet + b-BCE;
+(e) R2SE-Unet + GDice; and (f) R2SE-Unet + GDice-bce.
+
+
+B. Kerry 3-D                                                                     in Figs. 8 and 9, “Unet + b-BCE” produces significant
+   The first 3-D seismic dataset named Kerry 3-D is pro-                         discontinuity faults on the 3-D slices, and this method is
+vided by the New Zealand Crown Minerals, Wellington,                             very susceptible to noise. In contrast, “R2SE-Unet + GDice-
+New Zealand. The faults of this seismic data are very close to                   bce” obtains a more reliable delineated result with better anti-
+each other and numerous, so it is difficult to detect the fault,                 noise performance. The segmented faults have defined edges,
+but our proposed “R2SE-Unet + GDice-bce” method still                            isolated from the background, and no visible discontinuous
+yields a clear and accurate interpretation of the faults. Figs. 8                faults, whether observed from inline or horizontal orientations.
+and 9 show the results of fault segmentation using different                     The background area is clean, demonstrating that our neural
+networks and loss functions. More specifically, as shown                         network can significantly reduce seismic noise jamming.
+
+           Authorized licensed use limited to: University of Tokyo. Downloaded on July 17,2026 at 01:46:57 UTC from IEEE Xplore. Restrictions apply.
+5909815                                                                         IEEE TRANSACTIONS ON GEOSCIENCE AND REMOTE SENSING, VOL. 61, 2023
+
+
+
+
+Fig. 14.   Subset of Opunake seismic data wrapped by the fault prediction results using: (a) U-net + b-BCE and (b) our R2SE-Unet + b-BCE.
+
+
+
+
+Fig. 15.   Subset of Opunake seismic data wrapped by the fault prediction results using: (a) R2SE-Unet + b-BCE and (b) R2SE-Unet + GDice-bce.
+
+
+   Figs. 10 and 11 show the 3-D view. The black arrow in                          plicated fault structure, which is very difficult for humans
+Fig. 11 indicates that the fault can be predicted by “R2SE-                       to pick manually. As shown in Figs. 12 and 13, except our
+Unet + b-BCE” but not by “U-net + b-BCE.” In addition,                            “R2SE-Unet + GDice-bce,” all other methods can be overly
+the fault detection result of our “R2SE-Unet + GDice-bce”                         sensitive to faults and predict many scattered and artificial
+method has a high lateral resolution. Our neural network                          faults. In contrast, our method could interpret cleaner seismic
+can detect and distinguish two neighboring faults even when                       faults shown in Figs. 12(f) and 13(f).
+the distance between them is very near. For example, our                             As shown in Fig. 14, the faults predicted by using
+“R2SE-Unet + Gdice-bce” method can distinguish two very                           “R2SE-Unet + b-BCE” are cleaner and smoother than those
+close faults in the black rectangle of Fig. 11. The edges of                      interpreted by “U-net + b-BCE.” Furthermore, in Fig. 15,
+the faults are clear and delicate. Our method appears to be                       due to the enhanced continuity of fault lines and resolution,
+more effective at identifying faults across different directions                  “R2SE-Unet + GDice-bce” could achieve the most geological
+and produces comparatively high continuity and resolution                         interpretable fault result. We have reason to believe that
+fault prediction results.                                                         the “R2SE-Unet + GDice-bce” is more effective than other
+                                                                                  networks and loss functions.
+C. Opunake 3-D                                                                       In this section, we illustrate the efficiency of R2SE-Unet
+   In the final example, we contrast the fault detection results                  and GDice-bce loss functions by comparing the fault detection
+of the three models using Opunake-3-D, which is a field                           results of different combinations of networks and loss func-
+seismic dataset published at SEG Wiki. It contains a com-                         tions. In multiple experiments, our “R2SE-Unet + GDice-bce”
+
+            Authorized licensed use limited to: University of Tokyo. Downloaded on July 17,2026 at 01:46:57 UTC from IEEE Xplore. Restrictions apply.
+MA et al.: 3-D SEISMIC FAULT DETECTION USING RECURRENT CNNs WITH COMPOUND LOSS                                                                          5909815
+
+
+
+
+Fig. 16. Feature map of F3 seismic data predicted by: (a) CUnet and (b) R2SE-Unet; a feature map of Kerry seismic data predicted by: (c) CUnet and
+(d) R2SE-Unet.
+
+
+
+
+Fig. 17.   Variation of IoU values with training epochs of R2SE-Unet under: (a) different learning rates and (b) batch sizes.
+
+
+
+method can predict more continuous and higher resolution                          rent convolutional layer can extract very low-level features
+faults from both synthetic and field seismic data, especially,                    via repeated convolution operators to improve the antinoise
+first, more faults identified; second, higher antinoise ability;                  ability. To further prove the efficiency of RNN, we replace
+and third, finer predicted faults.                                                the recurrent convolutional layers of R2SE-Unet with normal
+                                                                                  convolutional layers. This model is then named as CUnet.
+                            IV. D ISCUSSION                                       We use field seismic data to produce feature maps of these two
+   In this article, we propose a novel CNN that integrates RNN                    models. It is noteworthy that the feature maps generated in this
+to enhance the accuracy of fault detection tasks. After a series                  article are extracted from the end of the decoding stage of the
+of experiments, we list some discussions as follows.                              network. This is because in the encoding stage, the feature
+                                                                                  maps are compressed to a small size, making it difficult to
+A. RNN Versus CNN                                                                 distinguish the seismic faults. As shown in Fig. 16, indicated
+  Our tests show that our R2SE-Unet has a higher antinoise                        by the yellow arrow, R2SE-Unet is more noise-resistant, while
+ability than R2-Unet and U-net. We presume that the recur-                        CUnet produces many artifacts that are not faults.
+
+
+            Authorized licensed use limited to: University of Tokyo. Downloaded on July 17,2026 at 01:46:57 UTC from IEEE Xplore. Restrictions apply.
+5909815                                                                           IEEE TRANSACTIONS ON GEOSCIENCE AND REMOTE SENSING, VOL. 61, 2023
+
+
+
+B. Hyperparameter Setting                                                           [3] K. J. Marfurt, R. L. Kirlin, S. L. Farmer, and M. S. Bahorich, “3-D
+                                                                                        seismic attributes using a semblance-based coherency algorithm,” Geo-
+   Hyperparameters have a significant impact on network                                 physics, vol. 63, no. 4, pp. 1150–1165, Jul. 1998.
+performance. Here, as a comparison, we train the network                            [4] P. P. Van and R. E. Pepper, “Seismic signal processing method and appa-
+using different learning rates and batch sizes. Fig. 17(a) clearly                      ratus for generating a cube of variance values,” U.S. Patent 6 151 555A,
+                                                                                        Nov. 6, 2000.
+shows that a larger learning rate leads to significant oscillations
+                                                                                    [5] T. H. Boe and R. Daber, “Seismic features and the human eye: RGB
+in the IoU values during the training process, which affects the                        blending of azimuthal curvatures for enhancement of fault and fracture
+selection of the network weight files in the final testing stage.                       interpretation,” in Proc. SEG Tech. Program Expanded Abstr., Jan. 2010,
+On the other hand, a smaller learning rate results in a slower                          pp. 1535–1539.
+                                                                                    [6] S. Yuan, J. Liu, S. Wang, T. Wang, and P. Shi, “Seismic waveform
+convergence rate, thus leading to higher time costs. Based on                           classification and first-break picking using convolution neural networks,”
+the tests, we chose a learning rate of 0.0008.                                          IEEE Geosci. Remote Sens. Lett., vol. 15, no. 2, pp. 272–276, Feb. 2018.
+   Limited by the GPU memory size, i.e., 2 × 24 GB,                                 [7] Y. Alaudah, P. Michalowicz, M. Alfarraj, and G. AlRegib, “A machine-
+we used a batch size of two. However, a smaller batch size                              learning benchmark for facies classification,” Interpretation, vol. 7, no. 3,
+                                                                                        pp. 175–187, Aug. 2019.
+of 1 decreases the performance of the network slightly, thus                        [8] F. Li, H. Zhou, Z. Wang, and X. Wu, “ADDCNN: An attention-based
+resulting in noise in the fault probability maps.                                       deep dilated convolutional neural network for seismic facies analysis
+                                                                                        with interpretable spatial–spectral maps,” IEEE Trans. Geosci. Remote
+                                                                                        Sens., vol. 59, no. 2, pp. 1733–1744, Feb. 2021.
+C. Limitations                                                                      [9] R. Feng, N. Balling, D. Grana, J. S. Dramsch, and T. M. Hansen,
+   One of the biggest challenges in deep learning is generaliza-                        “Bayesian convolutional neural networks for seismic facies classifica-
+                                                                                        tion,” IEEE Trans. Geosci. Remote Sens., vol. 59, no. 10, pp. 8933–8940,
+tion. Although the method proposed in this article has achieved                         Oct. 2021.
+good prediction results in multiple field seismic datasets, there                  [10] E. Tolstaya and A. Egorov, “Deep learning for automated seismic facies
+may still be issues with inaccurate fault prediction in some                            classification,” Interpretation, vol. 10, no. 2, pp. 31–40, May 2022.
+                                                                                   [11] S. Yuan, X. Jiao, Y. Luo, W. Sang, and S. Wang, “Double-scale
+field seismic data where the fault system is more complex                               supervised inversion with a data-driven forward model for low-frequency
+and the fault features are less distinct. An effective method to                        impedance recovery,” Geophysics, vol. 87, no. 2, pp. 165–181,
+improve the generalization ability of the network is to enhance                         Mar. 2022.
+the diversity of the training set. In future work, we will                         [12] A. Cunha, A. Pochet, H. Lopes, and M. Gattass, “Seismic fault detection
+                                                                                        in real data using transfer learning from a convolutional neural network
+increase the range of network learning by adding various fault                          pre-trained with synthetic seismic data,” Comput. Geosci., vol. 135,
+types in synthetic seismic data.                                                        Feb. 2020, Art. no. 104344.
+                                                                                   [13] A. Pochet, P. H. B. Diniz, H. Lopes, and M. Gattass, “Seismic fault
+                                                                                        detection using convolutional neural networks trained on synthetic
+                            V. C ONCLUSION                                              poststacked amplitude maps,” IEEE Geosci. Remote Sens. Lett., vol. 16,
+   We built a novel semantic segmentation model, named                                  no. 3, pp. 352–356, Mar. 2019.
+                                                                                   [14] H. Di, Z. Wang, and G. AlRegib, “Seismic fault detection from
+R2SE-Unet, to effectively learn the characteristics of faults.                          post-stack amplitude by convolutional neural networks,” in Proc. EAGE
+The RRCU-SE unit inside the network takes the advan-                                    Conf. Exhib., Jun. 2018, pp. 1–5.
+tage of RNNs. Feature accumulation with RRCU-SE ensures                            [15] K. Zhang, N.-T. Lin, J.-Q. Yang, Z.-W. Jin, G.-H. Li, and
+better feature representation for fault segmentation tasks.                             R.-W. Ding, “Predicting gas-bearing distribution using DNN based
+                                                                                        on multi-component seismic data: Quality evaluation using structural
+We add an attention module named SE-Res into the RRCU-                                  and fracture factors,” Petroleum Sci., vol. 19, no. 4, pp. 1566–1581,
+SE unit, which helps R2SE-Unet to improve the antinoise                                 Aug. 2022.
+ability. During the concatenation operation, we also imple-                        [16] Y. Shi, X. Wu, and S. Fomel, “SaltSeg: Automatic 3D salt segmentation
+                                                                                        using a deep convolutional neural network,” Interpretation, vol. 7, no. 3,
+ment the spatial-attention gates to weigh the pixels of fea-                            pp. E113–122, Aug. 2019.
+ture maps. Moreover, we propose a compound loss function                           [17] Z. Geng, Z. Hu, X. Wu, L. Liang, and S. Fomel, “Semisupervised
+called GDice-bce loss, which combined the region-based loss                             salt segmentation using mean teacher,” Interpretation, vol. 10, no. 3,
+and distribution-based loss. Even though we only use 3-D                                pp. 21–29, Aug. 2022.
+                                                                                   [18] S. Yuan, J. Wang, T. Liu, T. Xie, and S. Wang, “6D phase-difference
+synthetic seismic datasets to train our network, the R2SE-                              attributes for wide-azimuth seismic data interpretation,” Geophysics,
+Unet trained by GDice-bce can directly predict the faults in                            vol. 85, no. 6, pp. 37–49, Nov. 2020.
+field seismic data without further training. We demonstrate                        [19] Y. LeCun, K. Kavukcuoglu, and C. Farabet, “Convolutional networks
+the excellent fault detection capability compared with U-net                            and applications in vision,” in Proc. IEEE Int. Symp. Circuits Syst.,
+                                                                                        May 2010, pp. 253–256.
+and R2-Unet trained by single loss function. In the experi-                        [20] L. Lin, Z. Zhong, Z. Cai, A. Y. Sun, and C. Li, “Automatic geologic fault
+ment of field data, we find that our R2SE-Unet trained by                               identification from seismic data using 2.5D channel attention U-Net,”
+GDice-bce can produce a higher resolution, higher fidelity                              Geophysics, vol. 87, no. 4, pp. 111–124, Jul. 2022.
+fault map with better antinoise performance. The networks                          [21] S. Li, N. Liu, F. Li, J. Gao, and J. Ding, “Automatic fault delineation
+                                                                                        in 3-D seismic images with deep learning: Data augmentation or
+and examples presented in this article can be accessed via                              ensemble learning?” IEEE Trans. Geosci. Remote Sens., vol. 60, 2022,
+https://github.com/wavetomo/3d_fault.                                                   Art. no. 5911214.
+                                                                                   [22] A. Guitton, “3D convolutional neural networks for fault interpretation,”
+                                                                                        in Proc. 80th EAGE Conf. Exhib., Jun. 2018, pp. 1–5.
+                              R EFERENCES                                          [23] K.-H. Sang, X.-Y. Yin, and F.-C. Zhang, “Machine learning seis-
+ [1] Q. Gan and D. Elsworth, “Analysis of fluid injection-induced fault                 mic reservoir prediction method based on virtual sample generation,”
+     reactivation and seismic slip in geothermal reservoirs,” J. Geophys. Res.,         Petroleum Sci., vol. 18, no. 6, pp. 1662–1674, Dec. 2021.
+     Solid Earth, vol. 119, no. 4, pp. 3340–3353, Mar. 2014.                       [24] O. Ronneberger, P. Fischer, and T. Brox, “U-Net: Convolutional net-
+ [2] K. J. Marfurt, R. L. Kirlin, S. L. Farmer, and M. S. Bahorich, “3-D                works for biomedical image segmentation,” in Proc. Int. Conf. Med.
+     seismic attributes using a semblance-based coherency algorithm,” Geo-              Image Comput. Comput.-Assist. Intervent. Cham, Switzerland: Springer,
+     physics, vol. 63, no. 4, pp. 1150–1165, Jul. 1998.                                 2015, pp. 234–241.
+
+            Authorized licensed use limited to: University of Tokyo. Downloaded on July 17,2026 at 01:46:57 UTC from IEEE Xplore. Restrictions apply.
+MA et al.: 3-D SEISMIC FAULT DETECTION USING RECURRENT CNNs WITH COMPOUND LOSS                                                                            5909815
+
+
+
+[25] X. Wu, L. Liang, Y. Shi, and S. Fomel, “FaultSeg3D: Using synthetic                                    Xiao Ma received the B.S. degree in applied geo-
+     data sets to train an end-to-end convolutional neural network for 3D                                   physics from the Chengdu University of Technology,
+     seismic fault segmentation,” Geophysics, vol. 84, no. 3, pp. 35–45,                                    Chengdu, China, in 2020. He is currently pursu-
+     May 2019.                                                                                              ing the M.S. degree with the China University of
+[26] X. Wu, Z. Geng, Y. Shi, N. Pham, S. Fomel, and G. Caumon, “Building                                    Petroleum (Beijing), Beijing, China.
+     realistic structure models to train convolutional neural networks for                                    He joined the WaveTomo Group led by Prof.
+     seismic structural interpretation,” Geophysics, vol. 85, no. 4, pp. 27–39,                             Gang Yao, China University of Petroleum (Beijing).
+     Jul. 2020.                                                                                             His main research interests include deep learning
+[27] K. Gao, L. Huang, and Y. Zheng, “Fault detection on seismic structural                                 and its application on seismic data interpretation
+     images using a nested residual U-Net,” IEEE Trans. Geosci. Remote                                      and processing. He is currently focusing on seismic
+     Sens., vol. 60, 2022, Art. no. 4502215.                                                                faults detection and seismic data denoise with deep
+[28] K. Gao, L. Huang, Y. Zheng, R. Lin, H. Hu, and T. Cladohous,                                           learning methods.
+     “Automatic fault detection on seismic images using a multiscale attention
+     convolutional neural network,” Geophysics, vol. 87, no. 1, pp. 13–29,
+     Jan. 2022.
+[29] X.-L. Wei et al., “Seismic fault detection using convolutional neural                                    Gang Yao (Member, IEEE) received the B.S. and
+     networks with focal loss,” Comput. Geosci., vol. 158, Jan. 2022,                                         M.S. degrees in geophysics from the China Uni-
+     Art. no. 104968.                                                                                         versity of Geosciences (Beijing), Beijing, China, in
+[30] X. Li, X. Sun, Y. Meng, J. Liang, F. Wu, and J. Li, “Dice loss for                                       2005 and 2008, respectively, and the Ph.D. degree in
+     data-imbalanced NLP tasks,” 2019, arXiv:1911.02855.                                                      geophysics from Imperial College London, London,
+[31] J. Wang, J.-H. Zhang, J.-L. Zhang, F.-M. Lu, R.-G. Meng, and Z. Wang,                                    U.K., in 2013.
+     “Research on fault recognition method combining 3D Res-UNet and                                            He was a Research Associate of the FULLWAVE
+     knowledge distillation,” Appl. Geophys., vol. 18, no. 2, pp. 199–212,                                    Consortium led by Prof. Michael Warner, Imperial
+     Nov. 2021.                                                                                               College London, from 2013 to 2017. He was a
+[32] R. Feng, D. Grana, and N. Balling, “Uncertainty quantification in fault                                  Post-Doctoral Research Fellow with Rice University,
+     detection using convolutional neural networks,” Geophysics, vol. 86,                                     Houston, TX, USA, in 2018. He was appointed as
+     no. 3, pp. 41–48, Mar. 2021.                                                  Associate Professor and then Full Professor with the China University of
+[33] H. Di, C. Li, S. Smith, Z. Li, and A. Abubakar, “Imposing inter-              Petroleum (Beijing), Beijing, where he set up the WaveTomo Group. His
+     pretational constraints on a seismic interpretation convolutional neural      main research interests are on seismic signal processing, imaging, inversion,
+     network,” Geophysics, vol. 86, no. 3, pp. 63–71, May 2021.                    and artificial intelligence for seismic data processing.
+[34] M. Z. Alom, M. Hasan, C. Yakopcic, T. M. Taha, and V.K. Asari,                  Dr. Yao is a member of EAGE and SEG. He is an Associate Editor of
+     “Recurrent residual convolutional neural network based on U-Net (R2U-         Petroleum Science and Chinese Journal of Geophysics.
+     Net) for medical image segmentation,” 2018, arXiv:1802.06955.
+[35] D. D. Kadia, M. Z. Alom, R. Burada, T. V. Nguyen, and V.K. Asari,
+     “R2 U3D: Recurrent residual 3D U-Net for lung segmentation,” IEEE
+     Access, vol. 9, pp. 88835–88843, 2021.                                                                Feng Zhang received the B.S. degree in
+[36] D. M. Hawkins, “The problem of overfitting,” J. Chem. Inf. Comput.                                    electrical and mechanical engineering from the
+     Sci., vol. 44, no. 1, pp. 1–12, Dec. 2003.                                                            Beijing Institute of Technology, Beijing, China,
+[37] R. Ranjbarzadeh, A. B. Kasgari, S. J. Ghoushchi, S. Anari, M. Naseri,                                 in 2005, the M.S. degree in signal processing
+     and M. Bendechache, “Brain tumor segmentation based on deep learning                                  and communications from Edinburgh University,
+     and an attention mechanism using MRI multi-modalities brain images,”                                  Edinburgh, U.K., in 2006, and the Ph.D. degree in
+     Sci. Rep., vol. 11, no. 1, pp. 1–17, May 2021.                                                        reservoir geophysics from Imperial College London,
+                                                                                                           London, U.K., in 2010.
+[38] H. Liu et al., “Rock thin-section analysis and identification based
+                                                                                                             He was a Post-Doctoral Research Associate
+     on artificial intelligent technique,” Petroleum Sci., vol. 19, no. 4,
+                                                                                                           with British Geological Survey, Edinburgh,
+     pp. 1605–1621, Aug. 2022.
+                                                                                                           from 2010 to 2011. He joined the China University
+[39] K. He, X. Zhang, S. Ren, and J. Sun, “Deep residual learning for
+                                                                                   of Petroleum (Beijing), Beijing, in 2011, where he is currently a Professor.
+     image recognition,” in Proc. IEEE Conf. Comput. Vis. Pattern Recognit.
+                                                                                   His research interests include seismic inversion, rock physics, and
+     (CVPR), Jun. 2016, pp. 770–778.
+                                                                                   multicomponent seismic and seismic anisotropy.
+[40] S.-B. Zhang, H.-J. Si, X.-M. Wu, and S.-S. Yan, “A comparison of                Dr. Zhang is an Associate Editor of the Journal of Geophysics and
+     deep learning methods for seismic impedance inversion,” Petroleum Sci.,       Engineering and Petroleum Science. He is also a member of EAGE and
+     vol. 19, no. 3, pp. 1019–1030, Jun. 2022.                                     SEG.
+[41] C. Shorten and T. M. Khoshgoftaar, “A survey on image data augmen-
+     tation for deep learning,” J. Big Data, vol. 6, no. 1, pp. 1–48, Jul. 2019.
+[42] P. Domingos, “Bayesian averaging of classifiers and the overfitting
+     problem,” in Proc. ICML, 2000, pp. 223–230.                                                             Di Wu received the B.S. degree in physics from
+[43] A. Krizhevsky, I. Sutskever, and G. E. Hinton, “ImageNet classification                                 Shanxi University, Taiyuan, China, in 2005, the M.S.
+     with deep convolutional neural networks,” Commun. ACM, vol. 60, no. 6,                                  degree in geophysics from the Institute of Geology
+     pp. 84–90, May 2017.                                                                                    and Geophysics, Chinese Academy of Sciences,
+[44] C. H. Sudre, W. Li, T. Vercauteren, S. Ourselin, and M. Jorge,                                          Beijing, China, in 2008, and the Ph.D. degree in
+     “Generalised dice overlap as a deep learning loss function for highly                                   geophysics from Imperial College London, London,
+     unbalanced segmentations,” in Deep Learning in Medical Image Analysis                                   U.K., in 2013.
+     and Multimodal Learning for Clinical Decision Support. New York, NY,                                      She then worked as a Geophysicist with PGS Lon-
+     USA: ACM, 2017, pp. 240–248.                                                                            don Branch, London. In 2015, she joined the China
+[45] S. Xie and Z. Tu, “Holistically-nested edge detection,” in Proc. IEEE                                   University of Petroleum (Beijing), Beijing, and was
+     Int. Conf. Comput. Vis. (ICCV), Dec. 2015, pp. 1395–1403.                                               promoted as Associate Professor of Geophysics. Her
+[46] D. P. Kingma and J. Ba, “Adam: A method for stochastic optimization,”         main research interests are in seismic data processing and migration imaging.
+     2014, arXiv:1412.6980.                                                         Dr. Wu is a member of EAGE and SEG.
+
+
+
+
+            Authorized licensed use limited to: University of Tokyo. Downloaded on July 17,2026 at 01:46:57 UTC from IEEE Xplore. Restrictions apply.
+

@@ -1,0 +1,15 @@
+{
+  "params": 9489043,
+  "batch": 2,
+  "peak_allocated_mib": 9720.43359375,
+  "seconds": 14.288753032684326,
+  "all_gradients_present_finite": true,
+  "output_shape": [
+    2,
+    1,
+    128,
+    128,
+    128
+  ],
+  "loss": 0.5578862428665161
+}

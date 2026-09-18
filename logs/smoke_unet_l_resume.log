@@ -1,0 +1,6 @@
+resumed from epoch 56 (best val loss 0.08974, stale 0)
+smoke step 0 loss 0.0912 seg 0.0912 pr -0.0000 tr -0.0000
+smoke step 1 loss 0.1002 seg 0.1002 pr -0.0000 tr -0.0000
+smoke step 2 loss 0.0753 seg 0.0753 pr -0.0000 tr -0.0000
+epoch=057 train=0.09681 (seg 0.09681 pr 0.0000 tr 0.0000 ramp 1.00) val=0.08780 IoU=0.8278 P=0.911 R=0.901 lr=8.57e-05 17s
+stop at epoch 57; best val loss 0.08780

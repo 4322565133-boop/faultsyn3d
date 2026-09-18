@@ -1,0 +1,285 @@
+{
+  "_note": "dataset_v1: Su et al. (2026) algorithm, faithfully reproduced, with the parameter calibration below (the paper specifies none). Two documented deviations from the paper's letter: (1) branch reference point = centroid of P0,P1,P2; (2) training labels keep only voxels whose vertical offset across the surface reaches lambda/4 (observable_labels); Su's full geometric label is saved alongside in labels_full/. All of our own geometry extensions are OFF.",
+  "gen_config": {
+    "grid": [
+      128,
+      128,
+      128
+    ],
+    "d_z": 4.0,
+    "n_u": 192,
+    "n_v": 192,
+    "drag_distance": 14.0,
+    "label_half_thickness": 0.75,
+    "observable_labels": true,
+    "observable_frac": 0.25,
+    "branch_ref_point": "centroid",
+    "use_hull_constraint": true,
+    "hull_clearance": 1.5,
+    "branch_len_ratio": [
+      0.35,
+      0.6
+    ],
+    "branch_wid_ratio": [
+      0.85,
+      1.05
+    ],
+    "use_surface_repair": false,
+    "inherit_branch_curvature": false,
+    "branch_recentre": false,
+    "branch_recentre_target": 0.55,
+    "n_folds": [
+      3,
+      7
+    ],
+    "fold_amp": [
+      4.0,
+      22.0
+    ],
+    "fold_sigma": [
+      20.0,
+      70.0
+    ],
+    "tilt": 0.06,
+    "freq_hz": [
+      20.0,
+      34.0
+    ],
+    "dt": 0.004,
+    "snr_db": [
+      5.0,
+      22.0
+    ],
+    "pso_particles": 200,
+    "pso_iters": 200,
+    "pso_patience": 30,
+    "use_geometry_objective": false,
+    "geo_regime": "strike_slip",
+    "geo_w_dip": 1.0,
+    "geo_w_int": 2.0,
+    "geo_w_dup": 3.0,
+    "geo_w_conj": 2.0,
+    "geo_w_present": 2.0,
+    "geo_w_sep": 2.0,
+    "dip_relations": []
+  },
+  "main_fault_ranges": {
+    "en_echelon": {
+      "strike": [
+        150,
+        210
+      ],
+      "dip": [
+        62,
+        80
+      ],
+      "phi_dis": [
+        35,
+        55
+      ],
+      "throughgoing": false,
+      "drag": "normal"
+    },
+    "horsetail": {
+      "strike": [
+        150,
+        210
+      ],
+      "dip": [
+        66,
+        84
+      ],
+      "phi_dis": [
+        35,
+        55
+      ],
+      "throughgoing": true,
+      "drag": "normal"
+    },
+    "negative_flower": {
+      "strike": [
+        150,
+        210
+      ],
+      "dip": [
+        72,
+        88
+      ],
+      "phi_dis": [
+        35,
+        55
+      ],
+      "throughgoing": true,
+      "drag": "normal"
+    },
+    "positive_flower": {
+      "strike": [
+        150,
+        210
+      ],
+      "dip": [
+        72,
+        88
+      ],
+      "phi_dis": [
+        35,
+        55
+      ],
+      "throughgoing": true,
+      "drag": "normal"
+    },
+    "listric_assemblage": {
+      "strike": [
+        150,
+        210
+      ],
+      "dip": [
+        32,
+        52
+      ],
+      "phi_dis": [
+        0,
+        16
+      ],
+      "throughgoing": false,
+      "drag": "reverse"
+    }
+  },
+  "tree_specs": {
+    "en_echelon": [
+      [
+        0,
+        [
+          "P",
+          "P"
+        ]
+      ],
+      [
+        0,
+        [
+          "P",
+          "P"
+        ]
+      ],
+      [
+        0,
+        [
+          "P",
+          "P"
+        ]
+      ]
+    ],
+    "horsetail": [
+      [
+        0,
+        [
+          "Y",
+          "P"
+        ]
+      ],
+      [
+        0,
+        [
+          "Y",
+          "P"
+        ]
+      ],
+      [
+        0,
+        [
+          "Y",
+          "P"
+        ]
+      ]
+    ],
+    "negative_flower": [
+      [
+        0,
+        [
+          "X",
+          "P"
+        ]
+      ],
+      [
+        1,
+        [
+          "Y",
+          "Y"
+        ]
+      ],
+      [
+        1,
+        [
+          "Y",
+          "Y"
+        ]
+      ]
+    ],
+    "positive_flower": [
+      [
+        0,
+        [
+          "P",
+          "X"
+        ]
+      ],
+      [
+        1,
+        [
+          "P",
+          "X"
+        ]
+      ],
+      [
+        2,
+        [
+          "P",
+          "X"
+        ]
+      ]
+    ],
+    "listric_assemblage": [
+      [
+        0,
+        [
+          "P",
+          "Y"
+        ]
+      ],
+      [
+        0,
+        [
+          "P",
+          "Y"
+        ]
+      ],
+      [
+        0,
+        [
+          "P",
+          "Y"
+        ]
+      ],
+      [
+        3,
+        [
+          "Y",
+          "Y"
+        ]
+      ]
+    ]
+  },
+  "per_category": 200,
+  "seed": 2026,
+  "grid": [
+    128,
+    128,
+    128
+  ],
+  "split": {
+    "train": 0.8,
+    "val": 0.1,
+    "test": 0.1,
+    "rule": "by replicate index k: k<160 train, 160<=k<180 val, k>=180 test"
+  }
+}

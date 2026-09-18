@@ -1,0 +1,15 @@
+{
+  "loss": 0.5004032115638256,
+  "iou": 0.6673655564112531,
+  "dice": 0.8005029896954984,
+  "precision": 0.6964428921550258,
+  "recall": 0.9411222310820662,
+  "iou_en_echelon": 0.7962367581924372,
+  "iou_horsetail": 0.6117771736255345,
+  "iou_negative_flower": 0.6923031134838593,
+  "iou_positive_flower": 0.7013721643954565,
+  "iou_listric_assemblage": 0.5299506049853607,
+  "model": "maxvit3d",
+  "epoch": 35,
+  "n_test": 100
+}

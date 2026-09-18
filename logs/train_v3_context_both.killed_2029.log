@@ -1,0 +1,44 @@
+context_both (context_grid_maxvit3d) params=32,449,615 world=4 batch=8 train=2400 fast=96 full=2433
+/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+epoch 1 microstep 1/300 loss=0.61916 lr=1e-06 elapsed=3s
+epoch 1 microstep 100/300 loss=0.61836 lr=1e-06 elapsed=49s
+epoch 1 microstep 200/300 loss=0.61668 lr=1e-06 elapsed=96s
+epoch 1 microstep 300/300 loss=0.61726 lr=1e-06 elapsed=144s
+epoch 1: full validation starts (2433 cores)
+{"epoch": 1, "lr": 1e-06, "train_loss": 0.5960724313805501, "fast_val": {"iou": 0.05158421412615356, "dice": 0.09810762358965053, "precision": 0.055039324074288444, "recall": 0.4510706048867524, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5807921982680758, "cores": 96}, "full_val": {"iou": 0.03418241932724664, "dice": 0.06610520288960799, "precision": 0.035745308130635554, "recall": 0.4387687041370953, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5909708816109496, "cores": 2433}, "seconds": 187.53988671302795, "skipped_optimizer_steps": 0}
+/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+epoch 2 microstep 1/300 loss=0.61783 lr=1.2e-05 elapsed=1s
+epoch 2 microstep 100/300 loss=0.59607 lr=1.2e-05 elapsed=50s
+W0917 20:29:06.807000 3462821 torch/distributed/elastic/agent/server/api.py:739] Received Signals.SIGTERM death signal, shutting down workers
+W0917 20:29:06.810000 3462821 torch/distributed/elastic/multiprocessing/api.py:1010] Sending process 3462847 closing signal SIGTERM
+W0917 20:29:06.810000 3462821 torch/distributed/elastic/multiprocessing/api.py:1010] Sending process 3462848 closing signal SIGTERM
+W0917 20:29:06.811000 3462821 torch/distributed/elastic/multiprocessing/api.py:1010] Sending process 3462849 closing signal SIGTERM
+W0917 20:29:06.812000 3462821 torch/distributed/elastic/multiprocessing/api.py:1010] Sending process 3462850 closing signal SIGTERM
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/run.py", line 995, in <module>
+    main()
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 362, in wrapper
+    return f(*args, **kwargs)
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/run.py", line 991, in main
+    run(args)
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/run.py", line 982, in run
+    elastic_launch(
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 170, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 308, in launch_agent
+    result = agent.run()
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/elastic/metrics/api.py", line 134, in wrapper
+    result = f(*args, **kwargs)
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/elastic/agent/server/api.py", line 731, in run
+    result = self._invoke_run(role)
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/elastic/agent/server/api.py", line 908, in _invoke_run
+    time.sleep(monitor_interval)
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/api.py", line 86, in _terminate_process_handler
+    raise SignalException(f"Process {os.getpid()} got signal: {sigval}", sigval=sigval)
+torch.distributed.elastic.multiprocessing.api.SignalException: Process 3462821 got signal: 15

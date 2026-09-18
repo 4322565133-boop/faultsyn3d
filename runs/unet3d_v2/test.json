@@ -1,0 +1,15 @@
+{
+  "loss": 0.35158849865198133,
+  "iou": 0.7170900805588571,
+  "dice": 0.8352387433575618,
+  "precision": 0.7362523572840036,
+  "recall": 0.9649761974955019,
+  "iou_en_echelon": 0.8383655653589915,
+  "iou_horsetail": 0.6582237920066581,
+  "iou_negative_flower": 0.7364820843599933,
+  "iou_positive_flower": 0.7608327156343911,
+  "iou_listric_assemblage": 0.5810277303862902,
+  "model": "unet3d",
+  "epoch": 46,
+  "n_test": 100
+}

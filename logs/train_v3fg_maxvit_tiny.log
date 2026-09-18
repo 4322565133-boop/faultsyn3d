@@ -1,0 +1,35 @@
+baseline (maxvit3d) params=40,164,233 world=4 batch=8 train=2400 fast=96 full=2433
+/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+epoch 1 microstep 1/300 loss=0.55717 lr=1e-06 elapsed=8s
+epoch 1 microstep 100/300 loss=0.58945 lr=1e-06 elapsed=50s
+epoch 1 microstep 200/300 loss=0.61611 lr=1e-06 elapsed=92s
+epoch 1 microstep 300/300 loss=0.55768 lr=1e-06 elapsed=135s
+epoch 1: full validation starts (2433 cores)
+{"epoch": 1, "lr": 1e-06, "train_loss": 0.5776856486747662, "fast_val": {"iou": 0.06692423438717054, "dice": 0.12545264645827656, "precision": 0.07209976693950394, "recall": 0.48248577849692237, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5788770482564966, "cores": 96}, "full_val": {"iou": 0.049462985763473695, "dice": 0.09426342126299933, "precision": 0.051963974185299903, "recall": 0.5068330746650163, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5894405662621484, "cores": 2433}, "seconds": 179.56561517715454, "skipped_optimizer_steps": 0, "unsup_loss": null, "lambda_u": null}
+/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+epoch 2 microstep 1/300 loss=0.60263 lr=1.2e-05 elapsed=2s
+epoch 2 microstep 100/300 loss=0.52407 lr=1.2e-05 elapsed=44s
+epoch 2 microstep 200/300 loss=0.52345 lr=1.2e-05 elapsed=87s
+epoch 2 microstep 300/300 loss=0.58190 lr=1.2e-05 elapsed=129s
+epoch 2: full validation starts (2433 cores)
+{"epoch": 2, "lr": 1.2000000000000002e-05, "train_loss": 0.5630964795996746, "fast_val": {"iou": 0.11861113982374327, "dice": 0.21206858326555292, "precision": 0.14768999282390796, "recall": 0.3759438281563959, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.568451096303761, "cores": 96}, "full_val": {"iou": 0.08249315613939899, "dice": 0.15241326131539232, "precision": 0.09759560212604308, "recall": 0.34772275123379937, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5804975494234051, "cores": 2433}, "seconds": 173.645751953125, "skipped_optimizer_steps": 0, "unsup_loss": null, "lambda_u": null}
+epoch 3 microstep 1/300 loss=0.55158 lr=2.3e-05 elapsed=2s
+epoch 3 microstep 100/300 loss=0.60437 lr=2.3e-05 elapsed=45s
+epoch 3 microstep 200/300 loss=0.56948 lr=2.3e-05 elapsed=88s
+epoch 3 microstep 300/300 loss=0.52681 lr=2.3e-05 elapsed=130s
+epoch 3: full validation starts (2433 cores)
+{"epoch": 3, "lr": 2.3000000000000003e-05, "train_loss": 0.5533612973491351, "fast_val": {"iou": 0.22016162990651103, "dice": 0.360872895049781, "precision": 0.2822117209430943, "recall": 0.5003305681883803, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5602128207683563, "cores": 96}, "full_val": {"iou": 0.14729488760991225, "dice": 0.2567690123970873, "precision": 0.17916325830650706, "recall": 0.4529805379560672, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5751470175364651, "cores": 2433}, "seconds": 173.9673433303833, "skipped_optimizer_steps": 0, "unsup_loss": null, "lambda_u": null}
+epoch 4 microstep 1/300 loss=0.52965 lr=3.4e-05 elapsed=2s
+epoch 4 microstep 100/300 loss=0.54380 lr=3.4e-05 elapsed=44s
+epoch 4 microstep 200/300 loss=0.55107 lr=3.4e-05 elapsed=86s
+epoch 4 microstep 300/300 loss=0.60440 lr=3.4e-05 elapsed=129s
+epoch 4: full validation starts (2433 cores)
+{"epoch": 4, "lr": 3.4e-05, "train_loss": 0.5489729988574982, "fast_val": {"iou": 0.23412275057975745, "dice": 0.3794156626150404, "precision": 0.2761689815249974, "recall": 0.6059532914810044, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5544280254592499, "cores": 96}, "full_val": {"iou": 0.15324036929050414, "dice": 0.26575616562014837, "precision": 0.1742712439588938, "recall": 0.5594361035372359, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5717884389843609, "cores": 2433}, "seconds": 172.18529963493347, "skipped_optimizer_steps": 0, "unsup_loss": null, "lambda_u": null}
+epoch 5 microstep 1/300 loss=0.50169 lr=4.5e-05 elapsed=1s
+epoch 5 microstep 100/300 loss=0.57840 lr=4.5e-05 elapsed=43s
+epoch 5 microstep 200/300 loss=0.55111 lr=4.5e-05 elapsed=86s
+epoch 5 microstep 300/300 loss=0.58003 lr=4.5e-05 elapsed=128s
+epoch 5: full validation starts (2433 cores)
+{"epoch": 5, "lr": 4.5e-05, "train_loss": 0.540770108550787, "fast_val": {"iou": 0.2998839886359147, "dice": 0.4614011577304063, "precision": 0.434395797868134, "recall": 0.49198681498434366, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5533312121406198, "cores": 96}, "full_val": {"iou": 0.2331774405712112, "dice": 0.3781733802447809, "precision": 0.350769616690196, "recall": 0.41022182875712276, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5710398553944497, "cores": 2433}, "seconds": 171.7606987953186, "skipped_optimizer_steps": 0, "unsup_loss": null, "lambda_u": null}

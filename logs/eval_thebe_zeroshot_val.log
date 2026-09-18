@@ -1,0 +1,45 @@
+val: 2433 cores, support voxels 510,945,619
+    0/1217 batches, 2s
+    400/1217 batches, 54s
+    800/1217 batches, 108s
+    1200/1217 batches, 176s
+maxvit3d_par_unet_lg_b30       ep 193  IoU 0.0450  Dice 0.0861  AP 0.0449  P 0.0496  R 0.3253  tol2 P/R 0.083/0.871  tol5 P/R 0.123/0.990  (178s)
+    0/1217 batches, 1s
+    400/1217 batches, 51s
+    800/1217 batches, 101s
+    1200/1217 batches, 152s
+maxvit3d_par_unet_b30          ep 208  IoU 0.0432  Dice 0.0828  AP 0.0424  P 0.0512  R 0.2164  tol2 P/R 0.084/0.741  tol5 P/R 0.120/0.968  (153s)
+    0/1217 batches, 1s
+    400/1217 batches, 66s
+    800/1217 batches, 131s
+    1200/1217 batches, 195s
+maxvit3d_par_maxvit_tiny       ep 197  IoU 0.0520  Dice 0.0988  AP 0.0509  P 0.0612  R 0.2562  tol2 P/R 0.099/0.821  tol5 P/R 0.140/0.976  (197s)
+    0/1217 batches, 1s
+    400/1217 batches, 101s
+    800/1217 batches, 201s
+    1200/1217 batches, 301s
+maxvit3d_unet_lg_ddp           ep  36  IoU 0.0426  Dice 0.0817  AP 0.0389  P 0.0615  R 0.1214  tol2 P/R 0.092/0.412  tol5 P/R 0.122/0.691  (305s)
+    0/1217 batches, 1s
+    400/1217 batches, 95s
+    800/1217 batches, 190s
+    1200/1217 batches, 284s
+maxvit3d_unet_l_ddp            ep  56  IoU 0.0393  Dice 0.0757  AP 0.0376  P 0.0547  R 0.1227  tol2 P/R 0.083/0.425  tol5 P/R 0.112/0.725  (287s)
+    0/1217 batches, 1s
+    400/1217 batches, 65s
+    800/1217 batches, 130s
+    1200/1217 batches, 194s
+maxvit3d_v2_oldrecipe_all3     ep 200  IoU 0.0366  Dice 0.0706  AP 0.0387  P 0.0653  R 0.0768  tol2 P/R 0.094/0.313  tol5 P/R 0.120/0.536  (196s)
+    0/1217 batches, 1s
+    400/1217 batches, 95s
+    800/1217 batches, 189s
+    1200/1217 batches, 284s
+maxvit3d_wu_unet_l             ep  44  IoU 0.0496  Dice 0.0946  AP 0.0441  P 0.0616  R 0.2035  tol2 P/R 0.094/0.563  tol5 P/R 0.127/0.789  (287s)
+
+run                             ep    IoU   Dice     AP      P      R    t2P    t2R    t5P    t5R   t5F1
+maxvit3d_par_unet_lg_b30       193  0.045  0.086  0.045  0.050  0.325  0.083  0.871  0.123  0.990  0.219
+maxvit3d_par_unet_b30          208  0.043  0.083  0.042  0.051  0.216  0.084  0.741  0.120  0.968  0.213
+maxvit3d_par_maxvit_tiny       197  0.052  0.099  0.051  0.061  0.256  0.099  0.821  0.140  0.976  0.245
+maxvit3d_unet_lg_ddp            36  0.043  0.082  0.039  0.062  0.121  0.092  0.412  0.122  0.691  0.207
+maxvit3d_unet_l_ddp             56  0.039  0.076  0.038  0.055  0.123  0.083  0.425  0.112  0.725  0.193
+maxvit3d_v2_oldrecipe_all3     200  0.037  0.071  0.039  0.065  0.077  0.094  0.313  0.120  0.536  0.196
+maxvit3d_wu_unet_l              44  0.050  0.095  0.044  0.062  0.203  0.094  0.563  0.127  0.789  0.219

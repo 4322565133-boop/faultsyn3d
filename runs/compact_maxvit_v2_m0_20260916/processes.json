@@ -1,0 +1,20 @@
+{
+  "supervisor_pid": 2273982,
+  "started": 1789543495.327285,
+  "command": [
+    "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/bin/python",
+    "-m",
+    "torch.distributed.run",
+    "--nproc_per_node=4",
+    "--master_addr=127.0.0.1",
+    "--master_port=29673",
+    "train/train_compact_maxvit_ddp.py",
+    "--out",
+    "/hdd1/hukaixiao/projects/faultsyn3d/runs/compact_maxvit_v2_m0_20260916"
+  ],
+  "world_size": 4,
+  "out": "/hdd1/hukaixiao/projects/faultsyn3d/runs/compact_maxvit_v2_m0_20260916",
+  "training_pid": 2273993,
+  "train_returncode": 1,
+  "training_finished": 1789548048.4054163
+}

@@ -1,0 +1,92 @@
+{
+  "cpu_output_shape": [
+    1,
+    1,
+    32,
+    32,
+    32
+  ],
+  "checkpoint_forward_backward_equivalent": true,
+  "block_grid_partitions_distinct_and_invertible": true,
+  "deep_blocks_independent_parameters": true,
+  "augmentation_identical_to_existing_loader": true,
+  "ddp_resume_event": {
+    "time": 1789543437.7589269,
+    "from_epoch": 1,
+    "updates": 3,
+    "optimizer_state_entries": 158,
+    "scaler": {
+      "scale": 1024.0,
+      "growth_factor": 2.0,
+      "backoff_factor": 0.5,
+      "growth_interval": 2000,
+      "_growth_tracker": 3
+    },
+    "restored_rng_ranks": 4
+  },
+  "ddp_smoke_rows": [
+    {
+      "epoch": "1",
+      "train_loss": "0.5799921800692877",
+      "train_seg": "0.5799921800692877",
+      "val_loss": "0.576609268784523",
+      "val_iou": "0.03938274392794607",
+      "val_dice": "0.07578102322367636",
+      "val_precision": "0.043906608948574254",
+      "val_recall": "0.2765320743804607",
+      "lr": "1.0900000000000002e-05",
+      "seconds": "17.99588918685913",
+      "updates": "3",
+      "skipped_updates": "0",
+      "amp_scale": "1024.0",
+      "peak_memory_mib": "9756.6318359375",
+      "val_iou_en_echelon": "0.03938274392794607",
+      "val_iou_horsetail": "0.0",
+      "val_iou_negative_flower": "0.0",
+      "val_iou_positive_flower": "0.0",
+      "val_iou_listric_assemblage": "0.0"
+    },
+    {
+      "epoch": "2",
+      "train_loss": "0.5777708292007446",
+      "train_seg": "0.5777708292007446",
+      "val_loss": "0.5716540515422821",
+      "val_iou": "0.049474806460923",
+      "val_dice": "0.094284886414308",
+      "val_precision": "0.054405552187670674",
+      "val_recall": "0.35312848272568065",
+      "lr": "2.0800000000000004e-05",
+      "seconds": "18.19242811203003",
+      "updates": "6",
+      "skipped_updates": "0",
+      "amp_scale": "1024.0",
+      "peak_memory_mib": "9829.59814453125",
+      "val_iou_en_echelon": "0.049474806460923",
+      "val_iou_horsetail": "0.0",
+      "val_iou_negative_flower": "0.0",
+      "val_iou_positive_flower": "0.0",
+      "val_iou_listric_assemblage": "0.0"
+    }
+  ],
+  "production_first_epoch": {
+    "epoch": "1",
+    "train_loss": "0.562715211212635",
+    "train_seg": "0.562715211212635",
+    "val_loss": "0.5507659816741943",
+    "val_iou": "0.09541834525178425",
+    "val_dice": "0.17421352429487044",
+    "val_precision": "0.09919075747330897",
+    "val_recall": "0.7150106802798452",
+    "lr": "1.0900000000000002e-05",
+    "seconds": "97.24133586883545",
+    "updates": "100",
+    "skipped_updates": "0",
+    "amp_scale": "1024.0",
+    "peak_memory_mib": "9756.6318359375",
+    "val_iou_en_echelon": "0.09505923208809812",
+    "val_iou_horsetail": "0.08944721222605755",
+    "val_iou_negative_flower": "0.10322303699290684",
+    "val_iou_positive_flower": "0.1034283432298103",
+    "val_iou_listric_assemblage": "0.08393962810559609"
+  }
+}

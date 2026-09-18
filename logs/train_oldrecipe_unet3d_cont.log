@@ -1,0 +1,2 @@
+resumed weights from runs/unet3d_v2_oldrecipe/last.pt (epoch 200); best val loss to beat = 0.11106; new cosine cycle 2e-05 -> 1e-07 over 150 epochs
+model=unet3d params=1.40M  train=800 val=100 global batch=8 (2 x 4 accum)  lr warmup 1e-06->2e-05 over 0 then cosine->1e-07  epochs=150 patience=20

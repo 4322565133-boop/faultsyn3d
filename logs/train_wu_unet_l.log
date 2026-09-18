@@ -1,0 +1,76 @@
+unet_l: unet3d 9.64M  world=4 global_batch=8 d2s=False profile=False trace=False
+epoch=001 train=0.53685 (seg 0.53685 pr 0.0000 tr 0.0000 ramp 0.00) val=0.50643 IoU=0.2107 P=0.214 R=0.927 lr=1.09e-05 211s
+epoch=002 train=0.50332 (seg 0.50332 pr 0.0000 tr 0.0000 ramp 0.00) val=0.48135 IoU=0.3610 P=0.376 R=0.902 lr=2.08e-05 178s
+epoch=003 train=0.48444 (seg 0.48444 pr 0.0000 tr 0.0000 ramp 0.00) val=0.46523 IoU=0.4208 P=0.437 R=0.918 lr=3.07e-05 121s
+epoch=004 train=0.46897 (seg 0.46897 pr 0.0000 tr 0.0000 ramp 0.00) val=0.45097 IoU=0.4872 P=0.504 R=0.935 lr=4.06e-05 115s
+epoch=005 train=0.45668 (seg 0.45668 pr 0.0000 tr 0.0000 ramp 0.00) val=0.43951 IoU=0.5515 P=0.571 R=0.940 lr=5.05e-05 115s
+epoch=006 train=0.44611 (seg 0.44611 pr 0.0000 tr 0.0000 ramp 0.00) val=0.42972 IoU=0.5966 P=0.620 R=0.941 lr=6.04e-05 130s
+epoch=007 train=0.43572 (seg 0.43572 pr 0.0000 tr 0.0000 ramp 0.00) val=0.41987 IoU=0.6203 P=0.646 R=0.939 lr=7.03e-05 164s
+epoch=008 train=0.42518 (seg 0.42518 pr 0.0000 tr 0.0000 ramp 0.00) val=0.40821 IoU=0.6251 P=0.647 R=0.949 lr=8.02e-05 170s
+epoch=009 train=0.41353 (seg 0.41353 pr 0.0000 tr 0.0000 ramp 0.00) val=0.39476 IoU=0.6606 P=0.688 R=0.944 lr=9.01e-05 162s
+epoch=010 train=0.39873 (seg 0.39873 pr 0.0000 tr 0.0000 ramp 0.00) val=0.37892 IoU=0.6842 P=0.710 R=0.950 lr=1.00e-04 110s
+epoch=011 train=0.38499 (seg 0.38499 pr 0.0000 tr 0.0000 ramp 0.05) val=0.36548 IoU=0.6856 P=0.713 R=0.948 lr=1.00e-04 111s
+epoch=012 train=0.36974 (seg 0.36974 pr 0.0000 tr 0.0000 ramp 0.10) val=0.35084 IoU=0.6967 P=0.727 R=0.944 lr=1.00e-04 91s
+epoch=013 train=0.35450 (seg 0.35450 pr 0.0000 tr 0.0000 ramp 0.15) val=0.33420 IoU=0.7213 P=0.753 R=0.945 lr=9.99e-05 68s
+epoch=014 train=0.33956 (seg 0.33956 pr 0.0000 tr 0.0000 ramp 0.20) val=0.31867 IoU=0.7410 P=0.779 R=0.938 lr=9.99e-05 63s
+epoch=015 train=0.32509 (seg 0.32509 pr 0.0000 tr 0.0000 ramp 0.25) val=0.30558 IoU=0.7367 P=0.775 R=0.938 lr=9.98e-05 63s
+epoch=016 train=0.31051 (seg 0.31051 pr 0.0000 tr 0.0000 ramp 0.30) val=0.29167 IoU=0.7464 P=0.791 R=0.929 lr=9.98e-05 63s
+epoch=017 train=0.29508 (seg 0.29508 pr 0.0000 tr 0.0000 ramp 0.35) val=0.27325 IoU=0.7680 P=0.806 R=0.942 lr=9.97e-05 63s
+epoch=018 train=0.28051 (seg 0.28051 pr 0.0000 tr 0.0000 ramp 0.40) val=0.26209 IoU=0.7688 P=0.818 R=0.928 lr=9.96e-05 63s
+epoch=019 train=0.26823 (seg 0.26823 pr 0.0000 tr 0.0000 ramp 0.45) val=0.24598 IoU=0.7798 P=0.819 R=0.942 lr=9.94e-05 63s
+epoch=020 train=0.25361 (seg 0.25361 pr 0.0000 tr 0.0000 ramp 0.50) val=0.23281 IoU=0.8001 P=0.850 R=0.932 lr=9.93e-05 63s
+epoch=021 train=0.24295 (seg 0.24295 pr 0.0000 tr 0.0000 ramp 0.55) val=0.22888 IoU=0.7666 P=0.820 R=0.921 lr=9.92e-05 63s
+epoch=022 train=0.23147 (seg 0.23147 pr 0.0000 tr 0.0000 ramp 0.60) val=0.21137 IoU=0.7983 P=0.849 R=0.930 lr=9.90e-05 63s
+epoch=023 train=0.21824 (seg 0.21824 pr 0.0000 tr 0.0000 ramp 0.65) val=0.20233 IoU=0.7940 P=0.846 R=0.929 lr=9.89e-05 63s
+epoch=024 train=0.21088 (seg 0.21088 pr 0.0000 tr 0.0000 ramp 0.70) val=0.19015 IoU=0.8117 P=0.866 R=0.929 lr=9.87e-05 63s
+epoch=025 train=0.20002 (seg 0.20002 pr 0.0000 tr 0.0000 ramp 0.75) val=0.18174 IoU=0.8139 P=0.873 R=0.923 lr=9.85e-05 63s
+epoch=026 train=0.19129 (seg 0.19129 pr 0.0000 tr 0.0000 ramp 0.80) val=0.17358 IoU=0.8118 P=0.864 R=0.931 lr=9.83e-05 63s
+epoch=027 train=0.18338 (seg 0.18338 pr 0.0000 tr 0.0000 ramp 0.85) val=0.16607 IoU=0.8160 P=0.872 R=0.927 lr=9.80e-05 63s
+epoch=028 train=0.17326 (seg 0.17326 pr 0.0000 tr 0.0000 ramp 0.90) val=0.15772 IoU=0.8188 P=0.870 R=0.933 lr=9.78e-05 63s
+epoch=029 train=0.16714 (seg 0.16714 pr 0.0000 tr 0.0000 ramp 0.95) val=0.15476 IoU=0.8148 P=0.880 R=0.917 lr=9.76e-05 63s
+epoch=030 train=0.16203 (seg 0.16203 pr 0.0000 tr 0.0000 ramp 1.00) val=0.14417 IoU=0.8305 P=0.892 R=0.924 lr=9.73e-05 63s
+epoch=031 train=0.15292 (seg 0.15292 pr 0.0000 tr 0.0000 ramp 1.00) val=0.13846 IoU=0.8297 P=0.885 R=0.930 lr=9.70e-05 63s
+epoch=032 train=0.14716 (seg 0.14716 pr 0.0000 tr 0.0000 ramp 1.00) val=0.13321 IoU=0.8372 P=0.907 R=0.916 lr=9.67e-05 63s
+epoch=033 train=0.14157 (seg 0.14157 pr 0.0000 tr 0.0000 ramp 1.00) val=0.12822 IoU=0.8357 P=0.900 R=0.921 lr=9.64e-05 63s
+epoch=034 train=0.13759 (seg 0.13759 pr 0.0000 tr 0.0000 ramp 1.00) val=0.12658 IoU=0.8289 P=0.899 R=0.914 lr=9.61e-05 63s
+epoch=035 train=0.13218 (seg 0.13218 pr 0.0000 tr 0.0000 ramp 1.00) val=0.11868 IoU=0.8391 P=0.899 R=0.927 lr=9.58e-05 63s
+epoch=036 train=0.12691 (seg 0.12691 pr 0.0000 tr 0.0000 ramp 1.00) val=0.11632 IoU=0.8345 P=0.892 R=0.928 lr=9.55e-05 63s
+epoch=037 train=0.12525 (seg 0.12525 pr 0.0000 tr 0.0000 ramp 1.00) val=0.11495 IoU=0.8335 P=0.908 R=0.910 lr=9.51e-05 63s
+epoch=038 train=0.12138 (seg 0.12138 pr 0.0000 tr 0.0000 ramp 1.00) val=0.11523 IoU=0.8228 P=0.895 R=0.911 lr=9.47e-05 63s
+epoch=039 train=0.11726 (seg 0.11726 pr 0.0000 tr 0.0000 ramp 1.00) val=0.10617 IoU=0.8375 P=0.891 R=0.933 lr=9.44e-05 63s
+epoch=040 train=0.11386 (seg 0.11386 pr 0.0000 tr 0.0000 ramp 1.00) val=0.10243 IoU=0.8450 P=0.913 R=0.919 lr=9.40e-05 63s
+epoch=041 train=0.10853 (seg 0.10853 pr 0.0000 tr 0.0000 ramp 1.00) val=0.09844 IoU=0.8483 P=0.913 R=0.923 lr=9.36e-05 63s
+epoch=042 train=0.10777 (seg 0.10777 pr 0.0000 tr 0.0000 ramp 1.00) val=0.09826 IoU=0.8421 P=0.909 R=0.920 lr=9.32e-05 63s
+epoch=043 train=0.10643 (seg 0.10643 pr 0.0000 tr 0.0000 ramp 1.00) val=0.09599 IoU=0.8432 P=0.908 R=0.922 lr=9.27e-05 63s
+epoch=044 train=0.10229 (seg 0.10229 pr 0.0000 tr 0.0000 ramp 1.00) val=0.09270 IoU=0.8461 P=0.911 R=0.922 lr=9.23e-05 63s
+W0916 22:06:33.717000 3258937 torch/distributed/elastic/agent/server/api.py:739] Received Signals.SIGTERM death signal, shutting down workers
+W0916 22:06:33.719000 3258937 torch/distributed/elastic/multiprocessing/api.py:1010] Sending process 3258950 closing signal SIGTERM
+W0916 22:06:33.719000 3258937 torch/distributed/elastic/multiprocessing/api.py:1010] Sending process 3258951 closing signal SIGTERM
+W0916 22:06:33.719000 3258937 torch/distributed/elastic/multiprocessing/api.py:1010] Sending process 3258952 closing signal SIGTERM
+W0916 22:06:33.720000 3258937 torch/distributed/elastic/multiprocessing/api.py:1010] Sending process 3258953 closing signal SIGTERM
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/run.py", line 995, in <module>
+    main()
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 362, in wrapper
+    return f(*args, **kwargs)
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/run.py", line 991, in main
+    run(args)
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/run.py", line 982, in run
+    elastic_launch(
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 170, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 308, in launch_agent
+    result = agent.run()
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/elastic/metrics/api.py", line 134, in wrapper
+    result = f(*args, **kwargs)
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/elastic/agent/server/api.py", line 731, in run
+    result = self._invoke_run(role)
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/elastic/agent/server/api.py", line 908, in _invoke_run
+    time.sleep(monitor_interval)
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/api.py", line 86, in _terminate_process_handler
+    raise SignalException(f"Process {os.getpid()} got signal: {sigval}", sigval=sigval)
+torch.distributed.elastic.multiprocessing.api.SignalException: Process 3258937 got signal: 15

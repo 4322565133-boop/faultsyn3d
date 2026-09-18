@@ -1,0 +1,79 @@
+{
+  "supervisor_pid": 2178312,
+  "epochs": 20,
+  "started_unix": 1789509213.2147126,
+  "runs": [
+    {
+      "variant": "baseline",
+      "gpu": 0,
+      "pid": 2178315,
+      "command": [
+        "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/bin/python",
+        "-u",
+        "train/train_model_upgrade.py",
+        "--variant",
+        "baseline",
+        "--gpu",
+        "0",
+        "--out",
+        "/hdd1/hukaixiao/projects/faultsyn3d/runs/model_upgrade_pilot_20260916/baseline",
+        "--epochs",
+        "20"
+      ]
+    },
+    {
+      "variant": "architecture",
+      "gpu": 1,
+      "pid": 2178316,
+      "command": [
+        "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/bin/python",
+        "-u",
+        "train/train_model_upgrade.py",
+        "--variant",
+        "architecture",
+        "--gpu",
+        "1",
+        "--out",
+        "/hdd1/hukaixiao/projects/faultsyn3d/runs/model_upgrade_pilot_20260916/architecture",
+        "--epochs",
+        "20"
+      ]
+    },
+    {
+      "variant": "loss",
+      "gpu": 2,
+      "pid": 2178317,
+      "command": [
+        "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/bin/python",
+        "-u",
+        "train/train_model_upgrade.py",
+        "--variant",
+        "loss",
+        "--gpu",
+        "2",
+        "--out",
+        "/hdd1/hukaixiao/projects/faultsyn3d/runs/model_upgrade_pilot_20260916/loss",
+        "--epochs",
+        "20"
+      ]
+    },
+    {
+      "variant": "combined",
+      "gpu": 3,
+      "pid": 2178318,
+      "command": [
+        "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/bin/python",
+        "-u",
+        "train/train_model_upgrade.py",
+        "--variant",
+        "combined",
+        "--gpu",
+        "3",
+        "--out",
+        "/hdd1/hukaixiao/projects/faultsyn3d/runs/model_upgrade_pilot_20260916/combined",
+        "--epochs",
+        "20"
+      ]
+    }
+  ]
+}

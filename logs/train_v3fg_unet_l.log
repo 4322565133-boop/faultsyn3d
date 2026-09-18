@@ -1,0 +1,50 @@
+unet_l (unet3d) params=9,643,495 world=4 batch=8 train=2400 fast=96 full=2433
+/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+epoch 1 microstep 1/300 loss=0.56463 lr=1e-06 elapsed=12s
+epoch 1 microstep 100/300 loss=0.59859 lr=1e-06 elapsed=70s
+epoch 1 microstep 200/300 loss=0.62469 lr=1e-06 elapsed=128s
+epoch 1 microstep 300/300 loss=0.57145 lr=1e-06 elapsed=187s
+epoch 1: full validation starts (2433 cores)
+{"epoch": 1, "lr": 1e-06, "train_loss": 0.5866263353824616, "fast_val": {"iou": 0.04501669593284015, "dice": 0.08615497935687187, "precision": 0.04545113624918447, "recall": 0.8248577849692236, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.587561453692615, "cores": 96}, "full_val": {"iou": 0.02958253711850851, "dice": 0.057465110473417944, "precision": 0.02978210066631462, "recall": 0.8153204504750562, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.598275381488365, "cores": 2433}, "seconds": 254.86762714385986, "skipped_optimizer_steps": 0, "unsup_loss": null, "lambda_u": null}
+/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+epoch 2 microstep 1/300 loss=0.61207 lr=1.2e-05 elapsed=2s
+epoch 2 microstep 100/300 loss=0.53138 lr=1.2e-05 elapsed=60s
+epoch 2 microstep 200/300 loss=0.51838 lr=1.2e-05 elapsed=119s
+epoch 2 microstep 300/300 loss=0.58055 lr=1.2e-05 elapsed=178s
+epoch 2: full validation starts (2433 cores)
+{"epoch": 2, "lr": 1.2000000000000002e-05, "train_loss": 0.5668256654342015, "fast_val": {"iou": 0.12752345723918715, "dice": 0.22620098308453188, "precision": 0.15447677444082625, "recall": 0.42225637242366, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5705768891299764, "cores": 96}, "full_val": {"iou": 0.09091914750652234, "dice": 0.16668356718155186, "precision": 0.10567409910733232, "recall": 0.3943642965470486, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5830974666194273, "cores": 2433}, "seconds": 243.0289032459259, "skipped_optimizer_steps": 0, "unsup_loss": null, "lambda_u": null}
+epoch 3 microstep 1/300 loss=0.54454 lr=2.3e-05 elapsed=2s
+epoch 3 microstep 100/300 loss=0.60533 lr=2.3e-05 elapsed=60s
+W0918 16:28:50.402000 3595702 torch/distributed/elastic/agent/server/api.py:739] Received Signals.SIGTERM death signal, shutting down workers
+W0918 16:28:50.409000 3595702 torch/distributed/elastic/multiprocessing/api.py:1010] Sending process 3595727 closing signal SIGTERM
+W0918 16:28:50.410000 3595702 torch/distributed/elastic/multiprocessing/api.py:1010] Sending process 3595728 closing signal SIGTERM
+W0918 16:28:50.411000 3595702 torch/distributed/elastic/multiprocessing/api.py:1010] Sending process 3595729 closing signal SIGTERM
+W0918 16:28:50.411000 3595702 torch/distributed/elastic/multiprocessing/api.py:1010] Sending process 3595730 closing signal SIGTERM
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/run.py", line 995, in <module>
+    main()
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 362, in wrapper
+    return f(*args, **kwargs)
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/run.py", line 991, in main
+    run(args)
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/run.py", line 982, in run
+    elastic_launch(
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 170, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 308, in launch_agent
+    result = agent.run()
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/elastic/metrics/api.py", line 134, in wrapper
+    result = f(*args, **kwargs)
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/elastic/agent/server/api.py", line 731, in run
+    result = self._invoke_run(role)
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/elastic/agent/server/api.py", line 908, in _invoke_run
+    time.sleep(monitor_interval)
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/api.py", line 86, in _terminate_process_handler
+    raise SignalException(f"Process {os.getpid()} got signal: {sigval}", sigval=sigval)
+torch.distributed.elastic.multiprocessing.api.SignalException: Process 3595702 got signal: 15

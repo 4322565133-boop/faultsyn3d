@@ -1,0 +1,11 @@
+unet_b32: unet3d 5.60M  world=4 global_batch=8 d2s=False profile=False trace=False
+epoch=001 train=0.58641 (seg 0.58641 pr 0.0000 tr 0.0000 ramp 0.00) val=0.57968 IoU=0.0980 P=0.100 R=0.846 lr=1.09e-05 39s
+epoch=002 train=0.57584 (seg 0.57584 pr 0.0000 tr 0.0000 ramp 0.00) val=0.56939 IoU=0.1545 P=0.159 R=0.847 lr=2.08e-05 33s
+epoch=003 train=0.56809 (seg 0.56809 pr 0.0000 tr 0.0000 ramp 0.00) val=0.56306 IoU=0.1751 P=0.180 R=0.872 lr=3.07e-05 33s
+epoch=004 train=0.56331 (seg 0.56331 pr 0.0000 tr 0.0000 ramp 0.00) val=0.55941 IoU=0.1846 P=0.190 R=0.875 lr=4.06e-05 33s
+epoch=005 train=0.55943 (seg 0.55943 pr 0.0000 tr 0.0000 ramp 0.00) val=0.55656 IoU=0.1883 P=0.194 R=0.874 lr=5.05e-05 33s
+epoch=006 train=0.55574 (seg 0.55574 pr 0.0000 tr 0.0000 ramp 0.00) val=0.55199 IoU=0.1975 P=0.203 R=0.882 lr=6.04e-05 33s
+epoch=007 train=0.55148 (seg 0.55148 pr 0.0000 tr 0.0000 ramp 0.00) val=0.54732 IoU=0.1865 P=0.190 R=0.912 lr=7.03e-05 33s
+epoch=008 train=0.54728 (seg 0.54728 pr 0.0000 tr 0.0000 ramp 0.00) val=0.54373 IoU=0.1967 P=0.202 R=0.883 lr=8.02e-05 33s
+epoch=009 train=0.54242 (seg 0.54242 pr 0.0000 tr 0.0000 ramp 0.00) val=0.53816 IoU=0.2125 P=0.219 R=0.879 lr=9.01e-05 33s
+epoch=010 train=0.53724 (seg 0.53724 pr 0.0000 tr 0.0000 ramp 0.00) val=0.53134 IoU=0.2171 P=0.222 R=0.903 lr=1.00e-04 33s

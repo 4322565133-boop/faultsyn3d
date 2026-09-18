@@ -1,0 +1,35 @@
+{
+  "models": {
+    "unet": "runs/maxvit3d_unet_l_ddp",
+    "maxvit": "runs/maxvit3d_v2_oldrecipe_all3",
+    "hybrid": "runs/maxvit3d_unet_lg_ddp"
+  },
+  "threshold": 0.5,
+  "checkpoint": "existing best.pt; original selection retained; no target tuning",
+  "datasets": [
+    "v2_val100",
+    "v2_test100",
+    "official synthetic validation20",
+    "local Wu-style test100"
+  ],
+  "perturbations": [
+    "noise_0.25",
+    "noise_0.50",
+    "lowpass_0.6",
+    "lowpass_1.0",
+    "phase_30",
+    "phase_60"
+  ],
+  "style_subset": "first 5 names per category from v2 val (25); same perturbations for each model",
+  "seed": "sha256(volume_name)[:8] for noise; identical noise field across severity",
+  "semantics": "post-processing only, no physical resynthesis; labels unchanged",
+  "phase": "depth-axis Hilbert phase rotation, reflection pad32",
+  "lowpass": "depth-axis Gaussian sigma in voxels",
+  "noise": "additional independent Gaussian sigma relative to normalized input std",
+  "selection": "no performance-based sample selection",
+  "manifest_hashes": {
+    "data/dataset_reproduction_v2/manifest.json": "8255016ce917b483cda0dc3471b5e984f086b23184965082bff4cee44a632af3",
+    "data/wu2019_1000/manifest.json": "158d290f654d52fbf0937f82bf47b3dbd4c67072ea41cb35f1a0a3240e2dc120"
+  },
+  "checks": "tol recall analytical cases; deterministic finite perturbations; syntax compilation passed"
+}

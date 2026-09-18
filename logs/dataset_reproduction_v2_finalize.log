@@ -1,0 +1,58 @@
+Starting full validation
+checked 50/1000
+checked 100/1000
+checked 150/1000
+checked 200/1000
+checked 250/1000
+checked 300/1000
+checked 350/1000
+checked 400/1000
+checked 450/1000
+checked 500/1000
+checked 550/1000
+checked 600/1000
+checked 650/1000
+checked 700/1000
+checked 750/1000
+checked 800/1000
+checked 850/1000
+checked 900/1000
+checked 950/1000
+checked 1000/1000
+{
+  "status": "PASS",
+  "n": 1000,
+  "categories": {
+    "en_echelon": 200,
+    "horsetail": 200,
+    "negative_flower": 200,
+    "positive_flower": 200,
+    "listric_assemblage": 200
+  },
+  "splits": {
+    "train": 800,
+    "val": 100,
+    "test": 100
+  },
+  "fault_percent_mean": 3.4754213809967043,
+  "mesh_max_error": 7.6293943038763246e-06,
+  "source_sha256": "4caf323f71699d3195906146d8af908023d1ebf48f6070521a3d39a317105570",
+  "tests": [
+    "array sizes/dtypes/finite/normalisation",
+    "binary/full/instance labels consistent",
+    "all instances present",
+    "recomputed zero PSO objective",
+    "reconstructed clipped graph topology",
+    "control triangle domains",
+    "exported meshes match reconstruction",
+    "area and slip scaling",
+    "6004 file checksums"
+  ],
+  "limitations": [
+    "Topology is checked on a finite 193x193 chart, with documented contact tolerance.",
+    "Visibility proxy is isolated vertical slip divided by a quarter-period; it is not a measured seismic detection rate."
+  ]
+}
+Starting 1000-volume slice browser
+qc/out/dataset_reproduction_v2/index.html
+Finalization complete

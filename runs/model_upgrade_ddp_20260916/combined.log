@@ -1,0 +1,217 @@
+/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+[rank0]:[W916 06:59:30.110463011 ProcessGroupNCCL.cpp:5138] Guessing device ID based on global rank. This can cause a hang if rank to GPU mapping is heterogeneous. You can specify device_id in init_process_group()
+INITIAL combined val_iou=0.820699
+DDP combined: world=4, global_batch=8, epochs=20
+combined epoch=1 step=1/100 loss=0.03074 profile=0.01016 trace=0.05408
+combined epoch=1 step=25/100 loss=0.07633 profile=0.02576 trace=0.07208
+combined epoch=1 step=50/100 loss=0.07600 profile=0.02777 trace=0.04292
+combined epoch=1 step=75/100 loss=0.08174 profile=0.03292 trace=0.07824
+combined epoch=1 step=100/100 loss=0.07805 profile=0.02669 trace=0.03343
+EPOCH combined {"epoch": 1, "loss": 0.0755765640968457, "seg": 0.0755765640968457, "profile": 0.030351981889689343, "trace": 0.07531827050959691, "valid_profiles": 1024.0, "valid_windows": 5.48625, "aux_ramp": 0, "val_iou": 0.8198030197717778, "val_dice": 0.9009799531760198, "val_precision": 0.9101322508340035, "val_recall": 0.8920098940916261, "old_lr": 5e-06, "seconds": 68.43992877006531, "updates": 100, "peak_memory_mib": 10579.3720703125, "max_rank_parameter_difference": 0.0} best=0.820699
+combined epoch=2 step=1/100 loss=0.13428 profile=0.04382 trace=0.13872
+combined epoch=2 step=25/100 loss=0.06127 profile=0.02455 trace=0.04663
+combined epoch=2 step=50/100 loss=0.11636 profile=0.05398 trace=0.14993
+combined epoch=2 step=75/100 loss=0.06518 profile=0.02372 trace=0.04944
+combined epoch=2 step=100/100 loss=0.04738 profile=0.01434 trace=0.06245
+EPOCH combined {"epoch": 2, "loss": 0.07749853997025638, "seg": 0.07749853997025638, "profile": 0.0313851778069511, "trace": 0.0781900324462913, "valid_profiles": 1024.0, "valid_windows": 5.48375, "aux_ramp": 0.0, "val_iou": 0.8185642342675885, "val_dice": 0.9002313130800775, "val_precision": 0.9082909229429995, "val_recall": 0.8923134771536941, "old_lr": 9.932488451843475e-06, "seconds": 59.37334871292114, "updates": 200, "peak_memory_mib": 8874.224609375, "max_rank_parameter_difference": 0.0} best=0.820699
+combined epoch=3 step=1/100 loss=0.04974 profile=0.01971 trace=0.02086
+combined epoch=3 step=25/100 loss=0.05628 profile=0.01448 trace=0.03248
+combined epoch=3 step=50/100 loss=0.05189 profile=0.01623 trace=0.03687
+combined epoch=3 step=75/100 loss=0.04366 profile=0.01787 trace=0.02597
+combined epoch=3 step=100/100 loss=0.05474 profile=0.02055 trace=0.10202
+EPOCH combined {"epoch": 3, "loss": 0.07773435112088918, "seg": 0.07603599680121988, "profile": 0.03042191099608317, "trace": 0.07502451812382788, "valid_profiles": 1024.0, "valid_windows": 5.48375, "aux_ramp": 0.25, "val_iou": 0.819408569036278, "val_dice": 0.9007416838432395, "val_precision": 0.9037742407759756, "val_recall": 0.8977294099555215, "old_lr": 9.73179534641814e-06, "seconds": 59.207356214523315, "updates": 300, "peak_memory_mib": 8874.224609375, "max_rank_parameter_difference": 0.0} best=0.820699
+combined epoch=4 step=1/100 loss=0.11190 profile=0.05258 trace=0.07173
+combined epoch=4 step=25/100 loss=0.09356 profile=0.03170 trace=0.05674
+combined epoch=4 step=50/100 loss=0.08823 profile=0.03070 trace=0.05744
+combined epoch=4 step=75/100 loss=0.10493 profile=0.03655 trace=0.04233
+combined epoch=4 step=100/100 loss=0.05384 profile=0.02140 trace=0.01531
+EPOCH combined {"epoch": 4, "loss": 0.07917903157416731, "seg": 0.07578557070810348, "profile": 0.030216418087948116, "trace": 0.07530559780076146, "valid_profiles": 1024.0, "valid_windows": 5.4875, "aux_ramp": 0.5, "val_iou": 0.8187111809505992, "val_dice": 0.9003201712574037, "val_precision": 0.9037489672747208, "val_recall": 0.8969172943986112, "old_lr": 9.403395068472121e-06, "seconds": 59.91659498214722, "updates": 400, "peak_memory_mib": 8874.224609375, "max_rank_parameter_difference": 0.0} best=0.820699
+combined epoch=5 step=1/100 loss=0.06287 profile=0.02944 trace=0.08151
+combined epoch=5 step=25/100 loss=0.09795 profile=0.03456 trace=0.11921
+combined epoch=5 step=50/100 loss=0.06004 profile=0.02270 trace=0.05132
+combined epoch=5 step=75/100 loss=0.07460 profile=0.01858 trace=0.12035
+combined epoch=5 step=100/100 loss=0.09476 profile=0.04433 trace=0.09713
+EPOCH combined {"epoch": 5, "loss": 0.0823447985900566, "seg": 0.07712398230098189, "profile": 0.031091239727102222, "trace": 0.07703928757924586, "valid_profiles": 1024.0, "valid_windows": 5.48125, "aux_ramp": 0.75, "val_iou": 0.8199724275691767, "val_dice": 0.901082252838701, "val_precision": 0.9034351936110151, "val_recall": 0.8987415364046575, "old_lr": 8.956245521512148e-06, "seconds": 59.82623028755188, "updates": 500, "peak_memory_mib": 8874.224609375, "max_rank_parameter_difference": 0.0} best=0.820699
+combined epoch=6 step=1/100 loss=0.04836 profile=0.01025 trace=0.05034
+combined epoch=6 step=25/100 loss=0.17495 profile=0.07849 trace=0.31011
+combined epoch=6 step=50/100 loss=0.14687 profile=0.06270 trace=0.17012
+combined epoch=6 step=75/100 loss=0.07346 profile=0.02134 trace=0.03361
+combined epoch=6 step=100/100 loss=0.14891 profile=0.06458 trace=0.22252
+EPOCH combined {"epoch": 6, "loss": 0.0836830592341721, "seg": 0.07688615722116082, "profile": 0.030681126581039282, "trace": 0.07457578533096239, "valid_profiles": 1024.0, "valid_windows": 5.492500000000001, "aux_ramp": 1.0, "val_iou": 0.8191760396320686, "val_dice": 0.9006011752416752, "val_precision": 0.9099634217605026, "val_recall": 0.8914296155771446, "old_lr": 8.402543779547419e-06, "seconds": 59.982208490371704, "updates": 600, "peak_memory_mib": 8874.224609375, "max_rank_parameter_difference": 0.0} best=0.820699
+combined epoch=7 step=1/100 loss=0.08118 profile=0.02749 trace=0.06882
+combined epoch=7 step=25/100 loss=0.10899 profile=0.04612 trace=0.04924
+combined epoch=7 step=50/100 loss=0.06061 profile=0.01826 trace=0.04026
+combined epoch=7 step=75/100 loss=0.09059 profile=0.02979 trace=0.10444
+combined epoch=7 step=100/100 loss=0.10845 profile=0.03756 trace=0.05128
+EPOCH combined {"epoch": 7, "loss": 0.08279042050708085, "seg": 0.07616934906691313, "profile": 0.030257131913676856, "trace": 0.07190716292010621, "valid_profiles": 1024.0, "valid_windows": 5.48375, "aux_ramp": 1, "val_iou": 0.8190931266164656, "val_dice": 0.9005510653981618, "val_precision": 0.9057091792015116, "val_recall": 0.8954513709457155, "old_lr": 7.757393382706015e-06, "seconds": 59.65583801269531, "updates": 700, "peak_memory_mib": 8874.224609375, "max_rank_parameter_difference": 0.0} best=0.820699
+combined epoch=8 step=1/100 loss=0.11246 profile=0.04579 trace=0.06097
+combined epoch=8 step=25/100 loss=0.13451 profile=0.05262 trace=0.13114
+combined epoch=8 step=50/100 loss=0.06103 profile=0.01859 trace=0.07940
+combined epoch=8 step=75/100 loss=0.04861 profile=0.01181 trace=0.04122
+combined epoch=8 step=100/100 loss=0.08605 profile=0.03991 trace=0.03319
+EPOCH combined {"epoch": 8, "loss": 0.08378389921970665, "seg": 0.07694030523765832, "profile": 0.030579579859040678, "trace": 0.07571271832566709, "valid_profiles": 1024.0, "valid_windows": 5.48375, "aux_ramp": 1, "val_iou": 0.8192235689299201, "val_dice": 0.9006298982942411, "val_precision": 0.9084336750807244, "val_recall": 0.892959054148765, "old_lr": 7.0383923520322e-06, "seconds": 59.735262393951416, "updates": 800, "peak_memory_mib": 8874.224609375, "max_rank_parameter_difference": 0.0} best=0.820699
+combined epoch=9 step=1/100 loss=0.05885 profile=0.01883 trace=0.02938
+combined epoch=9 step=25/100 loss=0.10825 profile=0.03781 trace=0.13988
+combined epoch=9 step=50/100 loss=0.04860 profile=0.01239 trace=0.03046
+combined epoch=9 step=75/100 loss=0.09697 profile=0.03625 trace=0.07725
+combined epoch=9 step=100/100 loss=0.05598 profile=0.01632 trace=0.03113
+EPOCH combined {"epoch": 9, "loss": 0.08384368118364363, "seg": 0.07692323716823013, "profile": 0.03055239578476176, "trace": 0.0773040801519528, "valid_profiles": 1024.0, "valid_windows": 5.48625, "aux_ramp": 1, "val_iou": 0.8201879409716119, "val_dice": 0.9012123666018769, "val_precision": 0.9070925949962908, "val_recall": 0.8954078843525498, "old_lr": 6.265153161346956e-06, "seconds": 59.663278579711914, "updates": 900, "peak_memory_mib": 8874.224609375, "max_rank_parameter_difference": 0.0} best=0.820699
+combined epoch=10 step=1/100 loss=0.07917 profile=0.03268 trace=0.08478
+combined epoch=10 step=25/100 loss=0.10144 profile=0.03667 trace=0.08992
+combined epoch=10 step=50/100 loss=0.05618 profile=0.01868 trace=0.02318
+combined epoch=10 step=75/100 loss=0.08414 profile=0.03077 trace=0.15728
+combined epoch=10 step=100/100 loss=0.09638 profile=0.03920 trace=0.08194
+EPOCH combined {"epoch": 10, "loss": 0.08440306184347719, "seg": 0.07752811251208186, "profile": 0.030876229426357895, "trace": 0.0757465264631901, "valid_profiles": 1024.0, "valid_windows": 5.4925, "aux_ramp": 1, "val_iou": 0.818935128274682, "val_dice": 0.9004555638567144, "val_precision": 0.9059945888153761, "val_recall": 0.8949838557737644, "old_lr": 5.458767760088047e-06, "seconds": 59.77111792564392, "updates": 1000, "peak_memory_mib": 8874.224609375, "max_rank_parameter_difference": 0.0} best=0.820699
+combined epoch=11 step=1/100 loss=0.06461 profile=0.02277 trace=0.07372
+combined epoch=11 step=25/100 loss=0.06548 profile=0.02252 trace=0.03552
+combined epoch=11 step=50/100 loss=0.08380 profile=0.03063 trace=0.15874
+combined epoch=11 step=75/100 loss=0.11269 profile=0.05036 trace=0.06131
+combined epoch=11 step=100/100 loss=0.09475 profile=0.03403 trace=0.08969
+EPOCH combined {"epoch": 11, "loss": 0.08314811287447811, "seg": 0.07623126179445536, "profile": 0.030168840467231346, "trace": 0.07799933823058382, "valid_profiles": 1024.0, "valid_windows": 5.48875, "aux_ramp": 1, "val_iou": 0.8198474861673063, "val_dice": 0.9010068067780206, "val_precision": 0.9050413154507329, "val_recall": 0.8970081086720361, "old_lr": 4.641232239911956e-06, "seconds": 59.48245596885681, "updates": 1100, "peak_memory_mib": 8874.224609375, "max_rank_parameter_difference": 0.0} best=0.820699
+combined epoch=12 step=1/100 loss=0.09992 profile=0.03434 trace=0.07688
+combined epoch=12 step=25/100 loss=0.08199 profile=0.02710 trace=0.21442
+combined epoch=12 step=50/100 loss=0.10831 profile=0.03442 trace=0.04721
+combined epoch=12 step=75/100 loss=0.09533 profile=0.03006 trace=0.18553
+combined epoch=12 step=100/100 loss=0.05407 profile=0.01724 trace=0.07008
+EPOCH combined {"epoch": 12, "loss": 0.08197613391559572, "seg": 0.07525927450973541, "profile": 0.029582176457624884, "trace": 0.075172832806129, "valid_profiles": 1024.0, "valid_windows": 5.487500000000001, "aux_ramp": 1, "val_iou": 0.8203135619445352, "val_dice": 0.9012881946209772, "val_precision": 0.9077356051339257, "val_recall": 0.8949317267346384, "old_lr": 3.8348468386530454e-06, "seconds": 59.65925073623657, "updates": 1200, "peak_memory_mib": 8874.224609375, "max_rank_parameter_difference": 0.0} best=0.820699
+combined epoch=13 step=1/100 loss=0.06298 profile=0.02112 trace=0.04398
+combined epoch=13 step=25/100 loss=0.10651 profile=0.04411 trace=0.07761
+combined epoch=13 step=50/100 loss=0.08891 profile=0.02511 trace=0.10593
+combined epoch=13 step=75/100 loss=0.07357 profile=0.02936 trace=0.05994
+combined epoch=13 step=100/100 loss=0.07351 profile=0.02125 trace=0.06308
+EPOCH combined {"epoch": 13, "loss": 0.08346815836150198, "seg": 0.07655327647458762, "profile": 0.030366061930544676, "trace": 0.07756551056867465, "valid_profiles": 1024.0, "valid_windows": 5.48375, "aux_ramp": 1, "val_iou": 0.8201879629943152, "val_dice": 0.9012123798962589, "val_precision": 0.9052785195528715, "val_recall": 0.8971826037714262, "old_lr": 3.061607647967802e-06, "seconds": 59.668843269348145, "updates": 1300, "peak_memory_mib": 8874.224609375, "max_rank_parameter_difference": 0.0} best=0.820699
+combined epoch=14 step=1/100 loss=0.09577 profile=0.03383 trace=0.09265
+combined epoch=14 step=25/100 loss=0.04545 profile=0.01343 trace=0.02522
+combined epoch=14 step=50/100 loss=0.07345 profile=0.02173 trace=0.05922
+combined epoch=14 step=75/100 loss=0.08488 profile=0.03012 trace=0.07812
+[rank3]: Traceback (most recent call last):
+[rank3]:   File "/hdd1/hukaixiao/projects/faultsyn3d/train/train_model_upgrade_ddp.py", line 230, in <module>
+[rank3]:     main()
+[rank3]:   File "/hdd1/hukaixiao/projects/faultsyn3d/train/train_model_upgrade_ddp.py", line 168, in main
+[rank3]:     raise FloatingPointError(f'Rank {rank} nonfinite gradient')
+[rank3]: FloatingPointError: Rank 3 nonfinite gradient
+[rank2]: Traceback (most recent call last):
+[rank2]:   File "/hdd1/hukaixiao/projects/faultsyn3d/train/train_model_upgrade_ddp.py", line 230, in <module>
+[rank2]:     main()
+[rank2]:   File "/hdd1/hukaixiao/projects/faultsyn3d/train/train_model_upgrade_ddp.py", line 168, in main
+[rank2]:     raise FloatingPointError(f'Rank {rank} nonfinite gradient')
+[rank2]: FloatingPointError: Rank 2 nonfinite gradient
+[rank1]: Traceback (most recent call last):
+[rank1]:   File "/hdd1/hukaixiao/projects/faultsyn3d/train/train_model_upgrade_ddp.py", line 230, in <module>
+[rank1]:     main()
+[rank1]:   File "/hdd1/hukaixiao/projects/faultsyn3d/train/train_model_upgrade_ddp.py", line 168, in main
+[rank1]:     raise FloatingPointError(f'Rank {rank} nonfinite gradient')
+[rank1]: FloatingPointError: Rank 1 nonfinite gradient
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/hdd1/hukaixiao/projects/faultsyn3d/train/train_model_upgrade_ddp.py", line 230, in <module>
+[rank0]:     main()
+[rank0]:   File "/hdd1/hukaixiao/projects/faultsyn3d/train/train_model_upgrade_ddp.py", line 168, in main
+[rank0]:     raise FloatingPointError(f'Rank {rank} nonfinite gradient')
+[rank0]: FloatingPointError: Rank 0 nonfinite gradient
+[rank0]:[W916 07:13:47.407934543 ProcessGroupNCCL.cpp:1553] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+W0916 07:13:48.430000 2178957 torch/distributed/elastic/multiprocessing/api.py:1010] Sending process 2178979 closing signal SIGTERM
+W0916 07:13:48.433000 2178957 torch/distributed/elastic/multiprocessing/api.py:1010] Sending process 2178980 closing signal SIGTERM
+W0916 07:13:48.433000 2178957 torch/distributed/elastic/multiprocessing/api.py:1010] Sending process 2178981 closing signal SIGTERM
+E0916 07:13:48.862000 2178957 torch/distributed/elastic/multiprocessing/api.py:984] failed (exitcode: 1) local_rank: 0 (pid: 2178978) of binary: /hdd1/hukaixiao/projects/FAULTSEG3D/.venv/bin/python
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/run.py", line 995, in <module>
+    main()
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 362, in wrapper
+    return f(*args, **kwargs)
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/run.py", line 991, in main
+    run(args)
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/run.py", line 982, in run
+    elastic_launch(
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 170, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 317, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+train/train_model_upgrade_ddp.py FAILED
+------------------------------------------------------------
+Failures:
+[1]:
+  time      : 2026-09-16_07:13:48
+  host      : dl-machine
+  rank      : 1 (local_rank: 1)
+  exitcode  : 1 (pid: 2178979)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+[2]:
+  time      : 2026-09-16_07:13:48
+  host      : dl-machine
+  rank      : 2 (local_rank: 2)
+  exitcode  : 1 (pid: 2178980)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+[3]:
+  time      : 2026-09-16_07:13:48
+  host      : dl-machine
+  rank      : 3 (local_rank: 3)
+  exitcode  : 1 (pid: 2178981)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2026-09-16_07:13:48
+  host      : dl-machine
+  rank      : 0 (local_rank: 0)
+  exitcode  : 1 (pid: 2178978)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================
+/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+[rank0]:[W916 07:50:25.163249894 ProcessGroupNCCL.cpp:5138] Guessing device ID based on global rank. This can cause a hang if rank to GPU mapping is heterogeneous. You can specify device_id in init_process_group()
+DDP combined: world=4, global_batch=8, epochs=20
+combined epoch=14 step=1/100 loss=0.09577 profile=0.03382 trace=0.09265
+combined epoch=14 step=25/100 loss=0.04545 profile=0.01343 trace=0.02520
+combined epoch=14 step=50/100 loss=0.07346 profile=0.02173 trace=0.05923
+combined epoch=14 step=75/100 loss=0.08488 profile=0.03011 trace=0.07811
+AMP_RECOVERED {"epoch": 14, "step": 98, "old_scale": 65536.0, "new_scale": 32768.0, "action": "all ranks skipped parameter update", "loss": 0.08076471090316772, "norm": "inf"}
+combined epoch=14 step=100/100 loss=0.04911 profile=0.01309 trace=0.07104
+EPOCH combined {"epoch": 14, "loss": 0.08349206149112434, "seg": 0.07664557644166052, "profile": 0.030367904525483026, "trace": 0.07619389286730438, "valid_profiles": 1024.0, "valid_windows": 5.49, "aux_ramp": 1, "val_iou": 0.8204041555785043, "val_dice": 0.9013428727510117, "val_precision": 0.9079347864212426, "val_recall": 0.8948459881834443, "old_lr": 2.3426066172939865e-06, "seconds": 68.51311492919922, "updates": 1399, "peak_memory_mib": 9905.0390625, "max_rank_parameter_difference": 0.0} best=0.820699
+combined epoch=15 step=1/100 loss=0.06155 profile=0.02453 trace=0.04690
+combined epoch=15 step=25/100 loss=0.06822 profile=0.02263 trace=0.05812
+combined epoch=15 step=50/100 loss=0.07959 profile=0.02699 trace=0.09386
+combined epoch=15 step=75/100 loss=0.04535 profile=0.01637 trace=0.03071
+combined epoch=15 step=100/100 loss=0.08508 profile=0.03072 trace=0.06397
+EPOCH combined {"epoch": 15, "loss": 0.08257268780376763, "seg": 0.07589345204178244, "profile": 0.029884833929827437, "trace": 0.0738150453241542, "valid_profiles": 1024.0, "valid_windows": 5.49125, "aux_ramp": 1, "val_iou": 0.8194810568445127, "val_dice": 0.9007854781029941, "val_precision": 0.9050292326075298, "val_recall": 0.8965813364596124, "old_lr": 1.6974562204525829e-06, "seconds": 59.154205322265625, "updates": 1499, "peak_memory_mib": 8874.6201171875, "max_rank_parameter_difference": 0.0} best=0.820699
+combined epoch=16 step=1/100 loss=0.08603 profile=0.02991 trace=0.06054
+combined epoch=16 step=25/100 loss=0.06768 profile=0.02023 trace=0.04801
+combined epoch=16 step=50/100 loss=0.09626 profile=0.03123 trace=0.09182
+combined epoch=16 step=75/100 loss=0.05223 profile=0.01662 trace=0.03028
+combined epoch=16 step=100/100 loss=0.05893 profile=0.02009 trace=0.05665
+EPOCH combined {"epoch": 16, "loss": 0.08109731609933078, "seg": 0.07444196672644465, "profile": 0.029244424797361716, "trace": 0.07461813442874698, "valid_profiles": 1024.0, "valid_windows": 5.48625, "aux_ramp": 1, "val_iou": 0.8205312427201593, "val_dice": 0.9014195675039962, "val_precision": 0.9070718791796499, "val_recall": 0.8958372630169297, "old_lr": 1.1437544784878524e-06, "seconds": 59.168869733810425, "updates": 1599, "peak_memory_mib": 8873.0048828125, "max_rank_parameter_difference": 0.0} best=0.820699
+combined epoch=17 step=1/100 loss=0.06267 profile=0.01148 trace=0.05336
+combined epoch=17 step=25/100 loss=0.06485 profile=0.01835 trace=0.06088
+combined epoch=17 step=50/100 loss=0.05065 profile=0.01815 trace=0.01996
+combined epoch=17 step=75/100 loss=0.07857 profile=0.02762 trace=0.05938
+combined epoch=17 step=100/100 loss=0.10230 profile=0.03608 trace=0.06607
+EPOCH combined {"epoch": 17, "loss": 0.08334708993323148, "seg": 0.07663317356258631, "profile": 0.030398504224140192, "trace": 0.07348131345584988, "valid_profiles": 1024.0, "valid_windows": 5.48375, "aux_ramp": 1, "val_iou": 0.8201755488130641, "val_dice": 0.9012048858121408, "val_precision": 0.9070133914477926, "val_recall": 0.8954703020178191, "old_lr": 6.966049315278797e-07, "seconds": 59.28713870048523, "updates": 1699, "peak_memory_mib": 8873.0048828125, "max_rank_parameter_difference": 0.0} best=0.820699
+combined epoch=18 step=1/100 loss=0.08866 profile=0.03449 trace=0.06302
+combined epoch=18 step=25/100 loss=0.08817 profile=0.03381 trace=0.08698
+combined epoch=18 step=50/100 loss=0.08310 profile=0.03011 trace=0.03115
+combined epoch=18 step=75/100 loss=0.09263 profile=0.03361 trace=0.10288
+combined epoch=18 step=100/100 loss=0.06841 profile=0.02236 trace=0.02735
+EPOCH combined {"epoch": 18, "loss": 0.08257106802426278, "seg": 0.07593237160239369, "profile": 0.029853158148471268, "trace": 0.07306761010317131, "valid_profiles": 1024.0, "valid_windows": 5.4875, "aux_ramp": 1, "val_iou": 0.8210566678266745, "val_dice": 0.9017365382775903, "val_precision": 0.9073311112836357, "val_recall": 0.8962105343734083, "old_lr": 3.68204653581858e-07, "seconds": 59.44104313850403, "updates": 1799, "peak_memory_mib": 8873.0048828125, "max_rank_parameter_difference": 0.0} best=0.821057
+combined epoch=19 step=1/100 loss=0.07105 profile=0.02290 trace=0.06174
+combined epoch=19 step=25/100 loss=0.09418 profile=0.03865 trace=0.07640
+combined epoch=19 step=50/100 loss=0.06207 profile=0.01788 trace=0.03786
+combined epoch=19 step=75/100 loss=0.05635 profile=0.01675 trace=0.03418
+combined epoch=19 step=100/100 loss=0.06885 profile=0.01911 trace=0.06504
+EPOCH combined {"epoch": 19, "loss": 0.08200189440511166, "seg": 0.07532022079918534, "profile": 0.029698719556909052, "trace": 0.0742360280174762, "valid_profiles": 1024.0, "valid_windows": 5.485, "aux_ramp": 1, "val_iou": 0.8208880945689462, "val_dice": 0.9016348637979016, "val_precision": 0.9065803167157247, "val_recall": 0.8967430736625849, "old_lr": 1.6751154815652454e-07, "seconds": 59.381635427474976, "updates": 1899, "peak_memory_mib": 8873.0048828125, "max_rank_parameter_difference": 0.0} best=0.821057
+combined epoch=20 step=1/100 loss=0.07407 profile=0.02389 trace=0.06596
+combined epoch=20 step=25/100 loss=0.09093 profile=0.03648 trace=0.05914
+combined epoch=20 step=50/100 loss=0.10498 profile=0.03910 trace=0.06155
+combined epoch=20 step=75/100 loss=0.08396 profile=0.02608 trace=0.05337
+combined epoch=20 step=100/100 loss=0.04898 profile=0.01455 trace=0.03068
+EPOCH combined {"epoch": 20, "loss": 0.08240306568797678, "seg": 0.07566034766379745, "profile": 0.029872248399769888, "trace": 0.075109860568773, "valid_profiles": 1024.0, "valid_windows": 5.487500000000001, "aux_ramp": 1, "val_iou": 0.8202588505125601, "val_dice": 0.9012551706935378, "val_precision": 0.9069250220585457, "val_recall": 0.8956557716517621, "old_lr": 1.0000000000000001e-07, "seconds": 59.39733076095581, "updates": 1999, "peak_memory_mib": 8873.0048828125, "max_rank_parameter_difference": 0.0} best=0.821057
+COMPLETE combined {"loss": 0.5419233919680119, "iou": 0.8323998649366265, "dice": 0.9085351738610994, "precision": 0.909789697089807, "recall": 0.9072841056316033, "ap": 0.9558114447653048, "iou_en_echelon": 0.9140148694973546, "ap_en_echelon": 0.9897195420772024, "iou_horsetail": 0.7948387252399121, "ap_horsetail": 0.931784699605883, "iou_negative_flower": 0.8280708330569682, "ap_negative_flower": 0.9514338411018172, "iou_positive_flower": 0.8441250199251573, "ap_positive_flower": 0.9660399262670114, "iou_listric_assemblage": 0.7564474022652755, "ap_listric_assemblage": 0.9142165132579168, "variant": "combined", "epoch": 18, "n_test": 100, "reference_historical_test_iou": 0.8325868632244817, "difference_from_historical_iou": -0.00018699828785517791, "checkpoint_sha256": "d5dc7e32d88fd9843b91c2d0094a910dc994bbe4acdfdb020dbf4aebb8fea320", "selection": "maximum validation voxel IoU at threshold .5, including epoch 0"}

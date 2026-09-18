@@ -1,0 +1,136 @@
+{
+  "n_faults": {
+    "4": {
+      "unet": {
+        "n": 80,
+        "iou": 0.8443620585614481,
+        "categories": {
+          "en_echelon": 20,
+          "horsetail": 20,
+          "negative_flower": 20,
+          "positive_flower": 20
+        }
+      },
+      "maxvit": {
+        "n": 80,
+        "iou": 0.844303777384028,
+        "categories": {
+          "en_echelon": 20,
+          "horsetail": 20,
+          "negative_flower": 20,
+          "positive_flower": 20
+        }
+      },
+      "hybrid": {
+        "n": 80,
+        "iou": 0.8220142466260457,
+        "categories": {
+          "en_echelon": 20,
+          "horsetail": 20,
+          "negative_flower": 20,
+          "positive_flower": 20
+        }
+      }
+    },
+    "5": {
+      "unet": {
+        "n": 20,
+        "iou": 0.7165883618654665,
+        "categories": {
+          "listric_assemblage": 20
+        }
+      },
+      "maxvit": {
+        "n": 20,
+        "iou": 0.7092280754847495,
+        "categories": {
+          "listric_assemblage": 20
+        }
+      },
+      "hybrid": {
+        "n": 20,
+        "iou": 0.6820748014386283,
+        "categories": {
+          "listric_assemblage": 20
+        }
+      }
+    }
+  },
+  "tree_depth": {
+    "2": {
+      "unet": {
+        "n": 40,
+        "iou": 0.8600009174665689,
+        "categories": {
+          "en_echelon": 20,
+          "horsetail": 20
+        }
+      },
+      "maxvit": {
+        "n": 40,
+        "iou": 0.862696129707113,
+        "categories": {
+          "en_echelon": 20,
+          "horsetail": 20
+        }
+      },
+      "hybrid": {
+        "n": 40,
+        "iou": 0.8395690502024871,
+        "categories": {
+          "en_echelon": 20,
+          "horsetail": 20
+        }
+      }
+    },
+    "3": {
+      "unet": {
+        "n": 40,
+        "iou": 0.7694593795188642,
+        "categories": {
+          "negative_flower": 20,
+          "listric_assemblage": 20
+        }
+      },
+      "maxvit": {
+        "n": 40,
+        "iou": 0.7629415766691674,
+        "categories": {
+          "negative_flower": 20,
+          "listric_assemblage": 20
+        }
+      },
+      "hybrid": {
+        "n": 40,
+        "iou": 0.7390243917622166,
+        "categories": {
+          "negative_flower": 20,
+          "listric_assemblage": 20
+        }
+      }
+    },
+    "4": {
+      "unet": {
+        "n": 20,
+        "iou": 0.8455331911052333,
+        "categories": {
+          "positive_flower": 20
+        }
+      },
+      "maxvit": {
+        "n": 20,
+        "iou": 0.8466477047338372,
+        "categories": {
+          "positive_flower": 20
+        }
+      },
+      "hybrid": {
+        "n": 20,
+        "iou": 0.8234925756870799,
+        "categories": {
+          "positive_flower": 20
+        }
+      }
+    }
+  }
+}

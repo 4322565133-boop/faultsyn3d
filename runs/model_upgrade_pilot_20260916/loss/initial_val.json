@@ -1,0 +1,18 @@
+{
+  "loss": 0.656282723993063,
+  "iou": 0.8207054428394586,
+  "dice": 0.9015246766764619,
+  "precision": 0.9089608451690552,
+  "recall": 0.8942091908160157,
+  "ap": 0.947152142465592,
+  "iou_en_echelon": 0.9098025024900179,
+  "ap_en_echelon": 0.9887008651069531,
+  "iou_horsetail": 0.7996060864429261,
+  "ap_horsetail": 0.9350171670279497,
+  "iou_negative_flower": 0.80822617734885,
+  "ap_negative_flower": 0.9390975245798664,
+  "iou_positive_flower": 0.8466526995698238,
+  "ap_positive_flower": 0.9653801032437707,
+  "iou_listric_assemblage": 0.7092404423007362,
+  "ap_listric_assemblage": 0.8729488715045344
+}

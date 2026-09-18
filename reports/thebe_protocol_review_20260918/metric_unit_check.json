@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "checks": [
+    "threshold strict > counts",
+    "ties at 0.5",
+    "empty prediction denominator"
+  ],
+  "gpu_inference_executed": false
+}

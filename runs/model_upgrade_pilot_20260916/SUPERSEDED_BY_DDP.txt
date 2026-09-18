@@ -1,0 +1,1 @@
+Stopped at user request to use four GPUs jointly with DDP. Partial results are not the final experiment.

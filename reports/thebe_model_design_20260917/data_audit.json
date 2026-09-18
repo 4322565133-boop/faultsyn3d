@@ -1,0 +1,421 @@
+{
+  "headers": {
+    "seis": {
+      "test1": {
+        "shape": [
+          100,
+          3174,
+          1537
+        ],
+        "dtype": "float64",
+        "compressed_bytes": 1476208507
+      },
+      "test2": {
+        "shape": [
+          100,
+          3174,
+          1537
+        ],
+        "dtype": "float64",
+        "compressed_bytes": 1544597269
+      },
+      "test3": {
+        "shape": [
+          100,
+          3174,
+          1537
+        ],
+        "dtype": "float64",
+        "compressed_bytes": 1605001133
+      },
+      "test4": {
+        "shape": [
+          100,
+          3174,
+          1537
+        ],
+        "dtype": "float64",
+        "compressed_bytes": 1610578476
+      },
+      "test5": {
+        "shape": [
+          100,
+          3174,
+          1537
+        ],
+        "dtype": "float64",
+        "compressed_bytes": 1475926673
+      },
+      "test6": {
+        "shape": [
+          100,
+          3174,
+          1537
+        ],
+        "dtype": "float64",
+        "compressed_bytes": 1295771351
+      },
+      "test7": {
+        "shape": [
+          103,
+          3174,
+          1537
+        ],
+        "dtype": "float64",
+        "compressed_bytes": 1163971209
+      },
+      "train1": {
+        "shape": [
+          100,
+          3174,
+          1537
+        ],
+        "dtype": "float64",
+        "compressed_bytes": 831794776
+      },
+      "train2": {
+        "shape": [
+          100,
+          3174,
+          1537
+        ],
+        "dtype": "float64",
+        "compressed_bytes": 869268913
+      },
+      "train3": {
+        "shape": [
+          100,
+          3174,
+          1537
+        ],
+        "dtype": "float64",
+        "compressed_bytes": 907831974
+      },
+      "train4": {
+        "shape": [
+          100,
+          3174,
+          1537
+        ],
+        "dtype": "float64",
+        "compressed_bytes": 946948282
+      },
+      "train5": {
+        "shape": [
+          100,
+          3174,
+          1537
+        ],
+        "dtype": "float64",
+        "compressed_bytes": 984757778
+      },
+      "train6": {
+        "shape": [
+          100,
+          3174,
+          1537
+        ],
+        "dtype": "float64",
+        "compressed_bytes": 1026095580
+      },
+      "train7": {
+        "shape": [
+          100,
+          3174,
+          1537
+        ],
+        "dtype": "float64",
+        "compressed_bytes": 1213723277
+      },
+      "train8": {
+        "shape": [
+          100,
+          3174,
+          1537
+        ],
+        "dtype": "float64",
+        "compressed_bytes": 1231111389
+      },
+      "train9": {
+        "shape": [
+          100,
+          3174,
+          1537
+        ],
+        "dtype": "float64",
+        "compressed_bytes": 1239650990
+      },
+      "val1": {
+        "shape": [
+          100,
+          3174,
+          1537
+        ],
+        "dtype": "float64",
+        "compressed_bytes": 1314676313
+      },
+      "val2": {
+        "shape": [
+          100,
+          3174,
+          1537
+        ],
+        "dtype": "float64",
+        "compressed_bytes": 1391502667
+      }
+    },
+    "fault": {
+      "test1": {
+        "shape": [
+          100,
+          3174,
+          1537
+        ],
+        "dtype": "bool",
+        "compressed_bytes": 1091568
+      },
+      "test2": {
+        "shape": [
+          100,
+          3174,
+          1537
+        ],
+        "dtype": "bool",
+        "compressed_bytes": 1053314
+      },
+      "test3": {
+        "shape": [
+          100,
+          3174,
+          1537
+        ],
+        "dtype": "bool",
+        "compressed_bytes": 1079681
+      },
+      "test4": {
+        "shape": [
+          100,
+          3174,
+          1537
+        ],
+        "dtype": "bool",
+        "compressed_bytes": 1076361
+      },
+      "test5": {
+        "shape": [
+          100,
+          3174,
+          1537
+        ],
+        "dtype": "bool",
+        "compressed_bytes": 1092287
+      },
+      "test6": {
+        "shape": [
+          100,
+          3174,
+          1537
+        ],
+        "dtype": "bool",
+        "compressed_bytes": 1084141
+      },
+      "test7": {
+        "shape": [
+          103,
+          3174,
+          1537
+        ],
+        "dtype": "bool",
+        "compressed_bytes": 1009603
+      },
+      "train1": {
+        "shape": [
+          100,
+          3174,
+          1537
+        ],
+        "dtype": "bool",
+        "compressed_bytes": 917861
+      },
+      "train2": {
+        "shape": [
+          100,
+          3174,
+          1537
+        ],
+        "dtype": "bool",
+        "compressed_bytes": 940250
+      },
+      "train3": {
+        "shape": [
+          100,
+          3174,
+          1537
+        ],
+        "dtype": "bool",
+        "compressed_bytes": 881272
+      },
+      "train4": {
+        "shape": [
+          100,
+          3174,
+          1537
+        ],
+        "dtype": "bool",
+        "compressed_bytes": 767929
+      },
+      "train5": {
+        "shape": [
+          100,
+          3174,
+          1537
+        ],
+        "dtype": "bool",
+        "compressed_bytes": 764613
+      },
+      "train6": {
+        "shape": [
+          100,
+          3174,
+          1537
+        ],
+        "dtype": "bool",
+        "compressed_bytes": 772705
+      },
+      "train7": {
+        "shape": [
+          100,
+          3174,
+          1537
+        ],
+        "dtype": "bool",
+        "compressed_bytes": 937424
+      },
+      "train8": {
+        "shape": [
+          100,
+          3174,
+          1537
+        ],
+        "dtype": "bool",
+        "compressed_bytes": 911311
+      },
+      "train9": {
+        "shape": [
+          100,
+          3174,
+          1537
+        ],
+        "dtype": "bool",
+        "compressed_bytes": 955922
+      },
+      "val1": {
+        "shape": [
+          100,
+          3174,
+          1537
+        ],
+        "dtype": "bool",
+        "compressed_bytes": 1088280
+      },
+      "val2": {
+        "shape": [
+          100,
+          3174,
+          1537
+        ],
+        "dtype": "bool",
+        "compressed_bytes": 1216734
+      }
+    }
+  },
+  "spatial_split_checks": "PASS: all stored cubes wholly inside original disjoint train/val/test section ranges",
+  "manifest_sha256": "ae6104923ac61b2d9553182907faf47542ae2fd725d624b215d68fd9ec0d024f",
+  "splits": {
+    "train": {
+      "n_cubes": 2400,
+      "unique_origins": 2400,
+      "origin_min": [
+        488,
+        4,
+        0
+      ],
+      "origin_max": [
+        1376,
+        2295,
+        772
+      ],
+      "global_section_extent_half_open": [
+        0,
+        900
+      ],
+      "mean_positive_fraction": 0.03597205718358358,
+      "density_bins_counts": [
+        912,
+        319,
+        1169
+      ]
+    },
+    "validation": {
+      "n_cubes": 600,
+      "unique_origins": 600,
+      "origin_min": [
+        547,
+        11,
+        0
+      ],
+      "origin_max": [
+        1373,
+        2508,
+        72
+      ],
+      "global_section_extent_half_open": [
+        900,
+        1100
+      ],
+      "mean_positive_fraction": 0.03485417366027832,
+      "density_bins_counts": [
+        270,
+        90,
+        240
+      ]
+    },
+    "test": {
+      "n_cubes": 718,
+      "unique_origins": 718,
+      "origin_min": [
+        519,
+        0,
+        0
+      ],
+      "origin_max": [
+        1287,
+        2944,
+        512
+      ],
+      "global_section_extent_half_open": [
+        1100,
+        1740
+      ],
+      "mean_positive_fraction": 0.033570568541630395,
+      "density_bins_counts": [
+        351,
+        65,
+        302
+      ]
+    }
+  },
+  "limitations": [
+    "Header audit does not check every voxel or ZIP CRC.",
+    "900/200/703 adjacent spatial sections belong to one survey; not independent cross-survey generalization.",
+    "Split has no deliberate guard gap; report adjacent-region protocol honestly.",
+    "600 validation patches overlap and are not 600 independent geological volumes."
+  ],
+  "protocol_issues": [
+    "depth_band uses each split ground truth positives to choose evaluation ROI",
+    "validation strata documented as matching test distribution",
+    "full-volume tolerance recall implementation uses predicted-match numerator",
+    "fault_none means <0.5% label fraction, not necessarily truly empty",
+    "source header float64 differs from module docstring float32; explicit conversion exists"
+  ]
+}

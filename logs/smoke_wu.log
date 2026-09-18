@@ -1,0 +1,6 @@
+unet_l: unet3d 9.64M  world=4 global_batch=8 d2s=False profile=False trace=False
+smoke step 0 loss 0.5625 seg 0.5625 pr 0.0000 tr 0.0000
+smoke step 1 loss 0.5570 seg 0.5570 pr 0.0000 tr 0.0000
+smoke step 2 loss 0.5455 seg 0.5455 pr 0.0000 tr 0.0000
+epoch=001 train=0.55821 (seg 0.55821 pr 0.0000 tr 0.0000 ramp 0.00) val=0.55231 IoU=0.0717 P=0.073 R=0.833 lr=1.09e-05 45s
+stop at epoch 1; best val loss 0.55231

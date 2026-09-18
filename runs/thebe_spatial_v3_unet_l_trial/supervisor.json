@@ -1,0 +1,31 @@
+{
+  "status": "completed",
+  "supervisor_pid": 3446553,
+  "command": [
+    "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/bin/python",
+    "-m",
+    "torch.distributed.run",
+    "--master_addr",
+    "127.0.0.1",
+    "--master_port",
+    "29862",
+    "--nproc_per_node",
+    "4",
+    "--",
+    "train/train_thebe_spatial_ddp.py",
+    "--run",
+    "/hdd1/hukaixiao/projects/faultsyn3d/runs/thebe_spatial_v3_unet_l_trial",
+    "--epochs",
+    "100",
+    "--stop-after",
+    "30",
+    "--samples",
+    "2400",
+    "--workers",
+    "2"
+  ],
+  "started": "2026-09-17T17:09:46.972746+09:00",
+  "torchrun_pid": 3446555,
+  "returncode": 0,
+  "ended": "2026-09-17T19:16:26.727857+09:00"
+}

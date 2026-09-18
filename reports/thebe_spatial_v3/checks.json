@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "coverage": "every supported voxel exactly once including tails",
+  "masking": "interior zero retained; padding ignored by loss",
+  "label_independent_validation": true,
+  "deterministic_training": true,
+  "buffer_sections": 32,
+  "full_val_cores": 2433,
+  "fast_val_cores": 96
+}

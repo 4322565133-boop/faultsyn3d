@@ -1,0 +1,5013 @@
+{
+  "status": "read-only audit; no new sampler or training implemented",
+  "split": "train",
+  "origins_source": "reports/thebe_protocol_review_20260918/sampler_audit.json",
+  "origins_source_sha256": "28722997e1986a0d60b9f003aa51cd7941446065d74c816db9090ce4dc8ff683",
+  "epoch": 47,
+  "fraction_definition": "positive valid voxels / all valid voxels in 128^3",
+  "summary": {
+    "n": 384,
+    "empty": 186,
+    "sparse_positive_below_0_5_percent": 46,
+    "at_least_0_5_percent": 152,
+    "positive_patch_empty_core": 80,
+    "positive_patches": 198,
+    "fg50_eligible_empty_core": 34,
+    "fg50_eligible": 152,
+    "seconds": 6.57
+  },
+  "rows": [
+    {
+      "index": 0,
+      "origin": [
+        457,
+        657,
+        359
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 1,
+      "origin": [
+        357,
+        1594,
+        140
+      ],
+      "positive": 0,
+      "valid": 1597218,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 247705
+    },
+    {
+      "index": 2,
+      "origin": [
+        951,
+        1041,
+        110
+      ],
+      "positive": 241028,
+      "valid": 2097152,
+      "fraction": 0.11493110656738281,
+      "core_positive": 8467,
+      "core_valid": 262144
+    },
+    {
+      "index": 3,
+      "origin": [
+        1225,
+        592,
+        504
+      ],
+      "positive": 106,
+      "valid": 2097152,
+      "fraction": 5.054473876953125e-05,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 4,
+      "origin": [
+        1098,
+        1458,
+        310
+      ],
+      "positive": 15940,
+      "valid": 2097152,
+      "fraction": 0.0076007843017578125,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 5,
+      "origin": [
+        913,
+        1565,
+        649
+      ],
+      "positive": 200829,
+      "valid": 2097152,
+      "fraction": 0.09576272964477539,
+      "core_positive": 13710,
+      "core_valid": 262144
+    },
+    {
+      "index": 6,
+      "origin": [
+        891,
+        484,
+        690
+      ],
+      "positive": 109610,
+      "valid": 2097152,
+      "fraction": 0.05226612091064453,
+      "core_positive": 21738,
+      "core_valid": 262144
+    },
+    {
+      "index": 7,
+      "origin": [
+        1138,
+        2246,
+        591
+      ],
+      "positive": 34012,
+      "valid": 1775488,
+      "fraction": 0.019156423473433784,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 8,
+      "origin": [
+        770,
+        977,
+        636
+      ],
+      "positive": 156503,
+      "valid": 2097152,
+      "fraction": 0.07462644577026367,
+      "core_positive": 44194,
+      "core_valid": 262144
+    },
+    {
+      "index": 9,
+      "origin": [
+        1252,
+        1042,
+        272
+      ],
+      "positive": 21871,
+      "valid": 2097152,
+      "fraction": 0.010428905487060547,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 10,
+      "origin": [
+        1286,
+        1901,
+        433
+      ],
+      "positive": 0,
+      "valid": 1489718,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 227529
+    },
+    {
+      "index": 11,
+      "origin": [
+        411,
+        1041,
+        228
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 12,
+      "origin": [
+        1106,
+        1429,
+        565
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 13,
+      "origin": [
+        1125,
+        1279,
+        586
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 14,
+      "origin": [
+        1070,
+        724,
+        359
+      ],
+      "positive": 178913,
+      "valid": 2097152,
+      "fraction": 0.0853123664855957,
+      "core_positive": 26410,
+      "core_valid": 262144
+    },
+    {
+      "index": 15,
+      "origin": [
+        703,
+        2003,
+        535
+      ],
+      "positive": 0,
+      "valid": 1447808,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 189248
+    },
+    {
+      "index": 16,
+      "origin": [
+        414,
+        198,
+        449
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 17,
+      "origin": [
+        266,
+        174,
+        50
+      ],
+      "positive": 0,
+      "valid": 1012182,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 122380
+    },
+    {
+      "index": 18,
+      "origin": [
+        1135,
+        1281,
+        58
+      ],
+      "positive": 282703,
+      "valid": 2097152,
+      "fraction": 0.13480329513549805,
+      "core_positive": 61567,
+      "core_valid": 262144
+    },
+    {
+      "index": 19,
+      "origin": [
+        974,
+        350,
+        385
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 20,
+      "origin": [
+        779,
+        381,
+        201
+      ],
+      "positive": 134340,
+      "valid": 2097152,
+      "fraction": 0.06405830383300781,
+      "core_positive": 26093,
+      "core_valid": 262144
+    },
+    {
+      "index": 21,
+      "origin": [
+        482,
+        725,
+        707
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 22,
+      "origin": [
+        994,
+        91,
+        522
+      ],
+      "positive": 209586,
+      "valid": 2097152,
+      "fraction": 0.09993839263916016,
+      "core_positive": 4718,
+      "core_valid": 262144
+    },
+    {
+      "index": 23,
+      "origin": [
+        1107,
+        792,
+        223
+      ],
+      "positive": 177,
+      "valid": 2097152,
+      "fraction": 8.440017700195312e-05,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 24,
+      "origin": [
+        1279,
+        2201,
+        517
+      ],
+      "positive": 0,
+      "valid": 571246,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 12288
+    },
+    {
+      "index": 25,
+      "origin": [
+        1144,
+        1650,
+        59
+      ],
+      "positive": 0,
+      "valid": 928483,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 93953
+    },
+    {
+      "index": 26,
+      "origin": [
+        1218,
+        2021,
+        654
+      ],
+      "positive": 48034,
+      "valid": 2097152,
+      "fraction": 0.022904396057128906,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 27,
+      "origin": [
+        1006,
+        1488,
+        635
+      ],
+      "positive": 123807,
+      "valid": 2097152,
+      "fraction": 0.0590357780456543,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 28,
+      "origin": [
+        688,
+        1312,
+        453
+      ],
+      "positive": 4690,
+      "valid": 2097152,
+      "fraction": 0.0022363662719726562,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 29,
+      "origin": [
+        305,
+        735,
+        143
+      ],
+      "positive": 0,
+      "valid": 1658309,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 30,
+      "origin": [
+        864,
+        104,
+        408
+      ],
+      "positive": 41208,
+      "valid": 2097152,
+      "fraction": 0.019649505615234375,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 31,
+      "origin": [
+        798,
+        312,
+        147
+      ],
+      "positive": 214313,
+      "valid": 2097152,
+      "fraction": 0.10219240188598633,
+      "core_positive": 40642,
+      "core_valid": 262144
+    },
+    {
+      "index": 32,
+      "origin": [
+        654,
+        732,
+        410
+      ],
+      "positive": 2751,
+      "valid": 2097152,
+      "fraction": 0.0013117790222167969,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 33,
+      "origin": [
+        751,
+        2049,
+        640
+      ],
+      "positive": 499,
+      "valid": 2097152,
+      "fraction": 0.00023794174194335938,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 34,
+      "origin": [
+        978,
+        1617,
+        452
+      ],
+      "positive": 195157,
+      "valid": 2097152,
+      "fraction": 0.09305810928344727,
+      "core_positive": 40238,
+      "core_valid": 262144
+    },
+    {
+      "index": 35,
+      "origin": [
+        604,
+        1138,
+        353
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 36,
+      "origin": [
+        1044,
+        703,
+        620
+      ],
+      "positive": 60748,
+      "valid": 2097152,
+      "fraction": 0.028966903686523438,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 37,
+      "origin": [
+        1236,
+        1641,
+        522
+      ],
+      "positive": 21855,
+      "valid": 2097152,
+      "fraction": 0.010421276092529297,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 38,
+      "origin": [
+        916,
+        158,
+        272
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 39,
+      "origin": [
+        925,
+        1212,
+        10
+      ],
+      "positive": 377990,
+      "valid": 2097152,
+      "fraction": 0.18023967742919922,
+      "core_positive": 31789,
+      "core_valid": 262144
+    },
+    {
+      "index": 40,
+      "origin": [
+        1398,
+        136,
+        244
+      ],
+      "positive": 0,
+      "valid": 1716118,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 41,
+      "origin": [
+        674,
+        1447,
+        723
+      ],
+      "positive": 161009,
+      "valid": 2097152,
+      "fraction": 0.07677507400512695,
+      "core_positive": 3688,
+      "core_valid": 262144
+    },
+    {
+      "index": 42,
+      "origin": [
+        889,
+        1429,
+        224
+      ],
+      "positive": 176712,
+      "valid": 2097152,
+      "fraction": 0.08426284790039062,
+      "core_positive": 28796,
+      "core_valid": 262144
+    },
+    {
+      "index": 43,
+      "origin": [
+        631,
+        1433,
+        719
+      ],
+      "positive": 156307,
+      "valid": 2097152,
+      "fraction": 0.07453298568725586,
+      "core_positive": 6614,
+      "core_valid": 262144
+    },
+    {
+      "index": 44,
+      "origin": [
+        1087,
+        1213,
+        297
+      ],
+      "positive": 215179,
+      "valid": 2097152,
+      "fraction": 0.10260534286499023,
+      "core_positive": 50585,
+      "core_valid": 262144
+    },
+    {
+      "index": 45,
+      "origin": [
+        710,
+        1664,
+        733
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 46,
+      "origin": [
+        1221,
+        425,
+        269
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 47,
+      "origin": [
+        343,
+        445,
+        41
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 48,
+      "origin": [
+        841,
+        612,
+        262
+      ],
+      "positive": 201995,
+      "valid": 2097152,
+      "fraction": 0.09631872177124023,
+      "core_positive": 32826,
+      "core_valid": 262144
+    },
+    {
+      "index": 49,
+      "origin": [
+        858,
+        345,
+        446
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 50,
+      "origin": [
+        586,
+        1686,
+        452
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 51,
+      "origin": [
+        833,
+        580,
+        724
+      ],
+      "positive": 129839,
+      "valid": 2097152,
+      "fraction": 0.06191205978393555,
+      "core_positive": 15743,
+      "core_valid": 262144
+    },
+    {
+      "index": 52,
+      "origin": [
+        761,
+        2284,
+        530
+      ],
+      "positive": 285,
+      "valid": 566351,
+      "fraction": 0.0005032215004476023,
+      "core_positive": 0,
+      "core_valid": 57383
+    },
+    {
+      "index": 53,
+      "origin": [
+        499,
+        1757,
+        710
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 54,
+      "origin": [
+        509,
+        102,
+        691
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 55,
+      "origin": [
+        245,
+        960,
+        332
+      ],
+      "positive": 0,
+      "valid": 676713,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 38297
+    },
+    {
+      "index": 56,
+      "origin": [
+        1125,
+        1518,
+        332
+      ],
+      "positive": 45274,
+      "valid": 2097152,
+      "fraction": 0.02158832550048828,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 57,
+      "origin": [
+        341,
+        381,
+        1
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 58,
+      "origin": [
+        392,
+        221,
+        670
+      ],
+      "positive": 8303,
+      "valid": 2097152,
+      "fraction": 0.003959178924560547,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 59,
+      "origin": [
+        271,
+        1641,
+        630
+      ],
+      "positive": 0,
+      "valid": 1106347,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 145579
+    },
+    {
+      "index": 60,
+      "origin": [
+        1064,
+        37,
+        1
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 61,
+      "origin": [
+        1013,
+        1867,
+        531
+      ],
+      "positive": 104545,
+      "valid": 2097152,
+      "fraction": 0.0498509407043457,
+      "core_positive": 15325,
+      "core_valid": 262144
+    },
+    {
+      "index": 62,
+      "origin": [
+        574,
+        498,
+        53
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 63,
+      "origin": [
+        755,
+        1024,
+        352
+      ],
+      "positive": 247,
+      "valid": 2097152,
+      "fraction": 0.00011777877807617188,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 64,
+      "origin": [
+        1265,
+        1093,
+        191
+      ],
+      "positive": 16111,
+      "valid": 2097152,
+      "fraction": 0.007682323455810547,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 65,
+      "origin": [
+        563,
+        1695,
+        261
+      ],
+      "positive": 0,
+      "valid": 1872384,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 66,
+      "origin": [
+        994,
+        393,
+        386
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 67,
+      "origin": [
+        324,
+        290,
+        57
+      ],
+      "positive": 0,
+      "valid": 1963888,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 68,
+      "origin": [
+        1130,
+        1827,
+        246
+      ],
+      "positive": 0,
+      "valid": 631348,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 54095
+    },
+    {
+      "index": 69,
+      "origin": [
+        751,
+        1674,
+        343
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 70,
+      "origin": [
+        492,
+        295,
+        353
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 71,
+      "origin": [
+        1362,
+        1693,
+        393
+      ],
+      "positive": 54358,
+      "valid": 2097152,
+      "fraction": 0.02591991424560547,
+      "core_positive": 3347,
+      "core_valid": 262144
+    },
+    {
+      "index": 72,
+      "origin": [
+        1187,
+        932,
+        183
+      ],
+      "positive": 1216,
+      "valid": 2097152,
+      "fraction": 0.000579833984375,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 73,
+      "origin": [
+        591,
+        2027,
+        618
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 74,
+      "origin": [
+        1045,
+        795,
+        694
+      ],
+      "positive": 288718,
+      "valid": 2097152,
+      "fraction": 0.13767147064208984,
+      "core_positive": 73905,
+      "core_valid": 262144
+    },
+    {
+      "index": 75,
+      "origin": [
+        417,
+        444,
+        84
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 76,
+      "origin": [
+        852,
+        467,
+        295
+      ],
+      "positive": 19316,
+      "valid": 2097152,
+      "fraction": 0.009210586547851562,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 77,
+      "origin": [
+        709,
+        1745,
+        587
+      ],
+      "positive": 7578,
+      "valid": 2097152,
+      "fraction": 0.0036134719848632812,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 78,
+      "origin": [
+        1405,
+        457,
+        493
+      ],
+      "positive": 0,
+      "valid": 1597584,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262032
+    },
+    {
+      "index": 79,
+      "origin": [
+        1367,
+        1140,
+        365
+      ],
+      "positive": 16511,
+      "valid": 2097152,
+      "fraction": 0.007873058319091797,
+      "core_positive": 20,
+      "core_valid": 262144
+    },
+    {
+      "index": 80,
+      "origin": [
+        1315,
+        1833,
+        407
+      ],
+      "positive": 1311,
+      "valid": 1962726,
+      "fraction": 0.000667948557261686,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 81,
+      "origin": [
+        273,
+        830,
+        170
+      ],
+      "positive": 0,
+      "valid": 1133774,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 151880
+    },
+    {
+      "index": 82,
+      "origin": [
+        663,
+        1495,
+        532
+      ],
+      "positive": 26466,
+      "valid": 2097152,
+      "fraction": 0.012619972229003906,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 83,
+      "origin": [
+        693,
+        2009,
+        666
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 84,
+      "origin": [
+        371,
+        852,
+        719
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 85,
+      "origin": [
+        1031,
+        1140,
+        81
+      ],
+      "positive": 76591,
+      "valid": 2097152,
+      "fraction": 0.03652143478393555,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 86,
+      "origin": [
+        1371,
+        1446,
+        134
+      ],
+      "positive": 2557,
+      "valid": 2097150,
+      "fraction": 0.0012192737763154758,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 87,
+      "origin": [
+        420,
+        1106,
+        513
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 88,
+      "origin": [
+        720,
+        1366,
+        216
+      ],
+      "positive": 174923,
+      "valid": 2097152,
+      "fraction": 0.08340978622436523,
+      "core_positive": 21195,
+      "core_valid": 262144
+    },
+    {
+      "index": 89,
+      "origin": [
+        675,
+        988,
+        70
+      ],
+      "positive": 1385,
+      "valid": 2097152,
+      "fraction": 0.0006604194641113281,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 90,
+      "origin": [
+        1305,
+        761,
+        459
+      ],
+      "positive": 77540,
+      "valid": 2097152,
+      "fraction": 0.03697395324707031,
+      "core_positive": 15906,
+      "core_valid": 262144
+    },
+    {
+      "index": 91,
+      "origin": [
+        957,
+        188,
+        586
+      ],
+      "positive": 229258,
+      "valid": 2097152,
+      "fraction": 0.10931873321533203,
+      "core_positive": 50373,
+      "core_valid": 262144
+    },
+    {
+      "index": 92,
+      "origin": [
+        564,
+        822,
+        583
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 93,
+      "origin": [
+        1265,
+        544,
+        720
+      ],
+      "positive": 180209,
+      "valid": 2097152,
+      "fraction": 0.08593034744262695,
+      "core_positive": 28750,
+      "core_valid": 262144
+    },
+    {
+      "index": 94,
+      "origin": [
+        1039,
+        1562,
+        377
+      ],
+      "positive": 169399,
+      "valid": 2097152,
+      "fraction": 0.08077573776245117,
+      "core_positive": 19689,
+      "core_valid": 262144
+    },
+    {
+      "index": 95,
+      "origin": [
+        528,
+        1416,
+        679
+      ],
+      "positive": 35102,
+      "valid": 2097152,
+      "fraction": 0.016737937927246094,
+      "core_positive": 1552,
+      "core_valid": 262144
+    },
+    {
+      "index": 96,
+      "origin": [
+        269,
+        1175,
+        532
+      ],
+      "positive": 0,
+      "valid": 1069500,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 136171
+    },
+    {
+      "index": 97,
+      "origin": [
+        455,
+        1381,
+        724
+      ],
+      "positive": 816,
+      "valid": 2097152,
+      "fraction": 0.00038909912109375,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 98,
+      "origin": [
+        563,
+        1709,
+        300
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 99,
+      "origin": [
+        1336,
+        1648,
+        82
+      ],
+      "positive": 0,
+      "valid": 1592320,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 236928
+    },
+    {
+      "index": 100,
+      "origin": [
+        1298,
+        7,
+        711
+      ],
+      "positive": 0,
+      "valid": 1773946,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 101,
+      "origin": [
+        755,
+        399,
+        628
+      ],
+      "positive": 101887,
+      "valid": 2097152,
+      "fraction": 0.0485835075378418,
+      "core_positive": 632,
+      "core_valid": 262144
+    },
+    {
+      "index": 102,
+      "origin": [
+        794,
+        1247,
+        447
+      ],
+      "positive": 69935,
+      "valid": 2097152,
+      "fraction": 0.03334760665893555,
+      "core_positive": 18,
+      "core_valid": 262144
+    },
+    {
+      "index": 103,
+      "origin": [
+        927,
+        859,
+        610
+      ],
+      "positive": 364678,
+      "valid": 2097152,
+      "fraction": 0.17389202117919922,
+      "core_positive": 19723,
+      "core_valid": 262144
+    },
+    {
+      "index": 104,
+      "origin": [
+        422,
+        1233,
+        619
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 105,
+      "origin": [
+        576,
+        597,
+        213
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 106,
+      "origin": [
+        964,
+        922,
+        476
+      ],
+      "positive": 126617,
+      "valid": 2097152,
+      "fraction": 0.06037569046020508,
+      "core_positive": 44,
+      "core_valid": 262144
+    },
+    {
+      "index": 107,
+      "origin": [
+        495,
+        728,
+        298
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 108,
+      "origin": [
+        452,
+        136,
+        629
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 109,
+      "origin": [
+        1365,
+        854,
+        28
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 110,
+      "origin": [
+        1341,
+        805,
+        325
+      ],
+      "positive": 89987,
+      "valid": 2097152,
+      "fraction": 0.04290914535522461,
+      "core_positive": 26967,
+      "core_valid": 262144
+    },
+    {
+      "index": 111,
+      "origin": [
+        963,
+        560,
+        486
+      ],
+      "positive": 275041,
+      "valid": 2097152,
+      "fraction": 0.1311497688293457,
+      "core_positive": 48756,
+      "core_valid": 262144
+    },
+    {
+      "index": 112,
+      "origin": [
+        1189,
+        584,
+        723
+      ],
+      "positive": 54141,
+      "valid": 2097152,
+      "fraction": 0.02581644058227539,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 113,
+      "origin": [
+        857,
+        1125,
+        662
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 114,
+      "origin": [
+        1115,
+        1452,
+        572
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 115,
+      "origin": [
+        759,
+        1219,
+        488
+      ],
+      "positive": 349,
+      "valid": 2097152,
+      "fraction": 0.00016641616821289062,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 116,
+      "origin": [
+        605,
+        730,
+        7
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 117,
+      "origin": [
+        996,
+        1442,
+        149
+      ],
+      "positive": 134307,
+      "valid": 2097152,
+      "fraction": 0.06404256820678711,
+      "core_positive": 18799,
+      "core_valid": 262144
+    },
+    {
+      "index": 118,
+      "origin": [
+        716,
+        644,
+        541
+      ],
+      "positive": 69932,
+      "valid": 2097152,
+      "fraction": 0.03334617614746094,
+      "core_positive": 7735,
+      "core_valid": 262144
+    },
+    {
+      "index": 119,
+      "origin": [
+        1367,
+        1107,
+        319
+      ],
+      "positive": 35844,
+      "valid": 2097152,
+      "fraction": 0.017091751098632812,
+      "core_positive": 5704,
+      "core_valid": 262144
+    },
+    {
+      "index": 120,
+      "origin": [
+        948,
+        818,
+        535
+      ],
+      "positive": 382741,
+      "valid": 2097152,
+      "fraction": 0.18250513076782227,
+      "core_positive": 70048,
+      "core_valid": 262144
+    },
+    {
+      "index": 121,
+      "origin": [
+        868,
+        1313,
+        328
+      ],
+      "positive": 193180,
+      "valid": 2097152,
+      "fraction": 0.09211540222167969,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 122,
+      "origin": [
+        365,
+        838,
+        299
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 123,
+      "origin": [
+        731,
+        774,
+        156
+      ],
+      "positive": 98327,
+      "valid": 2097152,
+      "fraction": 0.04688596725463867,
+      "core_positive": 8160,
+      "core_valid": 262144
+    },
+    {
+      "index": 124,
+      "origin": [
+        579,
+        1848,
+        298
+      ],
+      "positive": 0,
+      "valid": 1006208,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 115072
+    },
+    {
+      "index": 125,
+      "origin": [
+        709,
+        559,
+        62
+      ],
+      "positive": 111170,
+      "valid": 2097152,
+      "fraction": 0.053009986877441406,
+      "core_positive": 12596,
+      "core_valid": 262144
+    },
+    {
+      "index": 126,
+      "origin": [
+        941,
+        1146,
+        441
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 127,
+      "origin": [
+        1088,
+        501,
+        267
+      ],
+      "positive": 11182,
+      "valid": 2097152,
+      "fraction": 0.005331993103027344,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 128,
+      "origin": [
+        393,
+        809,
+        140
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 129,
+      "origin": [
+        411,
+        472,
+        655
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 130,
+      "origin": [
+        265,
+        1287,
+        257
+      ],
+      "positive": 0,
+      "valid": 1006241,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 120536
+    },
+    {
+      "index": 131,
+      "origin": [
+        731,
+        1988,
+        483
+      ],
+      "positive": 0,
+      "valid": 947328,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 113088
+    },
+    {
+      "index": 132,
+      "origin": [
+        1335,
+        1597,
+        681
+      ],
+      "positive": 112262,
+      "valid": 2097152,
+      "fraction": 0.05353069305419922,
+      "core_positive": 9082,
+      "core_valid": 262144
+    },
+    {
+      "index": 133,
+      "origin": [
+        743,
+        742,
+        275
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 134,
+      "origin": [
+        1127,
+        387,
+        358
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 135,
+      "origin": [
+        1245,
+        1050,
+        408
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 136,
+      "origin": [
+        1298,
+        1066,
+        411
+      ],
+      "positive": 854,
+      "valid": 2097152,
+      "fraction": 0.00040721893310546875,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 137,
+      "origin": [
+        528,
+        2075,
+        668
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 138,
+      "origin": [
+        434,
+        590,
+        607
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 139,
+      "origin": [
+        1195,
+        797,
+        290
+      ],
+      "positive": 70802,
+      "valid": 2097152,
+      "fraction": 0.033761024475097656,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 140,
+      "origin": [
+        483,
+        1082,
+        141
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 141,
+      "origin": [
+        615,
+        685,
+        77
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 142,
+      "origin": [
+        817,
+        478,
+        439
+      ],
+      "positive": 28565,
+      "valid": 2097152,
+      "fraction": 0.013620853424072266,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 143,
+      "origin": [
+        627,
+        562,
+        711
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 144,
+      "origin": [
+        843,
+        724,
+        38
+      ],
+      "positive": 283447,
+      "valid": 2097152,
+      "fraction": 0.13515806198120117,
+      "core_positive": 41194,
+      "core_valid": 262144
+    },
+    {
+      "index": 145,
+      "origin": [
+        1000,
+        1647,
+        84
+      ],
+      "positive": 5726,
+      "valid": 975231,
+      "fraction": 0.005871429435692672,
+      "core_positive": 0,
+      "core_valid": 107554
+    },
+    {
+      "index": 146,
+      "origin": [
+        1281,
+        1952,
+        645
+      ],
+      "positive": 4586,
+      "valid": 2097152,
+      "fraction": 0.0021867752075195312,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 147,
+      "origin": [
+        830,
+        1655,
+        686
+      ],
+      "positive": 98218,
+      "valid": 2097152,
+      "fraction": 0.04683399200439453,
+      "core_positive": 599,
+      "core_valid": 262144
+    },
+    {
+      "index": 148,
+      "origin": [
+        849,
+        1773,
+        488
+      ],
+      "positive": 77272,
+      "valid": 2097152,
+      "fraction": 0.036846160888671875,
+      "core_positive": 11816,
+      "core_valid": 262144
+    },
+    {
+      "index": 149,
+      "origin": [
+        921,
+        1769,
+        430
+      ],
+      "positive": 161635,
+      "valid": 2097152,
+      "fraction": 0.07707357406616211,
+      "core_positive": 38825,
+      "core_valid": 262144
+    },
+    {
+      "index": 150,
+      "origin": [
+        934,
+        2232,
+        603
+      ],
+      "positive": 108777,
+      "valid": 1975680,
+      "fraction": 0.055058005344995144,
+      "core_positive": 19211,
+      "core_valid": 262144
+    },
+    {
+      "index": 151,
+      "origin": [
+        446,
+        1859,
+        585
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 152,
+      "origin": [
+        701,
+        24,
+        187
+      ],
+      "positive": 0,
+      "valid": 1911216,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 153,
+      "origin": [
+        993,
+        606,
+        64
+      ],
+      "positive": 192008,
+      "valid": 2097152,
+      "fraction": 0.09155654907226562,
+      "core_positive": 29865,
+      "core_valid": 262144
+    },
+    {
+      "index": 154,
+      "origin": [
+        731,
+        1337,
+        417
+      ],
+      "positive": 43888,
+      "valid": 2097152,
+      "fraction": 0.02092742919921875,
+      "core_positive": 3480,
+      "core_valid": 262144
+    },
+    {
+      "index": 155,
+      "origin": [
+        471,
+        1841,
+        662
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 156,
+      "origin": [
+        363,
+        1742,
+        589
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 157,
+      "origin": [
+        293,
+        792,
+        571
+      ],
+      "positive": 0,
+      "valid": 1462266,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 234223
+    },
+    {
+      "index": 158,
+      "origin": [
+        1251,
+        894,
+        276
+      ],
+      "positive": 608,
+      "valid": 2097152,
+      "fraction": 0.0002899169921875,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 159,
+      "origin": [
+        392,
+        1425,
+        83
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 160,
+      "origin": [
+        530,
+        1225,
+        738
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 161,
+      "origin": [
+        421,
+        1150,
+        295
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 162,
+      "origin": [
+        916,
+        1273,
+        230
+      ],
+      "positive": 200556,
+      "valid": 2097152,
+      "fraction": 0.09563255310058594,
+      "core_positive": 28412,
+      "core_valid": 262144
+    },
+    {
+      "index": 163,
+      "origin": [
+        521,
+        1252,
+        739
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 164,
+      "origin": [
+        1238,
+        668,
+        703
+      ],
+      "positive": 173,
+      "valid": 2097152,
+      "fraction": 8.249282836914062e-05,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 165,
+      "origin": [
+        307,
+        209,
+        211
+      ],
+      "positive": 0,
+      "valid": 1683511,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 166,
+      "origin": [
+        913,
+        2317,
+        685
+      ],
+      "positive": 0,
+      "valid": 1277022,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 191488
+    },
+    {
+      "index": 167,
+      "origin": [
+        281,
+        857,
+        196
+      ],
+      "positive": 0,
+      "valid": 1264274,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 185348
+    },
+    {
+      "index": 168,
+      "origin": [
+        1156,
+        387,
+        702
+      ],
+      "positive": 55587,
+      "valid": 2097152,
+      "fraction": 0.02650594711303711,
+      "core_positive": 9,
+      "core_valid": 262144
+    },
+    {
+      "index": 169,
+      "origin": [
+        283,
+        179,
+        134
+      ],
+      "positive": 0,
+      "valid": 1290035,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 190940
+    },
+    {
+      "index": 170,
+      "origin": [
+        854,
+        1437,
+        630
+      ],
+      "positive": 47093,
+      "valid": 2097152,
+      "fraction": 0.022455692291259766,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 171,
+      "origin": [
+        282,
+        570,
+        50
+      ],
+      "positive": 0,
+      "valid": 1281566,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 189441
+    },
+    {
+      "index": 172,
+      "origin": [
+        522,
+        546,
+        438
+      ],
+      "positive": 121448,
+      "valid": 2097152,
+      "fraction": 0.057910919189453125,
+      "core_positive": 5208,
+      "core_valid": 262144
+    },
+    {
+      "index": 173,
+      "origin": [
+        671,
+        1619,
+        491
+      ],
+      "positive": 67192,
+      "valid": 2097152,
+      "fraction": 0.032039642333984375,
+      "core_positive": 306,
+      "core_valid": 262144
+    },
+    {
+      "index": 174,
+      "origin": [
+        1021,
+        1324,
+        488
+      ],
+      "positive": 7270,
+      "valid": 2097152,
+      "fraction": 0.0034666061401367188,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 175,
+      "origin": [
+        666,
+        1044,
+        658
+      ],
+      "positive": 3937,
+      "valid": 2097152,
+      "fraction": 0.0018773078918457031,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 176,
+      "origin": [
+        692,
+        1626,
+        526
+      ],
+      "positive": 71623,
+      "valid": 2097152,
+      "fraction": 0.03415250778198242,
+      "core_positive": 1509,
+      "core_valid": 262144
+    },
+    {
+      "index": 177,
+      "origin": [
+        408,
+        1114,
+        556
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 178,
+      "origin": [
+        1245,
+        446,
+        130
+      ],
+      "positive": 91713,
+      "valid": 2097152,
+      "fraction": 0.0437321662902832,
+      "core_positive": 35276,
+      "core_valid": 262144
+    },
+    {
+      "index": 179,
+      "origin": [
+        1295,
+        1844,
+        327
+      ],
+      "positive": 0,
+      "valid": 1113720,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 143685
+    },
+    {
+      "index": 180,
+      "origin": [
+        503,
+        1715,
+        369
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 181,
+      "origin": [
+        1285,
+        1442,
+        82
+      ],
+      "positive": 59204,
+      "valid": 2097152,
+      "fraction": 0.028230667114257812,
+      "core_positive": 8858,
+      "core_valid": 262144
+    },
+    {
+      "index": 182,
+      "origin": [
+        679,
+        1233,
+        56
+      ],
+      "positive": 22970,
+      "valid": 2097152,
+      "fraction": 0.010952949523925781,
+      "core_positive": 10,
+      "core_valid": 262144
+    },
+    {
+      "index": 183,
+      "origin": [
+        873,
+        996,
+        174
+      ],
+      "positive": 1814,
+      "valid": 2097152,
+      "fraction": 0.0008649826049804688,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 184,
+      "origin": [
+        658,
+        1617,
+        253
+      ],
+      "positive": 0,
+      "valid": 2091356,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 185,
+      "origin": [
+        950,
+        843,
+        605
+      ],
+      "positive": 356165,
+      "valid": 2097152,
+      "fraction": 0.16983270645141602,
+      "core_positive": 45841,
+      "core_valid": 262144
+    },
+    {
+      "index": 186,
+      "origin": [
+        1078,
+        943,
+        141
+      ],
+      "positive": 38556,
+      "valid": 2097152,
+      "fraction": 0.018384933471679688,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 187,
+      "origin": [
+        880,
+        2228,
+        571
+      ],
+      "positive": 94342,
+      "valid": 1452416,
+      "fraction": 0.06495521944126201,
+      "core_positive": 10723,
+      "core_valid": 233216
+    },
+    {
+      "index": 188,
+      "origin": [
+        1122,
+        809,
+        40
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 189,
+      "origin": [
+        303,
+        844,
+        260
+      ],
+      "positive": 0,
+      "valid": 1625978,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 190,
+      "origin": [
+        852,
+        1281,
+        463
+      ],
+      "positive": 88332,
+      "valid": 2097152,
+      "fraction": 0.04211997985839844,
+      "core_positive": 28026,
+      "core_valid": 262144
+    },
+    {
+      "index": 191,
+      "origin": [
+        1267,
+        1144,
+        143
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 192,
+      "origin": [
+        865,
+        1401,
+        687
+      ],
+      "positive": 50184,
+      "valid": 2097152,
+      "fraction": 0.023929595947265625,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 193,
+      "origin": [
+        773,
+        2188,
+        517
+      ],
+      "positive": 1344,
+      "valid": 573440,
+      "fraction": 0.00234375,
+      "core_positive": 0,
+      "core_valid": 12288
+    },
+    {
+      "index": 194,
+      "origin": [
+        918,
+        224,
+        685
+      ],
+      "positive": 117746,
+      "valid": 2097152,
+      "fraction": 0.056145668029785156,
+      "core_positive": 34220,
+      "core_valid": 262144
+    },
+    {
+      "index": 195,
+      "origin": [
+        868,
+        307,
+        51
+      ],
+      "positive": 250884,
+      "valid": 2097152,
+      "fraction": 0.11963081359863281,
+      "core_positive": 31790,
+      "core_valid": 262144
+    },
+    {
+      "index": 196,
+      "origin": [
+        1147,
+        755,
+        121
+      ],
+      "positive": 159,
+      "valid": 2097152,
+      "fraction": 7.581710815429688e-05,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 197,
+      "origin": [
+        529,
+        2124,
+        668
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 198,
+      "origin": [
+        1108,
+        943,
+        675
+      ],
+      "positive": 34043,
+      "valid": 2097152,
+      "fraction": 0.016232967376708984,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 199,
+      "origin": [
+        245,
+        965,
+        446
+      ],
+      "positive": 0,
+      "valid": 675084,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 37873
+    },
+    {
+      "index": 200,
+      "origin": [
+        1331,
+        38,
+        158
+      ],
+      "positive": 0,
+      "valid": 2096607,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 201,
+      "origin": [
+        977,
+        869,
+        690
+      ],
+      "positive": 330451,
+      "valid": 2097152,
+      "fraction": 0.15757131576538086,
+      "core_positive": 10673,
+      "core_valid": 262144
+    },
+    {
+      "index": 202,
+      "origin": [
+        1231,
+        1670,
+        525
+      ],
+      "positive": 43495,
+      "valid": 2097152,
+      "fraction": 0.020740032196044922,
+      "core_positive": 321,
+      "core_valid": 262144
+    },
+    {
+      "index": 203,
+      "origin": [
+        845,
+        178,
+        171
+      ],
+      "positive": 6263,
+      "valid": 2097152,
+      "fraction": 0.002986431121826172,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 204,
+      "origin": [
+        1371,
+        1773,
+        624
+      ],
+      "positive": 608,
+      "valid": 2097151,
+      "fraction": 0.0002899171304307606,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 205,
+      "origin": [
+        275,
+        446,
+        623
+      ],
+      "positive": 0,
+      "valid": 1165013,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 160504
+    },
+    {
+      "index": 206,
+      "origin": [
+        525,
+        655,
+        460
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 207,
+      "origin": [
+        1201,
+        64,
+        559
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 208,
+      "origin": [
+        1223,
+        1226,
+        240
+      ],
+      "positive": 39652,
+      "valid": 2097152,
+      "fraction": 0.018907546997070312,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 209,
+      "origin": [
+        1034,
+        205,
+        589
+      ],
+      "positive": 120423,
+      "valid": 2097152,
+      "fraction": 0.05742216110229492,
+      "core_positive": 28289,
+      "core_valid": 262144
+    },
+    {
+      "index": 210,
+      "origin": [
+        1350,
+        301,
+        250
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 211,
+      "origin": [
+        938,
+        53,
+        464
+      ],
+      "positive": 99847,
+      "valid": 2079780,
+      "fraction": 0.04800844320072315,
+      "core_positive": 21392,
+      "core_valid": 262144
+    },
+    {
+      "index": 212,
+      "origin": [
+        1316,
+        589,
+        69
+      ],
+      "positive": 175,
+      "valid": 2097152,
+      "fraction": 8.344650268554688e-05,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 213,
+      "origin": [
+        878,
+        209,
+        233
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 214,
+      "origin": [
+        561,
+        2096,
+        597
+      ],
+      "positive": 0,
+      "valid": 1884160,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 215,
+      "origin": [
+        928,
+        708,
+        488
+      ],
+      "positive": 199019,
+      "valid": 2097152,
+      "fraction": 0.09489965438842773,
+      "core_positive": 32010,
+      "core_valid": 262144
+    },
+    {
+      "index": 216,
+      "origin": [
+        1261,
+        1663,
+        368
+      ],
+      "positive": 162146,
+      "valid": 2097152,
+      "fraction": 0.0773172378540039,
+      "core_positive": 45362,
+      "core_valid": 262144
+    },
+    {
+      "index": 217,
+      "origin": [
+        434,
+        1500,
+        92
+      ],
+      "positive": 0,
+      "valid": 2074041,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 218,
+      "origin": [
+        628,
+        713,
+        520
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 219,
+      "origin": [
+        547,
+        1377,
+        712
+      ],
+      "positive": 62435,
+      "valid": 2097152,
+      "fraction": 0.02977132797241211,
+      "core_positive": 25800,
+      "core_valid": 262144
+    },
+    {
+      "index": 220,
+      "origin": [
+        742,
+        717,
+        681
+      ],
+      "positive": 104299,
+      "valid": 2097152,
+      "fraction": 0.049733638763427734,
+      "core_positive": 21470,
+      "core_valid": 262144
+    },
+    {
+      "index": 221,
+      "origin": [
+        415,
+        93,
+        542
+      ],
+      "positive": 0,
+      "valid": 1991936,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 222,
+      "origin": [
+        889,
+        704,
+        13
+      ],
+      "positive": 365452,
+      "valid": 2097152,
+      "fraction": 0.17426109313964844,
+      "core_positive": 72127,
+      "core_valid": 262144
+    },
+    {
+      "index": 223,
+      "origin": [
+        623,
+        1511,
+        330
+      ],
+      "positive": 51540,
+      "valid": 2097152,
+      "fraction": 0.024576187133789062,
+      "core_positive": 419,
+      "core_valid": 262144
+    },
+    {
+      "index": 224,
+      "origin": [
+        1045,
+        306,
+        587
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 225,
+      "origin": [
+        788,
+        1542,
+        351
+      ],
+      "positive": 155595,
+      "valid": 2097152,
+      "fraction": 0.07419347763061523,
+      "core_positive": 44049,
+      "core_valid": 262144
+    },
+    {
+      "index": 226,
+      "origin": [
+        1082,
+        1694,
+        526
+      ],
+      "positive": 167385,
+      "valid": 2097152,
+      "fraction": 0.07981538772583008,
+      "core_positive": 25957,
+      "core_valid": 262144
+    },
+    {
+      "index": 227,
+      "origin": [
+        480,
+        1085,
+        58
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 228,
+      "origin": [
+        396,
+        1181,
+        604
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 229,
+      "origin": [
+        1066,
+        1725,
+        542
+      ],
+      "positive": 125378,
+      "valid": 2097152,
+      "fraction": 0.059784889221191406,
+      "core_positive": 14060,
+      "core_valid": 262144
+    },
+    {
+      "index": 230,
+      "origin": [
+        781,
+        167,
+        466
+      ],
+      "positive": 71129,
+      "valid": 2097152,
+      "fraction": 0.03391695022583008,
+      "core_positive": 3309,
+      "core_valid": 262144
+    },
+    {
+      "index": 231,
+      "origin": [
+        828,
+        1456,
+        398
+      ],
+      "positive": 3592,
+      "valid": 2097152,
+      "fraction": 0.001712799072265625,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 232,
+      "origin": [
+        388,
+        1085,
+        280
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 233,
+      "origin": [
+        1251,
+        1538,
+        737
+      ],
+      "positive": 150709,
+      "valid": 2097152,
+      "fraction": 0.07186365127563477,
+      "core_positive": 34540,
+      "core_valid": 262144
+    },
+    {
+      "index": 234,
+      "origin": [
+        525,
+        1255,
+        448
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 235,
+      "origin": [
+        272,
+        2091,
+        639
+      ],
+      "positive": 0,
+      "valid": 1124564,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 149919
+    },
+    {
+      "index": 236,
+      "origin": [
+        740,
+        971,
+        62
+      ],
+      "positive": 5254,
+      "valid": 2097152,
+      "fraction": 0.0025053024291992188,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 237,
+      "origin": [
+        995,
+        611,
+        666
+      ],
+      "positive": 177134,
+      "valid": 2097152,
+      "fraction": 0.08446407318115234,
+      "core_positive": 43943,
+      "core_valid": 262144
+    },
+    {
+      "index": 238,
+      "origin": [
+        679,
+        451,
+        166
+      ],
+      "positive": 121322,
+      "valid": 2097152,
+      "fraction": 0.05785083770751953,
+      "core_positive": 986,
+      "core_valid": 262144
+    },
+    {
+      "index": 239,
+      "origin": [
+        985,
+        1664,
+        325
+      ],
+      "positive": 139653,
+      "valid": 2097152,
+      "fraction": 0.06659173965454102,
+      "core_positive": 18107,
+      "core_valid": 262144
+    },
+    {
+      "index": 240,
+      "origin": [
+        343,
+        1492,
+        202
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 241,
+      "origin": [
+        613,
+        1112,
+        399
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 242,
+      "origin": [
+        767,
+        43,
+        621
+      ],
+      "positive": 122667,
+      "valid": 2097152,
+      "fraction": 0.058492183685302734,
+      "core_positive": 15775,
+      "core_valid": 262144
+    },
+    {
+      "index": 243,
+      "origin": [
+        1043,
+        749,
+        728
+      ],
+      "positive": 196365,
+      "valid": 2097152,
+      "fraction": 0.09363412857055664,
+      "core_positive": 5955,
+      "core_valid": 262144
+    },
+    {
+      "index": 244,
+      "origin": [
+        901,
+        468,
+        667
+      ],
+      "positive": 98037,
+      "valid": 2097152,
+      "fraction": 0.046747684478759766,
+      "core_positive": 28365,
+      "core_valid": 262144
+    },
+    {
+      "index": 245,
+      "origin": [
+        1090,
+        1072,
+        672
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 246,
+      "origin": [
+        612,
+        1198,
+        263
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 247,
+      "origin": [
+        1165,
+        987,
+        623
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 248,
+      "origin": [
+        1383,
+        1621,
+        404
+      ],
+      "positive": 0,
+      "valid": 1946537,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 249,
+      "origin": [
+        1326,
+        1629,
+        358
+      ],
+      "positive": 63169,
+      "valid": 2097152,
+      "fraction": 0.030121326446533203,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 250,
+      "origin": [
+        1362,
+        688,
+        698
+      ],
+      "positive": 934,
+      "valid": 2097152,
+      "fraction": 0.00044536590576171875,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 251,
+      "origin": [
+        1396,
+        925,
+        635
+      ],
+      "positive": 0,
+      "valid": 1752580,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 252,
+      "origin": [
+        756,
+        1609,
+        372
+      ],
+      "positive": 38922,
+      "valid": 2097152,
+      "fraction": 0.01855945587158203,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 253,
+      "origin": [
+        1130,
+        1743,
+        309
+      ],
+      "positive": 0,
+      "valid": 2092922,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 254,
+      "origin": [
+        1219,
+        1538,
+        218
+      ],
+      "positive": 246360,
+      "valid": 2097152,
+      "fraction": 0.11747360229492188,
+      "core_positive": 55155,
+      "core_valid": 262144
+    },
+    {
+      "index": 255,
+      "origin": [
+        399,
+        74,
+        428
+      ],
+      "positive": 0,
+      "valid": 1521024,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 249344
+    },
+    {
+      "index": 256,
+      "origin": [
+        776,
+        1394,
+        544
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 257,
+      "origin": [
+        620,
+        947,
+        694
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 258,
+      "origin": [
+        1005,
+        1763,
+        405
+      ],
+      "positive": 146371,
+      "valid": 2097152,
+      "fraction": 0.06979513168334961,
+      "core_positive": 2634,
+      "core_valid": 262144
+    },
+    {
+      "index": 259,
+      "origin": [
+        1250,
+        2325,
+        613
+      ],
+      "positive": 0,
+      "valid": 1771161,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 260,
+      "origin": [
+        1008,
+        62,
+        211
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 261,
+      "origin": [
+        593,
+        1005,
+        277
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 262,
+      "origin": [
+        1065,
+        1211,
+        723
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 263,
+      "origin": [
+        1245,
+        1693,
+        213
+      ],
+      "positive": 5524,
+      "valid": 2020064,
+      "fraction": 0.0027345668256055253,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 264,
+      "origin": [
+        1109,
+        1736,
+        348
+      ],
+      "positive": 42,
+      "valid": 2097152,
+      "fraction": 2.002716064453125e-05,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 265,
+      "origin": [
+        1143,
+        1013,
+        325
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 266,
+      "origin": [
+        411,
+        606,
+        85
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 267,
+      "origin": [
+        1406,
+        680,
+        82
+      ],
+      "positive": 22662,
+      "valid": 1584518,
+      "fraction": 0.014302141092748709,
+      "core_positive": 1243,
+      "core_valid": 260928
+    },
+    {
+      "index": 268,
+      "origin": [
+        424,
+        685,
+        13
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 269,
+      "origin": [
+        1136,
+        1062,
+        169
+      ],
+      "positive": 191684,
+      "valid": 2097152,
+      "fraction": 0.09140205383300781,
+      "core_positive": 45594,
+      "core_valid": 262144
+    },
+    {
+      "index": 270,
+      "origin": [
+        1060,
+        588,
+        564
+      ],
+      "positive": 210097,
+      "valid": 2097152,
+      "fraction": 0.10018205642700195,
+      "core_positive": 5490,
+      "core_valid": 262144
+    },
+    {
+      "index": 271,
+      "origin": [
+        1260,
+        35,
+        344
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 272,
+      "origin": [
+        851,
+        180,
+        574
+      ],
+      "positive": 249778,
+      "valid": 2097152,
+      "fraction": 0.11910343170166016,
+      "core_positive": 17325,
+      "core_valid": 262144
+    },
+    {
+      "index": 273,
+      "origin": [
+        811,
+        1145,
+        19
+      ],
+      "positive": 329695,
+      "valid": 2097152,
+      "fraction": 0.1572108268737793,
+      "core_positive": 58479,
+      "core_valid": 262144
+    },
+    {
+      "index": 274,
+      "origin": [
+        1048,
+        1402,
+        516
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 275,
+      "origin": [
+        816,
+        1013,
+        729
+      ],
+      "positive": 173419,
+      "valid": 2097152,
+      "fraction": 0.08269262313842773,
+      "core_positive": 15313,
+      "core_valid": 262144
+    },
+    {
+      "index": 276,
+      "origin": [
+        1002,
+        857,
+        550
+      ],
+      "positive": 422942,
+      "valid": 2097152,
+      "fraction": 0.2016744613647461,
+      "core_positive": 88150,
+      "core_valid": 262144
+    },
+    {
+      "index": 277,
+      "origin": [
+        1364,
+        1708,
+        518
+      ],
+      "positive": 182,
+      "valid": 2097152,
+      "fraction": 8.678436279296875e-05,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 278,
+      "origin": [
+        1330,
+        41,
+        33
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 279,
+      "origin": [
+        483,
+        607,
+        670
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 280,
+      "origin": [
+        328,
+        114,
+        500
+      ],
+      "positive": 0,
+      "valid": 2026115,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 281,
+      "origin": [
+        499,
+        840,
+        437
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 282,
+      "origin": [
+        658,
+        356,
+        168
+      ],
+      "positive": 54118,
+      "valid": 2097152,
+      "fraction": 0.02580547332763672,
+      "core_positive": 2825,
+      "core_valid": 262144
+    },
+    {
+      "index": 283,
+      "origin": [
+        696,
+        1291,
+        439
+      ],
+      "positive": 13010,
+      "valid": 2097152,
+      "fraction": 0.006203651428222656,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 284,
+      "origin": [
+        1112,
+        1955,
+        569
+      ],
+      "positive": 92402,
+      "valid": 2040573,
+      "fraction": 0.04528237901805032,
+      "core_positive": 22706,
+      "core_valid": 262144
+    },
+    {
+      "index": 285,
+      "origin": [
+        357,
+        1625,
+        373
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 286,
+      "origin": [
+        342,
+        1643,
+        578
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 287,
+      "origin": [
+        1134,
+        1154,
+        93
+      ],
+      "positive": 4207,
+      "valid": 2097152,
+      "fraction": 0.002006053924560547,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 288,
+      "origin": [
+        808,
+        387,
+        623
+      ],
+      "positive": 194462,
+      "valid": 2097152,
+      "fraction": 0.0927267074584961,
+      "core_positive": 15694,
+      "core_valid": 262144
+    },
+    {
+      "index": 289,
+      "origin": [
+        1109,
+        1263,
+        163
+      ],
+      "positive": 9543,
+      "valid": 2097152,
+      "fraction": 0.004550457000732422,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 290,
+      "origin": [
+        1086,
+        169,
+        544
+      ],
+      "positive": 66619,
+      "valid": 2097152,
+      "fraction": 0.031766414642333984,
+      "core_positive": 5518,
+      "core_valid": 262144
+    },
+    {
+      "index": 291,
+      "origin": [
+        1020,
+        77,
+        304
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 292,
+      "origin": [
+        997,
+        195,
+        317
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 293,
+      "origin": [
+        667,
+        763,
+        579
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 294,
+      "origin": [
+        460,
+        305,
+        70
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 295,
+      "origin": [
+        968,
+        1834,
+        367
+      ],
+      "positive": 0,
+      "valid": 1873536,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 296,
+      "origin": [
+        370,
+        1149,
+        598
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 297,
+      "origin": [
+        1006,
+        2,
+        219
+      ],
+      "positive": 0,
+      "valid": 1757764,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 245656
+    },
+    {
+      "index": 298,
+      "origin": [
+        1325,
+        607,
+        583
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 299,
+      "origin": [
+        1082,
+        1924,
+        377
+      ],
+      "positive": 0,
+      "valid": 702744,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 48020
+    },
+    {
+      "index": 300,
+      "origin": [
+        297,
+        1462,
+        37
+      ],
+      "positive": 0,
+      "valid": 1480263,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 251305
+    },
+    {
+      "index": 301,
+      "origin": [
+        666,
+        796,
+        338
+      ],
+      "positive": 3648,
+      "valid": 2097152,
+      "fraction": 0.001739501953125,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 302,
+      "origin": [
+        1312,
+        1158,
+        58
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 303,
+      "origin": [
+        1230,
+        1600,
+        158
+      ],
+      "positive": 83618,
+      "valid": 2097152,
+      "fraction": 0.039872169494628906,
+      "core_positive": 191,
+      "core_valid": 262144
+    },
+    {
+      "index": 304,
+      "origin": [
+        947,
+        1742,
+        399
+      ],
+      "positive": 250704,
+      "valid": 2097152,
+      "fraction": 0.11954498291015625,
+      "core_positive": 44682,
+      "core_valid": 262144
+    },
+    {
+      "index": 305,
+      "origin": [
+        1008,
+        881,
+        512
+      ],
+      "positive": 330256,
+      "valid": 2097152,
+      "fraction": 0.15747833251953125,
+      "core_positive": 43825,
+      "core_valid": 262144
+    },
+    {
+      "index": 306,
+      "origin": [
+        779,
+        458,
+        353
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 307,
+      "origin": [
+        656,
+        1197,
+        61
+      ],
+      "positive": 12709,
+      "valid": 2097152,
+      "fraction": 0.006060123443603516,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 308,
+      "origin": [
+        1401,
+        47,
+        83
+      ],
+      "positive": 0,
+      "valid": 1657615,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 309,
+      "origin": [
+        1064,
+        900,
+        629
+      ],
+      "positive": 169646,
+      "valid": 2097152,
+      "fraction": 0.08089351654052734,
+      "core_positive": 39121,
+      "core_valid": 262144
+    },
+    {
+      "index": 310,
+      "origin": [
+        1409,
+        649,
+        193
+      ],
+      "positive": 15766,
+      "valid": 1536535,
+      "fraction": 0.010260749022964007,
+      "core_positive": 0,
+      "core_valid": 254805
+    },
+    {
+      "index": 311,
+      "origin": [
+        956,
+        1490,
+        102
+      ],
+      "positive": 123892,
+      "valid": 2097152,
+      "fraction": 0.05907630920410156,
+      "core_positive": 6729,
+      "core_valid": 262144
+    },
+    {
+      "index": 312,
+      "origin": [
+        855,
+        1837,
+        371
+      ],
+      "positive": 2924,
+      "valid": 1875328,
+      "fraction": 0.0015591939116783838,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 313,
+      "origin": [
+        1344,
+        820,
+        97
+      ],
+      "positive": 7192,
+      "valid": 2097152,
+      "fraction": 0.003429412841796875,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 314,
+      "origin": [
+        1176,
+        1337,
+        260
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 315,
+      "origin": [
+        430,
+        1390,
+        578
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 316,
+      "origin": [
+        333,
+        522,
+        338
+      ],
+      "positive": 0,
+      "valid": 2096906,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 317,
+      "origin": [
+        804,
+        1917,
+        711
+      ],
+      "positive": 8743,
+      "valid": 2097152,
+      "fraction": 0.004168987274169922,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 318,
+      "origin": [
+        787,
+        1704,
+        314
+      ],
+      "positive": 12905,
+      "valid": 2097152,
+      "fraction": 0.006153583526611328,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 319,
+      "origin": [
+        877,
+        1848,
+        337
+      ],
+      "positive": 0,
+      "valid": 1450112,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 218112
+    },
+    {
+      "index": 320,
+      "origin": [
+        376,
+        1193,
+        601
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 321,
+      "origin": [
+        763,
+        1026,
+        733
+      ],
+      "positive": 86847,
+      "valid": 2097152,
+      "fraction": 0.0414118766784668,
+      "core_positive": 5560,
+      "core_valid": 262144
+    },
+    {
+      "index": 322,
+      "origin": [
+        995,
+        440,
+        158
+      ],
+      "positive": 108897,
+      "valid": 2097152,
+      "fraction": 0.0519261360168457,
+      "core_positive": 20423,
+      "core_valid": 262144
+    },
+    {
+      "index": 323,
+      "origin": [
+        439,
+        719,
+        668
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 324,
+      "origin": [
+        430,
+        981,
+        714
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 325,
+      "origin": [
+        649,
+        914,
+        110
+      ],
+      "positive": 1187,
+      "valid": 2097152,
+      "fraction": 0.0005660057067871094,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 326,
+      "origin": [
+        717,
+        1943,
+        631
+      ],
+      "positive": 1677,
+      "valid": 2097152,
+      "fraction": 0.0007996559143066406,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 327,
+      "origin": [
+        727,
+        2004,
+        544
+      ],
+      "positive": 0,
+      "valid": 1542016,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 206400
+    },
+    {
+      "index": 328,
+      "origin": [
+        384,
+        1292,
+        423
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 329,
+      "origin": [
+        285,
+        811,
+        96
+      ],
+      "positive": 0,
+      "valid": 1331686,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 201874
+    },
+    {
+      "index": 330,
+      "origin": [
+        955,
+        636,
+        709
+      ],
+      "positive": 213557,
+      "valid": 2097152,
+      "fraction": 0.10183191299438477,
+      "core_positive": 37284,
+      "core_valid": 262144
+    },
+    {
+      "index": 331,
+      "origin": [
+        1262,
+        663,
+        103
+      ],
+      "positive": 127767,
+      "valid": 2097152,
+      "fraction": 0.06092405319213867,
+      "core_positive": 34104,
+      "core_valid": 262144
+    },
+    {
+      "index": 332,
+      "origin": [
+        662,
+        1706,
+        347
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 333,
+      "origin": [
+        1406,
+        600,
+        64
+      ],
+      "positive": 0,
+      "valid": 1587133,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 261766
+    },
+    {
+      "index": 334,
+      "origin": [
+        293,
+        1740,
+        333
+      ],
+      "positive": 0,
+      "valid": 1467635,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 236051
+    },
+    {
+      "index": 335,
+      "origin": [
+        899,
+        391,
+        660
+      ],
+      "positive": 221385,
+      "valid": 2097152,
+      "fraction": 0.10556459426879883,
+      "core_positive": 45369,
+      "core_valid": 262144
+    },
+    {
+      "index": 336,
+      "origin": [
+        1142,
+        1328,
+        279
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 337,
+      "origin": [
+        526,
+        750,
+        199
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 338,
+      "origin": [
+        1020,
+        1519,
+        157
+      ],
+      "positive": 198716,
+      "valid": 2097152,
+      "fraction": 0.09475517272949219,
+      "core_positive": 13245,
+      "core_valid": 262144
+    },
+    {
+      "index": 339,
+      "origin": [
+        406,
+        1514,
+        81
+      ],
+      "positive": 0,
+      "valid": 1958619,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 340,
+      "origin": [
+        311,
+        1446,
+        410
+      ],
+      "positive": 0,
+      "valid": 1758648,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 341,
+      "origin": [
+        1374,
+        717,
+        120
+      ],
+      "positive": 119555,
+      "valid": 2093799,
+      "fraction": 0.05709955922225581,
+      "core_positive": 25934,
+      "core_valid": 262144
+    },
+    {
+      "index": 342,
+      "origin": [
+        308,
+        224,
+        389
+      ],
+      "positive": 0,
+      "valid": 1701497,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 343,
+      "origin": [
+        954,
+        1816,
+        389
+      ],
+      "positive": 3155,
+      "valid": 2079872,
+      "fraction": 0.0015169202720167396,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 344,
+      "origin": [
+        619,
+        1683,
+        719
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 345,
+      "origin": [
+        858,
+        20,
+        152
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 346,
+      "origin": [
+        992,
+        1836,
+        251
+      ],
+      "positive": 0,
+      "valid": 619264,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 45952
+    },
+    {
+      "index": 347,
+      "origin": [
+        1226,
+        1107,
+        493
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 348,
+      "origin": [
+        858,
+        323,
+        168
+      ],
+      "positive": 166954,
+      "valid": 2097152,
+      "fraction": 0.07960987091064453,
+      "core_positive": 23491,
+      "core_valid": 262144
+    },
+    {
+      "index": 349,
+      "origin": [
+        1356,
+        1512,
+        448
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 350,
+      "origin": [
+        774,
+        1130,
+        404
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 351,
+      "origin": [
+        365,
+        815,
+        250
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 352,
+      "origin": [
+        1341,
+        725,
+        368
+      ],
+      "positive": 19862,
+      "valid": 2097152,
+      "fraction": 0.009470939636230469,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 353,
+      "origin": [
+        461,
+        2148,
+        664
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 354,
+      "origin": [
+        889,
+        1670,
+        690
+      ],
+      "positive": 277646,
+      "valid": 2097152,
+      "fraction": 0.13239192962646484,
+      "core_positive": 40557,
+      "core_valid": 262144
+    },
+    {
+      "index": 355,
+      "origin": [
+        939,
+        1043,
+        180
+      ],
+      "positive": 61203,
+      "valid": 2097152,
+      "fraction": 0.02918386459350586,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 356,
+      "origin": [
+        1196,
+        680,
+        244
+      ],
+      "positive": 184743,
+      "valid": 2097152,
+      "fraction": 0.08809232711791992,
+      "core_positive": 41814,
+      "core_valid": 262144
+    },
+    {
+      "index": 357,
+      "origin": [
+        828,
+        912,
+        694
+      ],
+      "positive": 210444,
+      "valid": 2097152,
+      "fraction": 0.10034751892089844,
+      "core_positive": 2292,
+      "core_valid": 262144
+    },
+    {
+      "index": 358,
+      "origin": [
+        813,
+        2013,
+        503
+      ],
+      "positive": 0,
+      "valid": 882432,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 67456
+    },
+    {
+      "index": 359,
+      "origin": [
+        979,
+        1098,
+        387
+      ],
+      "positive": 43732,
+      "valid": 2097152,
+      "fraction": 0.020853042602539062,
+      "core_positive": 13515,
+      "core_valid": 262144
+    },
+    {
+      "index": 360,
+      "origin": [
+        379,
+        177,
+        326
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 361,
+      "origin": [
+        543,
+        597,
+        166
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 362,
+      "origin": [
+        1191,
+        533,
+        371
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 363,
+      "origin": [
+        643,
+        625,
+        619
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 364,
+      "origin": [
+        602,
+        921,
+        254
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 365,
+      "origin": [
+        1151,
+        1533,
+        373
+      ],
+      "positive": 8567,
+      "valid": 2097152,
+      "fraction": 0.004085063934326172,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 366,
+      "origin": [
+        1286,
+        14,
+        30
+      ],
+      "positive": 0,
+      "valid": 1898599,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 367,
+      "origin": [
+        1387,
+        1463,
+        92
+      ],
+      "positive": 389,
+      "valid": 1897232,
+      "fraction": 0.0002050355465225128,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 368,
+      "origin": [
+        386,
+        2189,
+        578
+      ],
+      "positive": 0,
+      "valid": 1572864,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 369,
+      "origin": [
+        1214,
+        1177,
+        435
+      ],
+      "positive": 27426,
+      "valid": 2097152,
+      "fraction": 0.013077735900878906,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 370,
+      "origin": [
+        456,
+        262,
+        722
+      ],
+      "positive": 40079,
+      "valid": 2097152,
+      "fraction": 0.019111156463623047,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 371,
+      "origin": [
+        1139,
+        1717,
+        481
+      ],
+      "positive": 180600,
+      "valid": 2097152,
+      "fraction": 0.08611679077148438,
+      "core_positive": 43786,
+      "core_valid": 262144
+    },
+    {
+      "index": 372,
+      "origin": [
+        1276,
+        1612,
+        673
+      ],
+      "positive": 171475,
+      "valid": 2097152,
+      "fraction": 0.08176565170288086,
+      "core_positive": 36387,
+      "core_valid": 262144
+    },
+    {
+      "index": 373,
+      "origin": [
+        845,
+        1513,
+        574
+      ],
+      "positive": 248507,
+      "valid": 2097152,
+      "fraction": 0.11849737167358398,
+      "core_positive": 69945,
+      "core_valid": 262144
+    },
+    {
+      "index": 374,
+      "origin": [
+        1388,
+        772,
+        59
+      ],
+      "positive": 6914,
+      "valid": 1879522,
+      "fraction": 0.003678594876782501,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 375,
+      "origin": [
+        294,
+        334,
+        588
+      ],
+      "positive": 0,
+      "valid": 1472974,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 236475
+    },
+    {
+      "index": 376,
+      "origin": [
+        1017,
+        878,
+        696
+      ],
+      "positive": 282886,
+      "valid": 2097152,
+      "fraction": 0.13489055633544922,
+      "core_positive": 22247,
+      "core_valid": 262144
+    },
+    {
+      "index": 377,
+      "origin": [
+        1248,
+        2262,
+        706
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 378,
+      "origin": [
+        1012,
+        1236,
+        302
+      ],
+      "positive": 233081,
+      "valid": 2097152,
+      "fraction": 0.11114168167114258,
+      "core_positive": 55386,
+      "core_valid": 262144
+    },
+    {
+      "index": 379,
+      "origin": [
+        1272,
+        1941,
+        627
+      ],
+      "positive": 6319,
+      "valid": 2097152,
+      "fraction": 0.003013134002685547,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 380,
+      "origin": [
+        454,
+        1144,
+        514
+      ],
+      "positive": 0,
+      "valid": 2097152,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    },
+    {
+      "index": 381,
+      "origin": [
+        1195,
+        804,
+        603
+      ],
+      "positive": 106174,
+      "valid": 2097152,
+      "fraction": 0.050627708435058594,
+      "core_positive": 14176,
+      "core_valid": 262144
+    },
+    {
+      "index": 382,
+      "origin": [
+        736,
+        1425,
+        251
+      ],
+      "positive": 182780,
+      "valid": 2097152,
+      "fraction": 0.08715629577636719,
+      "core_positive": 47663,
+      "core_valid": 262144
+    },
+    {
+      "index": 383,
+      "origin": [
+        315,
+        1317,
+        723
+      ],
+      "positive": 0,
+      "valid": 1824087,
+      "fraction": 0.0,
+      "core_positive": 0,
+      "core_valid": 262144
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "fp16_vs_fp32_loss": [
+    0.6083686947822571,
+    0.6083686947822571
+  ],
+  "profile_match_thick_shift": [
+    0.02019788697361946,
+    0.4234977960586548,
+    0.6661662459373474
+  ],
+  "trace_match_gap": [
+    0.0050255656242370605,
+    0.42653387784957886
+  ],
+  "augmentation_checks": [
+    {
+      "sample": 0,
+      "epoch": 1,
+      "valid_windows": 6
+    },
+    {
+      "sample": 175,
+      "epoch": 2,
+      "valid_windows": 4
+    },
+    {
+      "sample": 350,
+      "epoch": 3,
+      "valid_windows": 6
+    },
+    {
+      "sample": 525,
+      "epoch": 4,
+      "valid_windows": 4
+    },
+    {
+      "sample": 799,
+      "epoch": 5,
+      "valid_windows": 6
+    }
+  ]
+}

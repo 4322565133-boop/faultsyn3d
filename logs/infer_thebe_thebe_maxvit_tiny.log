@@ -1,0 +1,21 @@
+loading Thebe test ...
+  test1: (100, 3174, 1537) float64
+  test2: (100, 3174, 1537) float64
+  test3: (100, 3174, 1537) float64
+  test4: (100, 3174, 1537) float64
+  test5: (100, 3174, 1537) float64
+  test6: (100, 3174, 1537) float64
+  test7: (103, 3174, 1537) float64
+  volume (1537, 3174, 703), depth band (519, 1527), valid voxels 0.565, fault fraction (valid) 0.0297, 253s
+    0/7964 windows, 1s
+    1000/7964 windows, 75s
+    2000/7964 windows, 149s
+    3000/7964 windows, 223s
+    4000/7964 windows, 297s
+    5000/7964 windows, 372s
+    6000/7964 windows, 446s
+    7000/7964 windows, 520s
+maxvit3d_thebe_maxvit_tiny       ep  53  IoU 0.380  Dice 0.550  AP 0.584  P 0.457  R 0.693  tol2 P 0.643 R 0.855  (630s)
+
+run                               ep    IoU   Dice     AP      P      R  tol2P  tol2R
+maxvit3d_thebe_maxvit_tiny        53  0.380  0.550  0.584  0.457  0.693  0.643  0.855

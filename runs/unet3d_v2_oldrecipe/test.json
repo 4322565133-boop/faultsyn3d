@@ -1,0 +1,22 @@
+{
+  "loss": 0.4658926324546337,
+  "iou": 0.81990651547842,
+  "dice": 0.901042453010705,
+  "precision": 0.891920881931289,
+  "recall": 0.9103525223318708,
+  "ap": 0.950097689187879,
+  "iou_en_echelon": 0.9062097915643736,
+  "ap_en_echelon": 0.9903448158072363,
+  "iou_horsetail": 0.7836252633736358,
+  "ap_horsetail": 0.9273416969265195,
+  "iou_negative_flower": 0.8241506195367738,
+  "ap_negative_flower": 0.9533335073902796,
+  "iou_positive_flower": 0.8230202252934565,
+  "ap_positive_flower": 0.9576128517171671,
+  "iou_listric_assemblage": 0.7431133609991631,
+  "ap_listric_assemblage": 0.9026874966368406,
+  "model": "unet3d",
+  "run": "unet3d_v2_oldrecipe",
+  "epoch": 197,
+  "n_test": 100
+}

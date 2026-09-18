@@ -1,0 +1,15 @@
+{
+  "loss": 0.5678883634507657,
+  "iou": 0.669708508544402,
+  "dice": 0.8021861362235403,
+  "precision": 0.7003629183216258,
+  "recall": 0.938653564682016,
+  "iou_en_echelon": 0.8037871661342754,
+  "iou_horsetail": 0.6266742446103928,
+  "iou_negative_flower": 0.6865377243354039,
+  "iou_positive_flower": 0.7095416492313845,
+  "iou_listric_assemblage": 0.5178043536034403,
+  "model": "resnet3d",
+  "epoch": 60,
+  "n_test": 100
+}

@@ -1,0 +1,26 @@
+{
+  "train": {
+    "shape": [
+      1537,
+      3174,
+      868
+    ],
+    "valid_voxels": 2008566263,
+    "positive_voxels": 43947428,
+    "positive_fraction": 0.021879999086691818,
+    "positive_outside_signal": 842,
+    "nonfinite_inside_signal": 0
+  },
+  "val": {
+    "shape": [
+      1537,
+      3174,
+      168
+    ],
+    "valid_voxels": 510945619,
+    "positive_voxels": 14228002,
+    "positive_fraction": 0.027846411576727896,
+    "positive_outside_signal": 13105,
+    "nonfinite_inside_signal": 0
+  }
+}

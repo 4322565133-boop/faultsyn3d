@@ -1,0 +1,3383 @@
+Scientific Reports                                                                                      https://doi.org/10.1038/s41598-026-54829-x
+
+
+Article in Press
+
+Fault detection in seismic data using a true 3D
+global attention convolutional network with
+self-supervised denoising pretext training
+
+Received: 7 January 2026                             Matin Mahzad & Majid Bagheri
+Accepted: 20 May 2026
+                                                     We are providing an unedited version of this manuscript to give early access to its
+
+
+                                                                                                              S
+                                                     findings. Before final publication, the manuscript will undergo further editing. Please
+Cite this article as: Mahzad M. &
+
+                                                                                                            S
+                                                     note there may be errors present which affect the content, and all legal disclaimers
+Bagheri M. Fault detection in seismic
+
+                                                                                                E
+                                                     apply.
+data using a true 3D global attention
+convolutional network with self-
+supervised denoising pretext training.
+Sci Rep (2026). https://doi.org/10.1038/                                                    P R
+                                                       If this paper is publishing under a Transparent Peer Review model then Peer
+                                                     Review reports will publish with the final article.
+
+
+
+                                                                               IN
+s41598-026-54829-x
+
+
+
+
+                                                             L E
+                                                 I         C
+                                             R T
+                                       A
+
+
+
+© The Author(s) 2026. Open Access This article is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International
+License, which permits any non-commercial use, sharing, distribution and reproduction in any medium or format, as long as you give appropriate credit
+to the original author(s) and the source, provide a link to the Creative Commons licence, and indicate if you modified the licensed material. You do
+not have permission under this licence to share adapted material derived from this article or parts of it. The images or other third party material in this
+article are included in the article’s Creative Commons licence, unless indicated otherwise in a credit line to the material. If material is not included in the
+article’s Creative Commons licence and your intended use is not permitted by statutory regulation or exceeds the permitted use, you will need to obtain
+permission directly from the copyright holder. To view a copy of this licence, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
+                              ACCEPTED
+                                ARTICLEMANUSCRIPT
+                                        IN PRESS
+
+
+
+
+Fault Detection in Seismic Data
+
+Using a True 3D Global Attention
+
+Convolutional Network with Self-
+
+Supervised                          Denoising             Pretext
+
+Training
+                                                  S S
+                                               R E
+                                              P
+                                         IN
+Matin Mahzad a and Majid Bagheri a
+
+
+                                E
+aInstitute of Geophysics, University of Tehran, Tehran,
+
+
+
+                            C L
+                           I
+Iran, ORCID(s): 0009-0000-9346-8451
+
+                         T
+                      A R
+Corresponding authors: Matin Mahzad and Majid
+
+Bagheri
+
+Corresponding author email: matinmahzad@yahoo.com
+
+ARTICLE INFO
+
+Keywords:
+
+
+3D seismic fault segmentation
+
+volumetric global attention
+
+hybrid convolutional-attention network
+
+self-supervised pretext training
+                              ACCEPTED
+                                ARTICLEMANUSCRIPT
+                                        IN PRESS
+
+
+
+unfactorized attention
+
+Authorship contribution statement
+
+Matin   Mahzad:    Conceptualization,   neural     network   design,
+
+methodology, implementation, and manuscript writing.
+
+Majid Bagheri: Supervision.
+
+Abstract
+
+  Accurate fault detection in 3D seismic data requires modeling extended geological
+
+structures across multiple dimensions. Recent CNN-transformer hybrids employ windowed
+
+attention (Swin Transformer) or factorized attention, fragmenting volumetric fault
+
+geometries into constrained local interactions that cannot fully capture continuous fault
+
+
+                                                         S S
+planes. Additionally, models frequently misclassify seismic noise as faults due to limited
+
+labeled data and insufficient noise exposure.
+                                                      R E
+                                                     P
+  We present the first application of unfactorized 3D global attention—where every voxel
+
+                                            IN
+attends to all other voxels—integrated with volumetric convolution for seismic fault
+
+
+                              L E
+                            C
+segmentation. Building on Mahzad et al. (2026), our hybrid U-Net combines 3D convolution
+
+
+                         T I
+for local features with true global self-attention for complete spatial context. Training
+
+
+                      A R
+employs two-stage learning: self-supervised denoising pretext training across multiple real-
+
+world 3D surveys, then discriminative transfer learning on fault-labeled data using layer-
+
+wise learning rate decay and Unified Focal Loss.
+
+  Validation on Thebe survey data achieved Dice=0.853, IoU=0.744, precision=0.842,
+
+MCC=0.841—statistically significant improvements (p<0.001, Cohen's d=0.54–1.02) of 4.5–
+
+8.1% over state-of-the-art 3D CNN+Swin architecture. On unseen test data, improvements
+
+widened to 9.9–16.7% with superior generalization (3.6% vs 8.3% degradation). Results
+
+establish that unfactorized global attention with noise-aware pretext training significantly
+
+improves fault detection accuracy and generalization.
+
+1 Introduction
+                             ACCEPTED
+                               ARTICLEMANUSCRIPT
+                                       IN PRESS
+
+
+
+  Seismic fault detection remains critical yet challenging in subsurface interpretation,
+
+directly impacting hydrocarbon exploration, carbon sequestration, and geothermal
+
+development. Accurate fault network identification is essential for understanding structural
+
+compartmentalization, fluid flow pathways, and sealing capacities governing reservoir
+
+performance. Despite advances in seismic acquisition, fault interpretation remains labor-
+
+intensive, requiring expert geological knowledge and subjective judgment varying among
+
+interpreters. Deep learning has transformed seismic interpretation workflows, yet practical
+
+deployment remains constrained by two fundamental challenges: scarcity of expert-labeled
+
+training data and architectures capable of capturing complex three-dimensional fault
+
+geometries.
+
+  Computational fault detection has evolved over three decades. Early attribute-based
+
+
+
+                                                         S S
+approaches relied on seismic attributes to highlight structural discontinuities. Coherence
+
+
+
+                                                      R E
+attributes (Bahorich & Farmer, 1995; Marfurt et al., 1998) enabled automated detection as
+
+                                                     P
+zones of low trace-to-trace similarity, while variance attributes quantified local amplitude
+
+
+                                             IN
+variations (Van Bemmel & Pepper, 2000). Curvature-based methods showed second-order
+
+
+                              L E
+spatial derivatives correlate with fault systems (Roberts, 2001; Al-Dossary & Marfurt, 2006;
+
+
+                           IC
+                         T
+Chopra & Marfurt, 2007a, 2007b). Texture-based approaches captured local unpredictability
+
+
+
+                      A R
+through chaos attributes (Randen et al., 2000; Chopra & Marfurt, 2016), while ant-tracking
+
+extracted fault surfaces through iterative trace following (Randen et al., 2001; Pedersen et
+
+al., 2002). However, these methods face limitations: extensive manual tuning, high noise
+
+sensitivity, ambiguity where faults overlap with stratigraphic features, and inability to learn
+
+from labeled examples.
+
+  Machine learning approaches explored unsupervised and supervised paradigms.
+
+Unsupervised clustering on multi-attribute feature spaces (Liu et al., 2018) attempted
+
+automatic segmentation but lack spatial awareness and cannot incorporate expert domain
+
+knowledge. Supervised methods including support vector machines and random forests
+
+(Popovici et al., 2017; Tavakolizadeh & Bagheri, 2022; Ren et al., 2023; Esmaeili et al., 2025)
+                             ACCEPTED
+                               ARTICLEMANUSCRIPT
+                                       IN PRESS
+
+
+
+learned fault characteristics from labeled data but lack convolutional operations and
+
+hierarchical spatial processing for modeling complex three-dimensional geometries.
+
+  Convolutional neural networks marked a paradigm shift in seismic interpretation (Mahzad
+
+& Riahi, 2024; Mahzad & Bagheri, 2025), enabling automatic hierarchical feature extraction
+
+from seismic amplitudes. Huang et al. (2017) demonstrated end-to-end learning from raw
+
+volumes, while Xiong et al. (2018) showed learned features outperformed traditional
+
+attributes. The FaultSeg3D benchmark (Wu et al., 2019) established standardized evaluation
+
+and demonstrated three-dimensional CNNs trained on synthetic data could segment faults
+
+in field data through transfer learning. Subsequent work explored transfer learning
+
+strategies (Cunha et al., 2020) and focal loss for class imbalance (Wei et al., 2022).
+
+  However, CNNs face an architectural constraint: receptive fields grow linearly with depth.
+
+
+
+                                                         S S
+Capturing long-range dependencies such as continuous fault planes extending across
+
+
+
+                                                      R E
+hundreds of voxels requires stacking many convolutional layers, causing vanishing gradients
+
+                                                     P
+and training difficulties. This motivated attention mechanisms enabling direct long-range
+
+
+                                              IN
+dependency modeling by computing relationships between spatial positions simultaneously.
+
+
+                              L E
+Recent CNN-transformer hybrids combine local feature extraction with global context. Wang
+
+
+                           IC
+                         T
+et al. (2024) employed Swin Transformer with SimMIM self-supervised pre-training, while Li
+
+
+
+                      A R
+et al. (2025) introduced FaultVitNet combining Vision Transformers with hybrid attention.
+
+  Despite these advances, current methodologies face three fundamental limitations. First,
+
+attention mechanisms compromise volumetric context through spatial factorization or
+
+windowing. Existing architectures employ windowed attention within small local windows or
+
+factorized attention decomposing three-dimensional operations into axis-wise operations.
+
+These strategies address computational tractability but fragment three-dimensional spatial
+
+relationships characterizing extended geological structures. Fault systems comprise
+
+continuous planar surfaces spanning hundreds of voxels, relay ramps connecting segments
+
+across large extents, and complex network topologies where displacement patterns
+
+propagate throughout volumes. Windowed attention restricts voxels to attending only nearby
+
+neighbors, preventing geological continuity modeling beyond window boundaries, while
+                             ACCEPTED
+                               ARTICLEMANUSCRIPT
+                                       IN PRESS
+
+
+
+factorized attention processing dimensions independently cannot capture true volumetric
+
+correlations defining three-dimensional fault geometries. Second, pretext tasks lack domain
+
+specificity and fail to address critical failure modes. Current approaches including SimMIM,
+
+masked autoencoders, and rotation prediction are borrowed from computer vision without
+
+modification. While enabling general feature learning from unlabeled data, they do not
+
+exploit seismic-specific properties. Models frequently misclassify random noise and
+
+acquisition artifacts as geological structures because noise patterns—random amplitude
+
+fluctuations,   coherent   acquisition   footprints,   processing   residuals—often    exhibit
+
+discontinuities superficially resembling faults. Generic pretext tasks like reconstructing
+
+masked regions provide no mechanism for learning explicit discrimination between
+
+stochastic noise and spatially coherent geological features. Third, training paradigms remain
+
+
+
+                                                           S S
+constrained by synthetic data or single-dataset learning. Most approaches either pre-train
+
+
+
+                                                        R E
+on synthetic fault models, introducing domain shift when transferring to field data, or train
+
+                                                       P
+exclusively on single labeled datasets like the Thebe survey, the primary publicly available
+
+
+                                             IN
+three-dimensional volume with expert-labeled faults. Single-setting training limits exposure
+
+
+                              L E
+to structural diversity, acquisition variations, and noise characteristics varying across
+
+
+                           IC
+                         T
+surveys.
+
+
+
+                      A R
+  This study addresses these limitations through a unified framework integrating two key
+
+innovations. First, we present the first application of unfactorized three-dimensional global
+
+attention for seismic fault segmentation. Building upon our hybrid architecture for seismic
+
+denoising (Mahzad et al., 2026), we combine three-dimensional convolutional processing
+
+with true global attention where every voxel attends to all other voxels within sub-volumes
+
+simultaneously, without windowing or axis-wise factorization. This enables capturing both
+
+local geological features through three-dimensional convolutions and extended fault
+
+structures through complete spatial context modeling, preserving continuous fault planes,
+
+relay ramps, and volumetric fault network topologies that windowed or factorized methods
+
+fragment. Second, we introduce denoising as a domain-specific pretext task directly
+
+addressing noise misclassification. By first training the network to distinguish noise patterns
+                              ACCEPTED
+                                ARTICLEMANUSCRIPT
+                                        IN PRESS
+
+
+
+from genuine seismic features across multiple geographically distinct unlabeled surveys, the
+
+model develops explicit noise-discrimination capabilities before learning fault-specific
+
+characteristics through supervised fine-tuning. Our two-stage paradigm leverages our three-
+
+dimensional global attention denoising model (Mahzad et al., 2026) trained on real seismic
+
+surveys from the Taranaki Basin, followed by discriminative transfer learning employing
+
+layer-wise learning rate decay, gradual unfreezing, and slanted triangular scheduling. Fine-
+
+tuning employs Unified Focal Loss for extreme class imbalance through asymmetric
+
+weighting and focal modulation. Unlike Wang et al. (2024), who employed SimMIM as
+
+generic computer vision pretext, our denoising approach provides seismic-specific
+
+initialization where learned representations explicitly encode noise-signal discrimination,
+
+directly transferable to distinguishing faults from artifacts. The integration of unfactorized
+
+
+
+                                                         S S
+three-dimensional global attention with denoising-based pretext training represents a unified
+
+
+
+                                                      R E
+framework addressing both architectural and training paradigm limitations, enabling
+
+                                                     P
+complete volumetric context modeling while providing domain-aligned initialization that
+
+explicitly addresses noise misclassification.
+                                                IN
+                              L E
+                            C
+2 Methodology
+
+
+                         T I
+                        R
+  In this section, we first describe the seismic datasets and preprocessing steps used for the
+
+                      A
+two-stage training paradigm: self-supervised denoising pretext training followed by
+
+supervised fault segmentation fine-tuning. We then present the hybrid encoder-decoder
+
+architecture combining 3D convolution with unfactorized global 3D attention, detailing its
+
+adaptation from denoising to binary fault segmentation via transfer learning. Next, we
+
+outline the discriminative transfer learning protocol, loss functions, optimization procedures,
+
+and evaluation metrics for fault detection performance assessment.
+
+2.1 Datasets and Data Preparation
+
+2.1.1 Pretext Training Datasets for Self-Supervised Denoising
+
+  The model was pretrained on three 3D post-stack seismic surveys from New Zealand's
+
+Taranaki Basin (Kerry-3D, Opunake-3D, Kahu-3D) using a self-supervised denoising
+                                   ACCEPTED
+                                     ARTICLEMANUSCRIPT
+                                             IN PRESS
+
+
+
+objective, as described in Mahzad et al. (2026). These volumes exhibit diverse geological
+
+configurations, structural heterogeneity, and noise distributions characteristic of field-
+
+acquired seismic data. Complete details of the surveys, geological context, data
+
+preprocessing, training procedures, and denoising performance are provided in Mahzad et
+
+al. (2026). The resulting pretrained model serves as the backbone for fault segmentation
+
+discriminative transfer learning in this work.
+
+  The self-supervised denoising pretext task follows the training strategy described in
+
+Mahzad et al. (2026). Training pairs were constructed by adding synthetic Gaussian noise n
+
+~ N(0, σ²) to each field-acquired sub-volume, where σ was drawn uniformly between 5% and
+
+30% of the sub-volume's root-mean-square amplitude, yielding a corrupted input ỹ = y + n.
+
+The original field-acquired volume y—which already contains real-world ambient noise—
+
+
+
+                                                            S S
+served as the reconstruction target, so the network learned to map from a heavily degraded
+
+
+
+                                                         R E
+version back to its less-corrupted counterpart without requiring paired clean data. This
+
+                                                        P
+formulation constitutes a data-driven augmented self-supervised approach: geological
+
+
+                                                  IN
+features such as reflector continuity, fault geometries, and stratigraphic layering exhibit
+
+
+                                L E
+spatial coherence that recurs across surveys, whereas random noise is fundamentally non-
+
+
+                             IC
+                           T
+repeating and varies between acquisitions in amplitude distribution, spatial correlation
+
+
+
+                        A R
+structure, and spectral characteristics. By training simultaneously on three geographically
+
+distinct surveys (Kerry-3D, Opunake-3D, Kahu-3D) with noise corruption at multiple intensity
+
+levels, the network encountered a representative sampling of geological patterns that
+
+generalize across datasets while being exposed to diverse realizations of stochastic noise
+
+that do not. This cross-survey variability acts as an implicit regularizer, enabling the model
+
+to distinguish spatially coherent structures from survey-dependent fluctuations—a capability
+
+that   transfers   directly   to    suppressing   noise-induced   false   positives   during   fault
+
+segmentation. Full training details, loss functions, evaluation metrics, and denoising
+
+performance are reported in Mahzad et al. (2026).
+
+  Due to the quadratic memory scaling of unfactorized global 3D self-attention—O(N²) where
+
+N = D×H×W—full seismic surveys cannot be processed as single volumes. Consistent with
+                                    ACCEPTED
+                                      ARTICLEMANUSCRIPT
+                                              IN PRESS
+
+
+
+the pretext training procedure (Mahzad et al., 2026), both pretext training and supervised
+
+fine-tuning decomposed seismic volumes into overlapping 3D sub-volumes of size 64×64×64
+
+voxels with 50% overlap along each spatial axis, yielding a stride of 32 voxels per axis. This
+
+sub-volume size provides sufficient spatial context for global attention to model extended
+
+geological features—including continuous reflectors, fault planes, and stratigraphic
+
+boundaries spanning tens of voxels—while remaining within the memory budget of each RTX
+
+4090 GPU under the AMP and gradient checkpointing strategies described in Section 2.3.4.
+
+During inference, predicted sub-volumes were reassembled into the full survey volume using
+
+Gaussian-weighted blending across overlapping regions. Each voxel's final prediction was
+
+computed as the weighted average of all sub-volume predictions that covered that voxel, with
+
+Gaussian weights attenuating contributions from sub-volume edges where boundary effects
+
+
+
+                                                                    S S
+are most pronounced. This blending strategy eliminates discontinuities at patch boundaries
+
+
+
+                                                                 R E
+and suppresses edge artifacts, yielding spatially coherent fault probability maps across the
+
+full survey extent.
+                                                                P
+                                                       IN
+                                   L E
+                                IC
+                             RT
+                           A
+
+
+
+Figure 1. Visualization of the Thebe training corpus (60% of total volume) from the Carnarvon Basin, Australia.
+
+Panels A-C display 2D cross-sections along cross-line, in-line, and time axes without fault annotations. Panels D-E
+
+present 3D volumetric renderings from orthogonal perspectives. Visualizations generated with SeismicFlow
+
+(Version 1.0.0).
+                                 ACCEPTED
+                                   ARTICLEMANUSCRIPT
+                                           IN PRESS
+
+
+
+                                                  X - μX
+                                             X=
+                                                   σX
+
+(Eq. 1)
+
+Where:
+
+   X• is the array of voxel amplitudes in the seismic input data,
+
+            1
+  ∑N
+   i=1 Xi     =   μX • is the mean amplitude over all N voxels, and
+            N
+
+
+             1 N
+  •σX =       ∑
+             N i=1
+                   (Xi - μX )2 is the corresponding standard deviation.
+
+
+2.1.2 Fault-Labeled Training Dataset
+
+  Following self-supervised pretext training, the network underwent supervised fine-tuning
+
+for binary fault segmentation using the Thebe seismic survey—currently the most extensive
+
+
+
+                                                               S S
+publicly accessible 3D volume with voxel-level fault annotations produced by expert
+
+
+                                                            R E
+interpreters (An et al., 2021). Located within the Carnarvon Basin's Exmouth Plateau on
+
+                                                           P
+Australia's North West Shelf, the Thebe Gas Field occupies a submerged continental
+
+                                                  IN
+fragment positioned approximately 800 meters below present sea level. The Exmouth
+
+
+                                  L E
+Plateau experienced polyphase extensional deformation spanning Triassic to Jurassic
+
+                               IC
+                             T
+periods, establishing complex normal fault networks that compartmentalize reservoir units
+
+
+
+                          A R
+and control hydrocarbon migration pathways (Longley et al., 2002).
+                                    ACCEPTED
+                                      ARTICLEMANUSCRIPT
+                                              IN PRESS
+
+
+
+
+                                                                       S
+Figure 2. Visualization of the Thebe independent test set (40% of total volume) from the Carnarvon Basin, Australia.
+
+                                                                     S
+                                                                    E
+Panels A-C show 2D cross-sections along cross-line, in-line, and time axes without fault annotations. Panels D-E
+
+
+
+                                                                 PR
+display 3D volumetric renderings from orthogonal perspectives. Visualizations generated with SeismicFlow (Version
+
+
+
+
+                                                        IN
+1.0.0).
+
+
+
+
+                                   L E
+   The Thebe dataset consists of a post-stack time-migrated 3D seismic cube with 1803
+
+
+                                IC
+crossline traces, 3174 inline traces, and 1537 time samples, capturing extensive fault
+
+
+                             RT
+systems that include dominant normal faults, relay structures bridging adjacent fault
+
+                           A
+segments, fault interaction zones, and surrounding damage zones characterized by
+
+secondary fracturing. Dataset partitioning followed established conventions in seismic fault
+
+detection research (Wu et al., 2019; Wang et al., 2024; An et al., 2021) by splitting along the
+
+inline axis to maintain spatial separation between training and evaluation subsets, avoiding
+
+data leakage that would occur if spatially adjacent traces were randomly distributed across
+
+partitions. The first 60% of inline slices constituted the training corpus (Figure 1), which was
+
+further subdivided into 70% for model training and 30% for validation to monitor overfitting,
+
+tune hyperparameters, and implement early stopping during supervised fine-tuning. The
+
+final 40% of the volume (Figure 2) remained entirely withheld as an independent test set,
+                                   ACCEPTED
+                                     ARTICLEMANUSCRIPT
+                                             IN PRESS
+
+
+
+representing a spatially distinct sub-volume that was never encountered during any phase of
+
+training.
+
+  Seismic amplitude data were normalized using z-score standardization (Equation 1), where
+
+μX and σX represent the mean and standard deviation calculated across all voxels within the
+
+seismic input. This preprocessing ensures amplitude distributions are normalized across
+
+different surveys and maintains consistency with the pretext training procedure. Fault labels
+
+were binarized without normalization.
+
+
+
+
+                                                                    S S
+                                                                 R E
+                                                                P
+                                                       IN
+                                   L E
+                                IC
+                             RT
+                           A
+Figure 3. Thebe training corpus (60% sub-volume) with expert-interpreted fault annotations from An et al. (2021).
+
+Panels A-C display 2D cross-sections (cross-line, in-line, time) with fault labels overlaid on seismic amplitudes.
+
+Panels D-E show 3D cross-sectional views rendering fault surfaces. Visualizations generated with SeismicFlow
+
+(Version 1.0.0).
+
+
+
+  Expert-interpreted fault annotations from An et al. (2021) delineate fault surfaces
+
+throughout the volume based on integrated analysis of seismic discontinuity attributes,
+
+regional structural context, stratigraphic relationships, and interpretive experience. The
+
+resulting binary fault labels identify voxels intersected by fault surfaces (fault class) versus
+                                     ACCEPTED
+                                       ARTICLEMANUSCRIPT
+                                               IN PRESS
+
+
+
+background geology (non-fault class), encoding geological domain knowledge—including
+
+tectonic framework understanding, attribute-guided interpretation, and spatial continuity
+
+assessment—that supervised learning must extract from labeled training examples. Figure 3
+
+illustrates the training corpus with expert-interpreted fault annotations from An et al. (2021)
+
+overlaid on seismic data, revealing the complexity of fault network topologies including
+
+branching fault segments, relay zones, and damage zones that the network must learn to
+
+identify. Figure 4 presents the independent test set with corresponding fault annotations
+
+from An et al. (2021), demonstrating the structural diversity and fault geometries present in
+
+the unseen evaluation data.
+
+  This spatial partitioning strategy ensures that the test set (Figure 2, Figure 4) represents
+
+a genuinely held-out sub-volume that shares no spatial correlation with the training data
+
+
+
+                                                                       S S
+(Figure 1, Figure 3), providing rigorous assessment of generalization to fault geometries,
+
+
+
+                                                                    R E
+structural configurations, and geological patterns absent from the training corpus.
+
+                                                                   P
+                                                         IN
+                                    L E
+                                 IC
+                              RT
+                            A
+
+
+
+
+Figure 4. Thebe independent test set (40% sub-volume) with expert-interpreted fault annotations from An et al.
+
+(2021). Panels A-C show 2D cross-sections (cross-line, in-line, time) with fault labels overlaid on seismic amplitudes.
+                                    ACCEPTED
+                                      ARTICLEMANUSCRIPT
+                                              IN PRESS
+
+
+
+Panels D-E present 3D cross-sectional views rendering fault surfaces. Visualizations generated with SeismicFlow
+
+(Version 1.0.0).
+
+
+
+2.1.3 Additional Evaluation on Unseen Field Data
+
+
+
+
+                                                                     S S
+                                                                  R E
+                                                                 P
+                                                        IN
+                                     E
+Figure 5. Visualization of an additional offshore 3D post-stack seismic volume from a geologically distinct petroleum
+
+
+
+                                 C L
+province, characterized by a dominant northeast-southwest trending strike-slip fault system and higher random
+
+
+
+                              T I
+noise levels. Panels A-C display 2D cross-sections along cross-line, in-line, and time axes. Panels D-E present 3D
+
+
+
+                             R
+volumetric renderings from orthogonal perspectives. Visualizations generated with SeismicFlow (Version 1.0.0).
+
+
+                           A
+    Beyond the Thebe test partition, model generalization was further assessed using an
+
+additional 3D post-stack seismic volume acquired from an offshore petroleum province in a
+
+geologically and geographically distinct tectonic setting (Figure 5). This secondary held-out
+
+dataset—originating from a different sedimentary basin with contrasting structural styles,
+
+lithological sequences, acquisition geometries, and processing histories—is characterized by
+
+a   dominant       northeast-southwest         trending     strike-slip    fault    system,     representing       a
+
+fundamentally different tectonic regime compared to the extensional normal fault
+
+architectures in the Taranaki Basin pretext training data and the Carnarvon Basin fine-tuning
+
+dataset. Additionally, this offshore volume exhibits higher random noise levels as evident
+
+from visual inspection of seismic amplitudes, providing a more challenging evaluation
+                                     ACCEPTED
+                                       ARTICLEMANUSCRIPT
+                                               IN PRESS
+
+
+
+environment that tests the model's capability to differentiate genuine fault structures from
+
+stochastic noise artifacts and suppress random fluctuations that might otherwise be
+
+misclassified as geological features. Evaluation on this volume provides qualitative
+
+assessment of fault detection quality, demonstrating the model's ability to transfer learned
+
+capabilities across diverse structural styles and noise conditions not represented in the
+
+training data.
+
+2.2 Model architecture
+
+
+
+
+                                                                       S S
+                                                                    R E
+                                                                   P
+                                                          IN
+                                    L E
+                                 IC
+                               T
+Figure 6. Architecture of Attention3DUNet for 3D seismic fault segmentation. The model uses a hybrid encoder–
+
+
+
+                              R
+decoder U-Net design with AttentionConv3DBlock modules that integrate convolutions and unfactorized global 3D
+
+
+                            A
+self-attention. It employs a two-stage training paradigm consisting of self-supervised denoising pretext task (Mahzad
+
+et al., 2026) followed by discriminative fine-tuning with unified focal loss.
+
+
+
+  The neural network architecture employed in this study (Figure 6) was originally
+
+developed and trained for seismic denoising (Mahzad et al., 2026), wherein it demonstrated
+
+state-of-the-art performance in suppressing random noise while preserving geological
+
+structures. This same architecture is adapted here for binary fault segmentation via transfer
+
+learning, leveraging the fact that a model pretrained to distinguish noise from coherent
+
+geological features is particularly robust against the well-documented tendency of
+
+segmentation networks to misclassify random noise as faults. The pretrained denoising
+
+model thus serves as pretext training for the downstream fault segmentation task.
+                             ACCEPTED
+                               ARTICLEMANUSCRIPT
+                                       IN PRESS
+
+
+
+  The architecture is a hybrid encoder-decoder network that integrates volumetric
+
+convolutions with true global self-attention in three dimensions. Unlike prior approaches that
+
+rely on factorized attention mechanisms, windowed attention (e.g., Swin transformers), or
+
+2D approximations applied slice-by-slice, this architecture implements full 3D global self-
+
+attention wherein every voxel in a feature volume attends to every other voxel within that
+
+volume. This design decision ensures that both local spatial correlations—captured through
+
+3D convolutional kernels—and long-range dependencies spanning the entire seismic cube
+
+are modeled explicitly and simultaneously at every stage of the network. By combining local
+
+feature extraction via convolution with global contextual reasoning via attention, the model
+
+is equipped to recognize geological patterns that exhibit multi-scale spatial coherence, such
+
+as fault surfaces that may extend across distant regions of a volume.
+
+
+
+                                                             S S
+  The network consists of an encoder path, a bottleneck, and a decoder path. Each stage of
+
+
+
+                                                          R E
+the encoder comprises an AttentionConv3DBlock, which internally performs two 3D
+
+                                                         P
+convolutions with kernel size 3×3×3, applies Group Normalization and ReLU activations,
+
+
+                                               IN
+and integrates a GlobalAttention3D module between the two convolutions. Within the
+
+
+                              L E
+GlobalAttention3D module, the input feature map x ∈ R B×C×D×H×W underwent normalization
+
+                           IC
+                         T
+via Group Normalization as an initial step. With G representing the number of groups, the
+
+
+
+                      A
+mean μg and variance σ2 R
+                      g were calculated across spatial dimensions for each channel group
+
+and subsequently normalized according to:
+
+                                               xi - μg
+                                        xi =             ,
+                                               σ2
+                                                g + ϵ
+
+(Eq. 2)
+
+with affine scaling and shifting applied thereafter. The attention sub-module was
+
+incorporated through a residual pathway, where pointwise 3D convolutions generated
+
+queries Q, keys K, and values V as follows:
+
+                     Q = WQ * xnorm , K = WK * xnorm , V = WV * xnorm ,
+
+(Eq. 3)
+                              ACCEPTED
+                                ARTICLEMANUSCRIPT
+                                        IN PRESS
+
+
+
+  where “*” represents 3D convolution using a kernel size of 1 × 1 × 1. The channel
+
+dimensions were reorganized into h heads through reshaping to [B,h,dh ,N] where N = D × H
+
+× W and dh = C/h. A scaled dot-product approach was employed to calculate attention
+
+weights:
+
+
+                                (k)
+                               An,m =
+                                                   (
+                                             exp (Q(k)
+                                                   n ⋅ Km )/ dh
+                                                        (k)
+                                                                          )   ,
+                                           ∑ m’ exp (   (    (k)  (k)
+                                                                     ) dh )
+                                                            Qn ⋅ Km ’ /
+
+(Eq. 4)
+
+  for head k and positions n,m ∈ {1,…,N}. Aggregation of the attended values proceeded as:
+
+                                                       N
+                                         (k)
+                                        On =           ∑ A(k)  (k)
+                                                          n,m Vm ,
+                                                  m=1
+
+(Eq. 5)
+
+
+
+                                                                     S S
+  Following this, the multi-head outputs underwent concatenation and were projected to
+
+
+
+                                                                  R E
+recover the original channel dimensionality via an additional pointwise 3D convolution WO
+
+                                                                 P
+* O. The block output was formed as x + WO * O through application of a residual
+
+                                                        IN
+connection. This architectural design maintained local feature representations from the prior
+
+
+                              L E
+                            C
+convolutional layer while simultaneously introducing global relationships across the entire
+
+
+                         T I
+volume through a single full self-attention step.
+
+
+                      A R
+  Surrounding the attention operation, 3D convolutional layers with kernel size 3 × 3 × 3
+
+and padding were applied. With f:R Cin ×D×H×W → R Cout ×D×H×W representing convolution using
+
+kernel K, the response at position (i,j,k) was computed as:
+
+                     (f(x))cout ,i,j,k =    ∑ ∑ Kcout ,cin ,p,q,r xcin , i+p, j+q, k+r ,
+                                            cin p,q,r
+
+
+(Eq. 6)
+
+  which captured local spatial correlations. Following normalization, ReLU activation was
+
+applied to enable hierarchical feature extraction. Each block alternated 3D convolution with
+
+full-volume attention, integrating fine-grained local features and global context before
+
+advancing to subsequent stages.
+                              ACCEPTED
+                                ARTICLEMANUSCRIPT
+                                        IN PRESS
+
+
+
+  The encoder progressively downsampled feature maps through strided 3D convolutions,
+
+while   the    decoder   upsampled   via   3D   transposed   convolutions.   Skip   connections
+
+concatenated encoder and decoder feature maps at matching resolutions, preserving high-
+
+resolution spatial details throughout the reconstruction pathway. If El represents the l -th
+
+encoder block output and Dl+1 the decoder output at a coarser scale, the concatenation
+
+concat (Dl+1 ,El ) was processed through a convolution-attention block to merge multi-scale
+
+information.
+
+  The combination of local convolutions and global self-attention at each hierarchical level
+
+enabled the network to capture both fine-grained textural patterns—such as reflector
+
+orientations and small-scale discontinuities—and spatially extended structures spanning
+
+large portions of the volume. The encoder distilled features into progressively deeper
+
+
+
+                                                         S S
+representations emphasizing global patterns, while the decoder reconstructed the
+
+
+
+                                                      R E
+segmentation by fusing these global-context features with local details via skip connections.
+
+                                                     P
+Full architectural details, including layer configurations and hyperparameters, are provided
+
+in Mahzad et al. (2026).
+                                                IN
+                                 L E
+                               C
+2.3 Training
+
+
+                            T I
+                           R
+  The model was developed through a two-stage training pipeline: initial self-supervised
+
+
+                         A
+pretext training on seismic denoising (Mahzad et al., 2026), followed by discriminative
+
+transfer learning on labeled fault data. While this paradigm shares the structural form of
+
+foundation-model workflows — self-supervised pretraining on unlabeled data followed by
+
+supervised fine-tuning on a downstream task — the present work is distinguished by its
+
+domain-specific instantiation: a seismic denoising pretext task rather than generic computer
+
+vision objectives, unfactorized true 3D global self-attention rather than generic transformer
+
+architectures, and a discriminative fine-tuning protocol explicitly designed to preserve noise-
+
+discrimination representations during task adaptation. This approach leverages pretrained
+
+representations that distinguish stochastic noise from spatially coherent geological
+
+structures, then adapts these representations for binary fault segmentation through layer-
+                             ACCEPTED
+                               ARTICLEMANUSCRIPT
+                                       IN PRESS
+
+
+
+wise learning rate decay, gradual unfreezing, and slanted triangular learning rate
+
+scheduling.
+
+2.3.1 Pretext Training: Self-Supervised Denoising
+
+  Supervised fault segmentation faces two fundamental challenges: scarcity of labeled
+
+training data—the Thebe dataset represents the only publicly available 3D field survey with
+
+expert fault annotations (An et al., 2021)—and persistent misclassification of random noise
+
+as fault structures. To address both challenges simultaneously, the model was pretrained on
+
+a self-supervised denoising task across three geographically distinct surveys from the
+
+Taranaki Basin (Kerry-3D, Opunake-3D, Kahu-3D), exposing the network to diverse
+
+geological structures and noise characteristics arising from varied acquisition geometries,
+
+
+
+                                                          S
+environmental conditions, and processing workflows. This multi-survey pretext training
+
+
+
+                                                       ES
+enables the model to distinguish stochastic noise from spatially coherent geological
+
+
+
+                                                    PR
+features—a capability that directly transfers to fault segmentation. Complete training
+
+
+
+                                            IN
+procedures, architectural details, and denoising performance are reported in Mahzad et al.
+
+
+                                E
+(2026).
+
+
+                            C L
+                           I
+2.3.2 Transfer Learning Protocol
+
+
+                        RT
+  Following pretext training, the denoising model was adapted to binary fault segmentation
+
+                      A
+via a discriminative fine-tuning protocol incorporating three complementary techniques:
+
+layer-wise learning rate decay (LLRD), gradual unfreezing, and slanted triangular learning
+
+rate scheduling (STLR). These methods collectively address the challenge of catastrophic
+
+forgetting—where fine-tuning on a new task degrades pretrained representations—while
+
+enabling effective adaptation to the downstream segmentation objective. The approach is
+
+motivated by the observation that different network depths encode features at varying levels
+
+of abstraction: lower layers capture general-purpose patterns (edges, textures, basic
+
+geological structures) that remain transferable across tasks, whereas higher layers encode
+
+task-specific representations requiring greater adaptation.
+                              ACCEPTED
+                                ARTICLEMANUSCRIPT
+                                        IN PRESS
+
+
+
+  Layer-wise learning rate decay assigns differentiated learning rates across network
+
+depths, with higher rates applied to layers closer to the output and progressively lower rates
+
+applied to layers closer to the input. This strategy preserves pretrained low-level features
+
+while allowing high-level representations to adapt more aggressively to the segmentation
+
+task. Following the ULMFiT framework (Howard & Ruder, 2018), model parameters were
+
+partitioned into six hierarchical groups based on architectural depth: output layer (group 0),
+
+decoder blocks (groups 1–2), bottleneck (group 3), and encoder blocks (groups 4–5). Each
+
+group l was assigned a learning rate ηl = ηbase × γ l , where l indexes groups in order of
+
+increasing depth (l = 0 for the output layer, l = 5 for the deepest encoder). Values of ηbase
+
+= 5 × 10 -4 and γ = 0.95 were employed, yielding learning rates that decay exponentially
+
+with depth from 5.00 × 10 -4 (output) to 3.87 × 10 -4 (deepest encoder), resulting in the
+
+
+                                                         S S
+deepest encoder layers being updated approximately 23% slower than the output layer.
+
+
+                                                      R E
+These differentiated learning rates were implemented via the optimizer's parameter groups,
+
+                                                     P
+                                              IN
+with each group containing parameters from the corresponding architectural level and
+
+
+
+                                E
+assigned its respective learning rate. During training, the optimizer applies distinct update
+
+
+
+                            C L
+magnitudes to each group while sharing momentum and adaptive learning statistics across
+
+
+                         T I
+all parameters. This exponential decay ensures that pretrained encoder features—which
+
+capture   fundamental
+                      A R geological   patterns   learned   during   denoising—are   modified
+
+conservatively, while decoder features are permitted to adapt rapidly to the new
+
+segmentation objective.
+
+  Rather than fine-tuning all parameters simultaneously, gradual unfreezing progressively
+
+unlocks layers for training in a staged manner, starting from the output layer and proceeding
+
+backward toward the input. This technique prevents abrupt disruption of pretrained features
+
+by allowing the network to first adapt high-level task-specific representations before
+
+permitting modification of low-level general-purpose features. Initially, all encoder and
+
+bottleneck parameters were frozen, rendering only the decoder and output layer trainable.
+
+At predetermined epochs, successive layer groups were unfrozen in top-to-bottom order
+
+(from task-specific to general-purpose features) according to the schedule [0, 10, 20, 30]:
+                              ACCEPTED
+                                ARTICLEMANUSCRIPT
+                                        IN PRESS
+
+
+
+the output layer and decoder blocks were unfrozen at epoch 0, the bottleneck at epoch 10,
+
+the top encoder blocks at epoch 20, and the deepest encoder blocks at epoch 30. This
+
+incremental adaptation strategy has been demonstrated to preserve pretrained knowledge
+
+more effectively than standard end-to-end fine-tuning, particularly when target datasets are
+
+substantially smaller than pretext training corpora (Howard & Ruder, 2018). By the time
+
+deeper layers are unfrozen, task-specific patterns in higher layers have stabilized, providing
+
+a coherent learning signal that guides refinement of low-level features without catastrophic
+
+interference.
+
+  The slanted triangular learning rate schedule modulates the learning rate over the course
+
+of training via a two-phase profile consisting of a linear warm-up followed by a linear decay.
+
+During the warm-up phase—comprising 10% of total training steps (tcut = 0.1T, where T
+
+
+
+                                                           S S
+denotes total training steps)—the learning rate increases linearly from near-zero to the
+
+
+
+                                                        R E
+maximum value specified by LLRD for each layer group. This gradual initialization prevents
+
+                                                       P
+large gradient updates from destabilizing pretrained weights during the critical early stages
+
+
+                                               IN
+of fine-tuning, when the network is most susceptible to catastrophic forgetting. Following
+
+
+                               L E
+warm-up, the learning rate decays linearly to 1/32 of its peak value over the remaining 90%
+
+                            IC
+                          T
+of training, promoting smooth convergence while discouraging overfitting to the target
+
+
+                       A R
+dataset. The schedule for training step t is computed as:
+
+                                        ηl (t) = ηl × m(t)
+
+(Eq. 7)
+
+  where ηl is the base learning rate for layer group l (determined by LLRD), and the
+
+multiplier m(t) follows:
+
+                                   m(t) = (1 + p(t) × (r - 1))/r
+
+(Eq. 8)
+
+  with p(t) = t/tcut during warm-up (t < tcut ) and p(t) = 1 - (t - tcut )/(T - tcut ) during decay
+
+(t ≥ tcut ). Here, T = 1100 denotes total training steps (100 epochs × 11 batches per epoch),
+
+tcut = 110 represents the warm-up duration (10% of training), and r = 32 is the ratio
+                             ACCEPTED
+                               ARTICLEMANUSCRIPT
+                                       IN PRESS
+
+
+
+between maximum and minimum learning rates. At t = tcut , the multiplier reaches its
+
+maximum (m = 1.0), after which it decays linearly to m = 1/32 ≈ 0.03125 by the end of
+
+training. This schedule facilitates rapid initial adaptation to the segmentation task while
+
+maintaining stability throughout training, and has been shown to improve generalization
+
+performance in transfer learning scenarios (Howard & Ruder, 2018).
+
+2.3.3 Loss Function and Evaluation Metrics
+
+  To address the severe class imbalance inherent in fault segmentation we employed Unified
+
+Focal Loss (Yeung et al., 2022), a state-of-the-art compound objective function that
+
+synergistically combines region-based and pixel-based loss components optimized for rare-
+
+object detection in medical imaging. This loss function has demonstrated superior
+
+
+
+                                                           S
+performance on datasets with 1–5% foreground ratios and represents the first application to
+
+
+
+                                                        ES
+seismic fault segmentation. The Unified Focal Loss is formulated as a weighted combination
+
+of Focal Tversky Loss and Focal Loss:
+                                                     PR
+                                              IN
+                                  Lunified = λLFT + (1 - λ)LF
+
+(Eq. 9)
+
+                              L E
+                           IC
+  where λ ∈ [0,1] controls the relative contribution of each component. We set λ = 0.5 to
+
+
+                        RT
+balance region-based overlap metrics (Tversky) with pixel-wise classification objectives
+
+(Focal).              A
+  The Focal Tversky Loss extends the Tversky Index—a generalization of the Dice coefficient
+
+that allows asymmetric weighting of false positives and false negatives—by incorporating a
+
+focusing parameter to down-weight well-classified examples. For a batch of N voxels with
+
+predicted probabilities pi = σ(zi ), where σ denotes the sigmoid function applied to raw logits
+
+zi , and binary ground truth labels yi ∈ 0,1, the Tversky Index is computed as:
+
+                             TI = (TP + ε)/(TP + αFP + βFN + ε)
+
+(Eq. 10)
+
+  where true positives TP = ∑ i = 1 N pi yi , false positives FP = ∑ i = 1 N pi (1 - yi ), false
+
+negatives FN = ∑N
+                i=1(1 - pi )yi , and ε = 1.0 is a smoothing constant for numerical stability.
+                               ACCEPTED
+                                 ARTICLEMANUSCRIPT
+                                         IN PRESS
+
+
+
+The hyperparameters α and β control the penalty for false positives and false negatives
+
+respectively, with the constraint α + β = 1 typically imposed. For fault segmentation, we
+
+prioritize recall over precision to minimize missed fault detections, setting α = 0.3 and
+
+β = 0.7. These values were adopted from the medical imaging literature — specifically from
+
+Abraham and Khan (2019), who established asymmetric Tversky weighting with β > α as the
+
+standard configuration for rare-object segmentation tasks where false negatives carry
+
+greater interpretive cost than false positives — and applied here on the basis of the structural
+
+analogy between fault voxels in seismic data and lesion voxels in medical images: in both
+
+cases, the foreground class constitutes 1–5% of the total volume and missed detections are
+
+clinically or geologically more consequential than false alarms. This asymmetric weighting
+
+biases the loss toward penalizing false negatives more heavily, ensuring that small or subtle
+
+
+                                                                S S
+fault structures such as low-amplitude terminations and damage zone boundaries are not
+
+overlooked during optimization.
+                                                             R E
+                                                            P
+                                                   IN
+  The Focal Tversky Loss applies an exponential modulation to emphasize difficult examples:
+
+
+
+                                E
+                                            LFT = (1 - TI)γ
+
+(Eq. 11)
+                            C L
+                         T I
+  where the focusing parameter γ > 0 controls the degree to which well-classified
+
+
+                      A R
+examples are down-weighted. Setting γ = 1.33, as recommended by Abraham and Khan
+
+(2019) for highly imbalanced medical segmentation tasks, produces a super-linear penalty
+
+that concentrates gradient updates on hard-to-segment regions—such as low-amplitude fault
+
+terminations and areas with poor signal-to-noise ratio—while reducing contributions from
+
+confidently predicted background voxels.
+
+  Focal Loss. The Focal Loss addresses class imbalance at the pixel level through a
+
+modulating factor applied to the standard binary cross-entropy loss. For each voxel i, the
+
+focal loss is computed as:
+
+                             LF = - (1/N) ∑ i = 1 N αi (1 - pt,i)γF log(pt,i )
+
+(Eq. 12)
+                              ACCEPTED
+                                ARTICLEMANUSCRIPT
+                                        IN PRESS
+
+
+
+  where pt,i = pi yi + (1 - pi )(1 - yi ) represents the probability assigned to the true class, γF
+
+= 2.0 is the focusing parameter (following Lin et al., 2017), and αi is a class-balancing
+
+weight defined as:
+
+                                    αi = αyi + (1 - α) (1 - yi )
+
+(Eq. 13)
+
+  with α = 0.25 for the foreground class. The modulating factor (1 - pt,i )γF effectively
+
+reduces the contribution of easy examples (where pt,i →1) while amplifying the loss for
+
+misclassified or low-confidence predictions. This focusing mechanism prevents the
+
+overwhelming number of background voxels—which are typically easy to classify—from
+
+dominating the gradient signal during backpropagation, thereby allowing the network to
+
+concentrate learning capacity on the minority fault class.
+
+
+                                                            S S
+  The combination of Focal Tversky Loss and Focal Loss in the Unified Focal Loss framework
+
+
+                                                         R E
+                                                        P
+leverages complementary strengths: the Tversky component optimizes region-based overlap
+
+
+
+                                                IN
+metrics (Dice, IoU) through its formulation as a soft approximation of set intersection, while
+
+
+
+                                 E
+the Focal component ensures proper calibration of class probabilities at the pixel level. This
+
+
+                             C L
+dual objective has been shown to produce superior segmentation performance compared to
+
+
+                          T I
+either component alone, particularly on datasets with extreme class imbalance (Yeung et al.,
+
+2022).
+                       A R
+  Model performance was quantified using a comprehensive suite of metrics spanning both
+
+standard binary segmentation measures and advanced statistics designed for imbalanced
+
+classification tasks. All metrics were computed at the voxel level with a probability threshold
+
+of τ = 0.5, comparing binarized predictions ŷi = 1(pi > τ) against ground truth labels yi . Let
+
+TP, FP, TN, and FN denote true positives, false positives, true negatives, and false negatives
+
+respectively, aggregated over all N voxels in the evaluation set. A small constant ε = 10 -8
+
+was added to all denominators to prevent division by zero in degenerate cases.
+                                ACCEPTED
+                                  ARTICLEMANUSCRIPT
+                                          IN PRESS
+
+
+
+  The Dice coefficient (also known as the F1 score) quantifies the harmonic mean of
+
+precision and recall, providing a balanced measure of overlap between predicted and ground
+
+truth fault regions:
+
+                                   Dice = (2TP)/(2TP + FP + FN)
+
+(Eq. 14)
+
+  The Intersection over Union (IoU), also termed the Jaccard Index, measures the ratio of
+
+overlap to union:
+
+                                     IoU = TP/(TP + FP + FN)
+
+(Eq. 15)
+
+  Precision quantifies the fraction of predicted fault voxels that are true faults:
+
+                                     Precision = TP/(TP + FP)
+
+(Eq. 16)
+                                                           S S
+                                                        R E
+  Recall (sensitivity or true positive rate) measures the fraction of actual faults successfully
+
+detected:
+                                                       P
+                                                IN
+                                       Recall = TP/(TP + FN)
+
+(Eq. 17)
+                                 L E
+                              IC
+                            T
+  The F2 score emphasizes recall over precision by weighting recall with parameter β = 2:
+
+
+
+                         A R
+                       F2 = (5 × Precision × Recall)/(4 × Precision + Recall)
+
+(Eq. 18)
+
+  This metric is particularly relevant for fault segmentation where missed detections (false
+
+negatives) incur greater interpretive risk than false alarms.
+
+  Matthews Correlation Coefficient (MCC) provides a balanced measure that accounts for
+
+all four confusion matrix components and remains informative even under severe class
+
+imbalance (Chicco & Jurman, 2020):
+
+            MCC = (TP × TN - FP × FN)/ (TP + FP) (TP + FN) (TN + FP) (TN + FN)
+
+(Eq. 19)
+                             ACCEPTED
+                               ARTICLEMANUSCRIPT
+                                       IN PRESS
+
+
+
+  MCC ranges from -1 (perfect disagreement) to +1 (perfect agreement), with 0 indicating
+
+random prediction. Unlike accuracy, MCC is not inflated by correct prediction of the majority
+
+class and thus provides a more reliable assessment of model quality on imbalanced datasets.
+
+  These metrics collectively provide a comprehensive characterization of segmentation
+
+performance, with Dice and IoU emphasizing spatial overlap, MCC accounting for class
+
+imbalance, and F2 prioritizing fault detection sensitivity—the most critical objective in
+
+seismic interpretation where undetected faults may indicate undiscovered hydrocarbon
+
+compartments or seal breach risks.
+
+2.3.4 Computational Implementation
+
+  Discriminative fine-tuning was conducted on the same multi-GPU cluster configuration
+
+
+
+                                                          S
+employed for pretext training (four NVIDIA RTX 4090 GPUs), with computational strategies
+
+
+
+                                                       ES
+detailed in Mahzad et al. (2026). Automatic mixed precision (AMP) training was employed,
+
+
+
+                                                    PR
+utilizing FP16 precision for forward passes and FP32 for loss computation and optimizer
+
+
+
+                                            IN
+updates to balance memory efficiency with numerical stability. Gradient scaling with
+
+
+                                E
+dynamic adjustment was applied to prevent underflow, and gradient norms were clipped at
+
+                              L
+                           IC
+1.0 to prevent exploding gradients during backpropagation through the deep architecture.
+
+
+
+                        RT
+The AdamW optimizer (Loshchilov & Hutter, 2019) was configured with weight decay
+
+
+                      A
+1×10−4 and default momentum parameters (β1=0.9, β2=0.999). Training proceeded for 100
+
+epochs with a per-GPU batch size of 2 and gradient accumulation over 4 steps, yielding an
+
+effective batch size of 16 sub-volumes, consistent with the pretext training configuration
+
+(Mahzad et al., 2026). Early stopping was applied based on validation Dice coefficient with
+
+a patience window of 20 epochs, with fine-tuning completing at epoch 51 and optimal
+
+performance achieved at epoch 31. Model checkpoints were saved via TorchScript
+
+compilation at each epoch for deployment without training code dependencies.
+
+  Table 1 presents a quantitative comparison of computational requirements across the
+
+three evaluated architectures, measured under identical hardware and training conditions
+
+to isolate architectural cost from parallelism effects. The proposed model inherits the ~45
+                                  ACCEPTED
+                                    ARTICLEMANUSCRIPT
+                                            IN PRESS
+
+
+
+million parameter count of the pretrained denoising backbone (Mahzad et al., 2026),
+
+substantially larger than the baseline and Swin variants which were trained from scratch
+
+with shallower configurations.
+
+Table 1. Computational complexity comparison across architectures (four NVIDIA RTX 4090 GPUs, batch size 2
+per GPU, sub-volume size 64×64×64).
+
+ Architecture          Parameters            FLOPs                VRAM           per    VRAM           per
+
+                                             (forward             GPU                   GPU
+
+                                             pass)                (training)            (inference)
+
+ Baseline        3D    3.2M                  24.6 GFLOPs          5.8 GB                2.4 GB
+
+ CNN
+
+ 3D CNN + Swin         8.7M                  41.3 GFLOPs          10.2 GB               4.1 GB
+
+
+
+                                                                   S
+ Transformer
+
+ Proposed              ~45M                  118.4 GFLOPs
+                                                                ES19.3 GB               7.8 GB
+
+ (Global
+                                                             PR
+                                                     IN
+ Attn3D)
+
+
+
+                                  L E
+                               IC
+  The proposed model incurs approximately 2.9× the FLOPs and 3.3× the training VRAM of
+
+
+
+                            RT
+the baseline, a direct consequence of the quadratic complexity O(N²) of unfactorized global
+
+                          A
+self-attention where every spatial token attends to every other token simultaneously —
+
+precisely the mechanism that windowed and factorized approaches were designed to avoid
+
+at the cost of spatial completeness. Three complementary strategies render this cost
+
+manageable within the 24 GB capacity of each RTX 4090. First, AMP training reduces the
+
+memory footprint of activations during the forward pass by approximately 50% compared to
+
+full FP32 precision. Second, gradient checkpointing discards intermediate attention maps
+
+and recomputes them during backpropagation, trading approximately 30% additional
+
+compute for a proportional reduction in peak VRAM — a strategy also employed during
+
+pretext training (Mahzad et al., 2026). Third, the gradual unfreezing protocol reduces
+
+effective memory consumption during early training epochs by restricting gradient
+                                   ACCEPTED
+                                     ARTICLEMANUSCRIPT
+                                             IN PRESS
+
+
+
+computation to progressively larger parameter subsets, deferring the full memory burden of
+
+the ~45M parameter network until the higher layers have already stabilized. Together these
+
+optimizations enable true unfactorized global 3D self-attention at 64×64×64 sub-volume
+
+resolution without architectural compromises, maintaining consistent training throughput
+
+across all 100 fine-tuning epochs without batch size reduction or model compression.
+
+3 Results and Discussion
+
+3.1Validation
+
+  Quantitative evaluation was conducted on the validation partition of the Thebe dataset
+
+(30% of training corpus, withheld during optimization). Three architectures were compared:
+
+(1) baseline 3D CNN with standard U-Net topology trained with binary cross-entropy loss,
+
+
+                                                                     S
+(2) hybrid 3D CNN with Swin Transformer blocks implementing factorized windowed self-
+
+                                                                   S
+                                                                  E
+attention, and (3) the proposed architecture with true global self-attention, utilizing
+
+                                                                R
+                                                               P
+denoising pretext training, discriminative transfer learning, and Unified Focal Loss. All
+
+
+                                                      IN
+models were trained on identical partitions and evaluated under consistent conditions.
+
+
+
+                                   L E
+  Table 2 presents validation metrics with statistical significance assessed via paired t-tests
+
+
+                                IC
+and effect sizes quantified using Cohen's d. The proposed model achieved Dice=0.853,
+
+
+                             RT
+representing 4.5% improvement over 3D CNN+Swin (0.816) and 8.1% over baseline (0.789),
+
+                           A
+with large effect sizes (Cohen's d=0.85 and 1.18 respectively, p < 0.001).
+
+Table 2. Validation performance metrics on Thebe dataset with statistical comparisons.
+
+
+
+    Metric         Baseli         3D CNN          Propos           p-           Cohe       p-       Cohe
+
+                ne      3D    +       Swin     ed Model       value        n's d (vs     value    n's d (vs
+
+                CNN           Transfor                        (vs          Baselin       (vs      Swin)
+
+                              mer                             Baselin      e)            Swin)
+
+                                                              e)
+
+    Dice           0.789          0.816           0.853            <0.00        1.18       <0.0     0.85
+
+                                                              1                          01
+                                ACCEPTED
+                                  ARTICLEMANUSCRIPT
+                                          IN PRESS
+
+
+
+   IoU         0.651       0.689         0.744         <0.00    1.25        <0.0     0.91
+
+                                                   1                    01
+
+   Precisi     0.738       0.779         0.842         <0.00    1.41        <0.0     1.02
+
+ on                                                1                    01
+
+   Recall      0.847       0.858         0.865         <0.00    0.64        0.00     0.38
+
+                                                   1                    7
+
+   F2          0.823       0.843         0.859         <0.00    0.89        <0.0     0.54
+
+ Score                                             1                    01
+
+   MCC         0.767       0.801         0.841         <0.00    1.21        <0.0     0.82
+
+                                                   1                    01
+
+
+
+
+                                                        S S
+  The precision improvement to 0.842 (from 0.738 baseline, 0.779 Swin) demonstrates
+
+
+                                                     R E
+substantial false positive reduction directly attributable to denoising pretext training. By
+
+                                                    P
+learning to distinguish stochastic noise from spatially coherent geological structures across
+
+                                            IN
+multiple geographically distinct surveys with varying noise characteristics, the model
+
+
+                               L E
+                             C
+acquired internal representations discriminating random fluctuations from true fault
+
+
+                          T I
+features. During fine-tuning, these noise-suppression capabilities transferred to fault
+
+
+                       A R
+segmentation, preventing misclassification of random seismic noise as faults (p<0.001,
+
+Cohen's d=1.02 vs Swin).
+
+  Recall remained high across architectures (0.847–0.865), with the proposed model
+
+achieving 0.865 versus 0.858 (Swin) and 0.847 (baseline). This combination of high recall
+
+with substantially improved precision indicates successful fault detection sensitivity while
+
+reducing spurious activations—critical for interpretation workflows where both missed faults
+
+and false alarms incur costs.
+
+  IoU increased from 0.651 (baseline) and 0.689 (Swin) to 0.744, representing 8.0%
+
+improvement over Swin with large effect size (Cohen's d=0.91, p < 0.001). IoU penalizes
+
+both over-segmentation and under-segmentation simultaneously, providing stringent
+
+segmentation quality measurement. This improvement reflects combined benefits of
+                             ACCEPTED
+                               ARTICLEMANUSCRIPT
+                                       IN PRESS
+
+
+
+enhanced precision (0.842 vs 0.779) and maintained high recall (0.865 vs 0.858), yielding
+
+tighter spatial correspondence with expert-interpreted references—particularly valuable for
+
+reservoir modeling where accurate fault geometry impacts compartmentalization analysis
+
+and fluid flow simulation.
+
+  The F2 score (weighing recall more heavily through β = 2) increased to 0.859 from 0.843
+
+(Swin) and 0.823 (baseline), reflecting prioritization of fault detection over background
+
+classification. This aligns with Unified Focal Loss asymmetric weighting (Focal Tversky
+
+α = 0.3, β = 0.7), ensuring greater learning capacity allocated to detecting minority-class
+
+fault voxels (1–2% of volume).
+
+  Matthews Correlation Coefficient (MCC)—providing balanced measurement accounting
+
+for all confusion matrix components under severe class imbalance—increased to 0.841 from
+
+
+                                                        S S
+0.801 (Swin) and 0.767 (baseline). This 4.0-point improvement over Swin (Cohen's d=0.82,
+
+
+                                                     R E
+p < 0.001) indicates strong agreement with expert interpretations across both classes
+
+                                                    P
+                                            IN
+without accuracy inflation from majority-class predictions.
+
+  The consistent performance advantage stems from three synergistic innovations. First,
+
+
+                              L E
+                            C
+true global 3D self-attention enables single-step contextual information propagation across
+
+
+                         T I
+entire volumes, unlike Swin's windowed approach requiring multiple layers to connect
+
+
+                      A R
+distant positions. For fault surfaces extending across large spatial scales, this global
+
+receptive field directly contributes to improved IoU (0.744 vs 0.689) and Dice (0.853 vs
+
+0.816) by enabling coherent fault reconstruction and reducing isolated false positives from
+
+insufficient long-range context.
+
+  Second, denoising pretext training across multiple surveys with different noise
+
+characteristics accounts for precision improvement. Geological features exhibit spatial
+
+coherence recurring across datasets, whereas random noise patterns are fundamentally non-
+
+repeating and vary between surveys. The discriminative transfer learning protocol (layer-
+
+wise decay ηbase = 5 × 10 -4 , γ = 0.95; gradual unfreezing [0,10,20,30]; slanted triangular
+
+scheduling) enabled effective knowledge transfer while preserving learned representations
+
+and avoiding catastrophic forgetting.
+                             ACCEPTED
+                               ARTICLEMANUSCRIPT
+                                       IN PRESS
+
+
+
+  Third, Unified Focal Loss addressed extreme class imbalance more effectively than
+
+conventional functions, evidenced by improved F2 (0.859 vs 0.843) and MCC (0.841 vs
+
+0.801). Tversky component asymmetric weighting (α = 0.3, β = 0.7) and focusing parameter
+
+(γ = 1.33) concentrated gradients on difficult examples while down-weighting well-classified
+
+background, preventing loss domination by majority class. This strategy yielded balanced
+
+precision-recall trade-offs: high recall (0.865) with substantially improved precision (0.842),
+
+producing superior IoU (0.744) reflecting tight spatial correspondence across both classes.
+
+  Cross-survey generalization achieved by multi-survey pretext training is validated by
+
+robust transfer to Thebe validation data from a geologically distinct basin (Carnarvon Basin,
+
+Australia) with different structural styles (extensional normal faults) versus Taranaki Basin
+
+pretext data (complex rift-inversion structures). Statistically significant improvements across
+
+
+                                                         S S
+all metrics (p < 0.001) with large effect sizes (Cohen's d = 0.54–1.02) confirm gains are
+
+
+                                                      R E
+systematic and not attributable to overfitting or sampling variability.
+
+                                                     P
+                                             IN
+3.2 Ablation Study
+
+
+
+                              L E
+  To quantify the independent contribution of each proposed innovation, we conducted a
+
+
+                           IC
+controlled ablation study on the Thebe validation partition, progressively introducing
+
+
+                        RT
+components into the baseline 3D CNN. Four variants were evaluated: the baseline alone
+
+                      A
+(Variant A), the architecture with unfactorized global 3D self-attention substituted for
+
+standard convolution but trained from scratch with binary cross-entropy (Variant B), the
+
+baseline architecture initialized from multi-survey denoising pretext training with
+
+discriminative fine-tuning but retaining binary cross-entropy (Variant C), and the baseline
+
+architecture trained from scratch using Unified Focal Loss without pretext initialization or
+
+global attention (Variant D). The full proposed model combining all three components
+
+constitutes Variant E. All variants were trained on identical partitions under consistent
+
+conditions.
+
+  Table 3 reports validation metrics for each configuration. The results confirm that each
+
+component addresses a distinct and largely non-overlapping failure mode, and that their
+                             ACCEPTED
+                               ARTICLEMANUSCRIPT
+                                       IN PRESS
+
+
+
+combination is synergistic rather than redundant. Global 3D self-attention (Variant B)
+
+produced the largest gains in geometric overlap metrics: Dice increased from 0.789 to 0.821
+
+and IoU from 0.651 to 0.703, directly reflecting the architecture’s capacity for single-step
+
+contextual propagation across entire feature volumes — enabling reconstruction of spatially
+
+extended fault planes that local convolutions fragment. However, precision improved only
+
+marginally (0.738→0.745), confirming that architectural context alone cannot suppress noise
+
+misclassification; without explicit noise-discrimination representations, the model continues
+
+activating on stochastic fluctuations resembling fault discontinuities. Denoising pretext
+
+training (Variant C) produced the largest precision gain across all ablation variants, rising
+
+from 0.738 to 0.801 — a 6.3-point improvement achieved without any architectural
+
+modification. This directly validates the claim that cross-survey noise-awareness transfers to
+
+
+
+                                                        S S
+fault segmentation: by learning to distinguish spatially coherent geological features from
+
+
+
+                                                     R E
+stochastic noise across geographically diverse surveys, the pretrained representations
+
+                                                    P
+suppress false positives during fine-tuning. Dice and IoU improved moderately (0.809, 0.681)
+
+
+                                             IN
+but remained below Variant B, consistent with geometry still being constrained by the limited
+
+
+                              L E
+receptive field of standard convolution. Unified Focal Loss alone (Variant D) yielded the
+
+
+                           IC
+                         T
+strongest improvement in F2 score (0.823→0.843) and MCC (0.767→0.796), with only modest
+
+
+
+                      A R
+precision gain (0.762), confirming its primary effect is correcting gradient imbalance
+
+between the majority background class and minority fault voxels rather than improving
+
+spatial reasoning or noise discrimination. The full model (Variant E) outperformed every
+
+partial configuration on all metrics, with Dice=0.853, IoU=0.744, and Precision=0.842,
+
+demonstrating that the three components are complementary: global attention provides the
+
+geometric context that pretext training cannot, pretext training provides the noise
+
+suppression that attention cannot, and Unified Focal Loss ensures the optimization objective
+
+reflects the class distribution that neither architectural nor initialization choices directly
+
+address.
+                                    ACCEPTED
+                                      ARTICLEMANUSCRIPT
+                                              IN PRESS
+
+
+
+Table 3. Ablation study on Thebe validation partition.
+
+ Variant       Globa      Denoisin        Unifie         Dice     IoU    Precisio   Recal   F2     MC
+
+               l Attn     g Pretext       d FL                           n          l              C
+
+ A        —    ✗          ✗               ✗              0.78     0.65   0.738      0.847   0.82   0.76
+
+ Baselin                                                 9        1                         3      7
+
+ e CNN
+
+ B — +         ✓          ✗               ✗              0.82     0.70   0.745      0.853   0.83   0.79
+
+ Global                                                  1        3                         1      3
+
+ Attn
+
+ C — +         ✗          ✓               ✗              0.80     0.68   0.801      0.851   0.83   0.80
+
+ Pretext                                                 9        1                         6      1
+
+ only
+                                                                          S S
+ D — +         ✗          ✗               ✓              0.80     0.67
+                                                                       R E
+                                                                         0.762      0.856   0.84   0.79
+
+                                                         3        1   P                     3      6
+
+                                                             IN
+ UFL
+
+ only
+
+
+                                   L E
+                                 C
+ E — Full      ✓          ✓               ✓              0.85     0.74   0.842      0.865   0.85   0.84
+
+ model
+                              T I                        3        4                         9      1
+
+
+                           A R
+3.3 Generalization to Unseen Data
+
+  To evaluate generalization beyond training distribution, all architectures were applied to
+
+the remaining 40% of Thebe—strictly withheld from training and validation. This held-out
+
+test set assesses robustness to intra-survey spatial variability including structural
+
+complexity, signal-to-noise ratio, and fault geometries absent during optimization.
+
+  Table 4 presents metrics on unseen test data with statistical significance via paired t-tests.
+
+The proposed model achieved Dice=0.822 versus 0.748 (Swin) and 0.698 (baseline),
+
+representing 9.9% and 17.8% improvements respectively. Critically, while all models
+
+exhibited performance degradation—expected from distribution shift—the proposed model
+                                   ACCEPTED
+                                     ARTICLEMANUSCRIPT
+                                             IN PRESS
+
+
+
+demonstrated substantially greater robustness with only 3.6% Dice reduction (0.853→0.822)
+
+versus 8.3% for Swin (0.816→0.748) and 11.5% for baseline (0.789→0.698).
+
+Table 4. Performance on unseen Thebe test data (40% held-out partition) with statistical comparisons.
+
+
+ Metric        Baseli        3D CNN +          Propos         p-value       Cohen's        p-           Cohen
+               ne 3D         Swin              ed             (vs           d (vs          value        's d
+               CNN           Transform         Model          Baselin       Baselin        (vs          (vs
+                             er                               e)            e)             Swin         Swin)
+                                                                                           )
+
+ Dice          0.698         0.748             0.822          <0.001        1.42           <0.00        1.08
+                                                                                           1
+
+ IoU           0.536         0.598             0.698          <0.001        1.58           <0.00        1.21
+                                                                                           1
+
+ Precisi       0.652         0.712             0.819          <0.001        1.71           <0.00        1.35
+ on                                                                                        1
+
+ Recall        0.751         0.791             0.826
+                                                                   S
+                                                              <0.001
+                                                                     S      0.82           <0.00        0.51
+
+                                                                  E
+                                                                                           1
+
+ F2
+ Score
+               0.732         0.778             0.824
+                                                               PR
+                                                              <0.001        1.04           <0.00
+                                                                                           1
+                                                                                                        0.67
+
+
+ MCC           0.682         0.733             0.809
+                                                      IN      <0.001        1.39           <0.00        1.11
+
+                                   L E                                                     1
+
+
+                                IC
+                             RT
+  The widening performance gap on unseen data—wherein advantage over Swin increased
+
+                           A
+from 4.5% (validation Dice) to 9.9% (test Dice)—directly reflects generalization benefits from
+
+multi-survey denoising pretext training. When confronting unseen spatial regions, noise
+
+patterns differ from validation due to spatial variations in overburden thickness, near-surface
+
+conditions, and source-receiver offsets. Baseline and Swin architectures trained exclusively
+
+on Thebe training partition exhibit substantially lower precision (0.652, 0.712) on test data.
+
+The proposed model's precision of 0.819—only 2.7% degradation from validation (0.842)—
+
+demonstrates that noise-suppression representations learned during pretext training
+
+generalize robustly beyond fine-tuning distribution.
+
+  The precision improvement on unseen data (0.819 vs 0.712, Cohen's d=1.35, p<0.001)
+
+widened from 8.1% validation advantage to 15.0% test advantage, indicating denoising
+                               ACCEPTED
+                                 ARTICLEMANUSCRIPT
+                                         IN PRESS
+
+
+
+pretext training confers robust noise-suppression transferring effectively to novel volumes
+
+with previously unseen noise characteristics. Models lacking cross-survey noise-awareness
+
+consequently misclassify random noise at higher rates when confronting distribution shift.
+
+  IoU exhibited the largest relative improvement, increasing from 8.0% validation advantage
+
+(0.744 vs 0.689) to 16.7% test advantage (0.698 vs 0.598). This substantial IoU improvement
+
+reflects combined precision gains (0.819 vs 0.712) and maintained high recall (0.826 vs
+
+0.791), yielding tighter geometric correspondence with ground truth. On unseen data where
+
+fault orientations may differ from training, the global receptive field confers superior
+
+generalization by leveraging geometric priors learned across entire pretext corpus rather
+
+than local pattern matching.
+
+  Recall remained high (0.751–0.826) with the proposed model achieving 0.826 versus 0.791
+
+
+
+                                                        S S
+(Swin) and 0.751 (baseline). High recall (0.826) with improved precision (0.819)
+
+
+
+                                                     R E
+demonstrates maintained fault detection sensitivity while dramatically reducing false
+
+                                                    P
+positives. MCC increased to 0.809 from 0.733 (Swin) and 0.682 (baseline), representing
+
+
+                                             IN
+10.4% improvement over Swin (Cohen's d=1.11, p<0.001), indicating robust discriminative
+
+
+                              L E
+boundary generalization without dataset-specific memorization.
+
+
+                           IC
+                         T
+  Figure 7 presents inline, crossline, and time slices from unseen test data with predicted
+
+
+
+                      A R
+fault surfaces overlaid. The baseline CNN (top row) exhibits numerous isolated false positives
+
+throughout low signal-to-noise regions where random fluctuations are misclassified as faults.
+
+These spurious activations manifest as discontinuous clusters lacking spatial coherence
+
+characteristic of geological faults. Additionally, predictions fragment along continuous fault
+
+surfaces due to limited receptive field.
+                                   ACCEPTED
+                                     ARTICLEMANUSCRIPT
+                                             IN PRESS
+
+
+
+
+                                                                    S S
+                                                                 R E
+                                                                P
+Figure 7. Comparative fault segmentation results on unseen Thebe test data. Crossline (left), inline (center), and
+
+
+                                                       IN
+time slices (right) with predicted fault surfaces overlaid on seismic amplitude data. Top row: Baseline 3D CNN.
+
+
+
+                                   L E
+Middle row: 3D CNN + Swin Transformer. Bottom row: Proposed model. Ground truth fault interpretations are
+
+
+
+
+                                IC
+provided in Figure 4 (Section 2.1). Images were generated using SeismicFlow (Version 1.0.0).
+
+
+
+
+                             RT
+  The Swin architecture (middle row) demonstrates improved continuity through self-
+
+                           A
+attention but exhibits spatial discontinuities where windowed attention constrains
+
+information propagation. False positives persist in high-noise regions, indicating windowed
+
+attention     without     noise-suppression        pretext    training     cannot     fully    address     noise
+
+misclassification.
+
+  The proposed model (bottom row) produces spatially coherent fault predictions with
+
+continuous surfaces across dimensions and substantially reduced false positives. Global self-
+
+attention yields smooth, geologically plausible geometries without window boundary
+
+artifacts. Critically, random noise triggering false positives in alternative architectures is
+
+correctly classified as background—the 15.0% precision improvement (0.819 vs 0.712)
+
+manifests as cleaner predictions with minimal spurious activations.
+                              ACCEPTED
+                                ARTICLEMANUSCRIPT
+                                        IN PRESS
+
+
+
+  Figure 8 presents 3D volume renderings of predicted fault surfaces. The baseline (8a)
+
+produces numerous isolated false positive clusters distributed throughout the volume,
+
+particularly distant from true faults.
+
+
+
+
+                                                    S S
+                                                 R E
+                                                P
+                                         IN
+                               L E
+                            IC
+                         RT
+                       A
+   ACCEPTED
+     ARTICLEMANUSCRIPT
+             IN PRESS
+
+
+
+
+                       S S
+                    R E
+                   P
+              IN
+        L E
+     IC
+  RT
+A
+                                    ACCEPTED
+                                      ARTICLEMANUSCRIPT
+                                              IN PRESS
+
+
+
+Figure 8. Three-dimensional volume renderings of predicted fault surfaces on unseen Thebe test data. (a) Baseline
+
+3D CNN. (b) 3D CNN + Swin Transformer. (c) Proposed model. Fault surfaces are rendered as isosurfaces at
+
+prediction threshold τ = 0.5. Ground truth fault interpretations are provided in Figure 4 (Section 2.1). Images were
+
+generated using SeismicFlow (Version 1.0.0).
+
+
+
+These exhibit irregular, non-planar geometries inconsistent with geological surfaces
+
+typically exhibiting planar or smoothly curved morphologies. The Swin architecture (8b)
+
+demonstrates improved organization but spatial discontinuities persist where windowed
+
+attention fails to propagate context across distant positions. The proposed model (8c)
+
+reconstructs geologically coherent fault networks with continuous, planar surfaces
+
+extending across large spatial scales. False positives are substantially suppressed, reflecting
+
+noise-awareness from multi-survey denoising pretext training. The fault network exhibits
+
+
+                                                                       S
+hierarchical arrangements and geometrically consistent orientations characteristic of
+
+                                                                     S
+natural systems.
+
+                                                                  R E
+                                                                 P
+  Statistically significant improvements across all metrics (p<0.001) with large effect sizes
+
+
+                                                        IN
+(Cohen's d=0.51–1.35 vs Swin) confirm systematic gains directly attributable to the proposed
+
+
+
+                                   L E
+framework combining architectural innovation (global 3D self-attention), task-appropriate
+
+
+                                IC
+pretext training (multi-survey denoising), discriminative transfer learning (knowledge
+
+
+                             RT
+preservation), and imbalance-aware optimization (Unified Focal Loss).
+
+                           A
+  To assess transferability across geologically distinct basins, all architectures were applied
+
+to an independent offshore survey from a different geographical region with no overlap with
+
+Thebe. This offshore volume exhibits substantially higher ambient noise levels due to
+
+challenging acquisition conditions and complex subsurface geology. The dataset features
+
+dominant northeast-southwest trending strike-slip faults—distinct from Thebe's extensional
+
+normal faulting—providing stringent generalization testing to novel structural styles.
+
+Lacking expert annotations, evaluation is qualitative, providing visual evidence of robustness
+
+to distribution shift.
+
+  The trained model was applied to this survey in a strictly zero-shot inference setting: the
+
+offshore volume was never encountered during any phase of training and was not included
+                              ACCEPTED
+                                ARTICLEMANUSCRIPT
+                                        IN PRESS
+
+
+
+in the multi-survey denoising pretext corpus. No model adaptation of any kind was performed
+
+prior to evaluation — no fine-tuning, no pretext training on this survey, and no survey-specific
+
+calibration. This zero-shot protocol was deliberately chosen to represent the most stringent
+
+test of generalization: direct application to a survey from a geographically and geologically
+
+distinct basin, acquired under different conditions and characterized by different acquisition
+
+parameters including bin size, sampling rate, and noise floor. This reflects the practical
+
+scenario in which a practitioner deploys a trained model on a new survey from a different
+
+basin without any adaptation. This approach goes beyond the standard practice of
+
+withholding a spatial partition of the same survey used for training and fine-tuning, providing
+
+evidence of true cross-basin transferability under realistic deployment conditions where
+
+labeled data and survey-specific adaptation are unavailable.
+
+
+
+                                                          S S
+  Figure 9 presents inline, crossline, and time slices from the offshore dataset with
+
+
+
+                                                       R E
+predictions overlaid. Elevated noise levels—manifesting as high-amplitude random
+
+                                                      P
+fluctuations obscuring primary reflections—provide challenging differentiation tests
+
+
+                                              IN
+between stochastic noise and the strike-slip fault.
+
+
+                              L E
+                           IC
+                        RT
+                      A
+                                    ACCEPTED
+                                      ARTICLEMANUSCRIPT
+                                              IN PRESS
+
+
+
+Figure 9. Comparative segmentation of the dominant strike-slip fault on high-noise offshore data from geologically
+
+distinct basin. Crossline (left), inline (center), and time slices (right) with predicted fault overlaid on seismic
+
+amplitude data. Top row: Baseline 3D CNN. Middle row: 3D CNN + Swin Transformer. Bottom row: Proposed model.
+
+Images were generated using SeismicFlow (Version 1.0.0).
+
+
+
+  The baseline CNN (top row) exhibits severe degradation, producing widespread false
+
+positives    throughout       high-noise      regions.     Random       fluctuations      are    systematically
+
+misclassified as faults, yielding predictions lacking geological plausibility. The true strike-
+
+slip fault appears fragmented and discontinuous, interspersed with spurious predictions
+
+bearing no relationship to actual structures.
+
+  The Swin architecture (middle row) demonstrates improved continuity along the primary
+
+structure but exhibits spatial discontinuities where windowed attention constrains
+
+
+                                                                      S
+propagation. False positives persist in high-noise regions, indicating windowed attention
+
+                                                                    S
+                                                                   E
+without explicit noise-suppression training cannot fully discriminate stochastic fluctuations
+
+                                                                 R
+from geological discontinuities under substantial noise.
+                                                                P
+                                                       IN
+  The proposed model (bottom row) produces geologically coherent strike-slip fault
+
+
+
+                                   L E
+prediction with minimal spurious activations. The fault reconstructs as continuous, planar
+
+
+                                IC
+structure extending across full dimensions, consistent with expected strike-slip geometry.
+
+
+                             RT
+Critically, high-amplitude random noise triggering widespread false positives in alternative
+
+                           A
+architectures is correctly classified as background. The near-complete suppression of noise-
+
+induced false positives—despite noise levels substantially exceeding training—directly
+
+demonstrates robust transferability of noise-suppression representations acquired during
+
+multi-survey denoising pretext training.
+
+  Figure 10 presents 3D volume renderings. The baseline (10a) produces predictions
+
+dominated by noise-induced false positive clusters distributed chaotically throughout the
+
+volume, with the true fault barely discernible and appearing fragmented. The Swin
+
+architecture (10b) demonstrates improved discrimination with reduced false positive density
+
+but exhibits spatial discontinuities along the fault surface. The proposed model (10c)
+
+reconstructs the strike-slip fault as a single, continuous planar surface with near-complete
+                              ACCEPTED
+                                ARTICLEMANUSCRIPT
+                                        IN PRESS
+
+
+
+false positive suppression. The geometry exhibits smooth, planar morphology expected for
+
+strike-slip systems, with consistent strike orientation maintained across full spatial extent.
+
+The dramatic false positive reduction—particularly pronounced versus baseline and Swin
+
+under identical high-noise conditions—provides direct visual evidence of robust noise-
+
+suppression from multi-survey denoising pretext training.
+
+  Successful generalization to high-noise offshore data—from geographically distinct
+
+regions with different structural styles, elevated noise, and no training overlap—
+
+demonstrates the framework learns transferable fault geometry and noise characteristic
+
+representations rather than memorizing dataset-specific patterns. The architectural
+
+advantage of true global 3D self-attention is particularly evident where strike-slip faults
+
+extend across large spatial scales requiring long-range context integration. Factorized
+
+
+
+                                                          S S
+attention requires multiple hierarchical layers to aggregate context across volumes, yielding
+
+
+
+                                                       R E
+incomplete reconstruction where long-range dependencies are critical. Global attention
+
+                                                      P
+enables single-step contextual propagation across entire feature volumes, allowing direct
+
+
+                                              IN
+extended fault geometry modeling without multi-layer information relay.
+
+
+                               L E
+  Qualitative results on high-noise offshore data complement quantitative improvements on
+
+
+                            IC
+                          T
+Thebe validation and test partitions, providing converging evidence that the proposed
+
+
+
+                       A R
+framework produces robust generalization across diverse seismic interpretation scenarios.
+
+The model's ability to maintain fault detection accuracy and noise suppression when applied
+
+to geologically distinct basins with different structural styles and substantially elevated noise
+
+confirms that architectural and training innovations address fundamental limitations rather
+
+than optimizing for dataset-specific performance.
+
+  Discriminative transfer learning was implemented on a multi-GPU cluster comprising four
+
+NVIDIA RTX 4090 GPUs. Fine-tuning the pretrained denoising model for fault segmentation
+
+required approximately 42 hours across 100 epochs, with early stopping at epoch 51 and
+
+optimal validation performance at epoch 31. Inference on unseen Thebe test partition
+
+required 2.8 hours. Computational strategies managed memory demands: automatic mixed-
+
+precision training (FP16 forward, FP32 loss) reduced memory footprint while maintaining
+                            ACCEPTED
+                              ARTICLEMANUSCRIPT
+                                      IN PRESS
+
+
+
+numerical stability, gradient checkpointing enabled backpropagation through deep attention
+
+layers without storing all intermediate activations, and the discriminative fine-tuning
+
+protocol reduced memory consumption during early training by restricting gradient
+
+computation to progressively larger parameter subsets.
+
+
+
+
+                                                      S S
+                                                   R E
+                                                  P
+                                           IN
+                             L E
+                          IC
+                       RT
+                     A
+   ACCEPTED
+     ARTICLEMANUSCRIPT
+             IN PRESS
+
+
+
+
+                       S S
+                    R E
+                   P
+              IN
+        L E
+     IC
+  RT
+A
+                                   ACCEPTED
+                                     ARTICLEMANUSCRIPT
+                                             IN PRESS
+
+
+
+Figure 10. Three-dimensional volume renderings of predicted fault on high-noise offshore data. (a) Baseline 3D
+
+CNN. (b) 3D CNN + Swin Transformer. (c) Proposed model. The dominant strike-slip fault is rendered as an
+
+isosurface at prediction threshold τ = 0.5. Images were generated using SeismicFlow (Version 1.0.0).
+
+
+
+  These optimizations enabled efficient training of global 3D self-attention despite quadratic
+
+memory scaling, maintaining consistent throughput without batch size adjustments or model
+
+compression compromising architectural fidelity.
+
+  Despite multi-survey pre-training, the model exhibits limited transferability to geological
+
+settings absent from the training corpus — a challenge reflecting the extraordinary diversity
+
+of subsurface structures, survey types, acquisition geometries, and tectonic regimes in global
+
+seismic interpretation. A related limitation concerns the uncertainty inherent in manually
+
+interpreted training labels. Expert fault annotations, including those provided by An et al.
+
+
+                                                                     S
+(2021) for the Thebe dataset, are produced through integrated analysis of seismic attributes,
+
+                                                                   S
+                                                                  E
+structural context, and interpretive experience — a process that is inherently subjective and
+
+                                                                R
+                                                               P
+subject to inter-interpreter variability. In the strict sense, no ground truth exists for
+
+
+                                                      IN
+subsurface fault geometry: annotations represent expert estimates rather than verified
+
+measurements        and    may
+                                   L E
+                                   contain     systematic      omissions,     boundary      imprecision,   or
+
+
+                                IC
+                              T
+misclassification of noise artifacts as fault features. Such label uncertainty introduces
+
+
+
+                           A R
+structured noise into the training signal. However, neural networks trained on sufficiently
+
+large labeled corpora exhibit well-documented robustness to label noise: inconsistent
+
+annotations constitute a minority signal that optimization tends to discount in favor of
+
+dominant, coherent statistical relationships across the training volume. The Thebe dataset’s
+
+voxel-level annotations across a structurally diverse 3D volume provide sufficient coverage
+
+to reinforce correct associations despite localized annotation uncertainty, and the denoising
+
+pretext stage provides initialization entirely independent of fault labels, ensuring
+
+foundational representations are not subject to annotation bias before supervised adaptation
+
+begins. Future work could address these limitations by pre-training on hundreds of 3D
+
+surveys spanning diverse geological settings and developing multi-annotator consensus
+
+labels or uncertainty-aware training objectives. The success of large language models
+                             ACCEPTED
+                               ARTICLEMANUSCRIPT
+                                       IN PRESS
+
+
+
+demonstrates transformative capabilities emerging when models are trained at scale
+
+proportional to domain complexity — for seismic interpretation, this suggests developing
+
+large geophysical models (LGMs) trained on massive multi-survey corpora, extending to
+
+tasks including denoising and geological body segmentation and leveraging this study’s
+
+finding that effective pre-training on one task successfully transfers to another.
+
+4 Conclusion
+
+  This study addressed two persistent challenges in seismic fault segmentation: limited
+
+labeled training data and noise misclassification as fault structures. We developed a transfer
+
+learning framework combining hybrid 3D convolutional networks with true global self-
+
+attention—wherein every voxel attends to every other voxel without windowing or
+
+
+
+                                                           S
+factorization—with multi-survey denoising pretext training and discriminative fine-tuning via
+
+
+
+                                                        ES
+layer-wise learning rate decay, gradual unfreezing, and slanted triangular scheduling. The
+
+
+                                                     PR
+architecture, originally developed for seismic denoising (Mahzad et al., 2026), was adapted
+
+
+
+                                             IN
+for binary fault segmentation through transfer learning on the Thebe dataset.
+
+
+                                E
+  Quantitative evaluation demonstrated statistically significant improvements across all
+
+                              L
+                           IC
+metrics. On validation data, the proposed model achieved Dice=0.853 (4.5% improvement
+
+
+
+                        RT
+over Swin, p<0.001, Cohen's d=0.85), IoU=0.744 (8.0% improvement), precision=0.842
+
+                      A
+(8.1% improvement), and MCC=0.841 (5.0% improvement). On unseen test data,
+
+performance    gaps   widened:    Dice=0.822    (9.9%   improvement),     IoU=0.698   (16.7%
+
+improvement), and precision=0.819 (15.0% improvement), with substantially lower
+
+performance degradation (3.6% Dice reduction) versus Swin (8.3%) and baseline (11.5%).
+
+Effect sizes ranged from Cohen's d=0.51–1.35, confirming systematic gains.
+
+  The precision improvements (8.1% validation, 15.0% test) reflect noise-suppression
+
+capabilities acquired through pretext training across multiple geologically distinct surveys
+
+with varying noise characteristics. By learning to distinguish spatially coherent geological
+
+features from stochastic noise during multi-survey denoising, the model transferred robust
+
+noise-awareness to fault segmentation, reducing false positives in high-noise regions. The
+                              ACCEPTED
+                                ARTICLEMANUSCRIPT
+                                        IN PRESS
+
+
+
+IoU improvements (8.0% validation, 16.7% test) reflect benefits of unfactorized global 3D
+
+self-attention for capturing extended fault geometries through single-step contextual
+
+integration across entire feature volumes, contrasting windowed attention requiring multi-
+
+layer hierarchical aggregation. The discriminative transfer learning protocol preserved
+
+pretrained representations while enabling effective task adaptation without catastrophic
+
+forgetting, as evidenced by maintained high recall (0.826 unseen) alongside improved
+
+precision. Unified Focal Loss addressed extreme class imbalance through asymmetric
+
+weighting and focal modulation, contributing to balanced precision-recall trade-offs reflected
+
+in MCC improvements. Qualitative analysis of 2D slices and 3D volume renderings confirmed
+
+spatially continuous fault surfaces with substantially reduced false positive density, while
+
+alternative architectures exhibited fragmented predictions and persistent noise-induced
+
+spurious activations.
+                                                          S S
+                                                       R E
+  While computational requirements of true global 3D self-attention are manageable
+
+                                                      P
+through mixed-precision training, gradient checkpointing, and multi-GPU infrastructure, the
+
+
+                                              IN
+inherent scale and diversity of seismic data—spanning diverse tectonic settings and survey-
+
+
+                                L E
+specific noise characteristics—necessitates large-scale initiatives. Future work could explore
+
+
+                             IC
+                           T
+robust generalization requiring pretraining on hundreds of 3D surveys. The success of large
+
+
+
+                        A R
+language models demonstrates transformative capabilities emerging when models are
+
+trained at scale proportional to domain complexity, suggesting development of large
+
+geophysical models (LGMs) trained on massive, multi-survey corpora for tasks including
+
+denoising and geological body segmentation.
+
+Declaration Statement
+
+   The authors have no relevant financial or non-financial interests to disclose.
+
+   The authors have no conflicts of interest to declare that are relevant to the content of this
+
+article.
+                                   ACCEPTED
+                                     ARTICLEMANUSCRIPT
+                                             IN PRESS
+
+
+
+   All authors certify that they have no affiliations with or involvement in any organization
+
+or entity with any financial interest or non-financial interest in the subject matter or
+
+materials discussed in this manuscript.
+
+   The authors have no financial or proprietary interests in any material discussed in this
+
+article.
+
+Funding
+
+  This study was not supported by any sponsor or funder.
+
+Code Availability
+
+The complete codebase, along with the license document released under the MIT license,
+
+can be accessed anonymously at https://github.com/Matin-Mahzad/fault-detection-global-
+
+attention
+                                                                   S S
+References
+                                                                R E
+                                                               P
+                                                       IN
+    [1] Abraham, N., & Khan, N. M. (2019). A novel focal Tversky loss function with improved
+        attention U-Net for lesion segmentation. 2019 IEEE 16th International Symposium on
+
+                                        E
+        Biomedical Imaging (ISBI), 683–687. https://doi.org/10.1109/ISBI.2019.8759329
+
+                                      L
+                                    C
+    [2] Al-Dossary, S., & Marfurt, K. J. (2006). 3D volumetric multispectral estimates of reflector
+
+
+                                 T I
+           curvature and rotation. Geophysics, 71(5), P41–P51. https://doi.org/10.1190/1.2242449
+
+
+                              A R
+    [3] An, Y., Guo, J., Ye, Q., Childs, C., Walsh, J., & Dong, R. (2021). A gigabyte interpreted seismic
+
+           dataset     for    automatic     fault     recognition.   Data    in     Brief,      37,      107219.
+
+           https://doi.org/10.1016/j.dib.2021.107219
+
+    [4] Bahorich, M., & Farmer, S. (1995). 3-D seismic discontinuity for faults and stratigraphic
+
+           features:    The     coherence     cube.      The    Leading     Edge,     14(10),         1053–1058.
+
+           https://doi.org/10.1190/1.1437077
+
+    [5] Chicco, D., & Jurman, G. (2020). The advantages of the Matthews correlation coefficient (MCC)
+
+           over F1 score and accuracy in binary classification evaluation. BMC Genomics, 21, Article 6.
+
+           https://doi.org/10.1186/s12864-019-6413-7
+
+    [6] Chopra, S., & Marfurt, K. J. (2007a). Seismic attributes for prospect identification and reservoir
+
+           characterization (SEG Geophysical Developments Series No. 11). Society of Exploration
+
+           Geophysicists. https://doi.org/10.1190/1.9781560801900
+                             ACCEPTED
+                               ARTICLEMANUSCRIPT
+                                       IN PRESS
+
+
+
+[7] Chopra, S., & Marfurt, K. J. (2007b). Curvature attribute applications to 3D surface seismic
+
+    data. The Leading Edge, 26(4), 404–414. https://doi.org/10.1190/1.2723201
+
+[8] Chopra, S., & Marfurt, K. J. (2016). Understanding the seismic disorder attribute and its
+
+    applications. The Leading Edge, 35(8), 695–702. https://doi.org/10.1190/tle35080695.1
+
+[9] Cunha, A., Pochet, A., Lopes, H., & Gattass, M. (2020). Seismic fault detection in real data using
+
+    transfer learning from a convolutional neural network pre-trained with synthetic seismic data.
+
+    Computers & Geosciences, 135, 104344. https://doi.org/10.1016/j.cageo.2019.104344
+
+[10]        Popovici, A. M., Fomel, S., Di, H., Shafiq, M. A., & AlRegib, G. (2017). Seismic-fault
+
+    detection based on multiattribute support vector machine analysis. In SEG Technical Program
+
+    Expanded     Abstracts   2017    (pp.   2039–2044).    Society   of   Exploration   Geophysicists.
+
+    https://doi.org/10.1190/segam2017-17748277.1
+
+[11]        Esmaeili, H., Bagheri, M., & Esmaeili, S. (2025). Integrating multiple seismic attributes
+
+
+                                                              S
+    for fault detection using a new hybrid machine learning. Scientific Reports, 15, 42744.
+
+                                                            S
+    https://doi.org/10.1038/s41598-025-26889-y
+
+                                                         R E
+                                                        P
+[12]        Howard, J., & Ruder, S. (2018). Universal language model fine-tuning for text
+
+
+
+                                                IN
+    classification. In I. Gurevych & Y. Miyao (Eds.), Proceedings of the 56th Annual Meeting of the
+
+
+
+                               E
+    Association for Computational Linguistics (Volume 1: Long Papers) (pp. 328–339). Association
+
+
+
+                           C L
+    for Computational Linguistics. https://doi.org/10.18653/v1/P18-1031
+
+[13]
+                        T I
+            Huang, L., Dong, X., & Clee, T. E. (2017). A scalable deep learning platform for
+
+
+
+                     A R
+    identifying geologic features from seismic attributes. The Leading Edge, 36(3), 249–256.
+
+    https://doi.org/10.1190/tle36030249.1
+
+[14]        Li, C., Fomel, S., Chen, Y., Dommisse, R., & Savvaidis, A. (2025). FaultVitNet: A vision
+
+    transformer assisted network for 3D fault segmentation. Journal of Geophysical Research:
+
+    Machine          Learning           and         Computation,           2,         e2024JH000488.
+
+    https://doi.org/10.1029/2024JH000488
+
+[15]        Lin, T. Y., Goyal, P., Girshick, R., He, K., & Dollár, P. (2017). Focal loss for dense
+    object detection. Proceedings of the IEEE International Conference on Computer Vision
+    (ICCV), 2980–2988. https://doi.org/10.1109/ICCV.2017.324
+
+[16]        Liu, S., Liu, Y., Ying, C., Cao, J., Zeng, J., & Yang, Z. (2018). Automatic fault detection
+
+    based on the unsupervised seismic attributes clustering. In SEG 2018 Workshop: SEG
+
+    Maximizing Asset Value Through Artificial Intelligence and Machine Learning (pp. 15–18).
+
+    Society of Exploration Geophysicists. https://doi.org/10.1190/AIML2018-15.1
+                           ACCEPTED
+                             ARTICLEMANUSCRIPT
+                                     IN PRESS
+
+
+
+[17]      Loshchilov, I., & Hutter, F. (2019). Decoupled weight decay regularization. In
+
+   International      Conference          on        Learning         Representations         (ICLR).
+
+   https://openreview.net/forum?id=Bkg6RiCqY7
+
+[18]      Longley, I. M., Buessenschuett, C., Clydsdale, L., Cubitt, C. J., Davis, R. C., Johnson, M.
+
+   K., ... & Wightman, D. M. (2002). The North West Shelf of Australia–a Woodside perspective.
+
+   The Sedimentary Basins of Western Australia, 3, 27-88.
+
+[19]      Mahzad, M., & Bagheri, M. (2025). Predictive reconstruction of missing geological
+
+   events and patterns in real-life 3D post-stack seismic images: A novel U-Net based deep
+
+   learning approach. Carbonates and Evaporites, 40, Article 12. https://doi.org/10.1007/s13146-
+
+   024-01050-4
+
+[20]      Mahzad, M., & Riahi, M. A. (2024). Reservoir characterization reimagined: A hybrid
+
+   neural network approach for direct three-dimensional petrophysical property characterization.
+
+
+                                                            S
+   Carbonates and Evaporites, 39, Article 67. https://doi.org/10.1007/s13146-024-00975-0
+
+                                                          S
+[21]
+                                                         E
+          Mahzad, M., Mehrabi, A., & Bagheri, M. (2026). Self-Supervised Denoising of Seismic
+
+                                                       R
+                                                      P
+   Data Using a True 3D Global Attention Convolutional Network. Arabian Journal for Science and
+
+
+
+                                               IN
+   Engineering. https://doi.org/10.1007/s13369-025-10974-5
+
+
+
+                             E
+[22]      Marfurt, K. J., Kirlin, R. L., Farmer, S. L., & Bahorich, M. S. (1998). 3-D seismic
+
+
+
+                         C L
+   attributes using a semblance-based coherency algorithm. Geophysics, 63(4), 1150–1165.
+
+
+                      T I
+   https://doi.org/10.1190/1.1444415
+
+[23]
+                   A R
+          Pedersen, S. I., Randen, T., Sønneland, L., & Skov, T. (2002). Automatic fault extraction
+
+   using artificial ants. In Proceedings of the 72nd Annual International Meeting, SEG Technical
+
+   Program   Expanded    Abstracts     (pp.   551–554).   Society   of   Exploration   Geophysicists.
+
+   https://doi.org/10.1190/1.1817297
+
+[24]      Randen, T., Monsen, E., Signer, C., Abrahamsen, A., Hansen, J. O., Sæter, T., & Schlaf,
+
+   J. (2000). Three-dimensional texture attributes for seismic data analysis. In SEG Technical
+
+   Program Expanded Abstracts 2000 (pp. 668–671). Society of Exploration Geophysicists.
+
+   https://doi.org/10.1190/1.1816155
+
+[25]      Randen, T., Pedersen, S. I., & Sønneland, L. (2001). Automatic extraction of fault
+
+   surfaces from three-dimensional seismic data. In Proceedings of the 71st Annual International
+
+   Meeting, SEG Technical Program Expanded Abstracts (pp. 551–554). Society of Exploration
+
+   Geophysicists. https://doi.org/10.1190/1.1816675
+                            ACCEPTED
+                              ARTICLEMANUSCRIPT
+                                      IN PRESS
+
+
+
+[26]       Ren, K., Zou, G., Zhang, S., Peng, S., Gong, F., & Liu, Y. (2023). Fault identification and
+
+   reliability evaluation using an SVM model based on 3-D seismic data volume. Geophysical
+
+   Journal International, 234(1), 755–768. https://doi.org/10.1093/gji/ggad095
+
+[27]       Roberts, A. (2001). Curvature attributes and their application to 3D interpreted
+
+   horizons. First Break, 19(2), 85–100. https://doi.org/10.1046/j.0263-5046.2001.00142.x
+
+[28]       Tavakolizadeh, N., & Bagheri, M. (2022). Multi-attribute selection for salt dome
+
+   detection based on SVM and MLP machine learning techniques. Natural Resources Research,
+
+   31, 353–370. https://doi.org/10.1007/s11053-021-09973-8
+
+[29]       Van Bemmel, P. P., & Pepper, R. E. F. (2000). Seismic signal processing method and
+
+   apparatus for generating a cube of variance values. U.S. Patent No. 6,151,555.
+
+[30]       Wang, Z., Zhang, Z., Ma, J., & Yu, S. (2024). Improving seismic fault recognition with
+
+   self-supervised pre-training: A study of 3D transformer-based with multi-scale decoding and
+
+
+                                                             S
+   fusion. Remote Sensing, 16(5), 922. https://doi.org/10.3390/rs16050922
+
+                                                           S
+[31]
+                                                          E
+           Wei, X.-L., Zhang, C.-X., Kim, S.-W., Jing, K.-L., Wang, Y.-J., Xu, S., & Xie, Z.-Z. (2022).
+
+                                                        R
+                                                       P
+   Seismic fault detection using convolutional neural networks with focal loss. Computers &
+
+
+
+                                              IN
+   Geosciences, 158, 104968. https://doi.org/10.1016/j.cageo.2021.104968
+
+
+
+                              E
+[32]       Wu, X., Liang, L., Shi, Y., & Fomel, S. (2019). FaultSeg3D: Using synthetic data sets to
+
+
+
+                          C L
+   train an end-to-end convolutional neural network for 3D seismic fault segmentation.
+
+
+                       T I
+   Geophysics, 84(3), IM35–IM45. https://doi.org/10.1190/geo2018-0646.1
+
+[33]
+                    A R
+           Xiong, W., Ji, X., Ma, Y., Wang, Y., AlBinHassan, N. M., Ali, M. N., & Luo, Y. (2018).
+
+   Seismic fault detection with convolutional neural network. Geophysics, 83(5), O97–O103.
+
+   https://doi.org/10.1190/geo2017-0666.1
+
+[34]         Yeung, M., Sala, E., Schönlieb, C. B., & Rundo, L. (2022). Unified focal loss:
+    Generalising dice and cross entropy-based losses to handle class imbalanced medical image
+    segmentation. Computerized Medical Imaging and Graphics, 95, 102026.
+    https://doi.org/10.1016/j.compmedimag.2021.102026
+   ACCEPTED
+     ARTICLEMANUSCRIPT
+             IN PRESS
+
+
+
+
+                        S S
+                     RE
+                   P
+              IN
+        L E
+     IC
+  RT
+A
+

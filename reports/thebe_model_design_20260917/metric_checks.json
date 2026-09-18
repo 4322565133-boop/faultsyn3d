@@ -1,0 +1,5 @@
+{
+  "status": "PASS",
+  "thick_prediction_recall": 0.5,
+  "invalid_prediction_recall": 0.0
+}

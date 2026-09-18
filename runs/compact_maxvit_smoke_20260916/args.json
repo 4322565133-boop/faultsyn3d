@@ -1,0 +1,40 @@
+{
+  "out": "runs/compact_maxvit_smoke_20260916",
+  "data": "data/dataset_reproduction_v2",
+  "epochs": 200,
+  "per_rank": 2,
+  "accum": 1,
+  "workers": 2,
+  "lr": 0.0001,
+  "seed": 2026,
+  "smoke": true,
+  "model": "compact_maxvit3d",
+  "mkw": {
+    "base": 36,
+    "drop_path_rate": 0.2,
+    "checkpoint_highres": true
+  },
+  "params": 9489043,
+  "world": 4,
+  "global_batch": 8,
+  "init": "random; no pretrained or previous-run weights",
+  "loss": "explicit FP32 0.6 Dice + 0.4 Focal(alpha=.75,gamma=2)",
+  "initial_amp_scale": 1024,
+  "optimizer": "AdamW wd=.01; no clipping",
+  "schedule": "10 epoch warmup 1e-6 to peak, cosine to 1e-7; fixed 200 epoch budget",
+  "selection": "minimum validation segmentation loss, same criterion as historical baseline",
+  "norm": "InstanceNorm in detail/decoder, per-rank BatchNorm in MBConv, LayerNorm in attention",
+  "manifest_sha256": "8255016ce917b483cda0dc3471b5e984f086b23184965082bff4cee44a632af3",
+  "source_hashes": {
+    "models/compact_maxvit3d.py": "62d034d17488a66c3d37829a1c6c8634f799dd1d661faf3c6e8ec44b400d970e",
+    "models/maxvit3d.py": "e5eb289262199d36aa623682f6e09a6e619782114f38f7c99512b2c0e4aac024",
+    "train/train_compact_maxvit_ddp.py": "563c4fcae940da3484655c28e3af1fc9a58cf642a65bb1d97e1aec1f20842395",
+    "train/dataset.py": "fcc6381d91f24e321928882e4207abe5906a39194a7d7712a2ba86ccb56cb98c",
+    "train/train_old_recipe.py": "8e8ba98b9301a78ba096ea08fbb39737f67cc21436b7cbbf6cfd4ad3ad5f8158"
+  },
+  "n_train": 800,
+  "n_val": 100,
+  "torch": "2.10.0+cu128",
+  "reference": "runs/maxvit3d_v2_oldrecipe_all3",
+  "data_source_sha256": "4caf323f71699d3195906146d8af908023d1ebf48f6070521a3d39a317105570"
+}

@@ -1,0 +1,62 @@
+{
+  "args": {
+    "root": "/hdd1/hukaixiao/projects/faultsyn3d/data/thebe_spatial_v3",
+    "run": "runs/thebe_spatial_v3_mv2d_tiny_ad",
+    "epochs": 100,
+    "stop_after": 100,
+    "samples": 2400,
+    "workers": 3,
+    "seed": 2026,
+    "full_every": 1,
+    "resume": false,
+    "smoke": false,
+    "variant": "mv2d_tiny_ad",
+    "label_frac": 1.0,
+    "label_blocks": 2,
+    "semi": false,
+    "ema": 0.99,
+    "lambda_u": 1.0,
+    "ramp": 20,
+    "no_smc": false,
+    "box": 64,
+    "mask_boxes": 4,
+    "mask_size": 32,
+    "per_rank": 1,
+    "accum": 2
+  },
+  "params": 15027081,
+  "world_size": 4,
+  "effective_batch": 8,
+  "model": "maxvit2d_adapter3d",
+  "model_kwargs": {
+    "backbone": "maxvit_tiny_tf_224",
+    "pretrained": true,
+    "adapter": true
+  },
+  "labeled_ranges": [
+    [
+      0,
+      3174
+    ]
+  ],
+  "semi": false,
+  "protocol_sha256": "f8063803bc0db36222cad249d0a181603baa7dc74889ce5d1262999a2b889761",
+  "sources": {
+    "train/train_thebe_spatial_ddp.py": "a9d65f72e14c2672e51609e75a84f8bfbbc6e541c1534ed2f092f4c74dc1c099",
+    "train/dataset_thebe_spatial.py": "287d516a74bd08ad09c5f2d3864b2d4f088570d6854cdd66e9cb3d118d17e945",
+    "models/maxvit2d_adapter3d.py": "0c8239fdd2da44879775d9a30070208384ba79e8bed3c8470356dad78c3ac227",
+    "models/__init__.py": "df8868916bcdcc27a5e8187ab74aaf5d289b6bdff206e24e7048e6620a271b28",
+    "scripts/prepare_thebe_spatial.py": "d4577f6f439ef7ecbc70b1df334788b6a75e9f3fdb7bf7134ac322506fc6ffa9"
+  },
+  "initialization": "ImageNet-pretrained 2-D backbone (timm), rest random",
+  "full_val_cores": 2433,
+  "fast_val_cores": 96,
+  "torch_version": "2.10.0+cu128",
+  "device_names": [
+    "NVIDIA GeForce RTX 2080 Ti",
+    "NVIDIA GeForce RTX 2080 Ti",
+    "NVIDIA GeForce RTX 2080 Ti",
+    "NVIDIA GeForce RTX 2080 Ti",
+    "NVIDIA T400"
+  ]
+}

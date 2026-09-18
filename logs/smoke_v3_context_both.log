@@ -1,0 +1,7 @@
+context_both (context_grid_maxvit3d) params=32,449,615 world=4 batch=8 train=32 fast=8 full=2433
+/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+epoch 1 microstep 1/8 loss=0.61926 lr=1e-06 elapsed=2s
+{"epoch": 1, "lr": 1e-06, "train_loss": 0.5882350821048021, "fast_val": {"iou": 0.0, "dice": 0.0, "precision": 0.0, "recall": 0.0, "valid_voxels": 1335479, "positive_voxels": 0, "loss": 0.6191129758954048, "cores": 8}, "full_val": null, "seconds": 6.8398637771606445, "skipped_optimizer_steps": 0}
+/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)

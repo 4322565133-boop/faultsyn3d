@@ -1,0 +1,113 @@
+target=50 existing=0 workers=8
+1/50 000006_en_echelon fault=3.390% visible=0.913 attempts=1 seconds=3.1
+2/50 000000_en_echelon fault=3.465% visible=0.976 attempts=1 seconds=3.1
+3/50 000002_en_echelon fault=4.285% visible=0.964 attempts=1 seconds=3.5
+4/50 000003_en_echelon fault=3.644% visible=0.856 attempts=1 seconds=3.5
+5/50 000001_en_echelon fault=3.833% visible=0.948 attempts=1 seconds=3.5
+6/50 000004_en_echelon fault=3.448% visible=0.942 attempts=2 seconds=4.1
+7/50 000005_en_echelon fault=3.275% visible=0.865 attempts=3 seconds=4.5
+8/50 000009_en_echelon fault=4.273% visible=0.911 attempts=1 seconds=3.5
+9/50 000008_en_echelon fault=3.588% visible=0.945 attempts=1 seconds=3.6
+10/50 000007_en_echelon fault=3.855% visible=0.973 attempts=7 seconds=7.3
+11/50 000012_horsetail fault=3.413% visible=0.722 attempts=3 seconds=4.0
+12/50 000014_horsetail fault=2.171% visible=0.799 attempts=6 seconds=5.0
+13/50 000013_horsetail fault=2.502% visible=0.842 attempts=7 seconds=5.9
+14/50 000011_horsetail fault=2.742% visible=0.819 attempts=10 seconds=7.5
+15/50 000018_horsetail fault=2.966% visible=0.786 attempts=4 seconds=4.1
+16/50 000015_horsetail fault=3.340% visible=0.768 attempts=5 seconds=5.0
+17/50 000010_horsetail fault=2.603% visible=0.710 attempts=15 seconds=9.3
+18/50 000019_horsetail fault=2.961% visible=0.850 attempts=2 seconds=3.4
+19/50 000016_horsetail fault=2.675% visible=0.685 attempts=7 seconds=6.9
+20/50 000017_horsetail fault=3.000% visible=0.810 attempts=7 seconds=6.7
+21/50 000025_negative_flower fault=3.390% visible=0.848 attempts=7 seconds=6.1
+22/50 000022_negative_flower fault=3.707% visible=0.865 attempts=15 seconds=10.5
+23/50 000028_negative_flower fault=3.268% visible=0.833 attempts=2 seconds=3.5
+24/50 000023_negative_flower fault=3.999% visible=0.818 attempts=18 seconds=11.9
+25/50 000030_positive_flower fault=4.678% visible=0.976 attempts=4 seconds=4.9
+26/50 000021_negative_flower fault=3.579% visible=0.802 attempts=31 seconds=19.1
+27/50 000031_positive_flower fault=4.085% visible=0.974 attempts=8 seconds=7.1
+28/50 000032_positive_flower fault=3.392% visible=0.775 attempts=2 seconds=3.7
+29/50 000034_positive_flower fault=2.787% visible=0.900 attempts=2 seconds=3.8
+30/50 000033_positive_flower fault=4.891% visible=0.958 attempts=4 seconds=4.7
+31/50 000035_positive_flower fault=4.087% visible=0.990 attempts=4 seconds=5.0
+32/50 000036_positive_flower fault=4.761% visible=0.922 attempts=2 seconds=3.9
+33/50 000037_positive_flower fault=4.825% visible=0.954 attempts=2 seconds=4.0
+34/50 000039_positive_flower fault=4.892% visible=0.992 attempts=2 seconds=4.1
+35/50 000038_positive_flower fault=4.874% visible=0.944 attempts=11 seconds=8.6
+36/50 000020_negative_flower fault=3.818% visible=0.797 attempts=61 seconds=35.0
+37/50 000029_negative_flower fault=3.484% visible=0.827 attempts=47 seconds=29.1
+38/50 000043_listric_assemblage fault=3.202% visible=0.725 attempts=3 seconds=6.1
+39/50 000027_negative_flower fault=3.964% visible=0.892 attempts=75 seconds=43.0
+40/50 000024_negative_flower fault=3.347% visible=0.874 attempts=80 seconds=44.7
+41/50 000041_listric_assemblage fault=2.580% visible=0.804 attempts=19 seconds=20.5
+42/50 000047_listric_assemblage fault=3.224% visible=0.782 attempts=8 seconds=12.4
+43/50 000046_listric_assemblage fault=3.000% visible=0.665 attempts=24 seconds=30.7
+44/50 000026_negative_flower fault=3.419% visible=0.750 attempts=147 seconds=80.2
+45/50 000040_listric_assemblage fault=3.202% visible=0.688 attempts=47 seconds=55.4
+46/50 000045_listric_assemblage fault=3.130% visible=0.753 attempts=40 seconds=53.9
+47/50 000049_listric_assemblage fault=3.319% visible=0.768 attempts=36 seconds=41.7
+48/50 000044_listric_assemblage fault=2.959% visible=0.598 attempts=53 seconds=65.2
+49/50 000042_listric_assemblage fault=3.497% visible=0.659 attempts=64 seconds=78.5
+50/50 000048_listric_assemblage fault=3.509% visible=0.772 attempts=50 seconds=65.5
+{
+  "en_echelon": {
+    "n": 10,
+    "fault_percent_mean": 3.705720901489258,
+    "fault_percent_range": [
+      3.2745838165283203,
+      4.285383224487305
+    ],
+    "visible_fraction_mean": 0.9293218653924658,
+    "attempts_mean": 1.9,
+    "pso_zero_count": 10,
+    "geometry_qc_pass_count": 10
+  },
+  "horsetail": {
+    "n": 10,
+    "fault_percent_mean": 2.8373146057128906,
+    "fault_percent_range": [
+      2.1706581115722656,
+      3.4134387969970703
+    ],
+    "visible_fraction_mean": 0.7791434984727349,
+    "attempts_mean": 6.6,
+    "pso_zero_count": 10,
+    "geometry_qc_pass_count": 10
+  },
+  "negative_flower": {
+    "n": 10,
+    "fault_percent_mean": 3.597536087036133,
+    "fault_percent_range": [
+      3.2677173614501953,
+      3.9990901947021484
+    ],
+    "visible_fraction_mean": 0.8305329642847041,
+    "attempts_mean": 48.3,
+    "pso_zero_count": 10,
+    "geometry_qc_pass_count": 10
+  },
+  "positive_flower": {
+    "n": 10,
+    "fault_percent_mean": 4.327092170715332,
+    "fault_percent_range": [
+      2.786874771118164,
+      4.8915863037109375
+    ],
+    "visible_fraction_mean": 0.9385524584936821,
+    "attempts_mean": 4.1,
+    "pso_zero_count": 10,
+    "geometry_qc_pass_count": 10
+  },
+  "listric_assemblage": {
+    "n": 10,
+    "fault_percent_mean": 3.1621694564819336,
+    "fault_percent_range": [
+      2.5803565979003906,
+      3.5085678100585938
+    ],
+    "visible_fraction_mean": 0.7213292068418257,
+    "attempts_mean": 34.4,
+    "pso_zero_count": 10,
+    "geometry_qc_pass_count": 10
+  }
+}

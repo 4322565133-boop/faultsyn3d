@@ -1,0 +1,10 @@
+{
+  "release_recorded_duplicate_seismic": [],
+  "release_recorded_cross_split_duplicates": [],
+  "wu_gradient_energy_by_loaded_zyx_axis": [
+    0.7042955204844474,
+    0.11581296976655722,
+    0.1235558832064271
+  ],
+  "axis_note": "Largest gradient along depth supports loader convention but is not an independent provenance proof."
+}

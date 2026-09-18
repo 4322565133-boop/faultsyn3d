@@ -1,0 +1,687 @@
+M0 CompactMaxViT 9,489,043 parameters; global batch 8; start epoch 1
+/hdd1/hukaixiao/projects/faultsyn3d/train/train_compact_maxvit_ddp.py:217: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:836.)
+  print(f'epoch={epoch:03d} step={step+1}/{len(dl)} loss={float(loss):.5f}',flush=True)
+epoch=001 step=1/100 loss=0.57851
+epoch=001 step=10/100 loss=0.56598
+epoch=001 step=20/100 loss=0.56825
+epoch=001 step=30/100 loss=0.56606
+epoch=001 step=40/100 loss=0.56673
+epoch=001 step=50/100 loss=0.55083
+epoch=001 step=60/100 loss=0.56491
+epoch=001 step=70/100 loss=0.56234
+epoch=001 step=80/100 loss=0.57423
+epoch=001 step=90/100 loss=0.55596
+epoch=001 step=100/100 loss=0.55315
+EPOCH 001/200: train=0.56272 val=0.55077 IoU=0.095418 P=0.0992 R=0.7150 97.2s peak=9757MiB
+/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+epoch=002 step=1/100 loss=0.55560
+epoch=002 step=10/100 loss=0.55800
+epoch=002 step=20/100 loss=0.55596
+epoch=002 step=30/100 loss=0.55236
+epoch=002 step=40/100 loss=0.54712
+epoch=002 step=50/100 loss=0.55843
+epoch=002 step=60/100 loss=0.53234
+epoch=002 step=70/100 loss=0.52245
+epoch=002 step=80/100 loss=0.54941
+epoch=002 step=90/100 loss=0.54193
+epoch=002 step=100/100 loss=0.51862
+EPOCH 002/200: train=0.54228 val=0.51760 IoU=0.178440 P=0.1890 R=0.7609 82.6s peak=7814MiB
+epoch=003 step=1/100 loss=0.50862
+epoch=003 step=10/100 loss=0.54177
+epoch=003 step=20/100 loss=0.50169
+epoch=003 step=30/100 loss=0.49270
+epoch=003 step=40/100 loss=0.53397
+epoch=003 step=50/100 loss=0.48189
+epoch=003 step=60/100 loss=0.51487
+epoch=003 step=70/100 loss=0.47337
+epoch=003 step=80/100 loss=0.51482
+epoch=003 step=90/100 loss=0.48644
+epoch=003 step=100/100 loss=0.49019
+EPOCH 003/200: train=0.50803 val=0.48056 IoU=0.254494 P=0.2795 R=0.7399 82.9s peak=7814MiB
+epoch=004 step=1/100 loss=0.49787
+epoch=004 step=10/100 loss=0.48655
+epoch=004 step=20/100 loss=0.50652
+epoch=004 step=30/100 loss=0.49935
+epoch=004 step=40/100 loss=0.49401
+epoch=004 step=50/100 loss=0.50837
+epoch=004 step=60/100 loss=0.48712
+epoch=004 step=70/100 loss=0.48067
+epoch=004 step=80/100 loss=0.49168
+epoch=004 step=90/100 loss=0.43086
+epoch=004 step=100/100 loss=0.43465
+EPOCH 004/200: train=0.47730 val=0.45595 IoU=0.297000 P=0.3299 R=0.7487 83.2s peak=7814MiB
+epoch=005 step=1/100 loss=0.41371
+epoch=005 step=10/100 loss=0.46490
+epoch=005 step=20/100 loss=0.46861
+epoch=005 step=30/100 loss=0.43875
+epoch=005 step=40/100 loss=0.40582
+epoch=005 step=50/100 loss=0.45666
+epoch=005 step=60/100 loss=0.44575
+epoch=005 step=70/100 loss=0.42455
+epoch=005 step=80/100 loss=0.46871
+epoch=005 step=90/100 loss=0.42722
+epoch=005 step=100/100 loss=0.43970
+EPOCH 005/200: train=0.45331 val=0.43053 IoU=0.341230 P=0.3760 R=0.7867 83.3s peak=7814MiB
+epoch=006 step=1/100 loss=0.39883
+epoch=006 step=10/100 loss=0.37772
+epoch=006 step=20/100 loss=0.42601
+epoch=006 step=30/100 loss=0.45734
+epoch=006 step=40/100 loss=0.40682
+epoch=006 step=50/100 loss=0.48921
+epoch=006 step=60/100 loss=0.43181
+epoch=006 step=70/100 loss=0.43319
+epoch=006 step=80/100 loss=0.41100
+epoch=006 step=90/100 loss=0.38114
+epoch=006 step=100/100 loss=0.47518
+EPOCH 006/200: train=0.43084 val=0.40465 IoU=0.387127 P=0.4241 R=0.8162 83.5s peak=7814MiB
+epoch=007 step=1/100 loss=0.44291
+epoch=007 step=10/100 loss=0.42075
+epoch=007 step=20/100 loss=0.38754
+epoch=007 step=30/100 loss=0.40798
+epoch=007 step=40/100 loss=0.43481
+epoch=007 step=50/100 loss=0.38520
+epoch=007 step=60/100 loss=0.41043
+epoch=007 step=70/100 loss=0.41860
+epoch=007 step=80/100 loss=0.41351
+epoch=007 step=90/100 loss=0.45258
+epoch=007 step=100/100 loss=0.41717
+EPOCH 007/200: train=0.40656 val=0.38154 IoU=0.450376 P=0.5103 R=0.7932 83.3s peak=7814MiB
+epoch=008 step=1/100 loss=0.42932
+epoch=008 step=10/100 loss=0.38372
+epoch=008 step=20/100 loss=0.40819
+epoch=008 step=30/100 loss=0.46453
+epoch=008 step=40/100 loss=0.39690
+epoch=008 step=50/100 loss=0.35843
+epoch=008 step=60/100 loss=0.34881
+epoch=008 step=70/100 loss=0.43364
+epoch=008 step=80/100 loss=0.37997
+epoch=008 step=90/100 loss=0.37241
+epoch=008 step=100/100 loss=0.40115
+EPOCH 008/200: train=0.38229 val=0.35117 IoU=0.483561 P=0.5348 R=0.8345 83.2s peak=7814MiB
+epoch=009 step=1/100 loss=0.32078
+epoch=009 step=10/100 loss=0.37587
+epoch=009 step=20/100 loss=0.31081
+epoch=009 step=30/100 loss=0.46878
+epoch=009 step=40/100 loss=0.34548
+epoch=009 step=50/100 loss=0.34242
+epoch=009 step=60/100 loss=0.35466
+epoch=009 step=70/100 loss=0.38493
+epoch=009 step=80/100 loss=0.30801
+epoch=009 step=90/100 loss=0.35784
+epoch=009 step=100/100 loss=0.30495
+EPOCH 009/200: train=0.35450 val=0.32188 IoU=0.531050 P=0.5956 R=0.8306 83.3s peak=7814MiB
+epoch=010 step=1/100 loss=0.33691
+epoch=010 step=10/100 loss=0.33868
+epoch=010 step=20/100 loss=0.36582
+epoch=010 step=30/100 loss=0.32504
+epoch=010 step=40/100 loss=0.36444
+epoch=010 step=50/100 loss=0.28757
+epoch=010 step=60/100 loss=0.28112
+epoch=010 step=70/100 loss=0.28850
+epoch=010 step=80/100 loss=0.23249
+epoch=010 step=90/100 loss=0.34016
+epoch=010 step=100/100 loss=0.33260
+EPOCH 010/200: train=0.32650 val=0.29780 IoU=0.533001 P=0.5892 R=0.8481 83.3s peak=7814MiB
+epoch=011 step=1/100 loss=0.27927
+epoch=011 step=10/100 loss=0.33562
+epoch=011 step=20/100 loss=0.31352
+epoch=011 step=30/100 loss=0.24368
+epoch=011 step=40/100 loss=0.32041
+epoch=011 step=50/100 loss=0.31697
+epoch=011 step=60/100 loss=0.30426
+epoch=011 step=70/100 loss=0.27517
+epoch=011 step=80/100 loss=0.28256
+epoch=011 step=90/100 loss=0.27043
+epoch=011 step=100/100 loss=0.29801
+EPOCH 011/200: train=0.30068 val=0.26573 IoU=0.591410 P=0.6660 R=0.8408 83.3s peak=7814MiB
+epoch=012 step=1/100 loss=0.29530
+epoch=012 step=10/100 loss=0.29290
+epoch=012 step=20/100 loss=0.25406
+epoch=012 step=30/100 loss=0.27571
+epoch=012 step=40/100 loss=0.33728
+epoch=012 step=50/100 loss=0.32607
+epoch=012 step=60/100 loss=0.28827
+epoch=012 step=70/100 loss=0.28690
+epoch=012 step=80/100 loss=0.29211
+epoch=012 step=90/100 loss=0.29621
+epoch=012 step=100/100 loss=0.22256
+EPOCH 012/200: train=0.27702 val=0.24377 IoU=0.616796 P=0.7008 R=0.8373 83.2s peak=7814MiB
+epoch=013 step=1/100 loss=0.23890
+epoch=013 step=10/100 loss=0.28731
+epoch=013 step=20/100 loss=0.22695
+epoch=013 step=30/100 loss=0.23754
+epoch=013 step=40/100 loss=0.28276
+epoch=013 step=50/100 loss=0.27221
+epoch=013 step=60/100 loss=0.22500
+epoch=013 step=70/100 loss=0.21182
+epoch=013 step=80/100 loss=0.24234
+epoch=013 step=90/100 loss=0.25956
+epoch=013 step=100/100 loss=0.24510
+EPOCH 013/200: train=0.25424 val=0.22477 IoU=0.637210 P=0.7337 R=0.8289 83.4s peak=7814MiB
+epoch=014 step=1/100 loss=0.25616
+epoch=014 step=10/100 loss=0.22121
+epoch=014 step=20/100 loss=0.23457
+epoch=014 step=30/100 loss=0.28879
+epoch=014 step=40/100 loss=0.19147
+epoch=014 step=50/100 loss=0.23604
+epoch=014 step=60/100 loss=0.20450
+epoch=014 step=70/100 loss=0.16742
+epoch=014 step=80/100 loss=0.20000
+epoch=014 step=90/100 loss=0.28179
+epoch=014 step=100/100 loss=0.17836
+EPOCH 014/200: train=0.23636 val=0.20864 IoU=0.645667 P=0.7332 R=0.8440 83.3s peak=7814MiB
+epoch=015 step=1/100 loss=0.19531
+epoch=015 step=10/100 loss=0.27346
+epoch=015 step=20/100 loss=0.25423
+epoch=015 step=30/100 loss=0.22047
+epoch=015 step=40/100 loss=0.19844
+epoch=015 step=50/100 loss=0.24626
+epoch=015 step=60/100 loss=0.21102
+epoch=015 step=70/100 loss=0.24268
+epoch=015 step=80/100 loss=0.20628
+epoch=015 step=90/100 loss=0.23433
+epoch=015 step=100/100 loss=0.20620
+EPOCH 015/200: train=0.21864 val=0.19544 IoU=0.668166 P=0.7875 R=0.8151 83.6s peak=7814MiB
+epoch=016 step=1/100 loss=0.21181
+epoch=016 step=10/100 loss=0.16489
+epoch=016 step=20/100 loss=0.34869
+epoch=016 step=30/100 loss=0.21930
+epoch=016 step=40/100 loss=0.18266
+epoch=016 step=50/100 loss=0.27289
+epoch=016 step=60/100 loss=0.14744
+epoch=016 step=70/100 loss=0.23144
+epoch=016 step=80/100 loss=0.18366
+epoch=016 step=90/100 loss=0.19732
+epoch=016 step=100/100 loss=0.15206
+EPOCH 016/200: train=0.20604 val=0.18197 IoU=0.678491 P=0.7849 R=0.8335 83.6s peak=7814MiB
+epoch=017 step=1/100 loss=0.17946
+epoch=017 step=10/100 loss=0.19973
+epoch=017 step=20/100 loss=0.17521
+epoch=017 step=30/100 loss=0.24031
+epoch=017 step=40/100 loss=0.17008
+epoch=017 step=50/100 loss=0.13915
+epoch=017 step=60/100 loss=0.16947
+epoch=017 step=70/100 loss=0.11154
+epoch=017 step=80/100 loss=0.18665
+epoch=017 step=90/100 loss=0.16497
+epoch=017 step=100/100 loss=0.21668
+EPOCH 017/200: train=0.19509 val=0.16878 IoU=0.686978 P=0.7830 R=0.8485 83.2s peak=7814MiB
+epoch=018 step=1/100 loss=0.19329
+epoch=018 step=10/100 loss=0.20678
+epoch=018 step=20/100 loss=0.19117
+epoch=018 step=30/100 loss=0.16046
+epoch=018 step=40/100 loss=0.40866
+epoch=018 step=50/100 loss=0.19344
+epoch=018 step=60/100 loss=0.23383
+epoch=018 step=70/100 loss=0.17878
+epoch=018 step=80/100 loss=0.20759
+epoch=018 step=90/100 loss=0.23047
+epoch=018 step=100/100 loss=0.15558
+EPOCH 018/200: train=0.18716 val=0.16027 IoU=0.702198 P=0.8208 R=0.8293 83.1s peak=7814MiB
+epoch=019 step=1/100 loss=0.16040
+epoch=019 step=10/100 loss=0.17885
+epoch=019 step=20/100 loss=0.20445
+epoch=019 step=30/100 loss=0.25975
+epoch=019 step=40/100 loss=0.20998
+epoch=019 step=50/100 loss=0.16387
+epoch=019 step=60/100 loss=0.17738
+epoch=019 step=70/100 loss=0.14528
+epoch=019 step=80/100 loss=0.13681
+epoch=019 step=90/100 loss=0.14432
+epoch=019 step=100/100 loss=0.14297
+EPOCH 019/200: train=0.17372 val=0.15496 IoU=0.703731 P=0.8340 R=0.8183 83.2s peak=7814MiB
+epoch=020 step=1/100 loss=0.16969
+epoch=020 step=10/100 loss=0.14666
+epoch=020 step=20/100 loss=0.15702
+epoch=020 step=30/100 loss=0.18039
+epoch=020 step=40/100 loss=0.28086
+epoch=020 step=50/100 loss=0.21313
+epoch=020 step=60/100 loss=0.29509
+epoch=020 step=70/100 loss=0.14270
+epoch=020 step=80/100 loss=0.16560
+epoch=020 step=90/100 loss=0.17969
+epoch=020 step=100/100 loss=0.13185
+EPOCH 020/200: train=0.16855 val=0.15018 IoU=0.700489 P=0.8155 R=0.8324 83.6s peak=7814MiB
+epoch=021 step=1/100 loss=0.14870
+epoch=021 step=10/100 loss=0.23413
+epoch=021 step=20/100 loss=0.15127
+epoch=021 step=30/100 loss=0.14468
+epoch=021 step=40/100 loss=0.15592
+epoch=021 step=50/100 loss=0.13312
+epoch=021 step=60/100 loss=0.15328
+epoch=021 step=70/100 loss=0.16053
+epoch=021 step=80/100 loss=0.19338
+epoch=021 step=90/100 loss=0.11517
+epoch=021 step=100/100 loss=0.16975
+EPOCH 021/200: train=0.16290 val=0.14040 IoU=0.715740 P=0.8259 R=0.8429 83.5s peak=7814MiB
+epoch=022 step=1/100 loss=0.14147
+epoch=022 step=10/100 loss=0.11573
+epoch=022 step=20/100 loss=0.18102
+epoch=022 step=30/100 loss=0.12874
+epoch=022 step=40/100 loss=0.17529
+epoch=022 step=50/100 loss=0.20256
+epoch=022 step=60/100 loss=0.17723
+epoch=022 step=70/100 loss=0.17133
+epoch=022 step=80/100 loss=0.12684
+epoch=022 step=90/100 loss=0.19735
+epoch=022 step=100/100 loss=0.14945
+EPOCH 022/200: train=0.15634 val=0.13488 IoU=0.723316 P=0.8344 R=0.8445 83.6s peak=7814MiB
+epoch=023 step=1/100 loss=0.14395
+epoch=023 step=10/100 loss=0.15583
+epoch=023 step=20/100 loss=0.27245
+epoch=023 step=30/100 loss=0.15316
+epoch=023 step=40/100 loss=0.13418
+epoch=023 step=50/100 loss=0.12556
+epoch=023 step=60/100 loss=0.21360
+epoch=023 step=70/100 loss=0.11965
+epoch=023 step=80/100 loss=0.16728
+epoch=023 step=90/100 loss=0.18072
+epoch=023 step=100/100 loss=0.13470
+EPOCH 023/200: train=0.15254 val=0.13307 IoU=0.721603 P=0.8312 R=0.8455 83.7s peak=7814MiB
+epoch=024 step=1/100 loss=0.13919
+epoch=024 step=10/100 loss=0.20958
+epoch=024 step=20/100 loss=0.15034
+epoch=024 step=30/100 loss=0.11369
+epoch=024 step=40/100 loss=0.11945
+epoch=024 step=50/100 loss=0.19253
+epoch=024 step=60/100 loss=0.13243
+epoch=024 step=70/100 loss=0.11733
+epoch=024 step=80/100 loss=0.08743
+epoch=024 step=90/100 loss=0.10725
+epoch=024 step=100/100 loss=0.13161
+EPOCH 024/200: train=0.14586 val=0.13400 IoU=0.713742 P=0.8310 R=0.8349 83.8s peak=7814MiB
+epoch=025 step=1/100 loss=0.13555
+epoch=025 step=10/100 loss=0.15804
+epoch=025 step=20/100 loss=0.15143
+epoch=025 step=30/100 loss=0.15633
+epoch=025 step=40/100 loss=0.13364
+epoch=025 step=50/100 loss=0.16835
+epoch=025 step=60/100 loss=0.15507
+epoch=025 step=70/100 loss=0.15448
+epoch=025 step=80/100 loss=0.13219
+epoch=025 step=90/100 loss=0.16427
+epoch=025 step=100/100 loss=0.11641
+EPOCH 025/200: train=0.14363 val=0.12311 IoU=0.737471 P=0.8508 R=0.8470 83.2s peak=7814MiB
+epoch=026 step=1/100 loss=0.16691
+epoch=026 step=10/100 loss=0.14505
+epoch=026 step=20/100 loss=0.22551
+epoch=026 step=30/100 loss=0.13995
+epoch=026 step=40/100 loss=0.11441
+epoch=026 step=50/100 loss=0.11750
+epoch=026 step=60/100 loss=0.13226
+epoch=026 step=70/100 loss=0.09362
+epoch=026 step=80/100 loss=0.18742
+epoch=026 step=90/100 loss=0.11881
+epoch=026 step=100/100 loss=0.10906
+EPOCH 026/200: train=0.13901 val=0.12070 IoU=0.737882 P=0.8498 R=0.8485 83.8s peak=7814MiB
+epoch=027 step=1/100 loss=0.14273
+epoch=027 step=10/100 loss=0.12275
+epoch=027 step=20/100 loss=0.14024
+epoch=027 step=30/100 loss=0.07658
+epoch=027 step=40/100 loss=0.16990
+epoch=027 step=50/100 loss=0.10692
+epoch=027 step=60/100 loss=0.13221
+epoch=027 step=70/100 loss=0.20169
+epoch=027 step=80/100 loss=0.16932
+epoch=027 step=90/100 loss=0.12353
+epoch=027 step=100/100 loss=0.14938
+EPOCH 027/200: train=0.13595 val=0.11636 IoU=0.744192 P=0.8483 R=0.8584 83.6s peak=7814MiB
+epoch=028 step=1/100 loss=0.07980
+epoch=028 step=10/100 loss=0.12692
+epoch=028 step=20/100 loss=0.14109
+epoch=028 step=30/100 loss=0.12222
+epoch=028 step=40/100 loss=0.14960
+epoch=028 step=50/100 loss=0.10007
+epoch=028 step=60/100 loss=0.16001
+epoch=028 step=70/100 loss=0.15518
+epoch=028 step=80/100 loss=0.12075
+epoch=028 step=90/100 loss=0.13862
+epoch=028 step=100/100 loss=0.12883
+EPOCH 028/200: train=0.13310 val=0.11532 IoU=0.743606 P=0.8516 R=0.8543 83.2s peak=7814MiB
+epoch=029 step=1/100 loss=0.08153
+epoch=029 step=10/100 loss=0.09381
+epoch=029 step=20/100 loss=0.16254
+epoch=029 step=30/100 loss=0.22881
+epoch=029 step=40/100 loss=0.08709
+epoch=029 step=50/100 loss=0.20839
+epoch=029 step=60/100 loss=0.12801
+epoch=029 step=70/100 loss=0.09231
+epoch=029 step=80/100 loss=0.17660
+epoch=029 step=90/100 loss=0.11071
+epoch=029 step=100/100 loss=0.09915
+EPOCH 029/200: train=0.12952 val=0.11550 IoU=0.740701 P=0.8521 R=0.8499 83.1s peak=7814MiB
+epoch=030 step=1/100 loss=0.07397
+epoch=030 step=10/100 loss=0.10877
+epoch=030 step=20/100 loss=0.10599
+epoch=030 step=30/100 loss=0.10694
+epoch=030 step=40/100 loss=0.15941
+epoch=030 step=50/100 loss=0.13203
+epoch=030 step=60/100 loss=0.08666
+epoch=030 step=70/100 loss=0.08975
+epoch=030 step=80/100 loss=0.14413
+epoch=030 step=90/100 loss=0.14993
+epoch=030 step=100/100 loss=0.09259
+EPOCH 030/200: train=0.12705 val=0.10921 IoU=0.754956 P=0.8721 R=0.8489 83.1s peak=7814MiB
+epoch=031 step=1/100 loss=0.15358
+epoch=031 step=10/100 loss=0.12713
+epoch=031 step=20/100 loss=0.11458
+epoch=031 step=30/100 loss=0.16685
+epoch=031 step=40/100 loss=0.15197
+epoch=031 step=50/100 loss=0.18522
+epoch=031 step=60/100 loss=0.11999
+epoch=031 step=70/100 loss=0.13107
+epoch=031 step=80/100 loss=0.09828
+epoch=031 step=90/100 loss=0.12119
+epoch=031 step=100/100 loss=0.09580
+EPOCH 031/200: train=0.12430 val=0.10889 IoU=0.752057 P=0.8617 R=0.8553 83.1s peak=7814MiB
+epoch=032 step=1/100 loss=0.08915
+epoch=032 step=10/100 loss=0.09369
+epoch=032 step=20/100 loss=0.13323
+epoch=032 step=30/100 loss=0.08894
+epoch=032 step=40/100 loss=0.12993
+epoch=032 step=50/100 loss=0.08360
+epoch=032 step=60/100 loss=0.12393
+epoch=032 step=70/100 loss=0.08129
+epoch=032 step=80/100 loss=0.15570
+epoch=032 step=90/100 loss=0.10114
+epoch=032 step=100/100 loss=0.12000
+EPOCH 032/200: train=0.12264 val=0.10994 IoU=0.747791 P=0.8667 R=0.8450 83.1s peak=7814MiB
+epoch=033 step=1/100 loss=0.13730
+epoch=033 step=10/100 loss=0.13073
+epoch=033 step=20/100 loss=0.13656
+epoch=033 step=30/100 loss=0.08674
+epoch=033 step=40/100 loss=0.14060
+epoch=033 step=50/100 loss=0.10529
+epoch=033 step=60/100 loss=0.13380
+epoch=033 step=70/100 loss=0.08289
+epoch=033 step=80/100 loss=0.10234
+epoch=033 step=90/100 loss=0.11115
+epoch=033 step=100/100 loss=0.10843
+EPOCH 033/200: train=0.12360 val=0.10631 IoU=0.756128 P=0.8722 R=0.8503 83.2s peak=7814MiB
+epoch=034 step=1/100 loss=0.15129
+epoch=034 step=10/100 loss=0.07819
+epoch=034 step=20/100 loss=0.06763
+epoch=034 step=30/100 loss=0.10179
+epoch=034 step=40/100 loss=0.10675
+epoch=034 step=50/100 loss=0.14791
+epoch=034 step=60/100 loss=0.11286
+epoch=034 step=70/100 loss=0.09874
+epoch=034 step=80/100 loss=0.13719
+epoch=034 step=90/100 loss=0.24908
+epoch=034 step=100/100 loss=0.08336
+EPOCH 034/200: train=0.11993 val=0.10738 IoU=0.750338 P=0.8602 R=0.8546 83.2s peak=7814MiB
+epoch=035 step=1/100 loss=0.13737
+epoch=035 step=10/100 loss=0.13974
+epoch=035 step=20/100 loss=0.12440
+epoch=035 step=30/100 loss=0.10600
+epoch=035 step=40/100 loss=0.09642
+epoch=035 step=50/100 loss=0.13020
+epoch=035 step=60/100 loss=0.11118
+epoch=035 step=70/100 loss=0.11455
+epoch=035 step=80/100 loss=0.05481
+epoch=035 step=90/100 loss=0.12224
+epoch=035 step=100/100 loss=0.12982
+EPOCH 035/200: train=0.11598 val=0.10140 IoU=0.764185 P=0.8711 R=0.8616 83.3s peak=7814MiB
+epoch=036 step=1/100 loss=0.08734
+epoch=036 step=10/100 loss=0.11771
+epoch=036 step=20/100 loss=0.16240
+epoch=036 step=30/100 loss=0.16548
+epoch=036 step=40/100 loss=0.07250
+epoch=036 step=50/100 loss=0.21356
+epoch=036 step=60/100 loss=0.12744
+epoch=036 step=70/100 loss=0.11599
+epoch=036 step=80/100 loss=0.12629
+epoch=036 step=90/100 loss=0.13780
+epoch=036 step=100/100 loss=0.13871
+EPOCH 036/200: train=0.11737 val=0.10614 IoU=0.749749 P=0.8492 R=0.8649 83.2s peak=7814MiB
+epoch=037 step=1/100 loss=0.11152
+epoch=037 step=10/100 loss=0.12555
+epoch=037 step=20/100 loss=0.09272
+epoch=037 step=30/100 loss=0.07578
+epoch=037 step=40/100 loss=0.09943
+epoch=037 step=50/100 loss=0.12450
+epoch=037 step=60/100 loss=0.12000
+epoch=037 step=70/100 loss=0.14684
+epoch=037 step=80/100 loss=0.13036
+epoch=037 step=90/100 loss=0.14876
+epoch=037 step=100/100 loss=0.12507
+EPOCH 037/200: train=0.11427 val=0.10261 IoU=0.758005 P=0.8670 R=0.8578 83.2s peak=7814MiB
+epoch=038 step=1/100 loss=0.12590
+epoch=038 step=10/100 loss=0.14113
+epoch=038 step=20/100 loss=0.13543
+epoch=038 step=30/100 loss=0.09070
+epoch=038 step=40/100 loss=0.11373
+epoch=038 step=50/100 loss=0.11547
+epoch=038 step=60/100 loss=0.23132
+epoch=038 step=70/100 loss=0.13125
+epoch=038 step=80/100 loss=0.15232
+epoch=038 step=90/100 loss=0.08164
+epoch=038 step=100/100 loss=0.12538
+EPOCH 038/200: train=0.11107 val=0.09752 IoU=0.768901 P=0.8570 R=0.8820 83.2s peak=7814MiB
+epoch=039 step=1/100 loss=0.09514
+epoch=039 step=10/100 loss=0.19489
+epoch=039 step=20/100 loss=0.08505
+epoch=039 step=30/100 loss=0.10242
+epoch=039 step=40/100 loss=0.11887
+epoch=039 step=50/100 loss=0.07720
+epoch=039 step=60/100 loss=0.12194
+epoch=039 step=70/100 loss=0.12177
+epoch=039 step=80/100 loss=0.11157
+epoch=039 step=90/100 loss=0.18147
+epoch=039 step=100/100 loss=0.07600
+EPOCH 039/200: train=0.11276 val=0.09970 IoU=0.763748 P=0.8659 R=0.8662 83.5s peak=7814MiB
+epoch=040 step=1/100 loss=0.08846
+epoch=040 step=10/100 loss=0.16495
+epoch=040 step=20/100 loss=0.12940
+epoch=040 step=30/100 loss=0.11180
+epoch=040 step=40/100 loss=0.08094
+epoch=040 step=50/100 loss=0.13102
+epoch=040 step=60/100 loss=0.11899
+epoch=040 step=70/100 loss=0.10359
+epoch=040 step=80/100 loss=0.13859
+epoch=040 step=90/100 loss=0.09853
+epoch=040 step=100/100 loss=0.06201
+EPOCH 040/200: train=0.11101 val=0.09931 IoU=0.762532 P=0.8616 R=0.8690 83.6s peak=7814MiB
+epoch=041 step=1/100 loss=0.08514
+epoch=041 step=10/100 loss=0.05627
+epoch=041 step=20/100 loss=0.08366
+epoch=041 step=30/100 loss=0.08523
+epoch=041 step=40/100 loss=0.05421
+epoch=041 step=50/100 loss=0.10200
+epoch=041 step=60/100 loss=0.10545
+epoch=041 step=70/100 loss=0.15531
+epoch=041 step=80/100 loss=0.11086
+epoch=041 step=90/100 loss=0.10799
+epoch=041 step=100/100 loss=0.11125
+EPOCH 041/200: train=0.10862 val=0.09609 IoU=0.771095 P=0.8757 R=0.8659 84.2s peak=7814MiB
+epoch=042 step=1/100 loss=0.09893
+epoch=042 step=10/100 loss=0.06820
+epoch=042 step=20/100 loss=0.12120
+epoch=042 step=30/100 loss=0.19940
+epoch=042 step=40/100 loss=0.12751
+epoch=042 step=50/100 loss=0.06853
+epoch=042 step=60/100 loss=0.09361
+epoch=042 step=70/100 loss=0.07821
+epoch=042 step=80/100 loss=0.12159
+epoch=042 step=90/100 loss=0.08304
+epoch=042 step=100/100 loss=0.10905
+EPOCH 042/200: train=0.10856 val=0.09394 IoU=0.776841 P=0.8801 R=0.8688 83.5s peak=7814MiB
+epoch=043 step=1/100 loss=0.08426
+epoch=043 step=10/100 loss=0.10207
+epoch=043 step=20/100 loss=0.07000
+epoch=043 step=30/100 loss=0.10232
+epoch=043 step=40/100 loss=0.13268
+epoch=043 step=50/100 loss=0.14054
+epoch=043 step=60/100 loss=0.14587
+epoch=043 step=70/100 loss=0.11296
+epoch=043 step=80/100 loss=0.10305
+epoch=043 step=90/100 loss=0.11444
+epoch=043 step=100/100 loss=0.05968
+EPOCH 043/200: train=0.10569 val=0.09192 IoU=0.780739 P=0.8932 R=0.8611 83.3s peak=7814MiB
+epoch=044 step=1/100 loss=0.12622
+epoch=044 step=10/100 loss=0.11763
+epoch=044 step=20/100 loss=0.12326
+epoch=044 step=30/100 loss=0.12549
+epoch=044 step=40/100 loss=0.13212
+epoch=044 step=50/100 loss=0.06801
+epoch=044 step=60/100 loss=0.09893
+epoch=044 step=70/100 loss=0.07732
+epoch=044 step=80/100 loss=0.08656
+epoch=044 step=90/100 loss=0.05720
+epoch=044 step=100/100 loss=0.12851
+EPOCH 044/200: train=0.10682 val=0.09231 IoU=0.777633 P=0.8720 R=0.8778 83.5s peak=7814MiB
+epoch=045 step=1/100 loss=0.15947
+epoch=045 step=10/100 loss=0.05394
+epoch=045 step=20/100 loss=0.06494
+epoch=045 step=30/100 loss=0.12497
+epoch=045 step=40/100 loss=0.08987
+epoch=045 step=50/100 loss=0.10252
+epoch=045 step=60/100 loss=0.06529
+epoch=045 step=70/100 loss=0.04953
+epoch=045 step=80/100 loss=0.11285
+epoch=045 step=90/100 loss=0.11072
+epoch=045 step=100/100 loss=0.07405
+EPOCH 045/200: train=0.10427 val=0.09007 IoU=0.784114 P=0.8946 R=0.8640 83.3s peak=7814MiB
+epoch=046 step=1/100 loss=0.06429
+epoch=046 step=10/100 loss=0.06933
+epoch=046 step=20/100 loss=0.12843
+epoch=046 step=30/100 loss=0.07119
+epoch=046 step=40/100 loss=0.07544
+epoch=046 step=50/100 loss=0.09022
+epoch=046 step=60/100 loss=0.10655
+epoch=046 step=70/100 loss=0.22244
+epoch=046 step=80/100 loss=0.09586
+epoch=046 step=90/100 loss=0.10332
+epoch=046 step=100/100 loss=0.11617
+EPOCH 046/200: train=0.10438 val=0.09065 IoU=0.781619 P=0.8832 R=0.8717 83.6s peak=7814MiB
+epoch=047 step=1/100 loss=0.13654
+epoch=047 step=10/100 loss=0.08921
+epoch=047 step=20/100 loss=0.12736
+epoch=047 step=30/100 loss=0.08435
+epoch=047 step=40/100 loss=0.11094
+epoch=047 step=50/100 loss=0.06751
+epoch=047 step=60/100 loss=0.10581
+epoch=047 step=70/100 loss=0.11472
+epoch=047 step=80/100 loss=0.20757
+epoch=047 step=90/100 loss=0.16165
+epoch=047 step=100/100 loss=0.06603
+EPOCH 047/200: train=0.10392 val=0.09091 IoU=0.781044 P=0.8882 R=0.8662 83.5s peak=7814MiB
+epoch=048 step=1/100 loss=0.13086
+epoch=048 step=10/100 loss=0.05394
+epoch=048 step=20/100 loss=0.09092
+epoch=048 step=30/100 loss=0.11587
+epoch=048 step=40/100 loss=0.17267
+epoch=048 step=50/100 loss=0.12791
+epoch=048 step=60/100 loss=0.16058
+epoch=048 step=70/100 loss=0.18064
+epoch=048 step=80/100 loss=0.10685
+epoch=048 step=90/100 loss=0.09166
+epoch=048 step=100/100 loss=0.07673
+EPOCH 048/200: train=0.10456 val=0.08798 IoU=0.785696 P=0.8726 R=0.8875 83.7s peak=7814MiB
+epoch=049 step=1/100 loss=0.12194
+epoch=049 step=10/100 loss=0.10671
+epoch=049 step=20/100 loss=0.12923
+epoch=049 step=30/100 loss=0.06406
+epoch=049 step=40/100 loss=0.09986
+epoch=049 step=50/100 loss=0.08354
+epoch=049 step=60/100 loss=0.06362
+epoch=049 step=70/100 loss=0.10849
+epoch=049 step=80/100 loss=0.05120
+epoch=049 step=90/100 loss=0.08619
+epoch=049 step=100/100 loss=0.09346
+EPOCH 049/200: train=0.10174 val=0.08786 IoU=0.787214 P=0.8891 R=0.8729 84.0s peak=7814MiB
+epoch=050 step=1/100 loss=0.07744
+epoch=050 step=10/100 loss=0.05871
+epoch=050 step=20/100 loss=0.07878
+epoch=050 step=30/100 loss=0.14627
+epoch=050 step=40/100 loss=0.09547
+epoch=050 step=50/100 loss=0.10827
+epoch=050 step=60/100 loss=0.10949
+epoch=050 step=70/100 loss=0.12656
+epoch=050 step=80/100 loss=0.06484
+epoch=050 step=90/100 loss=0.11439
+epoch=050 step=100/100 loss=0.17106
+EPOCH 050/200: train=0.10034 val=0.08853 IoU=0.784160 P=0.8835 R=0.8746 84.4s peak=7814MiB
+epoch=051 step=1/100 loss=0.09315
+epoch=051 step=10/100 loss=0.08966
+epoch=051 step=20/100 loss=0.13120
+epoch=051 step=30/100 loss=0.08459
+epoch=051 step=40/100 loss=0.09908
+epoch=051 step=50/100 loss=0.13306
+epoch=051 step=60/100 loss=0.06523
+epoch=051 step=70/100 loss=0.16311
+epoch=051 step=80/100 loss=0.12477
+epoch=051 step=90/100 loss=0.04487
+epoch=051 step=100/100 loss=0.08249
+EPOCH 051/200: train=0.09904 val=0.08608 IoU=0.790286 P=0.8907 R=0.8751 84.3s peak=7814MiB
+epoch=052 step=1/100 loss=0.07649
+epoch=052 step=10/100 loss=0.08443
+epoch=052 step=20/100 loss=0.17465
+epoch=052 step=30/100 loss=0.14479
+epoch=052 step=40/100 loss=0.14592
+epoch=052 step=50/100 loss=0.06957
+epoch=052 step=60/100 loss=0.12748
+epoch=052 step=70/100 loss=0.08338
+epoch=052 step=80/100 loss=0.11097
+epoch=052 step=90/100 loss=0.14051
+epoch=052 step=100/100 loss=0.07149
+EPOCH 052/200: train=0.09901 val=0.09110 IoU=0.776895 P=0.8774 R=0.8715 83.3s peak=7814MiB
+epoch=053 step=1/100 loss=0.11223
+epoch=053 step=10/100 loss=0.11175
+epoch=053 step=20/100 loss=0.07461
+epoch=053 step=30/100 loss=0.11480
+epoch=053 step=40/100 loss=0.09146
+epoch=053 step=50/100 loss=0.10517
+epoch=053 step=60/100 loss=0.09288
+epoch=053 step=70/100 loss=0.10158
+epoch=053 step=80/100 loss=0.07844
+epoch=053 step=90/100 loss=0.11784
+epoch=053 step=100/100 loss=0.07478
+EPOCH 053/200: train=0.09801 val=0.08557 IoU=0.790345 P=0.8928 R=0.8732 83.2s peak=7814MiB
+epoch=054 step=1/100 loss=0.13741
+epoch=054 step=10/100 loss=0.13151
+epoch=054 step=20/100 loss=0.08155
+epoch=054 step=30/100 loss=0.07948
+epoch=054 step=40/100 loss=0.09208
+epoch=054 step=50/100 loss=0.12979
+epoch=054 step=60/100 loss=0.09489
+epoch=054 step=70/100 loss=0.09516
+epoch=054 step=80/100 loss=0.07323
+epoch=054 step=90/100 loss=0.13687
+epoch=054 step=100/100 loss=0.06479
+EPOCH 054/200: train=0.09734 val=0.08660 IoU=0.787972 P=0.8907 R=0.8723 83.5s peak=7814MiB
+epoch=055 step=1/100 loss=0.08978
+epoch=055 step=10/100 loss=0.07924
+W0916 17:40:47.035000 2273993 torch/distributed/elastic/agent/server/api.py:739] Received Signals.SIGTERM death signal, shutting down workers
+W0916 17:40:47.038000 2273993 torch/distributed/elastic/multiprocessing/api.py:1010] Sending process 2274015 closing signal SIGTERM
+W0916 17:40:47.039000 2273993 torch/distributed/elastic/multiprocessing/api.py:1010] Sending process 2274016 closing signal SIGTERM
+W0916 17:40:47.040000 2273993 torch/distributed/elastic/multiprocessing/api.py:1010] Sending process 2274017 closing signal SIGTERM
+W0916 17:40:47.047000 2273993 torch/distributed/elastic/multiprocessing/api.py:1010] Sending process 2274018 closing signal SIGTERM
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/run.py", line 995, in <module>
+    main()
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 362, in wrapper
+    return f(*args, **kwargs)
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/run.py", line 991, in main
+    run(args)
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/run.py", line 982, in run
+    elastic_launch(
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 170, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 308, in launch_agent
+    result = agent.run()
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/elastic/metrics/api.py", line 134, in wrapper
+    result = f(*args, **kwargs)
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/elastic/agent/server/api.py", line 731, in run
+    result = self._invoke_run(role)
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/elastic/agent/server/api.py", line 908, in _invoke_run
+    time.sleep(monitor_interval)
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/api.py", line 86, in _terminate_process_handler
+    raise SignalException(f"Process {os.getpid()} got signal: {sigval}", sigval=sigval)
+torch.distributed.elastic.multiprocessing.api.SignalException: Process 2273993 got signal: 15

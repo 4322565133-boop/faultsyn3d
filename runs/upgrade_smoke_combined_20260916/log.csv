@@ -1,0 +1,1 @@
+epoch,loss,seg,profile,trace,valid_profiles,valid_windows,aux_ramp,val_iou,val_dice,val_precision,val_recall,old_lr,seconds,peak_memory_mib

@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "case": "27 predicted voxels near first of 2 GT points; tolerance recall must be 1/2, not 27/28",
+  "metrics": {
+    "iou": 0.03571428571428571,
+    "precision": 0.037037037037037035,
+    "recall": 0.5,
+    "ap": 0.01989026063100137,
+    "tol2_precision": 1.0,
+    "tol2_recall": 0.5
+  }
+}

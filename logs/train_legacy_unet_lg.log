@@ -1,0 +1,39 @@
+unet_lg: unet_maxvit3d 11.94M  world=4 global_batch=8 d2s=False profile=False trace=False
+epoch=001 train=0.59489 (seg 0.59489 pr 0.0000 tr 0.0000 ramp 0.00) val=0.58500 IoU=0.0878 P=0.089 R=0.831 lr=1.09e-05 84s
+epoch=002 train=0.57970 (seg 0.57970 pr 0.0000 tr 0.0000 ramp 0.00) val=0.57402 IoU=0.1609 P=0.167 R=0.825 lr=2.08e-05 73s
+epoch=003 train=0.57222 (seg 0.57222 pr 0.0000 tr 0.0000 ramp 0.00) val=0.56790 IoU=0.1687 P=0.173 R=0.882 lr=3.07e-05 73s
+epoch=004 train=0.56744 (seg 0.56744 pr 0.0000 tr 0.0000 ramp 0.00) val=0.56355 IoU=0.1768 P=0.181 R=0.893 lr=4.06e-05 74s
+epoch=005 train=0.56319 (seg 0.56319 pr 0.0000 tr 0.0000 ramp 0.00) val=0.56040 IoU=0.1930 P=0.198 R=0.879 lr=5.05e-05 74s
+epoch=006 train=0.55976 (seg 0.55976 pr 0.0000 tr 0.0000 ramp 0.00) val=0.55606 IoU=0.1967 P=0.201 R=0.893 lr=6.04e-05 74s
+epoch=007 train=0.55573 (seg 0.55573 pr 0.0000 tr 0.0000 ramp 0.00) val=0.55193 IoU=0.1922 P=0.196 R=0.912 lr=7.03e-05 74s
+W0916 23:20:25.705000 3285961 torch/distributed/elastic/agent/server/api.py:739] Received Signals.SIGTERM death signal, shutting down workers
+W0916 23:20:25.707000 3285961 torch/distributed/elastic/multiprocessing/api.py:1010] Sending process 3285986 closing signal SIGTERM
+W0916 23:20:25.707000 3285961 torch/distributed/elastic/multiprocessing/api.py:1010] Sending process 3285987 closing signal SIGTERM
+W0916 23:20:25.708000 3285961 torch/distributed/elastic/multiprocessing/api.py:1010] Sending process 3285988 closing signal SIGTERM
+W0916 23:20:25.708000 3285961 torch/distributed/elastic/multiprocessing/api.py:1010] Sending process 3285989 closing signal SIGTERM
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/run.py", line 995, in <module>
+    main()
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 362, in wrapper
+    return f(*args, **kwargs)
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/run.py", line 991, in main
+    run(args)
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/run.py", line 982, in run
+    elastic_launch(
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 170, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 308, in launch_agent
+    result = agent.run()
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/elastic/metrics/api.py", line 134, in wrapper
+    result = f(*args, **kwargs)
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/elastic/agent/server/api.py", line 731, in run
+    result = self._invoke_run(role)
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/elastic/agent/server/api.py", line 908, in _invoke_run
+    time.sleep(monitor_interval)
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/api.py", line 86, in _terminate_process_handler
+    raise SignalException(f"Process {os.getpid()} got signal: {sigval}", sigval=sigval)
+torch.distributed.elastic.multiprocessing.api.SignalException: Process 3285961 got signal: 15

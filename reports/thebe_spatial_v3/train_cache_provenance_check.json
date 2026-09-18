@@ -1,0 +1,30 @@
+[
+  {
+    "source": "data/thebe/seis/seistrain1.npz",
+    "size_bytes": 831794776,
+    "mtime_ns": 1789610837175463349,
+    "random_checks": 1024,
+    "status": "PASS"
+  },
+  {
+    "source": "data/thebe/fault/faulttrain1.npz",
+    "size_bytes": 917861,
+    "mtime_ns": 1789610328172140273,
+    "random_checks": 1024,
+    "status": "PASS"
+  },
+  {
+    "source": "data/thebe/seis/seistrain9.npz",
+    "size_bytes": 1239650990,
+    "mtime_ns": 1789611917608344751,
+    "random_checks": 1024,
+    "status": "PASS"
+  },
+  {
+    "source": "data/thebe/fault/faulttrain9.npz",
+    "size_bytes": 955922,
+    "mtime_ns": 1789613362924210626,
+    "random_checks": 1024,
+    "status": "PASS"
+  }
+]

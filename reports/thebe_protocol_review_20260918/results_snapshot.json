@@ -1,0 +1,344 @@
+{
+  "snapshot": "2026-09-18T09:05:52.604380+09:00",
+  "runs": {
+    "unet_l": {
+      "config": {
+        "args": {
+          "root": "/hdd1/hukaixiao/projects/faultsyn3d/data/thebe_spatial_v3",
+          "run": "runs/thebe_spatial_v3_unet_l",
+          "epochs": 100,
+          "stop_after": 100,
+          "samples": 2400,
+          "workers": 3,
+          "seed": 2026,
+          "full_every": 1,
+          "resume": false,
+          "smoke": false,
+          "variant": "unet_l",
+          "per_rank": 2,
+          "accum": 1
+        },
+        "params": 9643495,
+        "world_size": 4,
+        "effective_batch": 8,
+        "model": "unet3d",
+        "model_kwargs": {
+          "base": 42
+        },
+        "protocol_sha256": "f8063803bc0db36222cad249d0a181603baa7dc74889ce5d1262999a2b889761",
+        "sources": {
+          "train/train_thebe_spatial_ddp.py": "709efa0039937778d3adf8b298e122f3f0649ce6d0ec690d0ebfbb37c6829243",
+          "train/dataset_thebe_spatial.py": "2baa8dd2ae421c19cb92c6aacd1c7ac84f826f8325a0cdaa0da01f7e9c22326c",
+          "models/unet3d.py": "61a8e1ea5a4e79db1365266cff5eaa1781899b15f9d7bd5122c1dad0ffea0251",
+          "models/__init__.py": "0cf694d980c66587a19f4ce2c9ae09b3c1401b914d2d24c842bd3f7fb0a17145",
+          "scripts/prepare_thebe_spatial.py": "d4577f6f439ef7ecbc70b1df334788b6a75e9f3fdb7bf7134ac322506fc6ffa9"
+        },
+        "initialization": "random; no pretrained weights",
+        "full_val_cores": 2433,
+        "fast_val_cores": 96,
+        "torch_version": "2.10.0+cu128",
+        "device_names": [
+          "NVIDIA GeForce RTX 2080 Ti",
+          "NVIDIA GeForce RTX 2080 Ti",
+          "NVIDIA GeForce RTX 2080 Ti",
+          "NVIDIA GeForce RTX 2080 Ti",
+          "NVIDIA T400"
+        ]
+      },
+      "completed_epochs": 100,
+      "best": {
+        "epoch": 47,
+        "lr": 6.38180859230591e-05,
+        "train_loss": 0.47702415989091,
+        "fast_val": {
+          "iou": 0.44895626907225267,
+          "dice": 0.6196960924979653,
+          "precision": 0.6304818931822755,
+          "recall": 0.6092731153193901,
+          "valid_voxels": 20134972,
+          "positive_voxels": 848539,
+          "loss": 0.5127247876953334,
+          "cores": 96
+        },
+        "full_val": {
+          "iou": 0.3762896080284827,
+          "dice": 0.54681748061371,
+          "precision": 0.5939206503868906,
+          "recall": 0.5066367013442927,
+          "valid_voxels": 510945619,
+          "positive_voxels": 14228002,
+          "loss": 0.5551380269991926,
+          "cores": 2433
+        },
+        "seconds": 241.62484884262085,
+        "skipped_optimizer_steps": 0
+      },
+      "last": {
+        "epoch": 100,
+        "lr": 1e-07,
+        "train_loss": 0.4558737085138758,
+        "fast_val": {
+          "iou": 0.4171356236205593,
+          "dice": 0.5887024737333794,
+          "precision": 0.6440294505943739,
+          "recall": 0.5421294719512009,
+          "valid_voxels": 20134972,
+          "positive_voxels": 848539,
+          "loss": 0.5312515796783069,
+          "cores": 96
+        },
+        "full_val": {
+          "iou": 0.3446489391133424,
+          "dice": 0.5126229294325743,
+          "precision": 0.6038914701743895,
+          "recall": 0.4453199402136716,
+          "valid_voxels": 510945619,
+          "positive_voxels": 14228002,
+          "loss": 0.5705053908218339,
+          "cores": 2433
+        },
+        "seconds": 241.3281466960907,
+        "skipped_optimizer_steps": 0
+      },
+      "test": {
+        "iou": 0.3774645641991092,
+        "dice": 0.5480570230401187,
+        "precision": 0.5158564841040275,
+        "recall": 0.5845452161160334,
+        "ap": 0.5292957684625134,
+        "valid_voxels": 2303341553,
+        "positive_voxels": 57680496,
+        "fault_fraction": 0.025042094137047853,
+        "loss": 0.5451783510235514,
+        "cores": 9538,
+        "seconds": 1053,
+        "epoch": 47,
+        "checkpoint": "best_fullval"
+      },
+      "skipped_updates": 11,
+      "fast_best_epoch": 39
+    },
+    "maxvit_tiny": {
+      "config": {
+        "args": {
+          "root": "/hdd1/hukaixiao/projects/faultsyn3d/data/thebe_spatial_v3",
+          "run": "runs/thebe_spatial_v3_maxvit_tiny",
+          "epochs": 100,
+          "stop_after": 100,
+          "samples": 2400,
+          "workers": 3,
+          "seed": 2026,
+          "full_every": 1,
+          "resume": false,
+          "smoke": false,
+          "variant": "baseline",
+          "per_rank": 2,
+          "accum": 1
+        },
+        "params": 40164233,
+        "world_size": 4,
+        "effective_batch": 8,
+        "model": "maxvit3d",
+        "model_kwargs": {
+          "full_res_skip": true,
+          "drop_path_rate": 0.2,
+          "img_size": 128
+        },
+        "protocol_sha256": "f8063803bc0db36222cad249d0a181603baa7dc74889ce5d1262999a2b889761",
+        "sources": {
+          "train/train_thebe_spatial_ddp.py": "709efa0039937778d3adf8b298e122f3f0649ce6d0ec690d0ebfbb37c6829243",
+          "train/dataset_thebe_spatial.py": "2baa8dd2ae421c19cb92c6aacd1c7ac84f826f8325a0cdaa0da01f7e9c22326c",
+          "models/maxvit3d.py": "e5eb289262199d36aa623682f6e09a6e619782114f38f7c99512b2c0e4aac024",
+          "models/__init__.py": "0cf694d980c66587a19f4ce2c9ae09b3c1401b914d2d24c842bd3f7fb0a17145",
+          "scripts/prepare_thebe_spatial.py": "d4577f6f439ef7ecbc70b1df334788b6a75e9f3fdb7bf7134ac322506fc6ffa9"
+        },
+        "initialization": "random; no pretrained weights",
+        "full_val_cores": 2433,
+        "fast_val_cores": 96,
+        "torch_version": "2.10.0+cu128",
+        "device_names": [
+          "NVIDIA GeForce RTX 2080 Ti",
+          "NVIDIA GeForce RTX 2080 Ti",
+          "NVIDIA GeForce RTX 2080 Ti",
+          "NVIDIA GeForce RTX 2080 Ti",
+          "NVIDIA T400"
+        ]
+      },
+      "completed_epochs": 100,
+      "best": {
+        "epoch": 47,
+        "lr": 6.38180859230591e-05,
+        "train_loss": 0.4855333981166283,
+        "fast_val": {
+          "iou": 0.4746135102032572,
+          "dice": 0.6437124126685068,
+          "precision": 0.6823685176238261,
+          "recall": 0.6092012270502594,
+          "valid_voxels": 20134972,
+          "positive_voxels": 848539,
+          "loss": 0.5065842526188741,
+          "cores": 96
+        },
+        "full_val": {
+          "iou": 0.39536682127158124,
+          "dice": 0.5666851400569897,
+          "precision": 0.6130752114402885,
+          "recall": 0.5268216858558215,
+          "valid_voxels": 510945619,
+          "positive_voxels": 14228002,
+          "loss": 0.550334450969089,
+          "cores": 2433
+        },
+        "seconds": 165.55400204658508,
+        "skipped_optimizer_steps": 0
+      },
+      "last": {
+        "epoch": 100,
+        "lr": 1e-07,
+        "train_loss": 0.47068665189047654,
+        "fast_val": {
+          "iou": 0.4670552281199914,
+          "dice": 0.6367248064935026,
+          "precision": 0.6514749077026657,
+          "recall": 0.6226278344307097,
+          "valid_voxels": 20134972,
+          "positive_voxels": 848539,
+          "loss": 0.5113800261169672,
+          "cores": 96
+        },
+        "full_val": {
+          "iou": 0.3807520734921738,
+          "dice": 0.5515140347088995,
+          "precision": 0.5945127628342471,
+          "recall": 0.514315643194315,
+          "valid_voxels": 510945619,
+          "positive_voxels": 14228002,
+          "loss": 0.5544085471787131,
+          "cores": 2433
+        },
+        "seconds": 166.36183786392212,
+        "skipped_optimizer_steps": 1
+      },
+      "test": {
+        "iou": 0.389605642506824,
+        "dice": 0.5607427468472024,
+        "precision": 0.5139048658553836,
+        "recall": 0.6169745142274782,
+        "ap": 0.5556182810125067,
+        "valid_voxels": 2303341553,
+        "positive_voxels": 57680496,
+        "fault_fraction": 0.025042094137047853,
+        "loss": 0.5426784174149267,
+        "cores": 9538,
+        "seconds": 804,
+        "epoch": 47,
+        "checkpoint": "best_fullval"
+      },
+      "skipped_updates": 13,
+      "fast_best_epoch": 40
+    },
+    "context_both": {
+      "config": {
+        "args": {
+          "root": "/hdd1/hukaixiao/projects/faultsyn3d/data/thebe_spatial_v3",
+          "run": "runs/thebe_spatial_v3_context_both",
+          "epochs": 100,
+          "stop_after": 100,
+          "samples": 2400,
+          "workers": 3,
+          "seed": 2026,
+          "full_every": 1,
+          "resume": false,
+          "smoke": false,
+          "variant": "context_both",
+          "per_rank": 2,
+          "accum": 1
+        },
+        "params": 32449615,
+        "world_size": 4,
+        "effective_batch": 8,
+        "model": "context_grid_maxvit3d",
+        "model_kwargs": {
+          "mode": "both"
+        },
+        "protocol_sha256": "f8063803bc0db36222cad249d0a181603baa7dc74889ce5d1262999a2b889761",
+        "sources": {
+          "train/train_thebe_spatial_ddp.py": "709efa0039937778d3adf8b298e122f3f0649ce6d0ec690d0ebfbb37c6829243",
+          "train/dataset_thebe_spatial.py": "2baa8dd2ae421c19cb92c6aacd1c7ac84f826f8325a0cdaa0da01f7e9c22326c",
+          "models/context_grid_maxvit3d.py": "2cd56da4cfa9a8088abf484967311d0ef5701d8d04f4e7630ff436a52189a0d4",
+          "models/__init__.py": "0cf694d980c66587a19f4ce2c9ae09b3c1401b914d2d24c842bd3f7fb0a17145",
+          "scripts/prepare_thebe_spatial.py": "d4577f6f439ef7ecbc70b1df334788b6a75e9f3fdb7bf7134ac322506fc6ffa9"
+        },
+        "initialization": "random; no pretrained weights",
+        "full_val_cores": 2433,
+        "fast_val_cores": 96,
+        "torch_version": "2.10.0+cu128",
+        "device_names": [
+          "NVIDIA GeForce RTX 2080 Ti",
+          "NVIDIA GeForce RTX 2080 Ti",
+          "NVIDIA GeForce RTX 2080 Ti",
+          "NVIDIA GeForce RTX 2080 Ti",
+          "NVIDIA T400"
+        ]
+      },
+      "completed_epochs": 5,
+      "best": {
+        "epoch": 5,
+        "lr": 4.5e-05,
+        "train_loss": 0.574944865355889,
+        "fast_val": {
+          "iou": 0.2136170569419409,
+          "dice": 0.35203370901890724,
+          "precision": 0.2864542318740919,
+          "recall": 0.4565553262725697,
+          "valid_voxels": 20134972,
+          "positive_voxels": 848539,
+          "loss": 0.5604929324860374,
+          "cores": 96
+        },
+        "full_val": {
+          "iou": 0.16769811229593176,
+          "dice": 0.2872285405449585,
+          "precision": 0.20599723222608637,
+          "recall": 0.4742343303016123,
+          "valid_voxels": 510945619,
+          "positive_voxels": 14228002,
+          "loss": 0.5736811281205988,
+          "cores": 2433
+        },
+        "seconds": 185.58123326301575,
+        "skipped_optimizer_steps": 0
+      },
+      "last": {
+        "epoch": 5,
+        "lr": 4.5e-05,
+        "train_loss": 0.574944865355889,
+        "fast_val": {
+          "iou": 0.2136170569419409,
+          "dice": 0.35203370901890724,
+          "precision": 0.2864542318740919,
+          "recall": 0.4565553262725697,
+          "valid_voxels": 20134972,
+          "positive_voxels": 848539,
+          "loss": 0.5604929324860374,
+          "cores": 96
+        },
+        "full_val": {
+          "iou": 0.16769811229593176,
+          "dice": 0.2872285405449585,
+          "precision": 0.20599723222608637,
+          "recall": 0.4742343303016123,
+          "valid_voxels": 510945619,
+          "positive_voxels": 14228002,
+          "loss": 0.5736811281205988,
+          "cores": 2433
+        },
+        "seconds": 185.58123326301575,
+        "skipped_optimizer_steps": 0
+      },
+      "test": null,
+      "skipped_updates": 0,
+      "fast_best_epoch": 5
+    }
+  }
+}

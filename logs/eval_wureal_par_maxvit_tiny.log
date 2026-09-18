@@ -1,0 +1,4 @@
+
+== faultseg3d
+run                             ep    IoU     AP      P      R  tol2P  tol2R
+maxvit3d_par_maxvit_tiny       197  0.294  0.444  0.572  0.377  0.892  0.645

@@ -1,0 +1,22 @@
+Traceback (most recent call last):
+  File "/hdd1/hukaixiao/projects/faultsyn3d/train/evaluate.py", line 68, in <module>
+    main()
+  File "/hdd1/hukaixiao/projects/faultsyn3d/train/evaluate.py", line 50, in main
+    res = evaluate(m, tl, device, amp=True)
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+  File "/hdd1/hukaixiao/projects/faultsyn3d/train/train.py", line 63, in evaluate
+    out = model(x)
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/hdd1/hukaixiao/projects/faultsyn3d/models/dbvit3d.py", line 262, in forward
+    s1 = self.enc1(s0); s2 = self.enc2(s1); s3 = self.enc3(s2)
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/hdd1/hukaixiao/projects/faultsyn3d/models/dbvit3d.py", line 168, in forward
+    for _ in range(self.n):
+TypeError: 'str' object cannot be interpreted as an integer

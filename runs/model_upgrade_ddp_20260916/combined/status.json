@@ -1,0 +1,28 @@
+{
+  "status": "complete",
+  "test": {
+    "loss": 0.5419233919680119,
+    "iou": 0.8323998649366265,
+    "dice": 0.9085351738610994,
+    "precision": 0.909789697089807,
+    "recall": 0.9072841056316033,
+    "ap": 0.9558114447653048,
+    "iou_en_echelon": 0.9140148694973546,
+    "ap_en_echelon": 0.9897195420772024,
+    "iou_horsetail": 0.7948387252399121,
+    "ap_horsetail": 0.931784699605883,
+    "iou_negative_flower": 0.8280708330569682,
+    "ap_negative_flower": 0.9514338411018172,
+    "iou_positive_flower": 0.8441250199251573,
+    "ap_positive_flower": 0.9660399262670114,
+    "iou_listric_assemblage": 0.7564474022652755,
+    "ap_listric_assemblage": 0.9142165132579168,
+    "variant": "combined",
+    "epoch": 18,
+    "n_test": 100,
+    "reference_historical_test_iou": 0.8325868632244817,
+    "difference_from_historical_iou": -0.00018699828785517791,
+    "checkpoint_sha256": "d5dc7e32d88fd9843b91c2d0094a910dc994bbe4acdfdb020dbf4aebb8fea320",
+    "selection": "maximum validation voxel IoU at threshold .5, including epoch 0"
+  }
+}

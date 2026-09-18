@@ -1,0 +1,13 @@
+{
+  "baseline_params": 9643495,
+  "grid_params": 10785202,
+  "common_initial_weights_exactly_equal": true,
+  "extra_modules_preserve_rng_stream": true,
+  "control_eval_output_exactly_equal_to_original": true,
+  "control_checkpoint_gradient_equivalent": true,
+  "all_gradients_present_finite": true,
+  "grid_grad_norms": {
+    "grid_mid": 0.0009217032745389234,
+    "grid_dec": 0.0012654722129377515
+  }
+}

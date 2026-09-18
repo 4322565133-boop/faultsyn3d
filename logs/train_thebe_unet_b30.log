@@ -1,0 +1,56 @@
+unet_b30: unet3d 4.92M  world=4 global_batch=8 d2s=False profile=False trace=False
+epoch=001 train=0.55087 (seg 0.55087 pr 0.0000 tr 0.0000 ramp 0.00) val=0.52073 IoU=0.1614 P=0.171 R=0.749 lr=1.09e-05 249s
+epoch=002 train=0.53567 (seg 0.53567 pr 0.0000 tr 0.0000 ramp 0.00) val=0.50840 IoU=0.1861 P=0.197 R=0.773 lr=2.08e-05 92s
+epoch=003 train=0.52791 (seg 0.52791 pr 0.0000 tr 0.0000 ramp 0.00) val=0.50415 IoU=0.1888 P=0.202 R=0.746 lr=3.07e-05 92s
+epoch=004 train=0.52067 (seg 0.52067 pr 0.0000 tr 0.0000 ramp 0.00) val=0.49537 IoU=0.2093 P=0.224 R=0.762 lr=4.06e-05 92s
+epoch=005 train=0.51226 (seg 0.51226 pr 0.0000 tr 0.0000 ramp 0.00) val=0.47996 IoU=0.2383 P=0.255 R=0.785 lr=5.05e-05 92s
+epoch=006 train=0.50278 (seg 0.50278 pr 0.0000 tr 0.0000 ramp 0.00) val=0.46442 IoU=0.2674 P=0.286 R=0.807 lr=6.04e-05 92s
+epoch=007 train=0.49331 (seg 0.49331 pr 0.0000 tr 0.0000 ramp 0.00) val=0.46161 IoU=0.2964 P=0.342 R=0.691 lr=7.03e-05 92s
+epoch=008 train=0.48193 (seg 0.48193 pr 0.0000 tr 0.0000 ramp 0.00) val=0.44912 IoU=0.3017 P=0.344 R=0.712 lr=8.02e-05 92s
+epoch=009 train=0.47145 (seg 0.47145 pr 0.0000 tr 0.0000 ramp 0.00) val=0.43670 IoU=0.3019 P=0.343 R=0.718 lr=9.01e-05 92s
+epoch=010 train=0.46057 (seg 0.46057 pr 0.0000 tr 0.0000 ramp 0.00) val=0.42730 IoU=0.3079 P=0.354 R=0.702 lr=1.00e-04 92s
+epoch=011 train=0.44947 (seg 0.44947 pr 0.0000 tr 0.0000 ramp 0.05) val=0.42754 IoU=0.3132 P=0.380 R=0.640 lr=1.00e-04 92s
+epoch=012 train=0.43917 (seg 0.43917 pr 0.0000 tr 0.0000 ramp 0.10) val=0.40490 IoU=0.3581 P=0.444 R=0.649 lr=9.99e-05 92s
+epoch=013 train=0.43076 (seg 0.43076 pr 0.0000 tr 0.0000 ramp 0.15) val=0.40887 IoU=0.3486 P=0.461 R=0.589 lr=9.97e-05 92s
+epoch=014 train=0.42272 (seg 0.42272 pr 0.0000 tr 0.0000 ramp 0.20) val=0.39077 IoU=0.3476 P=0.404 R=0.714 lr=9.95e-05 92s
+epoch=015 train=0.41443 (seg 0.41443 pr 0.0000 tr 0.0000 ramp 0.25) val=0.39264 IoU=0.3516 P=0.438 R=0.641 lr=9.92e-05 92s
+epoch=016 train=0.40847 (seg 0.40847 pr 0.0000 tr 0.0000 ramp 0.30) val=0.38850 IoU=0.3581 P=0.453 R=0.632 lr=9.89e-05 92s
+epoch=017 train=0.40131 (seg 0.40131 pr 0.0000 tr 0.0000 ramp 0.35) val=0.37540 IoU=0.3653 P=0.435 R=0.696 lr=9.85e-05 93s
+epoch=018 train=0.39526 (seg 0.39526 pr 0.0000 tr 0.0000 ramp 0.40) val=0.39140 IoU=0.3577 P=0.490 R=0.569 lr=9.81e-05 92s
+epoch=019 train=0.39062 (seg 0.39062 pr 0.0000 tr 0.0000 ramp 0.45) val=0.37915 IoU=0.3581 P=0.437 R=0.665 lr=9.76e-05 94s
+epoch=020 train=0.38589 (seg 0.38589 pr 0.0000 tr 0.0000 ramp 0.50) val=0.38906 IoU=0.3526 P=0.471 R=0.583 lr=9.70e-05 92s
+epoch=021 train=0.38251 (seg 0.38251 pr 0.0000 tr 0.0000 ramp 0.55) val=0.37743 IoU=0.3613 P=0.448 R=0.650 lr=9.64e-05 92s
+epoch=022 train=0.37820 (seg 0.37820 pr 0.0000 tr 0.0000 ramp 0.60) val=0.37912 IoU=0.3502 P=0.426 R=0.662 lr=9.57e-05 93s
+epoch=023 train=0.37411 (seg 0.37411 pr 0.0000 tr 0.0000 ramp 0.65) val=0.37778 IoU=0.3428 P=0.394 R=0.726 lr=9.49e-05 93s
+epoch=024 train=0.37023 (seg 0.37023 pr 0.0000 tr 0.0000 ramp 0.70) val=0.38324 IoU=0.3637 P=0.497 R=0.575 lr=9.42e-05 92s
+W0917 16:17:55.543000 3428747 torch/distributed/elastic/agent/server/api.py:739] Received Signals.SIGTERM death signal, shutting down workers
+W0917 16:17:55.546000 3428747 torch/distributed/elastic/multiprocessing/api.py:1010] Sending process 3428772 closing signal SIGTERM
+W0917 16:17:55.546000 3428747 torch/distributed/elastic/multiprocessing/api.py:1010] Sending process 3428773 closing signal SIGTERM
+W0917 16:17:55.546000 3428747 torch/distributed/elastic/multiprocessing/api.py:1010] Sending process 3428774 closing signal SIGTERM
+W0917 16:17:55.547000 3428747 torch/distributed/elastic/multiprocessing/api.py:1010] Sending process 3428775 closing signal SIGTERM
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/run.py", line 995, in <module>
+    main()
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 362, in wrapper
+    return f(*args, **kwargs)
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/run.py", line 991, in main
+    run(args)
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/run.py", line 982, in run
+    elastic_launch(
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 170, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 308, in launch_agent
+    result = agent.run()
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/elastic/metrics/api.py", line 134, in wrapper
+    result = f(*args, **kwargs)
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/elastic/agent/server/api.py", line 731, in run
+    result = self._invoke_run(role)
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/elastic/agent/server/api.py", line 908, in _invoke_run
+    time.sleep(monitor_interval)
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/api.py", line 86, in _terminate_process_handler
+    raise SignalException(f"Process {os.getpid()} got signal: {sigval}", sigval=sigval)
+torch.distributed.elastic.multiprocessing.api.SignalException: Process 3428747 got signal: 15

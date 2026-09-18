@@ -1,0 +1,1338 @@
+                                                                                            IEEE GEOSCIENCE AND REMOTE SENSING SOCIETY SECTION
+
+
+Received 30 October 2025, accepted 23 November 2025, date of publication 12 December 2025,
+date of current version 26 December 2025.
+Digital Object Identifier 10.1109/ACCESS.2025.3643616
+
+
+
+
+A Large-Scale Benchmark on Geological Fault
+Delineation Models: Domain Shift, Training
+Dynamics, Generalizability, Evaluation,
+and Inferential Behavior
+JORGE QUESADA 1 , CHEN ZHOU1 , PRITHWIJIT CHOWDHURY 1 , (Student Member, IEEE),
+MOHAMMAD ALOTAIBI1 , AHMAD MUSTAFA 2 , (Member, IEEE), YUSUFJON KUMAKOV3 ,
+MOHIT PRABHUSHANKAR 1 , (Member, IEEE), AND GHASSAN ALREGIB 1 , (Fellow, IEEE)
+1 OLIVES, Georgia Institute of Technology, Atlanta, GA, USA
+2 Information Technology University, Lahore, Pakistan
+3 Tashkent State Technical University, Tashkent, Uzbekistan
+
+Corresponding author: Ghassan Alregib (alregib@gatech.edu)
+This work was supported by the ML4Seismic Industry Partners at Georgia Institute of Technology.
+
+
+
+
+  ABSTRACT Machine learning has taken a critical role in seismic interpretation workflows, especially
+  in fault delineation tasks. However, despite the recent proliferation of pretrained models and synthetic
+  datasets, the field still lacks a systematic understanding of the generalizability limits of these models across
+  seismic data representing diverse geologic, acquisition, and processing settings. In practice, distributional
+  shifts between surveys, limitations in fine-tuning strategies, and inconsistent evaluation protocols remain
+  major obstacles to deploying reliable models in real exploration settings. In this paper, we present the first
+  large-scale benchmarking study explicitly designed to evaluate domain shift strategies for seismic fault
+  delineation. Our benchmark spans over 200 experimental setups combining eight architectures, three datasets
+  (FaultSeg3D, CRACKS, Thebe), and multiple training regimes (individual training, fine-tuning, and
+  joint training). We evaluate performance using three complementary metrics (Dice, Hausdorff Distance,
+  and Bidirectional Chamfer Distance) and analyze both segmentation accuracy and structural fidelity. Our
+  results show that fine-tuning across dissimilar domains can reduce source-domain Dice by up to 75%,
+  demonstrating severe catastrophic forgetting, whereas larger models such as Segformer tend to be more
+  robust to adaptation than smaller architectures. We also find that domain adaptation methods outperform
+  fine-tuning under large distributional gaps but underperform when domains are closely aligned. Finally,
+  we complement conventional metrics with an analysis of fault-network descriptors (length, curvature,
+  sinuosity, segmentation density), revealing the nuances in the interplay between architectural choices and
+  data properties. Overall, this benchmark provides a reproducible foundation for evaluating transferability in
+  seismic fault delineation and offers actionable insights for effective deployment of fault delineation models
+  within seismic interpretation workflows.
+
+
+  INDEX TERMS Benchmarking, domain shift, seismic fault delineation, seismic interpretation.
+
+
+                                                                                                 I. INTRODUCTION
+                                                                                                Recent advances in deep learning (DL) have brought about
+                                                                                                a tectonic shift in the seismic interpretation workflow [1],
+                                                                                                [2], mirroring broader trends across other domains like geo-
+   The associate editor coordinating the review of this manuscript and
+approving it for publication was Andrea Rey.                                                    science [3], [4], sustainable energy systems [5], [6], [7] and
+
+                                                  2025 The Authors. This work is licensed under a Creative Commons Attribution 4.0 License.
+215110                                                   For more information, see https://creativecommons.org/licenses/by/4.0/                  VOLUME 13, 2025
+J. Quesada et al.: Large-Scale Benchmark on Geological Fault Delineation Models
+
+
+
+
+biomedical applications [8], [9], [10], [11], [12], [13], [14].                   whether from synthetic-to-real or across real-world basins,
+DL-assisted approaches are leveraged in different parts of the                    can cause pretrained models to generalize poorly to new
+pipeline, specifically in automated fault detection. Faults are                   sites [21], and eventually provide weak performance for the
+geologically critical features that control fluid flow in Earth’s                 interpretation task.
+subsurface, influence reservoir compartmentalization, and                            To address the challenge of domain adaptation, researchers
+pose drilling hazards in hydrocarbon exploration [15], [16].                      have proposed a variety of methods that address the effects
+Beyond the energy sector, faults play a central role in                           of domain differences along the pipeline. Several studies
+earthquake nucleation and propagation, as well as geohazard                       introduce enhancements to model architectures [22], dataset
+and risk assessment in tectonically active regions [17], [18].                    construction [15], [23], [24], [25], uncertainty estimation [26]
+Accurate and scalable fault interpretation is therefore a                         or explore training strategies aimed at improving data
+high-impact task across several geoscience domains. Early                         efficiency and transferability [27], [28]. A common approach
+work in this area often repurposed semantic segmentation                          involves pretraining models on synthetic data and subse-
+models from computer vision (such as those developed for                          quently fine-tuning them on real seismic volumes, as in [15].
+natural images) to detect discontinuities in seismic sections.                    More recent methods have explored using self-supervised
+However, these generic frameworks struggled with the unique                       learning to learn robust features without large amounts of
+characteristics of seismic data, particularly the thin, curvilin-                 labeled data [29], [30], [31], [32], [33], [34], or adapting
+ear geometry of faults and the presence of acquisition artifacts                  large vision foundation models trained on natural images to
+and structural noise. As a result, the field has increasingly                     the seismic domain [20], [35], [36]. While these approaches
+shifted toward fault delineation, a task-specific variant of                      offer promising results, their effectiveness is often dependent
+segmentation that emphasizes the extraction of coherent                           on the compatibility between source and target domains,
+fault structures rather than general pixel-wise classification.                   and they remain vulnerable to issues such as catastrophic
+This shift has prompted the development of domain-specific                        forgetting [37] during adaptation. Moreover, the success
+neural networks, feature encoders, adapted loss functions,                        of these approaches is influenced by several factors such
+and structural priors that better capture the morphological                       as architecture and training design choices, as well as
+signatures of faults [19], [20]. In general, the growing                          dataset-specific properties such as seismic section resolution,
+availability of DL methods has accelerated the adoption of                        heterogeneity, and sample size.
+data-driven interpretations that have provided new insights                          Fig. 1 (green box) showcases a simple example of the
+into fault structures within large seismic volumes [19], [20].                    aforementioned issues. The figure contains two rows, each
+   A DL-assisted seismic interpretation pipeline is illustrated                   displaying three seismic sections. The first row presents
+in Fig. 1 (top diagram). In a standard workflow, interpreters                     the output of three segmentation models commonly used
+at a new site begin by leveraging existing labeled datasets                       in the seismic community, trained under the same settings
+or synthetically generated volumes to train machine learning                      with the same training data. We can observe that the three
+models. These models capture broad geophysical patterns and                       predictions differ significantly from each other. In the second
+serve as a foundational prior, which can then be adapted to                       row of the box, three segmentation outputs are shown
+the new site through fine-tuning on a smaller set of locally                      after applying three different fine-tuning strategies. The first
+interpreted seismic data. After fine-tuning, the models are                       output in the second row is obtained by a model trained
+evaluated within a consistent framework to ensure that their                      from scratch on the target data, while the other two are
+outputs align with geological expectations and interpretation                     produced by models pretrained on other (larger) datasets
+standards. The validated predictions subsequently guide                           and then finetuned on the target data. We further conduct
+subsurface decision-making, and the new volume may in                             objective evaluation of these outputs and summarize these
+turn contribute to the pool of training data for future sites.                    metrics in Fig. 2. The y-axis in this figure is the average
+However, while conceptually straightforward, this workflow                        Hausdorff distance between the output of the model and the
+embeds multiple assumptions and design choices that present                       ground truth, where smaller values signify better predictions.
+significant challenges in practice, which we highlight at the                     There are four strategies shown. The first one is where the
+bottom of Figure 1.                                                               model is trained on the target volume. The second strategy
+   Two central and intertwined challenges in the interpreta-                      is to use a model that was trained on a real dataset and
+tion pipeline arise from the diversity of data sources (Fig. 1,                   fine-tune it on the target dataset. The third strategy is to
+orange box) and the strategies used to adapt models across                        use a model that was trained in a synthetic dataset and
+them (Fig. 1, green box). Seismic datasets differ widely                          then fine-tuned on the target dataset. These three strategies
+in their geological characteristics, acquisition parameters,                      match the three depicted in Fig. 1 (green box). A fourth
+and resolution, among other factors. Synthetic data, while                        strategy is to use a model that was jointly trained on both
+providing a fully specified ground truth, often fails to capture                  synthetic and real data, then fine-tuned on the target data.
+the complexity and variability of field data. Prior datasets                      Although we will discuss these experiments in more detail
+from other regions, though more realistic, may still differ                       later in the paper, the figure here shows the large difference in
+significantly from new target volumes. These domain shifts,                       performance across these four strategies. For now, this shows
+
+
+VOLUME 13, 2025                                                                                                                             215111
+                                                                        J. Quesada et al.: Large-Scale Benchmark on Geological Fault Delineation Models
+
+
+
+
+FIGURE 1. Typical DL-assisted seismic interpretation workflow.
+
+
+                                                                           context of fault interpretation. This analysis highlights the
+                                                                           need for a more holistic evaluation approach that integrates
+                                                                           quantitative measures with geological interpretability.
+                                                                              This paper presents a large-scale benchmarking study
+                                                                           regarding the performance variability of finetuning strategies
+                                                                           for fault delineation models across training regimes, data
+                                                                           characteristics, and architectural choices. Rather than intro-
+                                                                           ducing a new model, this work establishes a systematic exper-
+                                                                           imental framework: a methodological foundation for repro-
+                                                                           ducible and cross-domain evaluation of deep learning archi-
+                                                                           tectures in seismic fault interpretation. Our benchmarked
+                                                                           fault delineation models include a combination of eight deep
+                                                                           learning architectures, trained and fine-tuned on three distinct
+FIGURE 2. Finetuning example from a real dataset (D1) and a synthetic      datasets, including both synthetic and real volumes. Our
+dataset (D2) to a target real dataset.                                     experiments cover a broad spectrum of training strategies,
+                                                                           including pretraining on a single fault dataset, pre-training
+                                                                           on large-scale natural image dataset such as ImageNet [41],
+that despite this growing body of work, the field still lacks              using randomly initialized models and jointly training on
+a systematic understanding of when, how, and why a given                   multiple fault datasets. Beyond benchmarking, we also
+strategy outperforms others under domain shift. This paper is              use targeted case studies (through domain adaptation and
+the first attempt, to our knowledge, within the community to               continual learning setups) to diagnose model behavior under
+provide answers and guidelines for domain shift strategies in              catastrophic forgetting and domain shift, demonstrating how
+seismic interpretation.                                                    the benchmark can serve as a tool for both evaluation and
+   The third critical complication in the pipeline arises                  insight.
+in evaluation, as depicted in Fig. 1 (purple box). Fault                      While prior works have examined transfer learning and
+labels are derived from expert interpretation and are often                domain adaptation in geoscience [42], [43], [44], these
+subjective [38], [39], particularly in complex or ambiguous                efforts have typically been limited in scope: focusing on
+structural settings. This subjectivity leads to inconsistencies            single architectures or isolated dataset pairs. By contrast, our
+in ground truth across datasets or among annotators, and                   study provides the first large-scale, systematic benchmark
+complicates objective model evaluation. Furthermore, a given               that unifies evaluation across multiple model families,
+metric may penalize correct but unannotated predictions,                   datasets, and training paradigms. This effort parallels the
+while failing to reflect geological plausibility or structural             role of domain-shift benchmarks in fields like medical
+consistency [19], [40]. To address this, our study provides an             imaging [45], where standardized comparisons have proven
+in-depth analysis of commonly used evaluation metrics (such                essential for understanding generalization and reproducibility
+as Dice coefficient, Chamfer and Hausdorff distances) in the               across domains.
+
+215112                                                                                                                                 VOLUME 13, 2025
+J. Quesada et al.: Large-Scale Benchmark on Geological Fault Delineation Models
+
+
+
+
+   Our contributions are as follows:                                              we highlight how established DL techniques intersect with
+   • We present the first large-scale benchmarking study
+                                                                                  geophysical challenges, and how each component contributes
+     focused on fault delineation under domain shift,                             to generalization across seismic domains.
+     spanning over 200 exhaustive combinations of experi-
+     mental setups across 8 DL architectures, 5 pretraining-                      A. DATA PREPARATION AND PREPROCESSING
+     finetuning datasets and 3 evaluation ones, as well as                        In computer vision segmentation pipelines, raw images from
+     several training configurations.                                             natural scenes [46], [47], [48] and medical scans [49],
+   • We systematically evaluate pretraining, fine-tuning,                         [50], [51] are first standardized to ensure consistent spatial
+     and joint training strategies, exposing failure cases                        dimensions and intensity distributions [52], [53]. Typical
+     such as catastrophic forgetting and dataset-dependent                        preprocessing steps include resizing or cropping to a fixed
+     brittleness.                                                                 height and width, data augmentation, whitening [54], and
+   • We analyze the effect of architectural scale and design                      contrast adjustments to mitigate variability in lighting or
+     on transferability, highlighting that larger models often                    sensor settings [55], [56]. These operations guarantee that
+     adapt more effectively to finetuning, and smaller models                     each input conforms to the network’s architectural require-
+     benefit from domain adaptation strategies under large                        ments and that learned features are not biased by extraneous
+     domain shift.                                                                intensity fluctuations.
+   • We compare evaluation metrics and highlight their lim-                          Seismic segmentation extends these practices to volu-
+     itations, advocating for evaluation practices that incor-                    metric data acquired in formats such as SEG-Y (.sgy),
+     porate structural and geological plausibility. We also                       raw binary (.dat), or serialized NumPy arrays (.npy).
+     introduce a novel analysis based on fault characteristic                     A common workflow begins by reading trace headers to
+     metrics, which sheds new light on the way data                               assemble a 3D volume of dimensions (inline × xline
+     properties and model behavior are entangled, and opens                       × time/depth), and either processing the volume at that
+     up new avenues from which to understand finetuning                           level [15], [19] or extracting 2D inline or crossline sections
+     and domain transfer strategies.                                              for further processing [23], [32]. To enlarge the training set
+   • We open-source our code and models to provide a                              and fit GPU memory constraints, each section is tiled with an
+     foundational reference to scientists and practitioners.                      overlapping sliding window of size H × W pixels (the effects
+   The remainder of this paper is organized as follows.                           of different tiling standards are studied and results presented
+Section II reviews prior work on machine learning for                             in Section V-B1.).
+fault delineation in the context of seismic interpretation                           Since raw seismic amplitudes can span orders of magni-
+workflows. Section III describes the three datasets used in                       tude and contain acquisition artifacts, it is a standard practice
+our benchmarking study, highlighting their geological and                         to normalize each volume either via min–max scaling or z-
+statistical characteristics. Section IV details our experimental                  score transformation. Fault masks (either interpreter-drawn or
+setup, including data preparation, model architectures, and                       synthetically generated) are saved as binary images (.png or
+evaluation protocols. Section V presents the results of over                      .npy) and cropped identically to their corresponding seismic
+200 training configurations, analyzed across generalization                       windows. This systematic preprocessing pipeline (from raw
+and transferability, training dynamics, and metric evaluation.                    SEG-Y/DAT ingestion, through standardized normalization
+Section VI introduces an additional analysis on geomet-                           and windowed slicing, to precisely aligned input–mask pairs)
+ric and topological metrics to characterize dataset–model                         provides a consistent basis for benchmarking and comparing
+interactions. Finally, Section VII concludes the paper by                         fault delineation models across diverse seismic domains.
+summarizing key findings, outlining practical guidelines,
+and identifying open challenges for future research. The                          B. TRAINING DYNAMICS AND SETUPS
+full cosde and data used for this paper can be found at                           Popular network choices designed for natural image segmen-
+https://github.com/olivesgatech/large-bench-geo                                   tation are sensitive to training and design choices like model
+                                                                                  architecture, input window size, and loss functions. Networks
+II. RELATED WORK                                                                  such as U-Net [49], DeepLab [47], and SegFormer [57]
+The structure of this section mirrors the stages outlined                         typically accept fixed-size n × n patches (usually n ∈
+in Fig. 1. Existing literature on machine learning for fault                      {128, 256, 512}), balancing the need for sufficient context
+delineation follows a similar modular approach: beginning                         against GPU memory limits. During each training iteration,
+with data preprocessing and input normalization, proceeding                       these patches are sampled, sometimes at multiple scales to
+through model training, adaptation strategies and inferential                     expose the network to varied object sizes and to regularize
+behavior, and culminating in evaluation protocols. To provide                     against overfitting. Segmentation models optimize losses
+both breadth and depth, each subsection first summarizes the                      designed to reconcile pixel-wise accuracy with region-level
+general deep learning principles that motivate a given stage,                     coherence. The binary cross-entropy (BCE) loss [58] focuses
+and then narrows the discussion to prior work in seismic                          on classifying each pixel correctly, while the Dice loss [59]
+interpretation and fault segmentation specifically. In this way,                  measures the overlap between predicted and ground-truth
+
+VOLUME 13, 2025                                                                                                                             215113
+                                                                   J. Quesada et al.: Large-Scale Benchmark on Geological Fault Delineation Models
+
+
+
+
+fault regions, making it well-suited for imbalanced datasets.         curvilinear structures [34], and self-supervised pretraining
+In practice, many works combine BCE and Dice to take                  frameworks that improve transferability across surveys with
+advantage of both pixel fidelity and shape alignment                  limited labels [19], [20]. Transfer learning pipelines typically
+[60], [61].                                                           rely on pretrained encoders (either from natural images [86],
+   In seismic fault delineation, similar principles apply but         [87] or large-scale seismic simulations with domain-specific
+with additional considerations. Input patches are typically           decoders [15], [65]) followed by fine-tuning on limited
+larger to capture fault continuity across sections, and training      labeled sections. These strategies must navigate a tradeoff
+often uses overlapping windows with a stride smaller than             between plasticity and stability: aggressive weight updates
+the patch size to ensure boundary faults are adequately               are prone to inducing catastrophic forgetting [37], while
+sampled [15], [62], [63], [64]. The aforementioned loss               conservative tuning may fail to capture domain-specific fea-
+functions, coupled with learning rate schedules and different         tures. As a result, generalization in seismic fault delineation
+regularization functions, form the backbone of seismic train-         requires careful calibration of both model architecture and
+ing setups [65], [66], [67]. By carefully tuning window sizes         adaptation strategy to handle the subtle, spatially sparse
+and loss compositions, researchers mitigate class imbalance           structures across diverse geological, acquisition, and imaging
+and preserve structural continuity in fault delineation [68].         settings.
+
+
+C. GENERALIZATION AND TRANSFERABILITY                                 D. INFERENTIAL BEHAVIOR
+Generalization refers to a model’s ability to maintain                In semantic segmentation, inference entails mapping
+performance when presented with new, unseen data that                 learned feature representations to discrete pixel-level
+(ideally) follows the same distribution as the training               predictions [46]. The fidelity of this mapping depends
+set [69], [70], [71]. In segmentation, this means accurately          on the architecture’s ability to aggregate context and
+delineating objects or regions under variations in lighting,          fuse features: models with narrow receptive fields may
+scale, or background texture. However, a common obstacle              accurately localize edges but miss global structure [49],
+to generalization is domain shift, which occurs when the              while those with extensive context capture coherent regions
+statistical properties of training and test data differ (such         at the expense of sharp boundaries [47]. During inference,
+as changes in camera sensors or scene composition) often              the bias–variance trade-off emerges as a tension between
+leading to degraded performance [72], [73], [74], [75],               boundary precision and region consistency, sometimes
+[76]. Domain adaptation encompasses strategies to reduce              mitigated by post-processing, e.g., Conditional Random
+this gap when the target data is limited, for instance by             Fields [88] or edge-aware refinement modules [89].
+aligning feature distributions between source and target                 In seismic fault delineation, these inferential tendencies are
+domains [77], [78]. Another common technique to adapt to              amplified by the thin, curvilinear nature of faults and the high
+target domains is fine-tuning: a network pretrained on a large,       noise intrinsic to seismic volumes [81]. U-Net’s symmetric
+generic dataset (the source) is adapted to a more specialized         encoder–decoder and skip connections excel at preserving
+task (the target) by retraining some or all layers, thereby           local detail, producing crisp fault traces when the signal-to-
+leveraging learned representations while adjusting to new             noise ratio is high [49], but its reliance on local convolutions
+data characteristics [79], [80].                                      and fixed strides can fragment continuous faults under het-
+   In seismic segmentation, generalization to new domains             eroskedastic noise [65]. DeepLab’s [47] atrous convolutions
+is particularly difficult due to variability in acquisition           and Atrous Spatial Pyramid Pooling (ASPP) module gather
+parameters, stratigraphy, frequency content, and noise levels         multi-scale context, yielding smoother, globally coherent
+across surveys. This is especially true for fault delineation,        fault masks; yet the dilation patterns can inadvertently merge
+where subtle and discontinuous features are easily obscured           adjacent non-fault discontinuities, introducing false positives
+by processing artifacts or geologic heterogeneity [65], [81].         along stratigraphic horizons. SegFormer’s transformer-
+Models trained on one domain (such as synthetic datasets              based encoder captures long-range dependencies and adapts
+like FaultSeg3D [15]) often fail to transfer effectively              to complex fault geometries enhancing continuity across
+to real data from different basins. Recent surveys [82],              sections, though its patch-based attention can produce coarser
+[83] provide comprehensive overviews over the way deep                boundaries if patch size is not carefully chosen [57].
+learning approaches in exploration seismology struggle with              Furthermore, recent works in both seismic [82], [83] and
+such domain shifts and emphasize fault segmentation as a              general DL [90], [91] domains emphasize that inferential
+particularly brittle task.                                            biases are not merely architectural, but also dataset-driven:
+   To mitigate these challenges, researchers have explored            synthetic datasets may thus encourage smoother, well-
+a variety of domain adaptation strategies, including feature-         connected predictions, while field datasets can induce
+space [42] and frequency-space [44] alignment, adversarial            models to replicate jagged, discontinuous, or crossover-
+learning [43], and seismic-style transfer [84]. Fault-specific        heavy structures (we analyze these trends in depth using the
+adaptations include synthetic fault injection to enrich training      fault characteristic metrics described in Section II-F). New
+distributions [85], contrastive learning schemes designed for         approaches attempt to counteract these biases by introducing
+
+215114                                                                                                                            VOLUME 13, 2025
+J. Quesada et al.: Large-Scale Benchmark on Geological Fault Delineation Models
+
+
+
+
+geological priors, like fault continuity preservation [20] or                        Curvature (κ) [93] quantifies the local bending of fault
+curvature-based losses [34]. These studies highlight that                         traces. At each arc-length position s, curvature is defined as
+inferential behavior in seismic fault delineation is shaped
+                                                                                                                     dθ
+jointly by architectural design and the structural biases                                                  κ(s) =       ,                      (5)
+present in training data, underscoring the importance of                                                             ds
+evaluation frameworks that go beyond pixel overlap to                             where θ is the tangent orientation along the fault.
+account for geological plausibility.                                                Sinuosity (S) [94] measures how tortuous a fault is,
+                                                                                  defined as the ratio of its length to the straight-line distance
+E. PERFORMANCE EVALUATION                                                         between its endpoints:
+Evaluation metrics for fault interpretation can be broadly                                                      Ltrace
+grouped into two categories: region-based and distance-based                                              S=              .                    (6)
+                                                                                                               Dendpoints
+metrics. Region-based metrics quantify the overlap between
+predicted and reference fault regions, while distance-based                         Segments (Nseg ) [95] is the total number of discrete fault
+metrics measure the geometric discrepancy between their                           segments observed in the network.
+boundaries.                                                                         Stepover Density (Dstepover ) [96] measures the relative
+                                                                                  occurrence of stepovers, normalized by fault length:
+1) REGION-BASED METRICS
+                                                                                                                  Nstepover
+The Dice coefficient D measures the spatial overlap between                                            Dstepover =          ,              (7)
+                                                                                                                     L
+prediction P and ground truth G
+                                                                                  where Nstepover is the total number of stepovers. These
+                                    2 |P ∩ G|                                     descriptors enable dataset-level comparisons of fault geom-
+                           D =                                          (1)
+                                    |P| + |G|                                     etry and topology.
+
+2) DISTANCE-BASED METRICS                                                         III. FAULT DELINEATION DATASETS
+The modified Hausdorff distance HD captures the largest                           Among all 74 datasets used for fault delineation [99],
+average boundary deviation:                                                       only 4 field datasets (LANDMASS [23], [100], [101], [102],
+            
+              1 X                 1 X
+                                                                                 [103], [104], [105], [106], GSB [63], [107], [108], Thebe
+  HD = max           min d(p, g),     min d(p, g) (2)                             [108], [109], CRACKS [110]) and 4 synthetic datasets
+              Np     g∈G          Ng  p∈P
+                       p∈P                           g∈G                          (FaultSeg3D [15], Bi’s 3D synthetic [111], Wu’s
+where d(·, ·) is the Euclidean distance between two points,                       2D SR [112], Pochet’s 2D synthetic [113]) open-
+and Np and Ng are the number of elements in the sets P                            sourced both seismic data and labels. The low ratio of
+and G, respectively. Additionally, the Bidirectional Chamfer                      open-source labeled field data hinders the creation of
+Distance BCD computes the average shortest distance                               benchmarks for training and evaluation of models.
+between boundary points in both directions:                                          Besides the lack of public availability, the different charac-
+                                                                                  teristics of the datasets pose challenges to the development of
+                  1 X               1 X                                           generalizable DL models. Specifically, LANDMASS contains
+     BCD =            min d(p, g) +     min d(p, g)                     (3)
+                  Np  g∈G           Ng  p∈P                                       image-level fault labels that cannot be used to numerically
+                    p∈G                              g∈G
+                                                                                  evaluate the delineation of pixel-wise faults. GSB contains
+This categorization provides a basis for later discussion in the                  pixel-wise fault labels annotated on only 5 crossline sections,
+Results section, where we compare the behaviors of overlap-                       which limits the evaluation scalability on large test data.
+and distance-focused metrics.                                                     Additionally, it is challenging to achieve generalization using
+                                                                                  only a small number of labels for finetuning [68]. In contrast,
+F. FAULT CHARACTERISTICS METRICS                                                  Thebe provides a large amount of pixel-level geophysicist
+To characterize fault networks within each dataset, we mea-                       labels across 1803 crossline sections. CRACKS provides
+sure a set of geometric and topological descriptors. These                        fault labels of varying quality collected from a group of
+include Length, Curvature, Sinuosity, Segments, and                               interpreters, including a geophysicist expert, across 400 inline
+Stepover Density, which correspond to the statistics reported                     sections.
+in Table 6.                                                                          Among the four publicly available datasets, we select
+   Length (L) [92] is the total length of all fault traces,                       Thebe and CRACKS considering the model development
+computed as                                                                       and evaluation at the pixel level. All the seismic sections
+                                                                                  in Pochet’s 2D synthetic contain only one straight
+                                    NX
+                                     faults
+                                                                                  fault crossing the entire section, presenting less diversity in
+                              L=              ℓi ,                      (4)       angle and density compared to the faults in FaultSeg3D.
+                                     i=1
+                                                                                  Both Bi’s 3D synthetic and Wu’s 2D SR [112]
+where ℓi denotes the length of the i-th fault and Nfaults is the                  originate from FaultSeg3D using the same synthesizing
+number of fault traces.                                                           workflow. Thus, we use FaultSeg3D as a reference
+
+VOLUME 13, 2025                                                                                                                             215115
+                                                                            J. Quesada et al.: Large-Scale Benchmark on Geological Fault Delineation Models
+
+
+
+
+TABLE 1. Comparison of Netherlands F3 and Thebe seismic datasets.
+
+
+
+
+FIGURE 3. Visuals from three datasets: (a) synthesized faults in FaultSeg3D, (b) expert labels in CRACKS, and (c) expert labels in Thebe.
+
+
+
+
+                                                                               rather than case-specific proprietary analyses. Despite being
+                                                                               open-source, the selected datasets span markedly different
+                                                                               geological, statistical, and labeling characteristics, including
+                                                                               synthetic versus real data, varying signal-to-noise ratios,
+                                                                               and both expert and crowdsourced interpretations. These
+                                                                               variations provide meaningful heterogeneity for assessing
+                                                                               domain shift and model generalization. To illustrate this
+                                                                               diversity, Figure 4a presents a comparative visualization
+                                                                               of the three datasets using the geometric and topological
+                                                                               fault metrics introduced in Section II-F. These metrics
+FIGURE 4. Charaterization of the three considered datasets using
+(a) fault-oriented metrics and (b) spectral descriptors.                       quantitatively capture differences in fault density, continuity,
+                                                                               and complexity, reinforcing that the chosen datasets represent
+                                                                               heterogeneous fault conditions suitable for benchmarking
+synthetic dataset with a diverse set of faults. We showcase the                generalization. We also showcase a Uniform Manifold
+acquisition and geological properties of CRACKS and Thebe                      Approximation and Projection (UMAP) embedding of fre-
+in Table 1.                                                                    quency descriptors for all three dataset in Figure 4b, which
+   Given that proprietary seismic data is, by definition,                      reveals three well-separated clusters, confirming systematic
+not publicly accessible, our study intentionally focuses                       acquisition and processing-driven distributional shifts. Below
+on open-source datasets to ensure reproducibility and                          we describe and compare the three datasets used for our
+transparency. This choice aligns with established bench-                       benchmarking study in detail.
+marking practices in machine learning, where the goal                             FaultSeg3D is a 3D synthetic dataset with 220 volumes
+is to provide reproducible and extensible frameworks                           each with dimensions of 128 × 128 × 128 [15]. In order
+
+215116                                                                                                                                      VOLUME 13, 2025
+J. Quesada et al.: Large-Scale Benchmark on Geological Fault Delineation Models
+
+
+
+
+to better approximate realistic conditions, the authors added                     A. DATA PREPARATION
+background noise estimated from real seismic volumes. The                         1) STANDARDIZING FAULT ANNOTATIONS USING
+sampling rate and the frequency of the synthetic data vary                        MORPHOLOGICAL OPERATIONS
+across the volume to improve the diversity of the data.                           There exist significant differences between the thickness of
+An example volume is shown in Fig. 3a.                                            fault annotations in CRACKS, Thebe, and FaultSeg3D.
+   CRACKS is an open-source dataset with diverse faults                           As shown in Fig. 6a, the manually delineated faults in
+delineated across 400 inline sections of the Netherlands F3                       Thebe and CRACKS are considerably thicker than the
+Block [110], [114]. The authors in [24] open-sourced a fully-                     synthesized faults in FaultSeg3D. Such inconsistency can
+annotated 3D geological volume of the Netherlands F3 Block                        systematically bias model training and evaluation, especially
+for training different models and comparing the performance                       under pixel-wise loss functions such as the Dice loss.
+with objective metrics. Thus, this volume is one of the                           In particular, Dice loss computes similarity between predicted
+most extensively studied geographical zones for developing                        and reference masks by balancing overlap against the
+DL-assisted seismic interpretation frameworks [16], [24],                         number of positive pixels in each mask. Thicker annotations
+[26], [27], [28], [34], [36], [62], [63], [64], [66], [67], [68],                 artificially increase the proportion of positive pixels, making
+[70], [71], [105], [106], [115], [116], [117], [118], [119],                      the loss less sensitive to small spatial deviations and allowing
+[120], [121], [122], [123], [124], [125], [126], [127], [128],                    models to achieve high scores without precisely localizing
+[129], [130]. The diverse fault features in the F3 block,                         the fault centerline. Conversely, thinner annotations lead to
+including major versus minor faults and varying orientations,                     a stronger penalization of misalignments, requiring sharper
+make it an excellent seismic dataset to train and evaluate fault                  localization for similar Dice scores.
+delineation models [131], [132]. However, the annotations                            Without standardization, these annotation thickness dif-
+in [24] do not provide pixel-wise fault labels. Thus, CRACKS                      ferences could confound cross-dataset comparisons in our
+open-sources fully hand-labeled fault annotations by a group                      benchmark: a model evaluated on thicker annotations may
+of 32 interpreters with varying degrees of expertise and a                        appear more accurate than one evaluated on thinner ones,
+domain expert geophysicist. This dataset not only establishes                     even if their true localization capability differs. To mitigate
+a standardized benchmark for objective comparison but also                        this bias, we standardize fault thickness across datasets
+can be used to investigate the impact of multiple sets of                         by processing the manually delineated faults in Thebe
+labels with varying quality. Three sets of fault annotations are                  and CRACKS to match the thinner style of FaultSeg3D.
+used to investigate the impact of training labels with varying                    Specifically, we skeletonize the raw annotations and then
+quality, including expert labels and two more sets of lower                       apply dilation with a rank-3 structural element to produce
+quality labels from two other annotators. Fig. 3b shows an                        uniform thickness and close small gaps, as illustrated in
+example inline section with expert fault labels from CRACKS.                      Fig. 6b. This preprocessing, shown in the Preprocess block in
+CRACKS and FaultSeg3D share geological similarity in                              Fig. 5, is implemented with scikit-image and scipy.
+the seismic sections in addition to the similar label density.
+   Thebe is taken from a seismic survey called Thebe Gas
+                                                                                  2) TRAINING AND TEST SPLITS
+Field in the Exmouth Plateau of the Carnarvan Basin on
+the NW shelf of Australia [25], [108]. The dataset contains                       To ensure meaningful evaluations, we adopt a consistent
+                                                                                  splitting strategy across the considered datasets. Specifically,
+1803 labeled crossline sections of size 1737 × 3174, making
+it the largest publicly-available field dataset. The seismic                      we maximize diversity in the test set while ensuring no
+intensity of this dataset exhibits a low variation/standard                       overlap with the training data. For each dataset, we select
+deviation, which can be observed from the low contrast in                         spatially distinct subsets to prevent redundancies and simu-
+Fig. 3c.                                                                          late deployment conditions on previously unseen segments.
+                                                                                  In CRACKS, which consists of 400 contiguous inlines,
+IV. EXPERIMENTAL SETUP
+                                                                                  we designate the first 30 and last 30 sections as the
+The workflow of DL-assisted fault delineation involves                            test set, totaling 60 sections. The remaining 340 central
+multiple choices including (i) the decision to fine-tune or                       sections are used for training. This split captures geological
+not, (ii) the selection of the datasets for pre-training and                      variability across the volume while maintaining spatial
+fine-tuning, (iii) the selection of different models, (iv) the                    separation between training and test data. For Thebe, we use
+development of pre-processing and post-processing strate-                         400 sections for training and reserve 100 sections from other
+gies, and (v) the standardization of the evaluation protocols.                    parts of the volume for testing, following a similar diversity-
+We summarize these steps in Fig. 5, where the pipeline                            maximizing approach. For FaultSeg3D, we follow the
+is organized chronologically in a top-to-bottom fashion to                        established setup from [15], using 200 synthetic volumes for
+reflect the order in which decisions are made in practice.                        training and 20 distinct volumes for testing.
+This systematic layout enables us to holistically compare the
+effect of each component and their combinations. We provide                       B. MODEL SETUP
+details on each stage of the pipeline in the remainder of this                    We consider eight segmentation architectures that are among
+section.                                                                          the most widely used in the seismic interpretation literatures
+
+VOLUME 13, 2025                                                                                                                            215117
+                                                                        J. Quesada et al.: Large-Scale Benchmark on Geological Fault Delineation Models
+
+
+
+
+      FIGURE 5. The block diagram of our experimental setup.
+
+
+
+                                                                           5 sets of labeled training data in the top left of Fig. 5.
+                                                                           For example, a model is first pretrained on CRACKS-
+                                                                           expert and then finetuned on all 5 datasets, resulting in
+                                                                           25 sets of weights for each considered model. Each of
+                                                                           these model weights is then evaluated on CRACKS, Thebe,
+                                                                           and FaultSeg3D. To complete our baselines, we also use
+                                                                           four ImageNet-pretrained models and finetune them on our
+                                                                           seismic datasets.
+
+                                                                           C. EVALUATION SETUP
+                                                                           1) POST-PROCESSING FOR MODEL PREDICTIONS
+                                                                           Common practices of evaluating deep fault delineation
+                                                                           networks involve two steps [22], [68], [108], [109]: (i) thresh-
+                                                                           olding the network predictions to obtain binary outputs, and
+                                                                           (ii) comparing the binary outcomes with the fault test labels
+FIGURE 6. Example 128 × 128 patches of fault annotations with varying
+thickness in the three datasets. Left: Thebe, middle: CRACKS, right:       using a metric. The test labels are processed with the same
+FaultSeg3D.                                                                morphological operations as the training faults in order to
+                                                                           achieve consistent fault thickness at the input and output of a
+[19], [108], [112], and [133]. This selection was designed                 model. Consequently, the thresholding in step (i) needs to be
+to cover the set of architectures commonly adopted for fault               adaptive to the model and the data accordingly, followed by
+delineation, spanning both classical convolutional models                  the same morphological operations for numerical evaluation.
+and more recent transformer-based variants. Specifically,                  We compute the optimal threshold for the dataset using the
+we include:                                                                Optimal Dataset Scale (ODS) metric [139]. For a model, its
+   • deeplab: Deeplab [134] architecture with a Resnet50                   optimal threshold is computed using the training set, which
+     [86] backbone                                                         is then applied to binarize the predictions on the test data,
+   • deeplab-m:Deeplab architecture with a Mobilenet                       followed by the same morphological operation for evaluation.
+     [135] backbone
+   • hed: Hollistically-nested edge detection model [136]                  2) PERFORMANCE METRICS
+   • rcf: Richer convolutional features [137]                              As mentioned in Section II-E, pixel-based and distance-based
+   • unet: Unet [49] architecture with a Resnet50 backbone                 metrics capture different aspects of prediction quality, and
+   • unet++: Unet++ [138] architecture with a Resnet50                     each can fail to fully reflect the structural accuracy of the
+     backbone                                                              predicted faults, making the evaluation of fault delineation
+   • unet-b: Original Unet architecture as presented in [49]               methods an inherently challenging task. Our benchmark
+   • segformer: Transformer-based model introduced in                      study thus adopts a holistic approach to assess prediction
+     [57]                                                                  quality by considering a combination of multiple metrics
+   For each of these models, we perform all pairwise                       alongside subjective inspection. In this study we choose to
+combinations of pretraining-finetuning settings between the                report one pixel-based metric, Dice Coefficient (defined in
+
+215118                                                                                                                                 VOLUME 13, 2025
+J. Quesada et al.: Large-Scale Benchmark on Geological Fault Delineation Models
+
+
+
+
+Eq. (1)) and two distance-based metrics: BCD and the mod-
+ified Hausdorff (defined in Eq. 3, and Eq. 2, respectively).
+These metrics have not only been extensively used in the
+seismic literature for model performance assessment [15],
+[39], [140], but allow for two different evaluation axes: pixel
+overlap-based and structure-based.
+
+3) FAULT CHARACTERISTIC COMPARISONS
+While the individual metrics described in Section II-F
+quantify dataset characteristics in isolation, comparative
+metrics evaluate the similarity between predicted and ground-
+truth faults. We describe below the metrics we use in Table 7
+to extend the individual descriptors into differences, ratios,
+and statistical comparisons.                                                      FIGURE 7. Visual encoding to represent the different models pretrained
+   Strike Similarity (StrikeSim) measures the similarity of                       and finetuned on different datasets. Border color signifies the pretraining
+                                                                                  data source and the fill color signifies the fine-tuning dataset. Models are
+orientation distributions between predicted (P(θ)) and ground                     represented using various shapes.
+truth (G(θ)) faults using cosine similarity:
+                                P
+                                    P(θ)G(θ)
+            StrikeSim = qP θ qP                     .      (8)                       By combining individual metrics with their comparative
+                                 P(θ)2       G(θ) 2
+                               θ           θ                                      counterparts, we assess not only whether faults are detected,
+  Curvature Metrics compare curvature distributions                               but also whether their structural and geometric properties are
+across predictions and ground truth. These include:                               faithfully reproduced.
+
+                  1κ = κ pred − κ gt ,                                  (9)       V. RESULTS
+                                                                                  The results of our benchmarking experiments are analyzed
+                        v
+                        u
+                        u1 X  N 
+                                              gt 2
+                                                
+                                       pred                                       across three different thematic axes: (1) generalizability
+               RMSEκ = t            κi − κi ,                         (10)
+                          N                                                       and transferability, (2) training dynamics, and (3) metric
+                             i=1
+                                                                                  evaluation.
+                        Cov κ pred , κ gt
+                                          
+                Corrκ =                     .                         (11)
+                          σκ pred σκ gt                                           A. GENERALIZATION AND TRANSFERABILITY
+   Sinuosity Metrics evaluate differences in tortuosity:                          As mentioned in Section I, models are often used to process
+                                                                                  data from new surveys that can differ from their original
+                          1S = S pred − S gt ,                        (12)        training sources. As such, generalization and transferability
+                                   S pred                                         are critical for reliable deployment and to reduce the labeling
+                           RS =             .                         (13)
+                                    S gt                                          overhead. Understanding how various training regimes per-
+                                                                                  form across domains is key to developing scalable workflows.
+   Length Metrics evaluate differences in fault trace length:                        In this subsection, the generalization of models trained
+                          1L = Lpred − Lgt ,                          (14)        under different pretraining-finetuning regimes is analyzed
+                                                                                  across CRACKS, FaultSeg3D, and Thebe. Unless stated
+                               Lpred
+                          RL =       .                                (15)        otherwise, we structure our scatter plots using the convention
+                                Lgt                                               depicted in Fig. 7. The shape of a given point encodes the
+  Segment Metrics compare the number of interpreted fault                         model used, the border color corresponds to the dataset used
+segments:                                                                         for pretraining the model, and the fill color corresponds to
+                                                                                  the datasets used for finetuning the model. All of our reported
+                                     pred       gt
+                       1Nseg = Nseg − Nseg ,                          (16)        figures and plots correspond to models being evaluated in a
+                                 pred
+                                Nseg                                              held-out test partition of one of these 3 datasets.
+                         RNseg = gt .                                 (17)
+                                Nseg                                              1) DATASET ALIGNMENT AND TRANSFER TRENDS
+   Stepover Metrics compare the relative frequency of                             Fig. 8 provides a macroscopic view of the model behaviors
+stepovers:                                                                        across the different training setups. On CRACKS (Fig. 8a),
+                                   pred           gt                              the top-performing configurations are those pretrained on
+                  1Dstepover = Dstepover − Dstepover ,                (18)        FaultSeg3D data and fine-tuned on CRACKS. The obser-
+                                 pred                                             vation indicates strong geophysical commonalities between
+                                Dstepover
+                    RDstepover = gt       .                           (19)        FaultSeg3D and CRACKS data, and supports the utility of
+                                Dstepover                                         FaultSeg3D data as a viable pretraining source when real
+
+VOLUME 13, 2025                                                                                                                                       215119
+                                                                           J. Quesada et al.: Large-Scale Benchmark on Geological Fault Delineation Models
+
+
+
+
+FIGURE 8. Top: All of out models across our different pretraining and finetuning setups. Bottom: Best performing models for each dataset.
+
+
+
+annotations are limited. The fill-color distribution in Fig. 8a               performance degradation when re-evaluated on their original
+also establishes a hierarchy of effective fine-tuning datasets                domain. In the case of unet++, for instance, the Dice
+for CRACKS: CRACKS > FaultSeg3D > Thebe. The poor                             score on CRACKS drops from 0.34 to 0.12, while the BCD
+finetuning performance on Thebe indicates that it is more                     increases twofold, indicating a complete erasure of useful
+distributionally distant from CRACKS than FaultSeg3D                          representations, and clear case of catastrophic forgetting.
+data.                                                                         A statistical analysis shows that Thebe has a significantly
+   Furthermore, when tested on FaultSeg3D data (Fig. 8b),                     lower standard deviation (0.124) compared to CRACKS
+models pretrained on CRACKS again outperform those                            (1.149) and FaultSeg3D (1.052). The contrast and inten-
+trained from scratch, indicating that the aforementioned                      sity variations in Thebe are lower, while CRACKS and
+alignment is reciprocal. However, for Thebe (Fig. 8c), top-                   FaultSeg3D have diverse intensity distributions, as shown
+performing models are those trained from scratch on Thebe                     in Fig. 3. An explanation for this catastrophic forgetting
+itself. Transferring from either FaultSeg3D or CRACKS                         phenomenon is that models trained on Thebe learn from a
+results in performance degradation, suggesting that Thebe                     constrained input range and struggle when tested on datasets
+resides in a distinct feature space.                                          with richer intensity distributions. These results suggest that
+                                                                              other normalization techniques before training could help
+2) DOMAIN SHIFT AND JOINT TRAINING                                            reduce these distributional mismatches.
+Domain shift is a pressing challenge in seismic DL, particu-                     To further explore mitigation strategies for catastrophic
+larly when deploying models across surveys with different                     forgetting, we conducted a focused case study using Elastic
+geological properties. When overlooked, this can lead to                      Weight Consolidation (EWC) with the deeplabv3 (ResNet-
+brittle models that perform well on training data but fail on                 50 backbone) architecture, when transferring from the
+new volumes, or models that catastrophically forget features                  synthetic FaultSeg3D dataset to the real CRACKS and
+from their original data after finetuning. An illustration of                 Thebe volumes. The EWC regularizer constrains the update
+this catastrophic forgetting occurs when models pretrained                    of parameters that are important for the source task, aiming to
+on CRACKS are fine-tuned on Thebe: despite reasonable                         preserve previously acquired knowledge during fine-tuning.
+performance on Thebe, these models experience dramatic                        As shown in Table 4, the expected behavior holds for the
+
+215120                                                                                                                                    VOLUME 13, 2025
+J. Quesada et al.: Large-Scale Benchmark on Geological Fault Delineation Models
+
+
+
+
+FaultSeg3D to CRACKS setting: performance on the target                              As an additional step to assess the robustness and reliability
+domain decreases slightly relative to standard fine-tuning,                       of our results, we also perform our unet experiments on
+but performance on the source domain improves, indicating                         FaultSeg3D using 5 fold cross validation, which we
+partial retention of source information. However, this pattern                    report on Table 3. We can observe that the results in these
+does not hold for the FaultSeg3D to Thebe case,                                   experiments deviate minimally from the ones we originally
+where performance drops on both domains. This outcome                             reported in Table 2, showcasing that our experimental
+is consistent with our broader observations that Thebe                            framework is robust against stochasticity.
+represents a strong outlier whose distribution is sufficiently
+distinct that attempts to retain source-domain information                        3) MODEL CAPACITY AND TRANSFERABILITY
+hinder learning of its features altogether. These results                         It is generally established in the literature that pretraining
+highlight that a driving factor in catastrophic forgetting is the                 on a large dataset can boost the performance of a model
+distributional structure of the source-target pair.                               even in self-supervised settings [19]. However, in seismic
+   The empirical pattern we observe (severe performance                           applications, the benefits of pretraining are critically sensitive
+loss on the source domain after fine-tuning on Thebe,                             to the distributional similarity between the source and
+and the mixed effect of EWC across transfer pairs) can                            target domains—a phenomenon that reflects the strong
+be explained by the interaction of three seismic-specific                         coupling between geologic variability and model transfer-
+factors. First, faults are sparse, line-like signals: a net-                      ability. As shown in our experiments, models pretrained
+work’s predictive capacity depends on a small number                              on FaultSeg3D or CRACKS and fine-tuned on Thebe
+of localized, edge-sensitive features. Second, amplitude                          underperform compared to models trained from scratch or
+and contrast statistics differ markedly between datasets                          initialized from ImageNet weights (Fig. 9). In such distribu-
+(e.g., Thebe’s standard deviation = 0.124 vs. CRACKS                              tionally mismatched cases, the standard pretaining-finetuning
+= 1.149 and FaultSeg3D = 1.052; see Fig. 3); such                                 strategy may hinder rather than help performance.
+compression of dynamic range alters internal activation                              A factor that also plays a role in modulating generalization
+distributions (batchnorm and convolutional responses), ren-                       is model capacity. Fig. 9 shows that large models like seg-
+dering source-trained low-level filters less discriminative.                      former benefit from pretraining on CRACKS, while smaller
+Third, regularization schemes like EWC constrain parameters                       models (e.g., hed, deeplab-m) generalize better when
+important for the source via a Fisher-based penalty: this                         trained from scratch. The observation suggests that both data
+helps when the target is moderately different (it preserves                       alignment and model capacity affect transfer effectiveness.
+source knowledge while allowing limited adaptation, as in                         Larger architectures, particularly transformer-based models
+FaultSeg3D to CRACKS), but it can prevent learning                                like segformer, possess greater representational capacity
+altogether when the target is an extreme outlier (as in                           and self-attention mechanisms that capture long-range spa-
+FaultSeg3D to Thebe), producing simultaneous degrada-                             tial dependencies, an important property for preserving
+tion on both domains. Together these effects make seismic                         fault continuity and contextual consistency across sections.
+catastrophic forgetting both more likely and more abrupt                          These characteristics can potentially explain their stronger
+than in many dense, object-centric vision tasks. Practical                        cross-domain generalization when pretrained features are
+mitigations that follow from this analysis potentially include                    well aligned. However, the same capacity also makes them
+input-level alignment (histogram matching or style trans-                         more sensitive to distributional mismatches, leading to
+fer), adaptive normalization layers, selective (layer-wise)                       potential overfitting to domain-specific amplitude statistics
+fine-tuning, rehearsal or pseudo-replay, and capacity-aware                       or noise patterns when source and target differ substantially.
+choices (larger models or explicit adaptation for small                           Smaller-capacity models, by contrast, may act as an implicit
+models).                                                                          regularizer, limiting over-specialization and enabling better
+   As an additional baseline, experiments on joint training                       zero-shot transfer in mismatched scenarios, as can be
+on all possible combinations of datasets in a single training                     observed in Fig. 9.
+round are conducted using the unet model with a ResNet50                             Furthermore, models respond differently to fine-tuning.
+backbone. The results for all unet experiments, including                         When pretraining on FaultSeg3D and fine-tuning on
+these joint training configurations, are shown in Table 2. The                    Thebe, models degrade in CRACKS performance (Fig. 10,
+results further showcase that features learned from CRACKS                        blue circle) shows that Thebe induces domain shifts
+and FaultSeg3D data align together, but these learned                             that are hard to unlearn. Conversely, even though the
+features are not easily transferable to Thebe. On the other                       finetuning dataset is distributionally closer to the target,
+hand, Thebe may act as a regularizer when paired with                             Thebe-pretrained segformer and deeplab also degrade
+a large dataset like FaultSeg3D, hurting performance on                           on CRACKS after finetuning on FaultSeg3D as shown
+seen datasets (compared to training them individually) but                        in Fig. 10 (green circles). The asymmetric behavior high-
+providing modest generalization to unseen ones: performance                       lights the difficulty of finding universally robust pretraining
+on the unseen dataset for this setting (i.e. CRACKS) does not                     strategies.
+drop as badly as that of the unseen dataset for other joint                          Given these limitations, we explored whether domain
+settings (e.g. FaultSeg3D + CRACKS).                                              adaptation methods could help in such settings. We applied
+
+VOLUME 13, 2025                                                                                                                              215121
+                                                                              J. Quesada et al.: Large-Scale Benchmark on Geological Fault Delineation Models
+
+
+
+
+TABLE 2. Performance metrics (DICE, BCD, Hausdorff) for different training schemes on Unet. All values are rounded to three decimals. Schemes are
+ranked as best, second best or worst based on satisfying at least two of the three metric criteria, to account for cases where metrics disagree. (blue for
+highest, pink for second, and gray for the worst).
+
+
+
+
+TABLE 3. U-Net performance on FaultSeg3D dataset using 5-fold
+cross-validation.
+
+
+
+
+TABLE 4. Results on EWC case study.
+
+
+
+
+TABLE 5. Results on domain adaptation case study.                                FIGURE 9. Individual Models tested on Thebe. Models with blue edges
+                                                                                 are pretrained on Thebe without finetuning. While other models are
+                                                                                 pretrained on different datasets. We show that pretraining on another
+                                                                                 faults dataset is not beneficial compared to using Imagenet weights or
+                                                                                 training from randomly initialized models.
+
+
+
+
+Domain-Adversarial Neural Networks (DANN) [77] and                               1) WINDOW SIZE AND LOSS FUNCTION
+Fourier Domain Adaptation (FDA) [44], [141] to one of our                        We evaluate the unet model with a ResNet50 backbone using
+smaller models, unet-b, under the same transfer setups used                      Dice and Binary Cross-Entropy (BCE) losses, as well as
+in our EWC experiments (FaultSeg3D to CRACKS and                                 across different window sizes: 96, 128, 256 and 512, or up
+FaultSeg3D to Thebe). The results in Table 5 reveal                              to the size allowed by the original sections in each dataset.
+an intriguing pattern: adaptation improved performance for                       The results for these experiments are shown in Fig. 11, where
+the more distributionally distant FaultSeg3D→Thebe                               bigger markers correspond to bigger patch sizes.
+transfer, surpassing fine-tuning, yet underperformed for                            We can see that two trends emerge in these experiments.
+the closer FaultSeg3D→CRACKS case. This reflects                                 First, when using Dice as a loss, models benefit consistently
+a known transfer learning phenomenon, often termed                               from larger window sizes, with performance generally
+negative transfer or over-adaptation [142], where adapt-                         improving as the spatial context grows. This is likely because
+ing already well-aligned domains can distort useful fea-                         larger patches provide the network with a more complete view
+tures. In contrast, for large domain shifts, adaptation                          of fault structures, enabling better continuity modeling across
+effectively bridges representational gaps. Taken together,                       sections. Second, when using BCE loss, this trend does not
+these findings suggest a simple yet practical guideline:                         hold: performance remains flat or slightly declines with larger
+when source and target domains are similar, fine-tuning                          windows. This discrepancy stems from the class imbalance
+is often sufficient, whereas substantial domain diver-                           inherent to fault delineation [143]. BCE tends to work best
+gence may justify the additional complexity of adaptation                        when foreground and background classes are more balanced,
+methods.                                                                         whereas Dice loss is explicitly designed to handle imbalance.
+                                                                                 Using smaller patches effectively ‘‘zooms in’’ on the sparse
+B. TRAINING DYNAMICS AND INFERENTIAL BEHAVIOR                                    fault regions, increasing the proportion of fault pixels and
+In this section we analyze the impact of different training                      improving BCE performance.
+dynamics and model architectures on performance and                                 From a practical perspective, these results suggest that
+inferential behavior.                                                            in real-world seismic interpretation, the optimal windowing
+
+215122                                                                                                                                       VOLUME 13, 2025
+J. Quesada et al.: Large-Scale Benchmark on Geological Fault Delineation Models
+
+
+
+
+                                                                                  FIGURE 12. Example of the structure tolerance in distance-based metrics.
+                                                                                  (a) shows the ground truth fault annotations. (b) and (c) show predictions
+                                                                                  from two different models. While (b) appears structurally closer to the
+                                                                                  ground truth, it receives a significantly worse BCD and Hausdorff but a
+                                                                                  better dice score.
+
+
+
+
+FIGURE 10. Individual models tested on CRACKS. (a) Models pre-trained
+on the FaultSeg3D data, and fine-tuned on different data. (b) Models
+pre-trained on the Thebe data, and fine-tuned on different data.
+                                                                                  FIGURE 13. Sensitivity of distance-based metrics to fault density:
+                                                                                  Sections with many (a) vs. few faults (b) are evaluated under identical
+                                                                                  noise. Despite equal noise levels, (b) is penalized more by distance-based
+                                                                                  metrics, while dice remains stable.
+
+
+                                                                                  strategy used, many of which can be observed in Fig. 15.
+                                                                                  For example, deeplab tends to produce irregular, stair-
+                                                                                  like faults, while segformer produces thicker, blob-like
+                                                                                  faults. unet architectures in general tend to produce thinner
+                                                                                  faults, with unet++ generating more fragmented ones. These
+                                                                                  architectural signatures are consistent across training setups
+                                                                                  and highlight the influence model design choices inherently
+FIGURE 11. Behavior of DICE and BCE losses under different window                 have in shaping the morphology of predicted faults, which
+sizes.                                                                            is an important consideration when selecting models for
+                                                                                  downstream tasks or when interpreting evaluation results
+standard depends on the chosen loss function and the model’s                      beyond numerical metrics.
+need for contextual information. For losses that handle
+imbalance well (e.g., Dice), larger tiles are preferable because                  C. METRIC ROBUSTNESS AND OBSERVABILITY
+they capture longer fault segments and contextual cues that                       Due to the high correlation among adjacent sections in
+allow for improve spatial continuity. For imbalance-sensitive                     a seismic volume, deep learning models tend to generate
+losses (e.g., BCE), smaller tiles may sometimes be beneficial,                    consistent patterns that vary minimally between neighboring
+though at the cost of reduced global context. Given that                          sections. Evaluation metrics respond differently to these
+Dice consistently benefits from larger windows, and that                          subtle variations; some metrics heavily penalize these
+most modern segmentation pipelines for faults employ                              deviations, while others are more tolerant. The effects of
+class-imbalance aware losses, our choice of using Dice                            structural variations in fault predictions on the evaluation
+with the largest possible window sizes in our benchmark                           metrics are investigated.
+experiments is both empirically supported and aligned with
+best practices in seismic fault delineation.                                      1) SENSITIVITY TO VISUAL STRUCTURE
+                                                                                  Distance-based metrics are generally more tolerant to the
+2) MODEL NUANCES IN FAULT DELINEATION                                             structure of the predicted fault. This behavior is illustrated in
+We also qualitatively observe that each of the evaluated                          Fig. 12. Where Fig. 12a represents the ground truth, while 12b
+models presents different nuances in the structure of their                       and 12c show the predictions of two different models.
+fault predictions, irrespective of the pretraining or finetuning                  Although the prediction in Fig. 12b appears structurally
+
+VOLUME 13, 2025                                                                                                                                     215123
+                                                                           J. Quesada et al.: Large-Scale Benchmark on Geological Fault Delineation Models
+
+
+
+
+                                                                              FIGURE 15. Predictions of the models pretrained on FaultSeg3D tested
+                                                                              CRACKS.
+
+
+                                                                              their sparsity. We showcase this issue in Fig. 13, where we
+                                                                              consider two cases: one with a few faults and another with
+                                                                              many faults. Noise is added to both images, and each is
+                                                                              compared against its original version. The case with fewer
+                                                                              faults contains many outliers compared to the case with
+                                                                              many faults, since the added noise often lies far from any
+                                                                              existing fault. As discussed in Section II-E, because BCD
+                                                                              is bidirectional, it accounts for each added noise pixel by
+                                                                              searching for its closest existing fault. Therefore, having
+                                                                              fewer faults results in a much worse BCD score. DICE, while
+FIGURE 14. (a) Ground truth fault annotations. (b) and (c) display            also penalizing noise, is more stable across different sparsity
+predictions from two different models. Although the prediction in
+(c) appears visually more aligned with the ground truth than (b),             levels.
+it receives a slightly worse dice score but substantially better BCD and
+Hausdorff distance.
+                                                                              3) CONTRADICTORY SCORES AND HUMAN JUDGEMENT
+TABLE 6. Summary statistics of the three datasets: CRACKS (A), Thebe
+                                                                              Although pixel-based metrics are more stable, they remain
+(B), and FS (C). Values are reported as mean ± standard deviation.            sensitive to slight pixel shifts. In Fig. 14, we show examples
+                                                                              corresponding to two different models. The prediction in
+                                                                              Fig. 14c looks visually closer to the ground truth, but receives
+                                                                              a worse Dice score (0.1325 vs. 0.13421) and significantly
+                                                                              better BCD and Hausdorff (40.782 vs. 115.436 and 29.0 vs
+                                                                              72.5). Since the faults in both predictions are poorly
+closer to the ground truth, it receives significantly worse                   structured and spatially misaligned, the Dice coefficient
+BCD and Hausdorff scores compared to the prediction in                        (being overlap-based) penalizes them similarly. In contrast,
+Fig. 12c. Since distance-based metrics do not heavily weigh                   distance-based metrics such as BCD and Hausdorff distances
+continuity, the inclusion of a few extra pixels around the                    are more sensitive to the spatial coherence of the predicted
+fault can improve the BCD score even if those pixels lack                     faults, hence, they are more tolerant to the structure of the
+proper structural alignment. Notably, these patterns are not                  faults. These contradictions imply that some metrics may
+anomalies, different models often generate such consistent                    conflict with visual intuition or downstream utility, and point
+outputs. Consequently, numerical metrics can be misleading                    to the need for context-aware metric selection frameworks.
+and may display discrepancies between one another.
+                                                                              VI. ANALYSIS USING FAULT CHARACTERISTIC METRICS
+2) FAULT SPARSITY                                                             When evaluating transfer setups where all models were
+Another issue with distance-based metrics is that they are                    pretrained on Thebe and subsequently finetuned on different
+designed to measure the quality of a single continuous object                 datasets before being tested back on Thebe, we observe a
+in the image, whereas faults can consist of multiple sparse                   clear correspondence between the statistical characteristics of
+objects. This makes distance-based metrics very sensitive to                  the finetuning dataset (Table 6) and the error patterns in the
+both the number of faults present in the ground truth and                     predictions (Table 7). Training and testing solely on Thebe
+
+215124                                                                                                                                    VOLUME 13, 2025
+J. Quesada et al.: Large-Scale Benchmark on Geological Fault Delineation Models
+
+
+
+
+TABLE 7. Evaluation metrics when models are pretrained on Thebe and tested on Thebe, with or without finetuning on other datasets.
+
+
+
+
+TABLE 8. Key observations.
+
+
+
+
+produces the strongest alignment with the ground truth,                           less aligned with Thebe’s long faults. Length is strongly
+as indicated by the highest strike similarity (0.907), reflecting                 underestimated (length ratio of 0.56), directly mirroring the
+that the model effectively captures the long and continuous                       shorter average fault lengths in CRACKS. Segmentation
+fault structures characteristic of Thebe. However, this setup                     increases (segment ratio of 4.00), and the stepover delta rises
+also leads to an overestimation of fault length (length ratio                     to 4.77, reflecting the fragmentation and crossover-heavy
+of 1.65) and moderate over-segmentation (segment ratio                            nature of CRACKS. Moreover, spacing becomes strongly
+of 3.29), suggesting that the model tends to exaggerate                           negative, showing that the predictions adopt the denser fault
+continuity while artificially fragmenting longer structures.                      placement bias of CRACKS rather than the sparser spacing
+   In contrast, when the Thebe-pretrained model is finetuned                      of Thebe.
+on CRACKS and evaluated on Thebe, performance degrades                               A different type of degradation is observed when finetun-
+in ways consistent with the CRACKS dataset statistics,                            ing on FaultSeg3D, which is dominated by medium-length,
+which emphasize short, jagged, highly segmented faults with                       smooth faults with very low segmentation and reduced
+frequent crossovers. Strike similarity drops substantially to                     connectivity. Here, strike similarity falls further to 0.658,
+0.756, indicating that the orientation of predictions becomes                     the lowest among all setups, demonstrating poor alignment
+
+
+VOLUME 13, 2025                                                                                                                           215125
+                                                                            J. Quesada et al.: Large-Scale Benchmark on Geological Fault Delineation Models
+
+
+
+
+TABLE 9. Out-of-the-box model pick list based on dataset fault–network statistics (Table 6) and cross-setup behavior (Table 7). Label each metric as
+High/Medium/Low (H/M/L) relative to Table 6, then select the row that matches; confirm with Table 7.
+
+
+
+
+with Thebe’s long continuous faults. Length is again under-                    cross-setup behavior in Table 7 and apply the suggested
+estimated (ratio of 0.70), in line with FaultSeg3D’s shorter                   lightweight post-prediction fixes. This table is intentionally
+structures. Segmentation is highly exaggerated (segment ratio                  model-agnostic with respect to architecture and emphasizes
+of 5.05), but stepovers almost vanish (stepover delta close                    geometry-aware selection aligning to fault length, segmen-
+to 0), consistent with FaultSeg3D’s low stepover density.                      tation, sinuosity, curvature, stepovers, and spacing so that
+The negative spacing indicates that the model no longer                        practitioners can choose the most appropriate setup for their
+respects Thebe’s distribution of fault separations. Thus, while                basin characteristics without additional tuning.
+finetuning on FaultSeg3D removes the crossover effects
+seen with CRACKS, it introduces extreme fragmentation                          VII. CONCLUSION
+of Thebe’s continuous faults and produces disconnected                         In this work, we present the first large-scale benchmarking
+structures.                                                                    study of seismic fault delineation models under domain shift,
+   In summary, the in-domain Thebe-only model best pre-                        spanning more than 200 training configurations across three
+serves structural alignment but exaggerates continuity and                     heterogeneous datasets. Our results show that fine-tuning
+segmentation, whereas finetuning on CRACKS injects a bias                      is generally effective when source and target domains are
+toward jagged, fragmented, and crossover-rich structures, and                  closely aligned, but becomes brittle under stronger shifts,
+finetuning on FaultSeg3D enforces smooth, disconnected,                        often leading to catastrophic forgetting. Model capacity
+and overly fragmented representations. Both transfer setups                    also modulates transferability: larger architectures such as
+degrade performance relative to the in-domain baseline,                        Segformer tend to adapt more effectively, while smaller
+but in ways that directly reflect the statistical properties                   models are more sensitive to mismatch. Domain adaptation
+of the finetuning datasets. This demonstrates that the                         methods such as FDA and DANN proved beneficial in highly
+dataset-specific fault geometry strongly governs the inductive                 divergent transfers but sometimes degraded performance
+bias of models, even when pretrained on the same source.                       in more similar settings, highlighting the risk of negative
+Motivated by these observations, we distill them into a                        transfer.
+self-contained, general ‘‘model pick list’’ to guide out-of-                      Beyond conventional metrics such as Dice or Hausdorff
+the-box use (Table 9): first, profile the target dataset by                    distance, our geometric and topological analysis demon-
+labeling its fault–network statistics as High/Medium/Low                       strated that models also absorb the structural biases of the
+(H/M/L) relative to Table 6; then select the row whose                         datasets they are finetuned on: CRACKS-trained models
+triggers match that profile and adopt the corresponding                        tended to reproduce short, jagged, crossover-rich structures,
+pretrain → finetune setup; finally, confirm the choice against                 while FaultSeg3D-trained models favored smoother but
+
+215126                                                                                                                                     VOLUME 13, 2025
+J. Quesada et al.: Large-Scale Benchmark on Geological Fault Delineation Models
+
+
+
+
+disconnected faults. Even when pretrained on the same                                 [13] C. M. I. Afsa, M. Y. Ansari, S. Paul, O. Halabi, E. Alataresh,
+source, prediction styles were shaped by the statistical prop-                             J. Shah, A. Hamze, O. Aboumarzouk, A. Al-Ansari, and S. P. Dakua,
+                                                                                           ‘‘Development and validation of a class imbalance-resilient cardiac arrest
+erties of the finetuning dataset. These findings underscore                                prediction framework incorporating multiscale aggregation, ICA and
+that evaluation should not rely only on pixel-level accuracy                               explainability,’’ IEEE Trans. Biomed. Eng., vol. 72, no. 5, pp. 1674–1687,
+but also account for structural plausibility and geological                                May 2025.
+                                                                                      [14] M. Y. Ansari, M. Yaqoob, M. Ishaq, E. F. Flushing, I. A. C. Mangalote,
+realism.                                                                                   S. P. Dakua, O. Aboumarzouk, R. Righetti, and M. Qaraqe, ‘‘A survey of
+   At the same time, important open questions remain. Future                               transformers and large language models for ECG diagnosis: Advances,
+research should focus on designing adaptation methods that                                 challenges, and future directions,’’ Artif. Intell. Rev., vol. 58, no. 9, p. 261,
+                                                                                           Jun. 2025.
+remain effective across both mild and severe domain shifts,                           [15] X. Wu, L. Liang, Y. Shi, and S. Fomel, ‘‘FaultSeg3D: Using synthetic
+incorporating geological priors into model architectures to                                data sets to train an end-to-end convolutional neural network for 3D
+mitigate dataset-specific biases, and developing evaluation                                seismic fault segmentation,’’ Geophysics, vol. 84, no. 3, pp. IM35–IM45,
+                                                                                           May 2019.
+protocols that balance quantitative rigor with geological                             [16] P. Chowdhury, A. Mustafa, M. Prabhushankar, and G. AlRegib, ‘‘A
+interpretability. Addressing these challenges will be essen-                               unified framework for evaluating robustness of machine learning
+tial to building seismic DL pipelines that are not only                                    interpretability for prospect risking,’’ Geophysics, vol. 90, no. 3, pp. 1–53,
+                                                                                           2025.
+accurate but also dependable in real-world interpretation
+                                                                                      [17] Y. Ben-Zion, ‘‘Collective behavior of earthquakes and faults: Continuum-
+workflows.                                                                                 discrete transitions, progressive evolutionary changes, and different
+                                                                                           dynamic regimes,’’ Rev. Geophys., vol. 46, no. 4, Dec. 2008.
+                                                                                      [18] H. Kanamori, ‘‘72 earthquake prediction: An overview,’’ in International
+REFERENCES
+                                                                                           Handbook of Earthquake and Engineering Seismology, Part B, W. H. K.
+  [1] A. Isah, Z. Tariq, A. Mustafa, M. Mahmoud, and E. R. Okoroafor,                      Lee, H. Kanamori, P. C. Jennings, and C. Kisslinger, Eds., New York, NY,
+      ‘‘A review of data-driven machine learning applications in reservoir                 USA: Academic, 2003, pp. 1205–1216.
+      petrophysics,’’ Arabian J. Sci. Eng., vol. 50, no. 24, pp. 20343–20377,         [19] Z. Zhang, R. Chen, and J. Ma, ‘‘Improving seismic fault recognition
+      Jun. 2025.                                                                           with self-supervised pre-training: A study of 3D transformer-based with
+  [2] Z. Wenxue, D. Shikun, T. Hongjun, Z. Dexiang, Z. Ying, and J. Fan, ‘‘An              multi-scale decoding and fusion,’’ Remote Sens., vol. 16, no. 5, p. 922,
+      overview study of deep learning in geophysics: Cross-cutting research to             Mar. 2024.
+      advance geoscience,’’ IEEE Access, vol. 13, pp. 124364–124388, 2025.            [20] R. Chen, Z. Zhang, and J. Ma, ‘‘Seismic fault sam: Adapting sam with
+  [3] M. Yaqoob, M. Ishaq, M. Y. Ansari, V. R. S. Konagandla, T. A. Tamimi,                lightweight modules and 2.5d strategy for fault detection,’’ in Proc. IEEE
+      S. Tavani, A. Corradetti, and T. D. Seers, ‘‘GeoCrack: A high-resolution             17th Int. Conf. Signal Process. (ICSP), Oct. 2024, pp. 436–441.
+      dataset for segmentation of fracture edges in geological outcrops,’’ Sci.       [21] M. Q. Nasim, T. Maiti, A. Srivastava, T. Singh, and J. Mei, ‘‘Seis-
+      Data, vol. 11, no. 1, p. 1318, Dec. 2024.                                            mic facies analysis: A deep domain adaptation approach,’’ 2020,
+  [4] Y. Qaiser, I. Ansari, Y. Ansari, M. Y. Ansari, I. Sujay, T. Khan,                    arXiv:2011.10510.
+      H. Rabbani, J. C. Laya, and T. Seers, ‘‘Vision transformers based pore          [22] X. Li, K. Li, Z. Xu, Z. Huang, and Y. Dou, ‘‘Fault-Seg-Net: A method
+      type classification for carbonate reservoir characterization,’’ in Proc.             for seismic fault segmentation based on multi-scale feature fusion with
+      Innov. Technol. Reservoir Optim., 2025, pp. 1–5.                                     imbalanced classification,’’ Comput. Geotechnics, vol. 158, Jun. 2023,
+  [5] M. Yaqoob, M. Ishaq, M. Y. Ansari, Y. Qaiser, R. Hussain, H. S. Rabbani,             Art. no. 105412.
+      R. J. Garwood, and T. D. Seers, ‘‘Advancing paleontology: A survey on           [23] Y. Alaudah, M. Alfarraj, and G. AlRegib, ‘‘Structure label prediction
+      deep learning methodologies in fossil image analysis,’’ Artif. Intell. Rev.,         using similarity-based retrieval and weakly supervised label mapping,’’
+      vol. 58, no. 3, p. 83, Jan. 2025.                                                    Geophysics, vol. 84, no. 1, pp. V67–V79, Jan. 2019.
+  [6] M. Yaqoob, M. Y. Ansari, M. Ishaq, I. S. A. J. Jayachandran,                    [24] Y. Alaudah, P. Michałowicz, M. Alfarraj, and G. AlRegib, ‘‘A machine-
+      M. S. Hashim, and T. D. Seers, ‘‘MicroCrystalNet: An efficient and                   learning benchmark for facies classification,’’ Interpretation, vol. 7, no. 3,
+      explainable convolutional neural network for microcrystal classification             pp. 175–187, Aug. 2019.
+      using scanning electron microscope petrography,’’ IEEE Access, vol. 13,         [25] Y. An, J. Guo, Q. Ye, C. Childs, J. Walsh, and R. Dong, ‘‘A gigabyte
+      pp. 53865–53884, 2025.                                                               interpreted seismic dataset for automatic fault recognition,’’ Data Brief,
+  [7] M. Yaqoob, M. Y. Ansari, M. Ishaq, U. Ashraf, S. Pavuluri, A. Rabbani,               vol. 37, Aug. 2021, Art. no. 107219.
+      H. S. Rabbani, and T. D. Seers, ‘‘FluidNet-lite: Lightweight convolu-           [26] R. Benkert, M. Prabhushankar, and G. AlRegib, ‘‘Reliable uncertainty
+      tional neural network for pore-scale modeling of multiphase flow in                  estimation for seismic interpretation with prediction switches,’’ in Proc.
+      heterogeneous porous media,’’ Adv. Water Resour., vol. 200, Jun. 2025,               2nd Int. Meeting Appl. Geosci. Energy, Aug. 2022, pp. 1740–1744.
+      Art. no. 104952.                                                                [27] R. Benkert, M. Prabhushankar, and G. AlRegib, ‘‘What samples must
+  [8] Y.-Y. Logan, K. Kokilepersaud, G. Kwon, G. AlRegib, C. Wykoff, and                   seismic interpreters label for efficient machine learning?’’ in Proc.
+      H. Yu, ‘‘Multi-modal learning using physicians diagnostics for optical               3rd Int. Meeting Appl. Geosci. Energy Expanded Abstr., Dec. 2023,
+      coherence tomography classification,’’ in Proc. IEEE 19th Int. Symp.                 pp. 1004–1009.
+      Biomed. Imag. (ISBI), Mar. 2022, pp. 1–5.                                       [28] A. Mustafa and G. AlRegib, ‘‘Man-recon: Manifold learning for
+  [9] Y.-Y. Logan, R. Benkert, A. Mustafa, and G. AlRegib, ‘‘Patient aware                 reconstruction with deep autoencoder for smart seismic interpretation,’’ in
+      active learning for fine-grained OCT classification,’’ in Proc. IEEE Int.            Proc. IEEE Int. Conf. Image Process. (ICIP), Sep. 2021, pp. 2953–2957.
+      Conf. Image Process. (ICIP), Oct. 2022, pp. 3908–3912.                          [29] Z. Wang and G. AlRegib, ‘‘Interactive fault extraction in 3-D seismic data
+ [10] K. Kokilepersaud, S. T. Corona, M. Prabhushankar, G. AlRegib, and                    using the Hough transform and tracking vectors,’’ IEEE Trans. Comput.
+      C. Wykoff, ‘‘Clinically labeled contrastive learning for OCT biomarker               Imag., vol. 3, no. 1, pp. 99–109, Mar. 2017.
+      classification,’’ IEEE J. Biomed. Health Informat., vol. 27, no. 9,             [30] I. Cohen, N. Coult, and A. A. Vassiliou, ‘‘Detection and extraction of fault
+      pp. 4397–4408, Sep. 2023.                                                            surfaces in 3D seismic data,’’ Geophysics, vol. 71, no. 4, pp. P21–P27,
+ [11] J. R. Quesada, L. Sathidevi, R. Liu, N. Ahad, J. M. Jackson, M. Azabou,              Jul. 2006.
+      J. Xiao, C. Liding, M. Jin, C. Urzay, W. Gray-Roncal, E. C. Johnson, and        [31] A. Roberts, ‘‘Curvature attributes and their application to 3D interpreted
+      E. L. Dyer, ‘‘MTNeuro: A benchmark for evaluating representations of                 horizons,’’ 1st Break, vol. 19, no. 2, pp. 85–100, Feb. 2001.
+      brain structure across multiple levels of abstraction,’’ in Proc. Adv. Neural   [32] H. Di, M. A. Shafiq, and G. AlRegib, ‘‘Seismic-fault detection based on
+      Inf. Process. Syst., vol. 35, 2023, pp. 5299–5314.                                   multiattribute support vector machine analysis,’’ in Proc. SEG Int. Expo.
+ [12] K. Kokilepersaud, M. Prabhushankar, G. AlRegib, S. Trejo Corona, and                 Annu. Meeting, Aug. 2017, pp. 2039–2044.
+      C. Wykoff, ‘‘Gradient-based severity labeling for biomarker classification      [33] M. A. Shafiq, M. Prabhushankar, H. Di, and G. AlRegib, ‘‘Towards
+      in oct,’’ in Proc. IEEE Int. Conf. Image Process. (ICIP), Oct. 2022,                 understanding common features between natural and seismic images,’’
+      pp. 3416–3420.                                                                       in Proc. SEG Int. Expo. Annu. Meeting, Aug. 2018, pp. 2076–2080.
+
+VOLUME 13, 2025                                                                                                                                                    215127
+                                                                                    J. Quesada et al.: Large-Scale Benchmark on Geological Fault Delineation Models
+
+
+
+
+[34] K. Kokilepersaud, M. Prabhushankar, and G. AlRegib, ‘‘Volumetric                   [55] C. Shorten and T. M. Khoshgoftaar, ‘‘A survey on image data
+     supervised contrastive learning for seismic semantic segmentation,’’ in                 augmentation for deep learning,’’ J. Big Data, vol. 6, no. 1, pp. 1–48,
+     Proc. 2nd Int. Meeting Appl. Geosci. Energy, Aug. 2022, pp. 1699–1703.                  Dec. 2019.
+[35] J. Quesada, M. Alotaibi, M. Prabhushankar, and G. AlRegib, ‘‘Point-                [56] L. Perez and J. Wang, ‘‘The effectiveness of data augmentation in image
+     Prompt: A multi-modal prompting dataset for segment anything model,’’                   classification using deep learning,’’ Convolutional Neural Netw. Vis.
+     in Proc. IEEE/CVF Conf. Comput. Vis. Pattern Recognit. Workshops                        Recognit., pp. 1–8, 2017.
+     (CVPRW), Jun. 2024, pp. 1604–1610.                                                 [57] E. Xie, W. Wang, Z. Yu, A. Anandkumar, J. M. Álvarez, and P. Luo,
+[36] J. Quesada, Z. Fowler, M. Alotaibi, M. Prabhushankar, and G. AlRegib,                   ‘‘SegFormer: Simple and efficient design for semantic segmentation
+     ‘‘Benchmarking human and automated prompting in the segment any-                        with transformers,’’ in Proc. Adv. Neural Inf. Process. Syst., 2021,
+     thing model,’’ in Proc. IEEE Int. Conf. Big Data (BigData), Dec. 2024,                  pp. 12077–12090.
+     pp. 1625–1634.                                                                     [58] D. R. Cox, ‘‘The regression analysis of binary sequences,’’ J. Roy. Stat.
+                                                                                             Soc. Ser. B, Stat. Methodology, vol. 20, no. 2, pp. 215–232, Jul. 1958.
+[37] J. Kirkpatrick, R. Pascanu, N. C. Rabinowitz, J. Veness, G. Desjardins,
+                                                                                        [59] F. Milletari, N. Navab, and S.-A. Ahmadi, ‘‘V-Net: Fully convolutional
+     A. A. Rusu, K. Milan, J. Quan, T. Ramalho, A. Grabska-Barwińska,
+                                                                                             neural networks for volumetric medical image segmentation,’’ in Proc.
+     D. Hassabis, C. Clopath, D. Kumaran, and R. Hadsell, ‘‘Overcoming
+                                                                                             4th Int. Conf. 3D Vis. (3DV), Oct. 2016, pp. 565–571.
+     catastrophic forgetting in neural networks,’’ Proc. Nat. Acad. Sci. USA,
+                                                                                        [60] S. Wazir and M. M. Fraz, ‘‘HistoSeg: Quick attention with multi-loss
+     vol. 114, no. 13, pp. 3521–3526, 2017.
+                                                                                             function for multi-structure segmentation in digital histology images,’’ in
+[38] J. Alcalde, C. E. Bond, G. Johnson, J. F. Ellis, and R. W. H. Butler,                   Proc. 12th Int. Conf. Pattern Recognit. Syst. (ICPRS), Jun. 2022, pp. 1–7.
+     ‘‘Impact of seismic image quality on fault interpretation uncertainty,’’           [61] S. Zu, P. Zhao, C. Ke, and C. Junxing, ‘‘ResACEUnet: An improved
+     GSA Today, vol. 27, no. 2, pp. 4–10, Feb. 2017.                                         transformer unet model for 3D seismic fault detection,’’ J. Geophys. Res.,
+[39] S. Guillon, F. Joncour, P.-E. Barrallon, and L. Castanié, ‘‘Ground-truth                Mach. Learn. Comput., vol. 1, no. 3, Sep. 2024, Art. no. e2024JH000232.
+     uncertainty-aware metrics for machine learning applications on seismic             [62] H. Di, D. Gao, and G. AlRegib, ‘‘Developing a seismic texture
+     image interpretation: Application to faults and horizon extraction,’’ Lead.             analysis neural network for machine-aided seismic pattern recognition
+     Edge, vol. 39, no. 10, pp. 734–741, Oct. 2020.                                          and classification,’’ Geophys. J. Int., vol. 218, no. 2, pp. 1262–1275,
+[40] M. Sarajaervi, T. H. Bo, B. Goledowski, and M. Nickel, ‘‘Robust                         Aug. 2019.
+     evaluation of fault prediction results: Machine learning using synthetic           [63] H. Di, M. A. Shafiq, Z. Wang, and G. AlRegib, ‘‘Improving seismic fault
+     seismic,’’ in Proc. 1st EAGE Digitalization Conf. Exhib., 2020, pp. 1–5.                detection by super-attribute-based classification,’’ Interpretation, vol. 7,
+[41] J. Deng, W. Dong, R. Socher, L.-J. Li, K. Li, and L. Fei-Fei, ‘‘ImageNet:               no. 3, pp. 251–267, Aug. 2019.
+     A large-scale hierarchical image database,’’ in Proc. IEEE Conf. Comput.           [64] H. Di and G. AlRegib, ‘‘Semi-automatic fault/fracture interpretation
+     Vis. Pattern Recognit., Jun. 2009, pp. 248–255.                                         based on seismic geometry analysis,’’ Geophys. Prospecting, vol. 67,
+[42] B. Sun and K. Saenko, ‘‘Deep CORAL: Correlation alignment for                           no. 5, pp. 1379–1391, Jun. 2019.
+     deep domain adaptation,’’ in Proc. Eur. Conf. Comput. Vis., Oct. 2016,             [65] Y. Dou, K. Li, J. Zhu, T. Li, S. Tan, and Z. Huang, ‘‘MD loss: Efficient
+     pp. 443–450.                                                                            training of 3-D seismic fault segmentation network under sparse labels
+[43] Y.-H. Tsai, W.-C. Hung, S. Schulter, K. Sohn, M.-H. Yang, and                           by weakening anomaly annotation,’’ IEEE Trans. Geosci. Remote Sens.,
+     M. Chandraker, ‘‘Learning to adapt structured output space for semantic                 vol. 60, 2022, Art. no. 5919014.
+     segmentation,’’ in Proc. IEEE/CVF Conf. Comput. Vis. Pattern Recognit.,            [66] R. Benkert, M. Prabhushankar, and G. AlRegib, ‘‘Effective data selection
+     Jun. 2018, pp. 7472–7481.                                                               for seismic interpretation through disagreement,’’ IEEE Trans. Geosci.
+                                                                                             Remote Sens., vol. 62, 2024, Art. no. 4510512.
+[44] M. J. C. Trinidad, S. W. A. Canchumuni, and M. A. C. Pacheco, ‘‘Seismic            [67] A. Mustafa and G. AlRegib, ‘‘Active learning with deep autoencoders
+     fault segmentation using unsupervised domain adaptation,’’ in Proc. 20th                for seismic facies interpretation,’’ Geophysics, vol. 88, no. 4, pp. 77–86,
+     ACS/IEEE Int. Conf. Comput. Syst. Appl. (AICCSA), Dec. 2023, pp. 1–8.                   Jul. 2023.
+[45] H. Guan and M. Liu, ‘‘Domain adaptation for medical image analysis:                [68] A. Mustafa, R. Rastegar, T. Brown, G. Nunes, D. Delilla, and G. Alregib,
+     A survey,’’ IEEE Trans. Biomed. Eng., vol. 69, no. 3, pp. 1173–1185,                    ‘‘Visual attention-guided learning with incomplete labels for seismic
+     Mar. 2022.                                                                              fault interpretation,’’ IEEE Trans. Geosci. Remote Sens., vol. 62, 2024,
+[46] J. Long, E. Shelhamer, and T. Darrell, ‘‘Fully convolutional networks                   Art. no. 5908012.
+     for semantic segmentation,’’ in Proc. IEEE Conf. Comput. Vis. Pattern              [69] I. Goodfellow, Y. Bengio, A. Courville, and Y. Bengio, Deep Learning,
+     Recognit. (CVPR), Jun. 2015, pp. 3431–3440.                                             vol. 1. Cambridge, MA, USA: MIT Press, 2016.
+[47] L.-C. Chen, G. Papandreou, I. Kokkinos, K. Murphy, and A. L. Yuille,               [70] R. Benkert, O. J. Aribido, and G. AlRegib, ‘‘Example forgetting:
+     ‘‘DeepLab: Semantic image segmentation with deep convolutional nets,                    A novel approach to explain and interpret deep neural networks in
+     atrous convolution, and fully connected CRFs,’’ IEEE Trans. Pattern                     seismic interpretation,’’ IEEE Trans. Geosci. Remote Sens., vol. 60, 2022,
+     Anal. Mach. Intell., vol. 40, no. 4, pp. 834–848, Apr. 2018.                            Art. no. 5916812.
+[48] K. Kokilepersaud, Y.-Y. Logan, R. Benkert, C. Zhou, M. Prabhushankar,              [71] A. Mustafa, M. Alfarraj, and G. AlRegib, ‘‘Joint learning for spatial
+     G. AlRegib, E. Corona, K. Singh, and M. Parchami, ‘‘FOCAL: A cost-                      context-based seismic inversion of multiple data sets for improved
+     aware video dataset for active learning,’’ in Proc. IEEE Int. Conf. Big                 generalizability and robustness,’’ Geophysics, vol. 86, no. 4, pp. O37–
+     Data (BigData), Dec. 2023, pp. 1269–1278.                                               O48, Jul. 2021.
+[49] O. Ronneberger, P. Fischer, and T. Brox, ‘‘U-Net: Convolutional networks           [72] A. Torralba and A. A. Efros, ‘‘Unbiased look at dataset bias,’’ in Proc.
+     for biomedical image segmentation,’’ in Proc. Int. Conf. Med. Image                     CVPR, Jun. 2011, pp. 1521–1528.
+     Comput. Comput.-Assist. Intervent., 2015, pp. 234–241.                             [73] D. Temel, J. Lee, and G. Alregib, ‘‘CURE-OR: Challenging unreal and
+                                                                                             real environments for object recognition,’’ in Proc. Neural Inf. Process.
+[50] F. Isensee, P. F. Jaeger, S. A. A. Kohl, J. Petersen, and K. H. Maier-
+                                                                                             Syst. (NIPS) Workshop Mach. Learn. Intell. Transp. Syst. (MLITS),
+     Hein, ‘‘NnU-Net: A self-configuring method for deep learning-based
+                                                                                             Dec. 2018.
+     biomedical image segmentation,’’ Nature Methods, vol. 18, no. 2,                   [74] D. Temel, J. Lee, and G. Alregib, ‘‘CURE-OR: Challenging unreal and
+     pp. 203–211, Feb. 2021.                                                                 real environments for object recognition,’’ in Proc. 17th IEEE Int. Conf.
+[51] M. Prabhushankar, K. Kokilepersaud, Y.-Y. Logan, S. T. Corona,                          Mach. Learn. Appl. (ICMLA), Dec. 2018, pp. 137–144.
+     G. AlRegib, and C. C. Wykoff, ‘‘OLIVES dataset: Ophthalmic labels for              [75] D. Temel, M.-H. Chen, and G. AlRegib, ‘‘Traffic sign detection under
+     investigating visual eye semantics,’’ in Proc. Adv. Neural Inf. Process.                challenging conditions: A deeper look into performance variations and
+     Syst., 2022, pp. 9201–9216.                                                             spectral characteristics,’’ IEEE Trans. Intell. Transp. Syst., vol. 21, no. 9,
+[52] S. Ioffe and C. Szegedy, ‘‘Batch normalization: Accelerating deep                       pp. 3663–3673, Sep. 2020.
+     network training by reducing internal covariate shift,’’ in Proc. Int. Conf.       [76] M. Prabhushankar and G. AlRegib, ‘‘Introspective learning: A two-stage
+     Mach. Learn., 2015, pp. 448–456.                                                        approach for inference in neural networks,’’ in Proc. Adv. Neural Inf.
+[53] D. Ulyanov, A. Vedaldi, and V. Lempitsky, ‘‘Instance normalization: The                 Process. Syst., vol. 35, 2022, pp. 12126–12140.
+     missing ingredient for fast stylization,’’ 2016, arXiv:1607.08022.                 [77] Y. Ganin, E. Ustinova, H. Ajakan, P. Germain, H. Larochelle,
+[54] M. Prabhushankar, D. Temel, and G. AlRegib, ‘‘Generating adaptive and                   F. Laviolette, M. March, and V. Lempitsky, ‘‘Domain-adversarial
+     robust filter sets using an unsupervised learning framework,’’ in Proc.                 training of neural networks,’’ J. Mach. Learn. Res., vol. 17, no. 59,
+     IEEE Int. Conf. Image Process. (ICIP), Sep. 2017, pp. 3041–3045.                        pp. 1–35, 2016.
+
+215128                                                                                                                                                   VOLUME 13, 2025
+J. Quesada et al.: Large-Scale Benchmark on Geological Fault Delineation Models
+
+
+
+
+ [78] M.-H. Chen, Z. Kira, G. Alregib, J. Yoo, R. Chen, and J. Zheng,               [102] Z. Long, Y. Alaudah, M. Ali Qureshi, Y. Hu, Z. Wang, M. Alfarraj,
+      ‘‘Temporal attentive alignment for large-scale video domain adaptation,’’           G. AlRegib, A. Amin, M. Deriche, S. Al-Dharrab, and H. Di, ‘‘A
+      in Proc. IEEE/CVF Int. Conf. Comput. Vis. (ICCV), Oct. 2019,                        comparative study of texture attributes for characterizing subsurface
+      pp. 6320–6329.                                                                      structures in seismic volumes,’’ Interpretation, vol. 6, no. 4, pp. T1055–
+ [79] S. Panigrahi, A. Nanda, and T. Swarnkar, ‘‘A survey on transfer learning,’’         T1066, Nov. 2018.
+      in Intelligent and Cloud Computing: Proceedings of ICICC 2019, vol. 1.        [103] Z. Long, Y. Alaudah, M. A. Qureshi, M. A. Farraj, Z. Wang,
+      Cham, Switzerland: Springer, 2020, pp. 781–789.                                     A. Amin, M. Deriche, and G. AlRegib, ‘‘Characterization of
+ [80] J. Yosinski, J. Clune, Y. Bengio, and H. Lipson, ‘‘How transferable are             migrated seismic volumes using texture attributes: A comparative
+      features in deep neural networks?’’ in Proc. Adv. Neural Inf. Process.              study,’’ in Proc. SEG Tech. Program Expanded Abstr., Aug. 2015,
+      Syst., vol. 27, 2014, pp. 3320–3328.                                                pp. 1744–1748.
+ [81] M. Ercoli, F. Carboni, A. Akimbekova, R. B. Carbonell, and M. R. Barchi,      [104] Y. Alaudah, S. Gao, and G. AlRegib, ‘‘Learning to label seismic structures
+      ‘‘Evidencing subtle faults in deep seismic reflection profiles: Data pre-           with deconvolution networks and weak labels,’’ in Proc. SEG Int. Expo.
+      conditioning and seismic attribute analysis of the legacy CROP-04                   Annu. Meeting, Aug. 2018, pp. 2121–2125.
+      profile,’’ Frontiers Earth Sci., vol. 11, Mar. 2023, Art. no. 1119554.        [105] O. J. Aribido, G. AlRegib, and M. Deriche, ‘‘Self-supervised annotation
+ [82] S. M. Mousavi and G. C. Beroza, ‘‘Deep-learning seismology,’’ Science,              of seismic images using latent space factorization,’’ in Proc. IEEE Int.
+      vol. 377, no. 6607, Aug. 2022, Art. no. eabm4470.                                   Conf. Image Process. (ICIP), Oct. 2020, pp. 2421–2425.
+ [83] S. M. Mousavi, G. C. Beroza, T. Mukerji, and M. Rasht-Behesht,                [106] O. J. Aribido, G. AlRegib, and Y. Alaudah, ‘‘Self-supervised
+      ‘‘Applications of deep neural networks in exploration seismology: A                 delineation of geologic structures using orthogonal latent
+      technical survey,’’ Geophysics, vol. 89, no. 1, pp. WA95–WA115,                     space projection,’’ Geophysics, vol. 86, no. 6, pp. V497–V508,
+      Jan. 2024.                                                                          Nov. 2021.
+ [84] H. Du, Y. An, Q. Ye, J. Guo, L. Liu, D. Zhu, C. Childs, J. Walsh,             [107] H. Di, Z. Wang, and G. AlRegib, ‘‘Seismic fault detection from post-stack
+      and R. Dong, ‘‘Disentangling noise patterns from seismic images:                    amplitude by convolutional neural networks,’’ in Proc. 80th EAGE Conf.
+      Noise reduction and style transfer,’’ IEEE Trans. Geosci. Remote Sens.,             Exhib., Jun. 2018, pp. 1–5.
+      vol. 60, 2022, Art. no. 4513214.                                              [108] Y. An, J. Guo, Q. Ye, C. Childs, J. Walsh, and R. Dong, ‘‘Deep convo-
+ [85] S. Wang, X. Si, Z. Cai, and Y. Cui, ‘‘Structural augmentation in                    lutional neural network for automatic fault recognition from 3D seismic
+      seismic data for fault prediction,’’ Appl. Sci., vol. 12, no. 19, p. 9796,          datasets,’’ Comput. Geosci., vol. 153, Aug. 2021, Art. no. 104776.
+      Sep. 2022.                                                                    [109] Y. An, Q. Ye, J. Guo, and R. Dong, ‘‘Overlap training to mitigate
+ [86] K. He, X. Zhang, S. Ren, and J. Sun, ‘‘Deep residual learning for                   inconsistencies caused by image tiling in CNNs,’’ in Proc. Int. Conf.
+      image recognition,’’ in Proc. IEEE Conf. Comput. Vis. Pattern Recognit.             Innov. Techn. Appl. Artif. Intell., Cham, Switzerland. Springer, 2020,
+      (CVPR), Jun. 2016, pp. 770–778.                                                     pp. 35–48.
+ [87] K. Simonyan and A. Zisserman, ‘‘Very deep convolutional networks for          [110] M. Prabhushankar, K. Kokilepersaud, J. Quesada, Y. Yarici, C. Zhou,
+      large-scale image recognition,’’ 2014, arXiv:1409.1556.                             M. Alotaibi, G. AlRegib, A. Mustafa, and Y. Kumakov, ‘‘CRACKS:
+ [88] P. Krähenbühl and V. Koltun, ‘‘Efficient inference in fully connected crfs          Crowdsourcing resources for analysis and categorization of key subsur-
+      with Gaussian edge potentials,’’ in Proc. Adv. Neural Inf. Process. Syst.,          face faults,’’ 2024, arXiv:2408.11185.
+      vol. 24, 2011.                                                                [111] Z. Bi, X. Wu, Z. Geng, and H. Li, ‘‘Deep relative geologic time: A deep
+ [89] T. Pohlen, A. Hermans, M. Mathias, and B. Leibe, ‘‘Full-resolution                  learning method for simultaneously interpreting 3-D seismic horizons
+      residual networks for semantic segmentation in street scenes,’’ in                  and faults,’’ J. Geophys. Res., Solid Earth, vol. 126, no. 9, Sep. 2021,
+      Proc. IEEE Conf. Comput. Vis. Pattern Recognit. (CVPR), Jul. 2017,                  Art. no. e2021JB021882.
+      pp. 4151–4160.                                                                [112] L. Lin, Z. Zhong, Z. Cai, A. Y. Sun, and C. Li, ‘‘Automatic
+ [90] B. Recht, R. Roelofs, L. Schmidt, and V. Shankar, ‘‘Do ImageNet clas-               geologic fault identification from seismic data using 2.5D chan-
+      sifiers generalize to ImageNet,’’ in Proc. Int. Conf. Mach. Learn., 2019,           nel attention U-Net,’’ Geophysics, vol. 87, no. 4, pp. 111–124,
+      pp. 5389–5400.                                                                      Jul. 2022.
+ [91] R. Geirhos, J.-H. Jacobsen, C. Michaelis, R. Zemel, W. Brendel,               [113] A. Pochet, P. H. B. Diniz, H. Lopes, and M. Gattass, ‘‘Seismic fault
+      M. Bethge, and F. A. Wichmann, ‘‘Shortcut learning in deep neu-                     detection using convolutional neural networks trained on synthetic
+      ral networks,’’ Nature Mach. Intell., vol. 2, no. 11, pp. 665–673,                  poststacked amplitude maps,’’ IEEE Geosci. Remote Sens. Lett., vol. 16,
+      Nov. 2020.                                                                          no. 3, pp. 352–356, Mar. 2019.
+ [92] Y.-S. Kim and D. J. Sanderson, ‘‘The relationship between displacement        [114] The Netherlands Offshore, the North Sea, F3 Block—Complete, dGB
+      and length of faults: A review,’’ Earth-Sci. Rev., vol. 68, nos. 3–4,               Earth Sciences, Enschede, The Netherlands, 1987.
+      pp. 317–334, Jan. 2005.                                                       [115] A. Mustafa, K. Koster, and G. AlRegib, ‘‘Explainable machine learning
+ [93] J. W. Rutter, Geometry of Curves. London, U.K.: Chapman & Hall, 2018.               for hydrocarbon prospect risking,’’ Geophysics, vol. 89, no. 1, pp. 13–24,
+ [94] K. L. Hanson, W. R. Lettis, M. K. McLaren, W. U. Savage, N. T. Hall,                Jan. 2024.
+      and M. A. Keller, ‘‘Style and rate of quaternary deformation of the Hosgri    [116] C. Zhou, M. Prabhushankar, and G. AlRegib, ‘‘Perceptual quality-based
+      fault zone, offshore South-central California,’’ U.S. Geological Survey             model training under annotator label uncertainty,’’ in Proc. SEG Int. Expo.
+      Bulletin, Reston, VA, USA, Tech. Rep., 2004, p. 33.                                 Annu. Meeting, Dec. 2023, pp. 965–969.
+ [95] D. P. Schwartz and R. H. Sibson, ‘‘Fault segmentation and controls of         [117] P. Chowdhury, A. Mustafa, M. Prabhushankar, and G. AlRegib,
+      rupture initiation and termination,’’ USGS, Reston, VA, USA, Tech. Rep.,            ‘‘Counterfactual uncertainty for high dimensional tabular dataset,’’ in
+      1989.                                                                               Proc. SEG Int. Expo. Annu. Meeting, Dec. 2023, pp. 960–964.
+ [96] I. Manighetti, A. Mercier, and L. De Barros, ‘‘Fault trace corrugation and    [118] M. Amir Shafiq, Z. Long, H. Di, and G. AlRegib, ‘‘A novel attention
+      segmentation as a measure of fault structural maturity,’’ Geophys. Res.             model for salient structure detection in seismic volumes,’’ 2022,
+      Lett., vol. 48, no. 20, Oct. 2021, Art. no. e2021GL095372.                          arXiv:2201.06174.
+ [97] Project F3 Demo 2023—Data Info, TerraNubis, Enschede, The                     [119] N. Iqbal, M. Deriche, G. AlRegib, and S. Khan, ‘‘Blind curvelet-
+      Netherlands, 2023.                                                                  based denoising of seismic surveys in coherent and incoherent noise
+ [98] B. B. Bailey, ‘‘Geological and geophysical evaluation of the thebe field,           environments,’’ Arabian J. Sci. Eng., vol. 48, no. 8, pp. 10925–10935,
+      block XX, offshore Western Australia,’’ Univ. Western Cape, Cape Town,              Aug. 2023.
+      SA, USA, Tech. Rep., 2013.                                                    [120] A. Mustafa and G. AlRegib, ‘‘A comparative study of transfer learning
+ [99] Y. An, H. Du, S. Ma, Y. Niu, D. Liu, J. Wang, Y. Du, C. Childs, J. Walsh,           methodologies and causality for seismic inversion with temporal convo-
+      and R. Dong, ‘‘Current state and future directions for deep learning based          lutional networks,’’ in Proc. SEG Int. Expo. Annu. Meeting, Sep. 2021,
+      automatic seismic fault interpretation: A systematic review,’’ Earth-Sci.           pp. 1630–1634.
+      Rev., vol. 243, Aug. 2023, Art. no. 104509.                                   [121] R. Benkert, O. J. Aribido, and G. AlRegib, ‘‘Explaining deep models
+[100] Y. Alaudah and G. AlRegib, ‘‘A curvelet-based distance measure for                  through forgettable learning dynamics,’’ in Proc. IEEE Int. Conf. Image
+      seismic images,’’ in Proc. IEEE Int. Conf. Image Process. (ICIP),                   Process. (ICIP), Sep. 2021, pp. 3692–3696.
+      Sep. 2015, pp. 4200–4204.                                                     [122] R. Benkert, O. Joseph Aribido, and G. AlRegib, ‘‘Explainable
+[101] M. Alfarraj, Y. Alaudah, Z. Long, and G. AlRegib, ‘‘Multiresolution                 seismic neural networks using learning statistics,’’ in Proc. 1st
+      analysis and learning for computational seismic interpretation,’’ Lead.             Int. Meeting Appl. Geosci. Energy Expanded Abstr., Sep. 2021,
+      Edge, vol. 37, no. 6, pp. 443–450, Jun. 2018.                                       pp. 1425–1429.
+
+VOLUME 13, 2025                                                                                                                                             215129
+                                                                                     J. Quesada et al.: Large-Scale Benchmark on Geological Fault Delineation Models
+
+
+
+
+[123] A. Mustafa, M. Alfarraj, and G. AlRegib, ‘‘Spatiotemporal modeling of                                       JORGE QUESADA received the B.E. and M.S.
+      seismic images for acoustic impedance estimation,’’ in Proc. SEG Int.                                       degrees from the Pontifical Catholic University of
+      Expo. Annu. Meeting, Sep. 2020, pp. 1735–1739.                                                              Peru. He joined Georgia Institute of Technology
+[124] A. Mustafa and G. AlRegib, ‘‘Joint learning for seismic inversion:                                          as a Machine Learning Ph.D. Student with the
+      An acoustic impedance estimation case study,’’ SEG Tech. Program                                            Department of Electrical and Computer Engineer-
+      Expanded Abstr., pp. 1686–1690, Aug. 2020.                                                                  ing, in 2021, where he is currently with the Omni
+[125] M. Soliman, C. Lehman, and G. AlRegib, ‘‘S6 : Semi-supervised self-
+                                                                                                                  Lab for Intelligent Visual Engineering and Science
+      supervised semantic segmentation,’’ in Proc. IEEE Int. Conf. Image
+                                                                                                                  (OLIVES). He is interested in leveraging machine
+      Process. (ICIP), Oct. 2020, pp. 1861–1865.
+[126] M. Alfarraj and G. AlRegib, ‘‘Semisupervised sequence modeling for                                          learning and image processing tools to study the
+      elastic impedance inversion,’’ Interpretation, vol. 7, no. 3, pp. 237–249,                                  mechanisms underlying computer and biological
+      Aug. 2019.                                                                                                  vision.
+[127] H. Di and G. AlRegib, ‘‘Reflector dip estimates based on seismic
+      waveform curvature/flexure analysis,’’ Interpretation, vol. 7, no. 2,
+      pp. 1–9, May 2019.
+[128] Y. Alaudah, M. Soliman, and G. AlRegib, ‘‘Facies classification with
+      weak and strong supervision: A comparative study,’’ in Proc. SEG Int.
+      Expo. Annu. Meeting, Aug. 2019, pp. 1868–1872.
+[129] A. Mustafa, M. Alfarraj, and G. AlRegib, ‘‘Estimation of acoustic
+      impedance from seismic data using temporal convolutional
+      network,’’ SEG Tech. Program Expanded Abstr., pp. 2554–2558,                                                CHEN ZHOU is currently pursuing the Ph.D.
+      Aug. 2019.                                                                                                  degree with the School of Electrical and Computer
+[130] M. Alfarraj and G. AlRegib, ‘‘Semi-supervised learning for acous-                                           Engineering, Georgia Institute of Technology.
+      tic impedance inversion,’’ SEG Tech. Program Expanded Abstr.,                                               He is a Graduate Research Assistant with the
+      pp. 2298–2302, Aug. 2019.
+                                                                                                                  Omni Lab for Intelligent Visual Engineering and
+[131] M. Ishak, M. Islam, M. Shalaby, and N. Hasan, ‘‘The application of
+                                                                                                                  Science (OLIVES). He is working in the fields of
+      seismic attributes and wheeler transformations for the geomorphological
+      interpretation of stratigraphic surfaces: A case study of the F3 block,                                     machine learning and image and video processing.
+      Dutch offshore sector, North Sea,’’ Geosciences, vol. 8, no. 3, p. 79,                                      His research interests include trajectory prediction
+      Feb. 2018.                                                                                                  and learning from label disagreement for the
+[132] M. R. Safari, K. Taheri, H. Hashemi, and A. Hadadi, ‘‘Struc-                                                applications of autonomous vehicle and seismic
+      tural smoothing on mixed instantaneous phase energy for auto-                                               interpretation.
+      matic fault and horizon picking: Case study on F3 North Sea,’’
+      J. Petroleum Explor. Prod. Technol., vol. 13, no. 3, pp. 775–785,
+      Mar. 2023.
+[133] Z. Wang, Q. Wang, Y. Yang, N. Liu, Y. Chen, and J. Gao, ‘‘Seismic
+      facies segmentation via a segformer-based specific encoder–decoder–
+      hypercolumns scheme,’’ IEEE Trans. Geosci. Remote Sens., vol. 61, 2023,
+      Art. no. 5903411.
+[134] L.-C. Chen, Y. Zhu, G. Papandreou, F. Schroff, and H. Adam,
+      ‘‘Encoder–decoder with Atrous separable convolution for semantic                                             PRITHWIJIT CHOWDHURY (Student Member,
+      image segmentation,’’ in Proc. Eur. Conf. Comput. Vis. (ECCV), 2018,                                         IEEE) received the B.Tech. degree from KIIT
+      pp. 833–851.
+                                                                                                                   University, India, in 2020, and the M.S. degree
+[135] M. Sandler, A. Howard, M. Zhu, A. Zhmoginov, and L.-C. Chen,
+      ‘‘MobileNetV2: Inverted residuals and linear bottlenecks,’’ in
+                                                                                                                   from the School of Electrical and Computer
+      Proc. IEEE/CVF Conf. Comput. Vis. Pattern Recognit., Jun. 2018,                                              Engineering, Georgia Institute of Technology.
+      pp. 4510–4520.                                                                                               He is currently pursuing the Ph.D. degree. He is a
+[136] S. Xie and Z. Tu, ‘‘Holistically-nested edge detection,’’ in Proc. IEEE Int.                                 Researcher with The Center for Energy and Geo
+      Conf. Comput. Vis. (ICCV), Dec. 2015, pp. 1395–1403.                                                         Processing (CeGP) and a member of the Omni
+[137] Y. Liu, M.-M. Cheng, X. Hu, K. Wang, and X. Bai, ‘‘Richer convolutional                                      Lab for Intelligent Visual Engineering and Science
+      features for edge detection,’’ in Proc. IEEE Conf. Comput. Vis. Pattern                                      (OLIVES). He is a published author, with several
+      Recognit. (CVPR), Jul. 2017, pp. 5872–5881.                                       works presented at the IMAGE conference and published in Geophysics
+[138] Z. Zhou, M. M. R. Siddiquee, N. Tajbakhsh, and J. Liang, ‘‘UNet++:                journal. His research interests lie in digital signal and image processing and
+      A nested U-Net architecture for medical image segmentation,’’ in                  machine learning with applications to geophysics.
+      Deep Learning in Medical Image Analysis and Multimodal Learning
+      for Clinical Decision Support. Cham, Switzerland: Springer, 2018,
+      pp. 3–11.
+[139] Y. An and R. Dong, ‘‘Understanding the effect of different prior
+      knowledge on CNN fault interpreter,’’ IEEE Access, vol. 11,
+      pp. 15058–15068, 2023.
+[140] M.-P. Dubuisson and A. K. Jain, ‘‘A modified Hausdorff distance for
+      object matching,’’ in Proc. 12th Int. Conf. Pattern Recognit., vol. 1, 1994,
+      pp. 566–568.
+[141] Y. Yang and S. Soatto, ‘‘FDA: Fourier domain adaptation for semantic                                        MOHAMMAD ALOTAIBI is currently pursuing
+      segmentation,’’ in Proc. IEEE/CVF Conf. Comput. Vis. Pattern Recognit.                                      the Ph.D. degree with the School of Electrical
+      (CVPR), Jun. 2020, pp. 4084–4094.                                                                           and Computer Engineering, Georgia Institute of
+[142] W. Zhang, L. Deng, L. Zhang, and D. Wu, ‘‘A survey on negative                                              Technology. He is a Graduate Research Assistant
+      transfer,’’ IEEE/CAA J. Autom. Sinica, vol. 10, no. 2, pp. 305–329,                                         with the Omni Lab for Intelligent Visual Engineer-
+      Feb. 2023.                                                                                                  ing and Science (OLIVES). His research interests
+[143] C. H. Sudre, W. Li, T. Vercauteren, S. Ourselin, and M. J. Cardoso,                                         include machine learning and image processing,
+      ‘‘Generalised dice overlap as a deep learning loss function for highly                                      with a particular interest in domain adaptation for
+      unbalanced segmentations,’’ in Proc. Int. Workshop Deep Learn. Med.                                         seismic and medical imaging applications.
+      Image Anal., Sep. 2017, pp. 240–248.
+
+
+
+
+215130                                                                                                                                                VOLUME 13, 2025
+J. Quesada et al.: Large-Scale Benchmark on Geological Fault Delineation Models
+
+
+
+
+                         AHMAD MUSTAFA (Member, IEEE) received                                              MOHIT PRABHUSHANKAR (Member, IEEE)
+                         the Ph.D. degree in electrical and computer                                        received the Ph.D. degree in electrical engineering
+                         engineering from Georgia Institute of Technology,                                  from Georgia Institute of Technology (Georgia
+                         USA. He is currently an Assistant Professor with                                   Tech), Atlanta, GA, USA, in 2021. He is currently
+                         the Department of Computer Science, Information                                    a Postdoctoral Research Fellow with the School
+                         Technology University (ITU), Lahore, Pakistan.                                     of Electrical and Computer Engineering, Omni
+                         He is the Director of Computational Imaging,                                       Lab for Intelligent Visual Engineering and Science
+                         Vision, Intelligence, and Learning (CIVIL) Lab-                                    (OLIVES), Georgia Tech. He is working in the
+                         oratory. Prior to joining ITU, he was with                                         fields of image processing, machine learning,
+                         Occidental Petroleum, leading the development of                                   active learning, healthcare, and robust and explain-
+large-scale computational methods to streamline subsurface applications.          able AI. He was a recipient of the Best Paper award at ICIP 2019 and the Top
+His work has been featured in top-tier peer-reviewed academic journals,           Viewed Special Session Paper Award at ICIP 2020. He was a recipient of
+conference proceedings, and technical presentations, and is frequently cited      the ECE Outstanding Graduate Teaching Award, the CSIP Research Award,
+by both academic and industry peers. His research interests include machine       and the Roger P Webb ECE Graduate Research Assistant Excellence Award,
+learning, weakly supervised learning, and computational image interpre-           in 2022. He has delivered short courses and tutorials at IEEE IV’23, ICIP’23,
+tation in scientific computing domains. He was awarded the 2023 Roger             BigData’23, WACV’24, and AAAI’24.
+P. Webb ECE GRA Excellence Award in recognition of his research
+contributions by Georgia Tech. He was a recipient of the Google Cloud
+Research Credits Award, in 2025, for his work on deep learning for
+computational subsurface imaging and understanding. For his teaching
+services, he was awarded the Outstanding Online Head TA Award, the ECE                                        GHASSAN ALREGIB (Fellow, IEEE) is currently
+GTA Excellence Award, and the ECE CREATION Award.                                                             the John and Marilu McCarty Chair Professor of
+                                                                                                              the School of Electrical and Computer Engineer-
+                                                                                                              ing, Georgia Institute of Technology. In the Omni
+                                                                                                              Lab for Intelligent Visual Engineering and Science
+                                                                                                              (OLIVES), he and his group work on robust
+                                                                                                              and interpretable machine learning algorithms,
+                                                                                                              uncertainty and trust, and human-in-the-loop algo-
+                                                                                                              rithms. The group has demonstrated their work on
+                                                                                                              a wide range of applications, such as autonomous
+                                                                                  systems, medical imaging, and subsurface imaging. The group is interested
+                                                                                  in advancing the fundamentals and the deployment of such systems in real-
+                                                                                  world scenarios. He has been issued several U.S. patents and invention
+                                                                                  disclosures. He is active in the IEEE. In 2008, he received the ECE Outstand-
+                                                                                  ing Junior Faculty Member Award. In 2017, he received the 2017 Denning
+                                                                                  Faculty Award for Global Engagement. He received the 2024 ECE
+                         YUSUFJON KUMAKOV received the master’s                   Distinguished Faculty Achievement Award at Georgia Tech. He and his
+                         degree in petroleum engineering from the Poly-           students received the Best Paper Award in ICIP 2019 and the 2023 EURASIP
+                         technic University of Turin, Italy. He is currently      Best Paper Award for Image Communication Journal. In addition, one of his
+                         an Assistant Lecturer with Tashkent State Tech-          papers is the best paper runner-up at BigData 2024. In 2024, he co-founded
+                         nical University. His primary research interests         the AI Makerspace at Georgia Tech, where any student and any community
+                         include the application of machine learning tech-        member can access and utilize AI regardless of their background. He served
+                         niques to geophysics, with a focus on seismic            on the editorial board of several transactions and served as the TPC Chair for
+                         imaging and signal processing.                           ICIP 2020, ICIP 2024, and GlobalSIP 2014. He was an Area Editor for IEEE
+                                                                                  Signal Processing Magazine.
+
+
+
+
+VOLUME 13, 2025                                                                                                                                         215131
+

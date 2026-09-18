@@ -1,0 +1,11 @@
+{"epoch": 1, "mean_abs_coarse_vox": 0.00031771903741173446, "saturated_frac": 0.0, "out_of_range_frac": 0.0}
+{"epoch": 2, "mean_abs_coarse_vox": 0.0015201873611658812, "saturated_frac": 0.0, "out_of_range_frac": 0.0}
+{"epoch": 3, "mean_abs_coarse_vox": 0.0029621149878948927, "saturated_frac": 0.0, "out_of_range_frac": 0.0}
+{"epoch": 4, "mean_abs_coarse_vox": 0.007167648524045944, "saturated_frac": 0.0, "out_of_range_frac": 0.0}
+{"epoch": 5, "mean_abs_coarse_vox": 0.015443108044564724, "saturated_frac": 0.0, "out_of_range_frac": 0.0}
+{"epoch": 6, "mean_abs_coarse_vox": 0.027126751840114594, "saturated_frac": 0.0, "out_of_range_frac": 0.0}
+{"epoch": 7, "mean_abs_coarse_vox": 0.04295064136385918, "saturated_frac": 0.0, "out_of_range_frac": 0.0}
+{"epoch": 8, "mean_abs_coarse_vox": 0.05644267052412033, "saturated_frac": 1.2715658158413135e-05, "out_of_range_frac": 4.57763671875e-05}
+{"epoch": 9, "mean_abs_coarse_vox": 0.06293947994709015, "saturated_frac": 8.265177893918008e-05, "out_of_range_frac": 0.000453948974609375}
+{"epoch": 10, "mean_abs_coarse_vox": 0.07916783541440964, "saturated_frac": 4.1961669921875e-05, "out_of_range_frac": 8.392333984375e-05}
+{"epoch": 11, "mean_abs_coarse_vox": 0.08537594974040985, "saturated_frac": 0.00013860067701898515, "out_of_range_frac": 0.0010986328125}

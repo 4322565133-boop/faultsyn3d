@@ -1,0 +1,56 @@
+{
+  "grid": [
+    128,
+    128,
+    128
+  ],
+  "d_z": 4.0,
+  "pso_particles": 200,
+  "pso_iters": 200,
+  "surface_samples": 129,
+  "beta_strike": [
+    0.05,
+    0.15
+  ],
+  "beta_dip": [
+    0.12,
+    0.22
+  ],
+  "beta_listric": [
+    0.3,
+    0.45
+  ],
+  "curvature_scales": [
+    1.0,
+    0.7,
+    0.4,
+    0.2
+  ],
+  "min_area": 700,
+  "min_instance_voxels": 600,
+  "min_visible_fraction": 0.08,
+  "label_half_thickness": 0.75,
+  "drag_distance": 18.0,
+  "freq_hz": [
+    24.0,
+    34.0
+  ],
+  "dt": 0.004,
+  "tilt": 0.06,
+  "n_folds": [
+    3,
+    7
+  ],
+  "fold_amp": [
+    4.0,
+    15.0
+  ],
+  "fold_sigma": [
+    25.0,
+    70.0
+  ],
+  "snr_db": [
+    8.0,
+    22.0
+  ]
+}

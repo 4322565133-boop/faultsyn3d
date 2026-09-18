@@ -1,0 +1,33 @@
+{
+  "status": "PASS",
+  "n": 10,
+  "categories": {
+    "en_echelon": 2,
+    "horsetail": 2,
+    "negative_flower": 2,
+    "positive_flower": 2,
+    "listric_assemblage": 2
+  },
+  "splits": {
+    "train": 5,
+    "test": 5
+  },
+  "fault_percent_mean": 3.3635759353637695,
+  "mesh_max_error": 7.6293745507882704e-06,
+  "source_sha256": "4caf323f71699d3195906146d8af908023d1ebf48f6070521a3d39a317105570",
+  "tests": [
+    "array sizes/dtypes/finite/normalisation",
+    "binary/full/instance labels consistent",
+    "all instances present",
+    "recomputed zero PSO objective",
+    "reconstructed clipped graph topology",
+    "control triangle domains",
+    "exported meshes match reconstruction",
+    "area and slip scaling",
+    "64 file checksums"
+  ],
+  "limitations": [
+    "Topology is checked on a finite 193x193 chart, with documented contact tolerance.",
+    "Visibility proxy is isolated vertical slip divided by a quarter-period; it is not a measured seismic detection rate."
+  ]
+}

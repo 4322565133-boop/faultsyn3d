@@ -1,0 +1,1 @@
+{"time": 1789543437.7589269, "from_epoch": 1, "updates": 3, "optimizer_state_entries": 158, "scaler": {"scale": 1024.0, "growth_factor": 2.0, "backoff_factor": 0.5, "growth_interval": 2000, "_growth_tracker": 3}, "restored_rng_ranks": 4}

@@ -1,0 +1,42 @@
+{
+  "out": "runs/unet_grid_smoke_20260916",
+  "variant": "grid",
+  "data": "data/dataset_reproduction_v2",
+  "epochs": 200,
+  "per_rank": 2,
+  "accum": 1,
+  "workers": 2,
+  "lr": 0.0001,
+  "seed": 2026,
+  "smoke": true,
+  "model": "unet_grid3d",
+  "mkw": {
+    "base": 42,
+    "grid_mid": true,
+    "grid_dec": true,
+    "checkpoint_highres": true
+  },
+  "params": 10785202,
+  "world": 4,
+  "global_batch": 8,
+  "init": "random; no pretrained or previous-run weights",
+  "loss": "explicit FP32 0.6 Dice + 0.4 Focal(alpha=.75,gamma=2)",
+  "initial_amp_scale": 1024,
+  "optimizer": "AdamW wd=.01; no clipping",
+  "schedule": "10 epoch warmup 1e-6 to peak, cosine to 1e-7; fixed 200 epoch budget",
+  "selection": "minimum validation segmentation loss, same criterion as historical baseline",
+  "norm": "Unchanged U-Net InstanceNorm (no affine/running stats); LayerNorm in added grid attention",
+  "manifest_sha256": "8255016ce917b483cda0dc3471b5e984f086b23184965082bff4cee44a632af3",
+  "source_hashes": {
+    "models/unet_grid3d.py": "b8b997d569f06bb88c8acf44c777735815ddc00cc4e75c0fa91bbe8542e94a25",
+    "models/unet3d.py": "9daf749c26514fde43759399cee65c4d94368c30fb839eb5d7e8950825370ff7",
+    "train/train_unet_grid_ddp.py": "1fa521dda13f449dd4ba6775635f8300c7f58828620dd1f51af1ae188f80e42c",
+    "train/dataset.py": "fcc6381d91f24e321928882e4207abe5906a39194a7d7712a2ba86ccb56cb98c",
+    "train/train_old_recipe.py": "8e8ba98b9301a78ba096ea08fbb39737f67cc21436b7cbbf6cfd4ad3ad5f8158"
+  },
+  "n_train": 800,
+  "n_val": 100,
+  "torch": "2.10.0+cu128",
+  "reference": "runs/maxvit3d_unet_l_ddp; paired control in same experiment root",
+  "data_source_sha256": "4caf323f71699d3195906146d8af908023d1ebf48f6070521a3d39a317105570"
+}

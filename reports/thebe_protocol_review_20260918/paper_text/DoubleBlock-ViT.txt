@@ -1,0 +1,928 @@
+                                                   Computer Methods and Programs in Biomedicine 274 (2026) 109165
+
+
+
+                                                                  Contents lists available at ScienceDirect
+
+
+                                         Computer Methods and Programs in Biomedicine
+                                  journal homepage: https://www.sciencedirect.com/journal/computer-methods-and-
+                                                                programs-in-biomedicine
+
+
+
+
+DoubleBlock-ViT: A MaxViT-based enhancement and dual-path skip
+connections for brain tumor segmentation in MRI scansI
+                                     ∗
+Thien B. Nguyen-Tat                   , Lap Quang Truong, Khanh Quoc Truong, Tai Huy Ngo
+University of Information Technology, Ho Chi Minh City, Vietnam
+Vietnam National University, Ho Chi Minh City, Vietnam
+
+
+
+ARTICLE               INFO                              ABSTRACT
+
+Keywords:                                               Background: Manual interpretation of brain tumor regions in MRI scans demands substantial medical
+Brain tumor segmentation                                expertise, is time-consuming, and is prone to human error, especially when radiologists must review large
+Double-Block Vision Transformer                         scan volumes, leading to fatigue and reduced diagnostic accuracy.
+MRI segmentation
+                                                        Objective: This study aims to propose a lightweight segmentation framework with strong global contex-
+Dual-Path Fusion block
+                                                        tual awareness, enabling accurate and efficient delineation of tumor regions for radiological analysis and
+                                                        downstream clinical applications.
+                                                        Methods: This study leverages multimodal MRI inputs (T1, T1Gd, T2, T2FLAIR) and introduces a novel
+                                                        hybrid 3D U-Net architecture that integrates Convolutional Neural Networks (CNNs) with Transformer-based
+                                                        modeling. The architecture incorporates a 3D DoubleBlock-ViT Transformer encoder to capture long-range
+                                                        dependencies and global context via attention mechanisms, while a Dual-Path Fusion Block with CNN-based
+                                                        skip connections preserves fine-grained spatial details and enhances feature transfer.
+                                                        Results: Evaluations on BraTS2020 and BraTS2021 benchmark datasets yield Dice scores of 80.11% (ET),
+                                                        86.60% (TC), and 91.20% (WT) on BraTS2020, and 87.82% (ET), 91.61% (TC), and 92.31% (WT) on
+                                                        BraTS2021, outperforming several state-of-the-art methods.
+                                                        Conclusions: The proposed model delivers state-of-the-art accuracy with only 7.8 million parameters and low
+                                                        computational demands, making it well-suited for clinical deployment and integration into radiomics pipelines
+                                                        for precision oncology. By leveraging multimodal MRI inputs and advanced feature extraction mechanisms,
+                                                        our approach directly aligns with current advances in AI-driven radiomics. The codes and trained models will
+                                                        be publicly available at https://github.com/Laptq201/DoubleBlock-ViT-Unet-segment.
+
+
+
+1. Introduction                                                                         challenging even for experienced radiologists. Due to their high risk,
+                                                                                        early detection and well-defined treatment planning significantly im-
+    Brain tumors are life-threatening conditions that can lead to rapid                 prove patient survival rates. However, interpreting MRI scans is a
+neurological deterioration and death if not diagnosed and treated                       time-consuming and cognitively demanding task that requires extensive
+promptly. Magnetic Resonance Imaging (MRI) is the most widely                           medical expertise. This highlights the need for automated systems that
+used technique for detecting brain tumors. MRI scans typically consist                  can assist radiologists in producing faster and more accurate diag-
+of four modalities: T1-weighted (T1), contrast-enhanced T1-weighted                     noses, ultimately improving clinical outcomes and increasing patients’
+(T1Gd), T2-weighted (T2) and T2 Fluid-Attenuated Inversion Recovery                     chances of survival.
+(T2FLAIR) are often combined with anatomical T1 images (see Fig. 1).                        In recent years, the development of intelligent models for automa-
+Tumors are generally categorized as benign or malignant: the former                     tion in medical imaging has advanced significantly, with numerous
+grow slowly with well-defined boundaries, whereas the latter prolif-                    models being proposed to tackle this problem [2,3]. Among these,
+erate aggressively and invade adjacent tissue [1]. Malignant tumors                     the U-Net architecture [4] remains one of the most prominent. U-Net
+often display heterogeneous textures, irregular shapes, and unclear                     follows an encoder–decoder design and is particularly effective at cap-
+boundaries on MRI scans, making accurate delineation particularly                       turing both local and global contexts through skip connections. Despite
+
+
+
+ I This article is part of a Special issue entitled: ‘AI RADIOMICS’ published in Computer Methods and Programs in Biomedicine.
+ ∗ Corresponding author at: Vietnam National University, Ho Chi Minh City, Vietnam.
+     E-mail addresses: thienntb@uit.edu.vn (T.B. Nguyen-Tat), 22520750@gm.uit.edu.vn (L.Q. Truong), 22520656@gm.uit.edu.vn (K.Q. Truong),
+tainh.18@grad.uit.edu.vn (T.H. Ngo).
+
+https://doi.org/10.1016/j.cmpb.2025.109165
+Received 9 August 2025; Received in revised form 21 October 2025; Accepted 11 November 2025
+Available online 17 November 2025
+0169-2607/© 2025 Elsevier B.V. All rights are reserved, including those for text and data mining, AI training, and similar technologies.
+T.B. Nguyen-Tat et al.                                                                             Computer Methods and Programs in Biomedicine 274 (2026) 109165
+
+
+
+
+Fig. 1. The four modalities of two samples from the training set. Green, green, and red indicate the tumor core, peritumoral edema, and enhancing tumor,
+respectively.
+
+
+its success, the traditional U-Net model still faces several limitations.            3D Medical Image Analysis, particularly using Magnetic Resonance
+For instance, excessive downsampling may result in the loss of spa-              Imaging (MRI) data, plays a central role in enhancing the accuracy
+tial information [5], which negatively impacts segmentation accuracy.            of clinical applications such as tumor segmentation, disease diagnosis,
+Consequently, various efforts have been made to enhance the original             and treatment planning. Compared to 2D images, 3D MRI offers richer
+U-Net architecture. These improvements can broadly be categorized                anatomical information and preserves spatial continuity across slices—
+into two groups: CNN-based approaches [6–8] and Transformer-based                an essential aspect when delineating tumor boundaries or complex
+approaches [9–12].                                                               pathological regions. However, efficiently processing 3D data remains
+    Convolutional Neural Networks (CNNs) have demonstrated remark-               a significant challenge due to its high computational demands, the
+able success in medical image segmentation by automatically learning             difficulty of simultaneously capturing both local and global features,
+hierarchical features through local convolutions. Several CNN-based              and the complexity of preserving spatial information across deep learn-
+models have been proposed for medical image segmentation. Notable                ing model layers. These limitations call for novel approaches capable
+examples include 3D U-Net [13], an extension of U-Net designed for               of balancing accuracy and computational efficiency, especially in the
+volumetric (3D) medical images; U-Net++ [14], which incorporates                 context of hardware-constrained clinical environments.
+nested and dense skip pathways to improve feature fusion; V-Net [15],                In recent years, hybrid architectures combining Convolutional Neu-
+which leverages residual blocks for deep supervision; and Attention U-           ral Networks (CNNs) and Transformers have emerged as a promising
+Net [16], which introduces attention gates into the classical U-Net to           direction [25]. These models leverage CNN’s strong ability to extract
+focus on salient regions. Owing to their ability to capture local spatial
+                                                                                 local features and the Transformer’s capability to model long-range
+context, CNN-based models perform effectively on relatively small
+                                                                                 dependencies. TransUNet [26] was among the pioneering works that
+medical datasets and benefit from lower computational cost and faster
+                                                                                 fused CNN-extracted features with Transformer-encoded representa-
+convergence. However, their reliance on fixed-size convolutional ker-
+                                                                                 tions to improve medical image segmentation performance. However,
+nels limits their receptive field, making it difficult to model long-range
+                                                                                 at the time, the computational overhead of Transformers posed lim-
+dependencies and global context [17].
+                                                                                 itations for deployment on standard hardware. To address this issue,
+    The Transformer architecture [18] revolutionized natural language
+                                                                                 Swin UNETR [27] employed a 3D Swin Transformer with a hierar-
+processing [19,20] through its powerful self-attention mechanism, and
+                                                                                 chical architecture and shifted windows, significantly reducing the
+has since been extended to computer vision [21,22]. One of the most
+                                                                                 complexity of self-attention while incorporating a CNN-based decoder
+prominent adaptations is the Vision Transformer (ViT) [23], which
+                                                                                 to improve boundary localization. Despite these advancements, Swin
+has demonstrated strong performance on numerous benchmarks and
+established itself as a state-of-the-art model. Unlike convolutional net-        UNETR still requires substantial GPU memory, making it less accessible
+works that are inherently limited to capturing local dependencies,               for resource-constrained systems. Meanwhile, CKD [28] integrated CNN
+ViT leverages global self-attention to model long-range interactions             layers into Transformer backbones to introduce inductive bias, thereby
+between image patches. This capability has catalyzed the adoption of             enhancing local feature learning in clinical applications. More recently,
+Transformer-based architectures in the medical imaging domain, par-              MaxViT-UNet [29] demonstrated the effectiveness of 2D Transformers
+ticularly for segmentation tasks. For instance, UNETR [24] integrates a          with multi-axis attention for efficiently capturing long-range depen-
+pure ViT encoder into a U-Net-like architecture for 3D medical image             dencies. However, its architecture is not optimized for 3D volumetric
+segmentation, representing the first such approach to exclude CNNs               data [30], which is critical for MRI-based analysis of brain tumors and
+entirely from the feature extraction process in volumetric data.                 other internal organs.
+    Despite their effectiveness, Transformer-based models still face sev-            In this study, we propose a novel model that extends into the 3D
+eral challenges. Most notably, they are computationally intensive –              domain to exploit spatial information across slices fully—an essential
+especially for 3D volumetric data – and require large-scale datasets             aspect in the analysis of volumetric medical data such as brain MRI.
+for optimal performance. While these models excel at modeling long-              Inspired by MaxViT-UNet [31], our proposed architecture incorporates
+range context, they often struggle to effectively capture fine-grained           DoubleBlock-ViT, a central contribution of our model specifically de-
+local features, particularly in scenarios with limited data, which is a          signed to overcome the limitations of previous approaches, particularly
+common constraint in medical imaging.                                            concerning computational cost and spatial information preservation.
+
+                                                                             2
+T.B. Nguyen-Tat et al.                                                                               Computer Methods and Programs in Biomedicine 274 (2026) 109165
+
+
+
+
+Fig. 2. Overview of the data processing pipeline for brain tumor segmentation. During the training phase (blue box), input MRI volumes and corresponding
+ground-truth labels undergo preprocessing followed by data augmentation to improve model generalization. The preprocessed and augmented data are then used
+to train the segmentation model. In the testing phase (green box), only the input MRI volumes are passed through the same preprocessing steps before being fed
+into the trained model for inference.
+
+    A key component that supports our architecture is the Dual-Path                    superior Dice and HD95 performance, demonstrating accuracy
+Fusion (DPF) block. This newly designed skip connection mechanism                      and generalization capability across brain MRI datasets.
+enhances the preservation and refinement of local features while com-                • Comprehensive evaluation and discussion: Extensive ablation
+plementing the global features extracted by the Transformer encoder.                   studies and error analyses validate each architectural compo-
+This mechanism improves boundary delineation and mitigates fea-                        nent and discuss the model’s strengths, limitations, and future
+ture degradation across network layers. Furthermore, we integrate                      potential in clinical segmentation tasks.
+the Project and Excite mechanism [32,33] into both the skip con-
+nections and the DoubleBlock-ViT [34] backbone. This enhancement                      The remainder of this paper is organized as follows. Section 2
+improves spatial feature retention and strengthens attention to clini-            describes the datasets used in this study, including BraTS2020 and
+cally relevant regions within the image. These innovations enable our             BraTS2021, along with the preprocessing and data augmentation strate-
+model to achieve state-of-the-art performance in 3D medical image seg-            gies applied to the multimodal MRI data. Section 3 details the proposed
+mentation, while substantially reducing computational demands, thus               DBViT-UNet architecture, including the novel DoubleBlock-ViT mod-
+facilitating deployment on standard clinical hardware. Collectively,              ule, the DPF skip-connection mechanism, and the integration of the
+these contributions offer significant potential for real-world clinical           Project-and-Excite attention module. Section 4 outlines the experimen-
+applications, including early disease detection and precise surgical              tal setup, covering implementation details, evaluation metrics, and
+planning. The main contributions of this study are summarized as                  comprehensive comparisons with state-of-the-art methods on bench-
+follows:                                                                          mark datasets. Section 5 discusses the results, presents insights from
+                                                                                  ablation studies and error analysis, and highlights the medical rele-
+    • Lightweight hybrid architecture: We propose DoubleBlock-ViT
+                                                                                  vance of accurate tumor segmentation. Finally, Section 6 concludes
+      UNet, a lightweight hybrid CNN–Transformer framework that
+                                                                                  the paper and outlines directions for future work, including potential
+      departs from MaxViT-based U-Nets by employing redesigned en-
+                                                                                  improvements in model scalability and applicability to other medical
+      coder blocks and attention-guided skip connections. The
+      DoubleBlock-ViT module integrates positional encoding, MBConv,              imaging tasks.
+      and blocked local attention to enhance both local–global feature
+      modeling, while lightweight bottleneck compression preserves                2. Materials
+      contextual richness with reduced computational cost.
+    • Novel dual-path fusion strategy: A new Dual-Path Fusion (DPF)               2.1. Dataset
+      module is proposed to refine encoder–decoder interactions via
+      attention-guided feature fusion and learnable information gating,               In this study, we utilize the BraTS (Brain Tumor Segmentation)
+      enabling more precise delineation of complex tumor boundaries.              dataset, a widely recognized and benchmark-standard resource in the
+    • Improved generalization and efficiency: The proposed archi-                 field of brain tumor segmentation on MRI scans. BraTS has been
+      tecture achieves effective global–local representation learning             extensively used for evaluating the performance of deep learning mod-
+      for 3D volumetric data with significantly reduced parameters                els [35,36] due to its high-quality annotations curated by medical
+      (7.8M) and computational costs, facilitating practical scalability          experts and the diversity of tumor presentations it offers. We employ
+      and showing potential for clinical integration. Extensive exper-            both the BraTS2020 and BraTS2021 datasets for model training and
+      iments on BraTS2020 and BraTS2021 further demonstrate its                   evaluation. BraTS2020 comprises 369 fully annotated patient cases,
+
+                                                                              3
+T.B. Nguyen-Tat et al.                                                                              Computer Methods and Programs in Biomedicine 274 (2026) 109165
+
+
+
+
+                                                 Fig. 3. Some slices of brain tumors from the BraTS2021.
+
+
+
+
+                                  Fig. 4. Comparison of original and preprocessed MRI modalities (T1, T1CE, T2, FLAIR).
+
+
+making it suitable for training and benchmarking against previous                of 1 mm3 , and (3) skull-stripped to remove non-brain tissues. The orig-
+studies. In contrast, BraTS2021 contains 1251 3D MRI scans with                  inal dimensions of each MRI volume and corresponding segmentation
+greater heterogeneity in tumor size, malignancy grade, and histolog-             mask are 155 × 240 × 240, comprising four imaging modalities: T1-
+ical features, thereby enhancing the generalizability of segmentation            weighted (T1), T1-weighted with gadolinium contrast enhancement
+models (see Table 1). Each MRI volume has a fixed dimension of                   (T1Gd), T2-weighted (T2), and T2 Fluid-Attenuated Inversion Recovery
+240 × 240 × 155 voxels with an isotropic resolution of 1 mm3 , acquired          (FLAIR).
+using 3D MRI scanners across four imaging modalities: T1-weighted                    To further prepare the data for training the DBViT-Unet model,
+(T1), T1-weighted with gadolinium contrast enhancement (T1Gd), T2-               we applied additional preprocessing steps aimed at optimizing com-
+weighted (T2), and T2 Fluid-Attenuated Inversion Recovery (FLAIR).               putational efficiency and improving model generalization. The results
+All images have been preprocessed to remove non-brain tissues (skull-
+                                                                                 before and after preprocessing are illustrated in Fig. 4, and the full data
+stripped) and co-registered to the anatomical T1 space (Some example
+                                                                                 preprocessing and augmentation pipeline is summarized in Fig. 2. The
+brain tumor slices from the BraTS2021 dataset are provided in Fig. 3).
+                                                                                 preprocessing procedure includes:
+The dataset provides pixel-level annotations with four semantic labels:
+background (label 0), necrotic and non-enhancing tumor core (label
+                                                                                     • Cropping: MRI volumes were cropped to remove background
+1), peritumoral edema (label 2), and gadolinium-enhancing tumor
+                                                                                       voxels with zero intensity, reducing the spatial size to 128 ×
+(label 4). Following the BraTS challenge guidelines, these labels are
+                                                                                       128 × 128 and focusing the model’s attention on the tumor
+aggregated into three clinically relevant subregions for segmentation
+                                                                                       region. This was achieved using a bounding box tightly enclos-
+evaluation: (1) Enhancing Tumor (ET), (2) Tumor Core (TC, comprising
+                                                                                       ing the tumor to preserve all relevant structures while reducing
+the necrotic core and enhancing tumor), and (3) Whole Tumor (WT,
+encompassing TC and the edema region). The BraTS2021 dataset is                        computational cost.
+divided into 834 training, 208 validation, and 209 test cases, ensuring              • Intensity normalization: Given that MRI intensities are not stan-
+a representative distribution of tumor subtypes across all subsets.                    dardized across patients or scanners, we applied modality-wise
+                                                                                       intensity normalization using the MONAI library. This step re-
+2.2. Preprocessing                                                                     duces variability between scans and modalities, facilitating more
+                                                                                       robust feature learning.
+   The BraTS2020 and BraTS2021 datasets used in this study have                      • Modality integration: The four modalities (T1, T1Gd, T2, and
+undergone standardized preprocessing steps as provided by the chal-                    FLAIR) were stacked to form a multi-channel tensor of shape (1,
+lenge organizers. Specifically, all MRI scans were: (1) co-registered to a             4, 128, 128, 128), providing rich multi-modal information for the
+common anatomical template, (2) resampled to an isotropic resolution                   model.
+
+                                                                             4
+T.B. Nguyen-Tat et al.                                                                             Computer Methods and Programs in Biomedicine 274 (2026) 109165
+
+
+To enhance model generalization, we also applied a series of data                   In particular, the PE-MBConv component in DB-ViT is adapted
+augmentation techniques using MONAI, including:                                 to function as a Conditional Positional Encoding (CPE) mechanism,
+                                                                                thereby eliminating the need for explicit positional encoding layers.
+    • RandCrop: Random cropping of sub-volumes from the full image              This is achieved by utilizing depth-wise convolutions within the MB-
+      to enable the model to learn features from various tumor regions          Conv block to encode location-sensitive features implicitly, allowing
+      and surrounding contexts.                                                 the model to better capture the 3D spatial dependencies inherent in
+    • RandFlipd: Random flipping along the axial, sagittal, and coronal         MRI data without introducing additional learnable parameters.
+      planes, each with a 50% probability, introducing invariance to                The MBConv block is an efficient convolutional architecture orig-
+      spatial orientation.                                                      inally introduced in MobileNetV2 [38], and later adopted in MaxViT
+    • Intensity transformations: Random perturbations in intensity scale        to complement attention mechanisms. In our framework, the MBConv
+      and shift were applied within a small range to simulate real-             block is adapted for 3D medical imaging data (MRI) by incorporating
+      world variations in MRI signal characteristics and improve model          3D convolutional layers, normalization, nonlinear activation functions,
+      robustness.                                                               and replacing the traditional SE mechanism with the more spatially-
+                                                                                aware PE module. The primary objectives of the modified MBConv
+Although visual inspection indicates that preprocessing results in the          block are to capture localized feature representations effectively and
+loss of some readily identifiable features, the primary objective of this       to enhance spatial context modeling across 3D volumetric inputs. To
+stage is to optimize the input data for machine learning model training;        achieve this, we leverage the 3D Project-and-Excite module, which
+removing certain visual information does not necessarily degrade data           is based on the hypothesis that significant volumetric inputs con-
+quality; instead, it can enhance model learning by directing attention          tain rich and spatially correlated information that may be lost with
+to the most relevant features. Experiments with various preprocess-             global pooling operations. Instead of collapsing spatial dimensions,
+ing methods showed that the current approach performs best for the              the PE module preserves valuable spatial features by applying spatial
+proposed model architecture.                                                    projection operations.
+                                                                                    Specifically, the input tensor is first projected along each of its spa-
+3. Methods                                                                      tial dimensions individually using an average pooling, effectively cap-
+                                                                                turing directional spatial statistics. These projections are then passed
+3.1. Proposed methods                                                           through two 3D convolutional layers with a kernel size 1 × 1 × 1.
+                                                                                The first convolution reduces the number of channels by a factor of
+    The proposed architecture, illustrated in Fig. 5, presents an en-           𝑟, followed by ReLU activation to introduce nonlinearity. The second
+hanced 3D brain tumor segmentation model that integrates a Double-              convolution restores the channel dimension to its original size, followed
+Block Attention mechanism with Project-and-Excite and Mobile Con-               by a sigmoid activation to generate attention weights.
+volution (PE-MBConv) modules. This design enables the concurrent                    This operation can be formally expressed as:
+extraction of both global and local contextual features, thereby ad-
+dressing the challenges associated with accurately segmenting complex           𝑃 𝐸(𝑋) = 𝜎(𝑊 2 ⋅ 𝛿(𝑊 1 ⋅ 𝑃 𝑟𝑜𝑗(𝑋))) ⋅ 𝑋                                      (1)
+tumor subregions in the BraTS dataset. Inspired by recent advances              where 𝑃 𝑟𝑜𝑗(𝑋) denotes the spatial projections, 𝑊1 and 𝑊2 are the
+in medical image segmentation, the proposed model employs a 3D U-               learned 1 × 1 × 1 convolutions for channel reduction and expansion, 𝛿
+Net structure as its backbone while introducing a novel skip-connection         is the ReLU activation, and 𝜎 is the sigmoid function. By integrating
+mechanism incorporating a learnable forget gate. This gate facilitates          this mechanism, the 3D MBConv block enhances the model’s ability
+effective filtering and preservation of essential features between the          to capture intricate spatial dependencies in brain MRI data, which
+encoder and decoder, ensuring more efficient information transmission           is essential for accurate tumor boundary delineation and subregion
+across the network.                                                             differentiation.
+    The network is designed to exploit multi-level feature representa-              For the 3D brain tumor segmentation task on the BraTS dataset,
+tions comprehensively, thereby enhancing its capacity to distinguish            we replace the traditional SE module with Project and Excite (PE),
+between tumor components. By jointly capturing global contextual                a more suitable attention mechanism designed to exploit valuable
+information and fine-grained structural details, the model achieves             spatial information in significant 3D volumetric inputs. Unlike SE,
+improved segmentation accuracy, particularly in delineating the bound-          which focuses primarily on channel-wise recalibration, PE performs
+aries and spatial configurations of tumor subregions–Enhancing Tu-              spatial projections that enhance the model’s ability to capture inter-
+mor (ET), Tumor Core (TC), and Whole Tumor (WT)–within 3D MRI                   slice relationships and provide a global receptive field at each stage of
+volumes.                                                                        the network. This design choice is particularly critical for volumetric
+    The overall architecture comprises three primary components: (1)            data such as BraTS, where spatial correlations between different tumor
+a 3D U-Net backbone (Fig. 5); (2) a ViT-3D module integrating PE-               subregions play a key role in accurate segmentation.
+MBConv and localized attention blocks (highlighted in red in Fig. 5);               This modification significantly improves segmentation performance
+and (3) a novel skip-connection mechanism with an embedded forget               over the original MaxViT architecture, especially in delineating tumor
+gate (Fig. 7c). Collectively, these components yield a more expressive          boundaries and capturing complex spatial structures. Moreover, the
+and robust segmentation model capable of effectively capturing the              use of depth-wise convolutions within PE-MBConv preserves the core
+heterogeneous morphology of brain tumors in volumetric MRI data.                functionality of MBConv as a form of conditional positional encoding,
+                                                                                while tuning the convolutional kernel sizes allows for more effective
+3.2. Dual Block-ViT                                                             extraction of local 3D features.
+                                                                                    To optimize tumor segmentation on 3D MRI data from the BraTS
+    The MaxViT block is a hybrid architecture that combines multi-              dataset, we replace the Grid Attention mechanism in MaxViT with a
+axis self-attention (MaxSA) with convolutional operations, specifically         Block Attention strategy in our proposed Dual Block-ViT (DB-ViT) ar-
+integrating an MBConv block equipped with Squeeze-and-Excitation                chitecture, inspired by the Swin Transformer [39]. The Block Attention
+(SE) [37] attention, initially designed for 2D image data. However, to          mechanism focuses on extracting local features within non-overlapping
+better address the unique challenges of brain tumor segmentation in 3D          3D blocks, thereby enhancing training stability and improving the
+MRI data, we propose DoubleBlock-ViT (DB-ViT), a refined version of             model’s ability to capture fine-grained spatial details such as tumor
+MaxViT that introduces modifications to both the PE-MBConv structure            boundaries across the Enhancing Tumor (ET), Tumor Core (TC), and
+and the underlying attention mechanism.                                         Whole Tumor (WT) regions.
+
+                                                                            5
+T.B. Nguyen-Tat et al.                                                                                   Computer Methods and Programs in Biomedicine 274 (2026) 109165
+
+
+
+
+Fig. 5. The overall architecture of the proposed DoubleBlock-ViT Unet variant. Unlike the standard U-Net, the encoder blocks are replaced with the DoubleBlock-
+ViT module, which integrates positional encoding (PE), Mobile Convolution (MBConv), feed-forward networks (FFNs), and blocked local attention to enhance local
+and global feature modeling. The skip connections are further refined through an attention-based mechanism (shown in Fig. 7), incorporating sigmoid activation
+and dot-product interaction to modulate contextual relevance. The bottleneck is compressed using lightweight convolutional operations (2 × (1 × 1 × 1) Conv layers
+with GELU activation), reducing computational overhead while preserving essential information for decoding.
+
+
+
+
+                                                        Fig. 6. Illustration of the Project & Excite block.
+
+
+    In combination with Multi-Head Self-Attention (MHSA) and shifted                 3.3. Dual-path fusion block
+windows, the Block Attention module also facilitates the modeling of
+long-range dependencies across the volume. Specifically, given an input                  In the UNet architecture, skip connections play a crucial role in
+feature map 𝑋 of shape (𝐵, 𝐶, 𝐻, 𝑊 , 𝐷), the feature space is partitioned            transmitting information between layers [40], helping to preserve im-
+into non-overlapping 3D windows (blocks), reshaped into a tensor of                  portant features and mitigate information loss through deeper network
+size ( 𝐻
+       𝑃
+         ×𝑊𝑃
+              ×𝐷𝑃
+                  , 𝑃 × 𝑃 × 𝑃 , 𝐶), where 𝑃 denotes the window size. The             layers. For medical image segmentation, especially with the BraTS
+total number of windows is 𝑁 = 𝐻     𝑃
+                                       ×𝑊
+                                        𝑃
+                                           ×𝐷
+                                            𝑃
+                                              , and each window captures             dataset, capturing diverse tumor characteristics – such as structure,
+a local region of size (𝑃 × 𝑃 × 𝑃 ).                                                 size, and shape of regions like Enhancing Tumor (ET), Tumor Core
+    Each block is independently processed by standard Multi-Head Self-               (TC), and Whole Tumor (WT) – is essential. However, conventional
+Attention (MHSA) layers to learn intra-window contextual represen-                   skip connection strategies often rely on simple operations such as
+tations. The outputs are then passed through a Feedforward Network                   feature summation or concatenation, which may fail to exploit the rich
+(FFN) before being reshaped to the original feature map dimensions                   contextual representations available fully.
+(𝐵, 𝐶, 𝐻, 𝑊 , 𝐷). This block-wise attention mechanism enables efficient                  This limitation is particularly pronounced in the medical domain,
+local feature encoding while preserving computational tractability. The              where the variability in anatomical structures necessitates more ef-
+whole process is visualized in Fig. 6.                                               fective feature transmission. Compared with Attention U-Net [16],
+
+                                                                                 6
+T.B. Nguyen-Tat et al.                                                                                  Computer Methods and Programs in Biomedicine 274 (2026) 109165
+
+
+
+
+Fig. 7. Architecture of DPF module, incorporating feature extraction, which extracts features through the dot-product interaction between sigmoid-activated
+representations and the injected skip connection information, followed by positional encoding (PE) and attention-guided refinement to improve contextual
+information fusion.
+
+
+
+
+which applies a unidirectional attention gate to filter encoder features         retained information. Subsequently, each branch undergoes an infor-
+based on decoder signals, the proposed DPF mechanism performs par-               mation filtering mechanism, where the feature map from one branch
+allel refinement of encoder and decoder representations before fusion.           is element-wise multiplied by the sigmoid activation of the other.
+Unlike Gated Skip Connections [41], which employ static gating to sup-           This sigmoid function acts as an information gate, selectively filtering
+press irrelevant activations, DPF enables dynamic and context-aware              and emphasizing the most relevant features from the complementary
+interaction between the two feature streams through coupled softmax–             branch.
+sigmoid gating. DPF selectively calibrates encoder and decoder features          𝑋̂ ′ = 𝑋̂ 2 ⋅ 𝑋2 + 𝑋2
+                                                                                   2
+before adaptive fusion by establishing two parallel refinement paths,
+enhancing semantic–spatial consistency and promoting the complemen-              𝑋̂ 1′ = 𝑋̂ 1 ⋅ 𝑋̃ 1 + 𝑋̃ 1                                                       (4)
+tarity between high-level semantics and low-level spatial cues. This             𝑍𝑖 = 𝑋̂ ′ ⋅ 𝜎(𝑋̂ ′ ), 𝑖 ∈ {1, 2}
+                                                                                         𝑖        3−𝑖
+results in more coherent feature integration and improved delineation
+                                                                                 After filtering, the two branches are summed and passed through
+of heterogeneous tumor regions.
+                                                                                 a point-wise convolution followed by a sigmoid activation, further
+    In the first stage, features from the lower decoder layer, denoted
+                                                                                 enhancing the salient features. The output of this stage is then element-
+as 𝑋1 , are first upsampled, passed through a convolutional layer, and
+                                                                                 wise multiplied with the original skip connection features, before pass-
+then normalized using Group Normalization, resulting in 𝑋̃ 1 . Simulta-
+                                                                                 ing through the Project-and-Excite (PE) module and an additional
+neously, the corresponding encoder feature map 𝑋2 is processed using
+                                                                                 sigmoid function. Finally, the resulting output is multiplied by the
+a depth-wise convolution, producing 𝑋̃ 2 . Next, both 𝑋̃ 1 and 𝑋̃ 2 are
+                                                                                 features from the lower decoder layer to produce the final refined
+used to compute independent attention maps by identifying prominent
+                                                                                 output.
+feature patterns across channels. These maps are then aggregated to
+enhance informative signals and suppress redundant ones.                           𝑍 = 𝜎(PWConv(𝑍1 + 𝑍2 )) ⋅ 𝑋2
+    This entire process is referred to as feature fusion, and can be               𝑍 = PE(PWConv(𝑍))
+formally described as follows:                                                                                                                                    (5)
+                                                                                  𝑍 = 𝜎(𝑍)
+ 𝑋̃1 = GN(Conv(Upsample(𝑋1 )))
+                                                                                 Out = 𝑍 ⋅ 𝑋̃ 1
+ 𝑋̃2 = DWC(𝑋2 )                                                        (2)
+𝐴𝑡𝑡𝑖 = 𝑎𝑚𝑎𝑥(𝑋̃ 𝑖 , 𝑑𝑖𝑚 = 1), 𝑖 ∈ {1, 2}                                          3.4. Loss function
+    After the fusion stage, the intermediate output 𝑂𝑢𝑡1 is passed
+through a convolutional layer to generate refined feature maps, fol-                 Dice Loss [42] is widely employed in medical image segmentation
+lowed by a softmax activation. The resulting output is then split into           tasks to measure the overlap between model predictions and ground
+two components, 𝑋̂1 and 𝑋̂2 , which are subsequently used in the                 truth labels. It is particularly well-suited for the BraTS dataset, where
+information exchange process.                                                    accurate delineation of tumor subregions such as Enhancing Tumor
+  𝑂𝑢𝑡1 = 𝐶𝑜𝑛𝑣2 (𝐴𝑡𝑡1 + 𝐴𝑡𝑡2 )                                                    (ET), Tumor Core (TC), and Whole Tumor (WT) is essential. However,
+                                                                       (3)       to further improve voxel-wise classification performance and better
+𝑋̂1 , 𝑋̂2 = 𝑆𝑜𝑓 𝑚𝑎𝑥(𝑂𝑢𝑡1 )                                                       address the issue of class imbalance inherent in 3D MRI data, we
+The outputs from each branch are then added to the original features             adopt a composite loss function that combines Dice Loss with Cross-
+to form a residual combination of newly extracted and previously                 Entropy Loss rather than relying solely on Dice Loss as in prior works.
+
+                                                                             7
+T.B. Nguyen-Tat et al.                                                                                   Computer Methods and Programs in Biomedicine 274 (2026) 109165
+
+
+Table 1                                                                                worst-case discrepancies while reducing sensitivity to outliers. It is
+Information on the BraTS2020 and BraTS2021 datasets used in the experi-                defined as:
+ments.                                                                                                   {                              }
+ Dataset         #Images        #Validation   #Test   #Labels   Size                   HD95(𝐴, 𝐵) = max sup inf 𝑑(𝑎, 𝑏), sup inf 𝑑(𝑎, 𝑏)                (10)
+                                                                                                            𝑎∈𝐴 𝑏∈𝐵         𝑏∈𝐵 𝑎∈𝐴
+ BraTS2020       369            74            125     4         240 × 240 × 155
+ BraTS2021       1251           219           530     4         240 × 240 × 155        In this equation, 𝐴 and 𝐵 represent the boundary point sets of the
+                                                                                       ground truth and predicted segmentations, respectively, and 𝑑(𝑎, 𝑏)
+                                                                                       denotes the Euclidean distance between points 𝑎 and 𝑏. By using the
+                                                                                       95th percentile, HD95 provides a robust estimate of boundary accuracy,
+This hybrid loss formulation allows the proposed 3D DoubleBlock-UNet                   especially for complex tumor subregions such as TC and WT.
+model to simultaneously optimize segmentation accuracy and classifi-
+cation confidence, especially in the presence of small tumor regions                   4.3. Results
+like ET. The combination leverages the overlap-sensitive nature of Dice
+Loss while benefiting from the probabilistic modeling and penalization                     To demonstrate the effectiveness of the proposed model, we com-
+characteristics of Cross-Entropy, resulting in more robust and balanced                pare its performance on the BraTS2020 and BraTS2021 datasets against
+training outcomes.                                                                     several state-of-the-art methods, including DynUNet (ranked first in the
+                              ∑                                                        BraTS2021 challenge), CKD-TransBTS, and Swin UNetr. The results are
+                  ∑          2 𝑁      𝑐 𝑐
+                                 𝑖=1 𝑦𝑖 𝑦̂𝑖 + 𝜖
+dice (𝑦, 𝑦)
+          ̂ =1−       ∑𝑁 𝑐 2 ∑𝑁 𝑐 2                                 (6)                summarized in Tables 2 and 3, with evaluation based on three tumor
+                 𝑐∈𝛺𝑐   𝑖=1 (𝑦𝑖 ) +     𝑖=1 (𝑦̂𝑖 ) + 𝜖                                 subregions: enhancing tumor (ET), tumor core (TC), and whole tumor
+                 ∑ ∑
+                   𝑁                                                                   (WT). These metrics reflect the model’s ability to accurately segment
+CE (𝑦, 𝑦)
+        ̂ =−               𝑦𝑐𝑖 log 𝑦̂𝑖 𝑐                                     (7)       clinically relevant tumor regions from multi-modal MRI scans.
+                𝑐∈𝛺𝑐 𝑖=1                                                                   Based on the results on the BraTS2020 dataset presented in Table 2,
+In this formulation, 𝛺𝑐 denotes the set of all voxels belonging to class               the proposed model demonstrates a notable performance improvement
+𝑐, while 𝑦𝑐𝑖 and 𝑦̂𝑐𝑖 represent the ground truth and predicted values                  in the Tumor Core (TC) Dice score compared to baseline methods such
+for voxel 𝑖, respectively. The total number of voxels is given by 𝑁 =                  as Swin Unetr and TransBTS, along with consistent gains in the Whole
+𝐻 × 𝑊 × 𝐷, and a small constant 𝜖 = 1 × 10−5 is added to avoid division                Tumor (WT) region. More specifically, when considering the average
+                                                                                       Dice score, our model surpasses Swin Unetr and CKD-TransBTS–two
+by zero. The final loss function used to optimize the model combines
+                                                                                       state-of-the-art models that have previously shown strong performance
+(6) and (7) with a weighting factor 𝛼 as follows:
+                                                                                       on this dataset–by approximately 1.61% and 2.24%, respectively. Fur-
+(𝑦, 𝑦)
+     ̂ = 𝛼 × 𝐷𝑖𝑐𝑒 + (1 − 𝛼) × 𝐶𝐸                                           (8)       thermore, compared to DynUNet, our method achieves better results
+                                                                                       across all three tumor subregions (ET, TC, WT), leading to an overall
+We treat the coefficient 𝛼 as a hyperparameter that controls the relative              Dice improvement of 1.01%. Fig. 8 illustrates the superior performance
+contribution of each loss component. Based on empirical evaluation,                    of the proposed method compared to several state-of-the-art (SOTA)
+we determined that setting 𝛼 = 0.7 yields the best segmentation                        approaches on the BraTS2020 dataset. Qualitative examples from sev-
+performance.                                                                           eral representative cases are presented in Fig. 9. Regarding the 95th
+                                                                                       percentile Hausdorff Distance (HD95), our model consistently ranks
+4. Experimental results                                                                among the top two across all subregions. In particular, the WT segmen-
+                                                                                       tation yields substantially lower HD95 values than other approaches,
+4.1. Implementation details                                                            with margins ranging from 4.51 mm to 0.54 mm. Although the average
+                                                                                       HD95 score of 5.75 mm is slightly higher than that of DynUnet, it still
+                                                                                       indicates robust boundary accuracy.
+    We implement the proposed DoubleBlock-UNet along with its com-
+                                                                                           Compared to CKD-TransBTS–used here to assess the influence of
+bined variants, including the baseline model. All models are trained
+                                                                                       architectural design–our model shows comparable results in the ET
+from scratch for 200 epochs using NVIDIA Tesla P100 GPUs. We adopt
+                                                                                       region, but a significant improvement in the WT region, achieving
+a hybrid loss function that combines the Soft Dice and Cross-Entropy
+                                                                                       90.69% compared to 87.48% from the baseline model.
+losses. The models are optimized using the AdamW optimizer with a
+                                                                                           DynUNet is one of the most widely adopted architectures in medical
+1 × 10−5 weight decay and an initial learning rate set to 3 × 10−4 .
+                                                                                       image segmentation and has been developed by the healthcare AI
+                                                                                       platform MONAI. It has demonstrated both high accuracy and strong
+4.2. Metrics                                                                           potential for real-world clinical deployment, and notably ranked first
+                                                                                       in the BraTS2021 segmentation challenge. When compared with our
+    To evaluate the performance of the proposed DBViT-UNet 3D model                    proposed model under identical experimental conditions, DynUNet
+on the brain tumor segmentation task using the BraTS dataset, we adopt                 exhibits lower performance in the Tumor Core (TC) and Whole Tumor
+two widely used evaluation metrics: the Dice Similarity Coefficient                    (WT) regions, with our model achieving improvements of 2.04% and
+(Dice Score [42]) and the 95th percentile Hausdorff Distance (HD95).                   1.52% in TC and WT Dice scores, respectively (Table 3 and Fig. 13).
+These metrics are computed for three tumor subregions–Enhancing                        This performance trend is also consistent across most of the other
+Tumor (ET), Tumor Core (TC), and Whole Tumor (WT)–to assess both                       benchmarked models, further underscoring the effectiveness of the pro-
+spatial overlap and boundary accuracy between the predicted segmen-                    posed architecture. As depicted in Fig. 10, the proposed model produces
+tation and the ground truth. The Dice Score measures the degree of                     more accurate and spatially consistent delineations across challenging
+overlap between the predicted segmentation and the ground truth, and                   tumor regions. Furthermore, Fig. 11 illustrates the superior quantitative
+is formally defined as:                                                                performance of our method compared to several state-of-the-art (SOTA)
+                                                                                       approaches on the BraTS2021 dataset.
+                2|𝑃 ∩ 𝐺|
+DiceScore =                                                                  (9)           Furthermore, it is worth highlighting that all the compared mod-
+                |𝑃 | + |𝐺|                                                             els consist of over 20 million parameters, while our proposed model
+where 𝑃 and 𝐺 denote the predicted and ground-truth voxel sets,                        maintains its competitive performance with only 7.8 million parame-
+respectively, a higher Dice score indicates better spatial alignment.                  ters. This demonstrates the efficiency and scalability of our approach
+The Hausdorff Distance at the 95th percentile (HD95) quantifies the                    in achieving state-of-the-art results with significantly reduced model
+boundary error between prediction and ground truth, focusing on the                    complexity.
+
+                                                                                   8
+T.B. Nguyen-Tat et al.                                                                                  Computer Methods and Programs in Biomedicine 274 (2026) 109165
+
+
+                             Table 2
+                             Quantitative comparison of our method with state-of-the-art (SOTA) models on the
+                             BraTS2020 dataset. Performance is evaluated using Dice score and HD95 across three tumor
+                             subregions: enhancing tumor (ET), tumor core (TC), and whole tumor (WT). Red and blue values
+                             highlight the best and second-best scores, respectively.
+                              Model                 Dice                                         HD95
+                                                    ET        TC       WT           AVG          ET       TC       WT        AVG
+                              DynUnet [43]          78.17     85.44    90.05        84.55        5.22     5.45     5.82      5.49
+                              TransUnet [26]        78.4      78.4     89.5         82.1         12.9     12.8     6.0       10.6
+                              TransBTS [44]         78.7      81.7     90.1         83.5         18.0     9.8      5.0       10.9
+                              Swin Unetr [27]       78.53     83.51    89.80        83.95        4.08     8.43     7.22      6.57
+                              CKD-TransBTS [28]     78.72     83.77    87.48        83.32        5.24     5.84     9.79      7.96
+                              Ours                  79.80     86.19    90.69        85.56        4.71     6.76     5.78      5.75
+                              Ours w/TTA            80.11     86.6     91.2         85.97        3.51     4.83     4.67      4.34
+
+
+                             Table 3
+                             Quantitative comparison of our method with state-of-the-art (SOTA) models on the
+                             BraTS2021 dataset. The following table presents a comparison between our method and several
+                             state-of-the-art (SOTA) approaches. All comparison results are reported based on the authors’s
+                             original implementations and experiments conducted on the BraTS2021 dataset. Red and blue
+                             values highlight the best and second-best scores, respectively.
+                              Model                Dice                                     HD95
+                                                   ET        TC       WT          AVG       ET          TC        WT        AVG
+                              DynUnet [43]         85.62     89.28    90.65       88.52     2.85        3.79      5.28      3.97
+                              TransUnet [26]       81.82     87.72    91.91       87.15     13.09       7.34      6.16      8.86
+                              TransBTS [44]        81.81     85.00    87.95       84.94     16.79       11.14     12.78     13.57
+                              MEASegNet [45]       84.16     87.49    92.50       88.05     14.40       7.96      4.18      8.85
+                              E1 D3 U-Net [46]     85.6      89.8     92.5        89.3      3.44        4.21      5.28      4.31
+                              Swin Unetr [27]      86.17     89.58    90.92       88.89     3.03        4.08      4.22      3.78
+                              CKD-TransBTS [28]    84.62     87.69    89.78       87.36     3.48        5.06      5.74      4.76
+                              Ours                 87.29     91.32    92.17       90.26     2.483       3.046     4.063     3.197
+                              Ours w/TTA           87.82     91.61    92.31       90.58     2.717       3.240     3.982     3.313
+
+
+
+
+Fig. 8. The proposed method demonstrates superior performance compared to several state-of-the-art (SOTA) approaches when evaluated on the BraTS2020
+dataset.
+
+5. Discussion                                                                     We conducted a series of experiments to evaluate each component
+                                                                                  individually and in combination, using the BraTS2020 dataset. All
+5.1. The ablation study                                                           models were assessed on identical validation sets to ensure fair and
+                                                                                  consistent comparisons.
+5.1.1. Components comparision                                                        Effect of DB-ViT: As shown in Tables 4 and 5, integrating the
+   Our proposed model integrates three main components: the baseline              DB-ViT module leads to a substantial improvement in segmentation
+model (3D UNet), the DoubleBlock Vision Transformer (DB-ViT), and a               performance. For the BraTS2020 dataset, the Dice scores increased
+skip connection mechanism based on convolutional feature extraction.              notably for ET (↑2.51%), TC (↑4.55%), and WT (↑1.58%), resulting
+
+                                                                              9
+T.B. Nguyen-Tat et al.                                                                                       Computer Methods and Programs in Biomedicine 274 (2026) 109165
+
+
+
+
+                            Fig. 9. Segmentation results vs. ground truth for the best case on BraTS2020. PE (green), ET (red), TC (yellow).
+
+
+                         Table 4
+                         Ablation study of different model configurations based on the U-Net backbone. The table compares segmentation
+                         performance when progressively integrating the proposed components: DB-ViT modules (DoubleBlock Vision Transformer
+                         in the encoder), DPF modules (Dual Path Fusion in skip connections), and their combination. Improvements over the
+                         baseline U-Net are in parentheses, with red, blue, and green indicating the top-3 gains, respectively.
+                                         base           DB-ViT         DPF              ET             TC              WT               Avg
+                                         Unet           modules        modules          (%)            (%)             (%)              (%)
+                          (1)            ✓                                              77.1 ± 2.9     80.5 ± 0.8      89.1 ± 1.4       82.23
+                          (2)            ✓              ✓                               79.61 ± 1.44   85.05 ± 0.78    90.68 ± 0.47     85.11 ± 5.53
+                                                                                        (↑2.51)        (↑4.55)         (↑1.58)          (↑2.78)
+                          (3)            ✓                             ✓                78.28 ± 0.94   84.04 ± 0.61    90.16 ± 0.83     84.16 ± 4.58
+                                                                                        (↑1.18)        (↑3.54)         (↑1.06)          (↑1.83)
+                          (4)            ✓              ✓              ✓                79.55 ± 0.87   85.78 ± 0.74    91.09 ± 0.08     𝟖𝟓.𝟒𝟕 ± 𝟓.𝟕𝟖
+                                                                                        (↑2.45)        (↑5.28)         (↑1.99)          (↑3.14)
+
+
+                         Table 5
+                         Ablation study of different model configurations based on the U-Net backbone. The table compares segmentation
+                         performance when progressively integrating the proposed components: DB-ViT modules (DoubleBlock Vision Transformer
+                         in the encoder), DPF modules (Dual Path Fusion in skip connections), and their combination on BraTS2021. Improvements
+                         over the baseline U-Net are in parentheses, with red, blue, and green indicating the top-3 gains, respectively.
+                                         base           DB-ViT         DPF              ET             TC              WT               Avg
+                                         Unet           modules        modules          (%)            (%)             (%)              (%)
+                          (1)            ✓                                              85.78          89.13           91.29            88.73
+                          (2)            ✓              ✓                               85.83 ± 1.48   90.01 ± 0.8     90.95 ± 0.77     88.93 ± 2.73
+                                                                                        (↑0.05)        (↑0.88)         (↓0.34)          (↑0.2)
+                          (3)            ✓                             ✓                86.32 ± 1.13   90.33 ± 0.79    91.22 ± 0.64     89.29 ± 2.61
+                                                                                        (↑0.54)        (↑1.2)          (↓0.07)          (↑0.56)
+                          (4)            ✓              ✓              ✓                87.92 ± 0.2    91.63 ± 0.18    92.35 ± 0.17     90.64 ± 2.38
+                                                                                        (↑2.14)        (↑2.5)          (↑1.06)          (↑1.91)
+
+
+
+in an average Dice gain of 2.78%. On the BraTS2021 dataset, DB-ViT                      average increase of 0.20%. The minor drop in WT may stem from its
+yields consistent improvements in ET (↑0.05%) and TC (↑0.88%), while                    larger and less complex structure, where global attention contributes
+the WT score shows a slight decrease (↓0.34%), leading to an overall                    less significantly compared to ET and TC subregions.
+
+                                                                                   10
+T.B. Nguyen-Tat et al.                                                                              Computer Methods and Programs in Biomedicine 274 (2026) 109165
+
+
+
+
+Fig. 10. Visual comparison between the predicted segmentation and ground truth on the BraTS2021 dataset, shown for the best-performing case. Green represents
+peritumoral edema (PE), red indicates enhancing tumor (ET), and yellow highlights the tumor core (TC).
+
+
+
+
+Fig. 11. The proposed method demonstrates superior performance compared to several state-of-the-art (SOTA) approaches when evaluated on the BraTS2021
+dataset.
+
+
+                                                                             11
+T.B. Nguyen-Tat et al.                                                                               Computer Methods and Programs in Biomedicine 274 (2026) 109165
+
+
+
+
+Fig. 12. 3D visualization of tumor subregions in well-segmented cases by the proposed DBViT-UNet model on the BraTS 2021 dataset. Ours denotes the predicted
+segmentation; GT indicates the ground truth. WT: whole tumor; PE: peritumoral edema; ET: enhancing tumor; TC: tumor core.
+
+
+    Effect of the Extracting Skip Connection: Augmenting the 3D
+UNet with the proposed skip connection mechanism also yields con-                 Table 6
+sistent performance improvements across all tumor subregions. On                  Ablation study on different configurations of MaxViT block allocation
+the BraTS2020 dataset, Dice scores for ET, TC, and WT increase by                 across the encoder stages of the U-Net. Each configuration (e.g., 1-1-2)
+1.18%, 3.54%, and 1.06%, respectively, resulting in an average Dice               indicates the number of DB-ViT blocks used at each stage on BraTS2021.
+                                                                                  The configuration 1-1-2 achieves the best overall performance, indicating the
+improvement of 1.83%. Moreover, this component shows complemen-
+                                                                                  benefit of deeper attention modeling in middle layers.
+tary benefits when compared to DB-ViT. Specifically, the Dice score
+                                                                                   Models    MaxViT config    Dice                         HD95
+for the TC label increased by an additional 0.72% over the DB-ViT
+version. On the BraTS2021 dataset, the skip connection leads to similar                                       ET        TC        WT       ET       TC       WT
+
+improvements, with ET (↑0.54%), TC (↑1.20%), and a stable WT per-                  (1)       1-1-1            86.34     91.00     91.81    2.93     3.80     5.09
+formance (↓0.07%), giving an overall average Dice increase of 0.56%.               (2)       1-1-2            87.82     91.61     92.31    2.48     3.05     4.06
+                                                                                   (3)       1-2-3            86.98     90.11     91.36    2.60     3.75     4.63
+The skip connection enhances the model’s ability to facilitate long-
+range spatial interactions and integrates multimodal features more
+effectively, contributing to improved tumor reconstruction and segmen-
+tation fidelity.                                                                  1.06%, respectively, compared to the baseline 3D U-Net. These results
+    Our method: The combination of DB-ViT and the novel skip con-                 further validate the robustness and generalizability of the proposed
+nection mechanism significantly improves segmentation performance                 method across different data distributions, demonstrating its ability
+across all tumor subregions, as illustrated in Table 4. Compared to using         to maintain superior performance in both inter- and intra-subregion
+each component individually, the integrated model yields higher Dice              segmentation.
+scores for ET, TC, and WT, resulting in an overall average Dice score
+of 85.96%. This synergy suggests that DB-ViT and the skip connection
+capture complementary aspects of tumor morphology. The observed                   5.1.2. Effect of DB-ViT block configuration on model performance
+performance degradation when either component is removed highlights                   During our experiments, we observed that the optimal number of
+their mutual importance. Together, they enhance feature representa-               MaxViT blocks varied between the BraTS2020 and BraTS2021 datasets.
+tion and improve the model’s ability to discriminate complex tumor                Specifically, the model achieved its best performance on the BraTS2020
+structures, thereby confirming the effectiveness of our architecture in           dataset with a MaxViT block configuration of 1-2-3 in the encoder,
+advancing brain tumor segmentation. On the BraTS2021 dataset (in                  whereas the optimal configuration for BraTS2021 was 1-2-2. This dis-
+Table 5), a similar trend is observed. The integration of DB-ViT and              crepancy may stem from differences in morphological structures, data
+the skip connection again leads to consistent improvements across all             distributions, and image complexity between the two datasets. Al-
+tumor regions, achieving an average Dice score of 90.64%. In particu-             though BraTS2021 includes more cases with indistinct tumor bound-
+lar, the Dice scores for ET, TC, and WT increase by 2.14%, 2.50%, and             aries and poses greater segmentation challenges, it also offers a larger
+
+                                                                             12
+T.B. Nguyen-Tat et al.                                                                                  Computer Methods and Programs in Biomedicine 274 (2026) 109165
+
+
+
+
+                                Fig. 13. Performance comparison between our model and other state-of-the-art approaches.
+
+
+volume of data compared to BraTS2020. This increased data vol-                        When applied to the proposed architecture, our experimental results
+ume may allow the model to achieve comparable or even superior                    indicate that TTA significantly improves model performance. As shown
+performance with fewer MaxViT blocks, as shown in Table 6.                        in Tables 2 and 3, TTA increases overall performance by approximately
+    Furthermore, we conducted additional experiments to determine the             0.5%. Specifically, the improvements for individual labels are as fol-
+optimal number of MaxViT blocks for the BraTS2021 dataset, with the               lows: on BraTS2020, ET +0.31%, TC +0.41%, and WT +0.51%; and on
+results presented in Table 6. These results indicate that increasing the          BraTS2021, ET +0.53%, TC +0.29%, and WT +0.14%.
+number of MaxViT blocks in layers 2 and 3 can improve segmentation                    These results demonstrate that TTA is an effective and suitable
+performance. However, excessive stacking leads to diminishing returns,            complementary technique in the context of multimodal biomedical
+causing significant performance fluctuations during training and reduc-           image segmentation models such as the one proposed in this study.
+ing overall training efficiency—particularly in the context of limited
+medical imaging data. Moreover, adding more MaxViT blocks increases
+                                                                                  5.2. Error analysis
+the computational cost of the model, necessitating a careful balance
+between performance and efficiency.
+    These findings underscore the importance of tailoring model archi-                We present imperfect segmentation results in Fig. 14, which high-
+tectures to the specific characteristics of each dataset and demonstrate          light the challenges of brain tumor segmentation, particularly in high-
+the flexibility of the proposed architecture in adapting to varying levels        grade malignancies such as glioblastoma, where lesion boundaries
+of input data complexity.                                                         are often indistinct. Radiologists typically diagnose brain tumors by
+                                                                                  analyzing four MRI modalities (T1, T1c, T2, T2FLAIR), relying on
+5.1.3. The effect of test time augmentation                                       image gradient variations within a single modality and differences
+   Test-Time Augmentation (TTA) has been shown to be an effective                 across modalities to delineate tumor boundaries. However, our models,
+technique for improving model performance, particularly when train-               including the baseline 3D U-Net and the proposed 3D DB-ViT U-Net,
+ing data is limited [47], TTA not only enhances accuracy but also                 often fail to match the precision of experienced radiologists in such
+contributes to improving model stability during inference.                        complex cases.
+
+                                                                             13
+T.B. Nguyen-Tat et al.                                                                                Computer Methods and Programs in Biomedicine 274 (2026) 109165
+
+
+
+
+Fig. 14. Both figures illustrate some of the worst-case predictions made by our model. The figure on the left shows results from BraTS2020, while the one on the
+right is from BraTS2021. The first four grayscale images represent the input channels used for prediction–T1, T1c, T2, and FLAIR–displayed from left to right.
+The remaining two images show the Ground Truth and our model’s prediction, respectively.
+
+
+
+
+    For example, the third row on the left in Fig. 14 shows under-                  not been tested in prospective clinical workflows due to restricted
+segmentation of the necrotic region (red) due to atypical image                     access to hospital data. Future work will focus on collaboration with
+appearance—specifically, a surprisingly high signal in the T2FLAIR                  clinical partners to validate the model in real-world clinical settings
+modality, where a low signal is typically expected due to the presence              and enhance its robustness to variations in MRI quality and acquisition
+of free water in necrotic tissue. Such discrepancies may mislead the                conditions.
+model, especially when differences between modality pairs T1, T1Gd
+and T2, T2FLAIR are ambiguous or not clearly observable. Similarly, in              5.3. Medical implications
+the fourth case on the right of Fig. 14 (from the 2021 dataset), a false
+positive occurs: the model incorrectly segments a necrotic region (red)                 Accurate brain tumor segmentation plays an vital role in supporting
+instead of the tumor core (green), despite the absence of any apparent              clinical decision-making, as it provides essential information about
+signal abnormalities in the T2 modality. Interestingly, a subtle intensity          the tumor’s size, location, and morphological charactiristics. In our
+variation in T1Gd may have misled the model, further demonstrating                  experiments, the proposed DB-ViT U-Net achived an average Dice score
+its sensitivity to minor contextual cues.                                           of 85.97% on the BraTS 2020 dataset and 90.58% on BraTS 2021,
+    As illustrated in Fig. 14, both models struggle to segment small or             outperforming the original 3D U-Net. These improvements demonstrate
+complex tumor components – such as enhancing tumor regions and                      the model’s potential to enhance accuracy and consistency in automatic
+tumor cores – resulting in errors in location, size, and shape. These               tumor segmentation.
+inaccuracies can compromise diagnostic confidence and affect treat-                     Tumors develop progressively through multiple stages. Therefore,
+ment planning. Such limitations stem from several factors: insufficient             accurate tumor segmentation plays a crucial role in assisting clin-
+or unrepresentative training data, which restricts the model’s ability to           icians with monitoring disease progression and formulating timely,
+generalize across diverse tumor appearances; the inherent complexity                stage-specific treatment strategies for individual patients. By precisely
+and heterogeneity of brain tumors; and the model’s reliance on high-                identifying the tumor’s location and morphology, clinicians can min-
+quality input, where image noise or blurring can significantly impair               imize damage to surrounding healthy tissues, thereby increasing the
+segmentation performance.                                                           success rate of surgical interventions.
+    Among the evaluated models, the 3D DB-ViT U-Net demonstrates                        Moreover, in both radiotherapy and chemotherapy, the precise
+superior performance, with enhanced boundary delineation and more                   delineation of tumor regions and surrounding brain structures is essen-
+comprehensive tumor structure representation compared to the base-                  tial. It enables targeted treatment delivery while minimizing radiation
+line 3D U-Net, as shown in the rightmost columns of Fig. 14. Never-                 or drug exposure to healthy tissues, thereby improving therapeutic
+theless, challenges remain in accurately segmenting small structures                effectiveness and reducing adverse side effects.
+near tissue boundaries. This underscores the need for higher-quality                    Additionally, since tumor characteristics vary substantially among
+and more diverse training datasets, as well as robust preprocessing tech-           patients, clinicians often spend considerable time developing personal-
+niques, to further improve segmentation performance and reliability.                ized treatment plans and prognoses. This process can be time-
+    Although the model achieved promising Dice scores, its perfor-                  consuming and labor-intensive. Implementing an automated model
+mance remains limited in cases that deviate significantly from the                  capable of accurate tumor segmentation can substantially streamline
+training distribution or involve small tumor subregions. These errors of-           this workflow, improving both the quality and efficiency of clinical
+ten occur in regions with low contrast or ambiguous tumor boundaries,               decision-making.
+where the model struggles to maintain consistent predictions. While                     In summary, accurate tumor segmentation enhances diagnostic pre-
+the current evaluation provides insight into the model’s generalization             cision, alleviates the workload of medical professionals, and contributes
+capability across BraTS datasets, external validation on independent                to more effective treatment outcomes and improved quality of life for
+clinical datasets has not yet been conducted. The model has also                    patients.
+
+                                                                               14
+T.B. Nguyen-Tat et al.                                                                                Computer Methods and Programs in Biomedicine 274 (2026) 109165
+
+
+6. Conclusion                                                                    References
+
+    In this study, we proposed a novel model for brain tumor segmen-              [1] R. Rizwanullah, H. Patel, R. Irfan, W. Khan, H. Razzaq, S. Naeem, K. Vasudevan,
+                                                                                      S. Khan, K. Ali, H. Chand, Comprehensive insights into brain tumors: Clinical
+tation using multimodal MRI data by integrating concepts from Vision
+                                                                                      presentation, diagnosis, and management, J. Popul. Ther. Clin. Pharmacol.
+Transformers into the U-Net architecture, aiming to enhance segmen-                   (2024) http://dx.doi.org/10.53555/bn1n2w42.
+tation performance. Specifically, the newly designed skip connections             [2] L. Pinto-Coelho, How artificial intelligence is shaping medical imaging technol-
+called Dual-Path Fusion block better exploit and preserve local features,             ogy: A survey of innovations and applications, Bioengineering 10 (12) (2023)
+thereby improving the accuracy of segmenting small regions such as                    http://dx.doi.org/10.3390/bioengineering10121435.
+                                                                                  [3] T.B. Nguyen-Tat, T.Q. Hung, P.T. Nam, V.M. Ngo, Evaluating pre-processing and
+the tumor core. Additionally, the proposed Double Block Attention
+                                                                                      deep learning methods in medical imaging: Combined effectiveness across mul-
+mechanism addresses limitations of MaxViT related to underfitting in                  tiple modalities, 2025, http://dx.doi.org/10.1016/j.aej.2025.01.090, Alexandria
+attention blocks, while effectively capturing geometric features and                  Engineering Journal, Vol. 119, pp. 558–586, URL: https://www.sciencedirect.
+long-range dependencies inherent in brain MRI data. As a result, the                  com/science/article/pii/S1110016825001176.
+model demonstrates a comprehensive understanding of tumor structure               [4] O. Ronneberger, P. Fischer, T. Brox, U-Net: Convolutional networks for biomed-
+                                                                                      ical image segmentation, in: N. Navab, J. Hornegger, W.M. Wells, A.F. Frangi
+– including boundaries, location, shape, and size – and outperforms
+                                                                                      (Eds.), Medical Image Computing and Computer-Assisted Intervention – MICCAI
+several state-of-the-art methods. It achieved Dice scores of 80.11%                   2015, Springer International Publishing, Cham, 2015, pp. 234–241, http://dx.
+(ET), 86.6% (TC), and 91.2% (WT) on the BraTS2020 dataset, and                        doi.org/10.1007/978-3-319-24574-4_28.
+87.82%, 91.61%, and 92.31% on the BraTS2021 dataset.                              [5] C. Tao, D. Gu, R. Huang, L. Zhou, Z. Hu, Y. Chen, X. Zhang, H. Li, Hippocampus
+    From a clinical perspective, accurate and consistent brain tumor                  segmentation after brain tumor resection via postoperative region synthesis, BMC
+                                                                                      Med. Imaging 23 (1) (2023) 142, http://dx.doi.org/10.1186/s12880-023-01087-
+segmentation is essential for surgical planning and treatment moni-
+                                                                                      2.
+toring. The improved segmentation performance of the DB-ViT U-Net                 [6] J.M.J. Valanarasu, V.A. Sindagi, I. Hacihaliloglu, V.M. Patel, KiU-Net: Over-
+highlights its potential to assist radiologists by providing reliable de-             complete convolutional architectures for biomedical image and volumetric
+lineations of tumor regions, particularly in complex MRI cases or those               segmentation, IEEE Trans. Med. Imaging 41 (4) (2022) 965–976, http://dx.doi.
+with low contrast.                                                                    org/10.1109/TMI.2021.3130469.
+                                                                                  [7] Y. Chang, Z. Zheng, Y. Sun, M. Zhao, Y. Lu, Y. Zhang, DPAFNet: A residual
+    Although the current architecture has produced promising results,
+                                                                                      dual-path attention-fusion convolutional neural network for multimodal brain
+we plan to improve and extend the model in several directions. First,                 tumor segmentation, Biomed. Signal Process. Control. 79 (2023) 104037, http:
+while the proposed DPF mechanism has proven effective in preserving                   //dx.doi.org/10.1016/j.bspc.2022.104037, URL: https://www.sciencedirect.com/
+local features, we aim to further enhance it by integrating additional                science/article/pii/S1746809422005146.
+attention modules or gating mechanisms to better control informa-                 [8] H.T. Nguyen, T.T. Le, T.V. Nguyen, N.T. Nguyen, Enhancing MRI brain tumor
+                                                                                      segmentation with an additional classification network, in: A. Crimi, S. Bakas
+tion flow between the encoder and decoder. Second, incorporating
+                                                                                      (Eds.), Brainlesion: Glioma, Multiple Sclerosis, Stroke and Traumatic Brain
+advanced positional encoding techniques or global context modules                     Injuries, Springer International Publishing, Cham, 2021, pp. 503–513, http:
+into the Double Block ViT could further improve the model’s ability to                //dx.doi.org/10.1007/978-3-030-72084-1_45.
+capture global spatial information. Moreover, since Transformer-based             [9] S. Pan, X. Liu, N. Xie, Y.-W. Chong, EG-TransUNet: a transformer-based U-net
+architectures generally entail high computational costs – especially on               with enhanced and guided models for biomedical image segmentation, BMC
+                                                                                      Bioinformatics 24 (2023) http://dx.doi.org/10.1186/s12859-023-05196-1.
+large datasets – optimizing memory usage and computational efficiency
+                                                                                 [10] G. Xu, X. Zhang, X. He, X. Wu, LeViT-UNet: Make faster encoders with
+for deployment on resource-constrained devices will be a key focus of                 transformer for medical image segmentation, in: Q. Liu, H. Wang, Z. Ma,
+our future work. Finally, to enhance the model’s clinical applicability,              W. Zheng, H. Zha, X. Chen, L. Wang, R. Ji (Eds.), Pattern Recognition and
+we plan to evaluate it on other biomedical image segmentation tasks,                  Computer Vision, Springer Nature Singapore, Singapore, 2024, pp. 42–53, http:
+such as liver segmentation using the LiTS dataset [48] and skin lesion                //dx.doi.org/10.1007/978-981-99-8543-2_4.
+                                                                                 [11] X. Yan, H. Tang, S. Sun, H. Ma, D. Kong, X. Xie, AFTer-UNet: Axial fusion trans-
+segmentation using the ISIC dataset [49].
+                                                                                      former unet for medical image segmentation, in: Proceedings of the IEEE/CVF
+                                                                                      Winter Conference on Applications of Computer Vision, WACV, IEEE Computer
+CRediT authorship contribution statement                                              Society, Los Alamitos, CA, USA, 2022, pp. 3270–3280, http://dx.doi.org/10.
+                                                                                      1109/WACV51458.2022.00333.
+   Thien B. Nguyen-Tat: Writing – review & editing, Visualization,               [12] T. Shen, H. Xu, Medical image segmentation based on transformer and HarD-
+                                                                                      Net structures, 2023, http://dx.doi.org/10.1109/ACCESS.2023.3244197, IEEE
+Supervision, Methodology, Conceptualization. Lap Quang Truong:
+                                                                                      Access, Vol. 11, pp. 16621–16630, URL: https://doi.org/10.1109/ACCESS.2023.
+Writing – original draft, Visualization, Methodology, Software. Khanh                 3244197.
+Quoc Truong: Writing – original draft, Visualization, Methodology,               [13] P. Agrawal, N. Katal, N. Hooda, Segmentation and classification of brain tumor
+Software. Tai Huy Ngo: Writing – review & editing, Visualization.                     using 3D-UNet deep neural networks, Int. J. Cogn. Comput. Eng. 3 (2022)
+                                                                                      199–210, http://dx.doi.org/10.1016/j.ijcce.2022.11.001.
+                                                                                 [14] Z. Zhou, M.M. Rahman Siddiquee, N. Tajbakhsh, J. Liang, Unet++: A nested
+Ethics approval
+                                                                                      U-net architecture for medical image segmentation, in: D. Stoyanov, Z. Taylor,
+                                                                                      G. Carneiro, T. Syeda-Mahmood, A. Martel, L. Maier-Hein, J.a.M.R. Tavares,
+    It is not applicable. The study does not include any medical tests,               A. Bradley, J.a.P. Papa, V. Belagiannis, J.C. Nascimento, Z. Lu, S. Conjeti,
+treatments, or interventions.                                                         M. Moradi, H. Greenspan, A. Madabhushi (Eds.), Deep Learning in Medical
+                                                                                      Image Analysis and Multimodal Learning for Clinical Decision Support, Springer
+Declaration of competing interest                                                     International Publishing, Cham, 2018, pp. 3–11, http://dx.doi.org/10.1007/978-
+                                                                                      3-030-00889-5_1.
+                                                                                 [15] F. Milletari, N. Navab, S.-A. Ahmadi, V-Net: Fully convolutional neural networks
+    The authors have declared no conflict of interest.                                for volumetric medical image segmentation, in: 2016 Fourth International
+                                                                                      Conference on 3D Vision, 3DV, 2016, pp. 565–571, http://dx.doi.org/10.1109/
+Acknowledgments                                                                       3DV.2016.79.
+                                                                                 [16] O. Oktay, J. Schlemper, L.L. Folgoc, M. Lee, M. Heinrich, K. Misawa, K. Mori, S.
+                                                                                      McDonagh, N.Y. Hammerla, B. Kainz, B. Glocker, D. Rueckert, Attention U-net:
+  This research was supported by The VNUHCM-University of Infor-
+                                                                                      Learning where to look for the pancreas, 2018, arXiv:1804.03999.
+mation Technology’s Scientific Research Support Fund.                            [17] P. Gu, Y. Zhang, C. Wang, D.Z. Chen, ConvFormer: Combining CNN and
+                                                                                      transformer for medical image segmentation, 2022, arXiv:2211.08564.
+Data availability                                                                [18] A. Vaswani, N. Shazeer, N. Parmar, J. Uszkoreit, L. Jones, A.N. Gomez,
+                                                                                      L.u. Kaiser, I. Polosukhin, Attention is all you need, in: I. Guyon, U.V.
+                                                                                      Luxburg, S. Bengio, H. Wallach, R. Fergus, S. Vishwanathan, R. Garnett (Eds.),
+   The corresponding author can provide the datasets and codes gener-
+                                                                                      Advances in Neural Information Processing Systems, vol. 30, Curran Asso-
+ated and/or analyzed during the current work upon reasonable request.                 ciates, Inc., 2017, URL: https://proceedings.neurips.cc/paper_files/paper/2017/
+                                                                                      file/3f5ee243547dee91fbd053c1c4a845aa-Paper.pdf.
+
+
+                                                                            15
+T.B. Nguyen-Tat et al.                                                                                              Computer Methods and Programs in Biomedicine 274 (2026) 109165
+
+
+[19] J. Lin, R. Nogueira, A. Yates, Pretrained Transformers for Text Ranking: BERT            [35] S. Bakas, H. Akbari, A. Sotiras, M. Bilello, M. Rozycki, J.S. Kirby, J.B. Freymann,
+     and Beyond, in: Synthesis Lectures on Human Language Technologies, Springer                   K. Farahani, C. Davatzikos, Advancing the cancer genome atlas glioma MRI
+     Cham, 2022, http://dx.doi.org/10.1007/978-3-031-02181-7.                                      collections with expert segmentation labels and radiomic features, 2017, http:
+[20] S. Islam, H. Elmekki, A. Elsebai, J. Bentahar, N. Drawel, G. Rjoub, W. Pedrycz,               //dx.doi.org/10.1038/sdata.2017.117, Scientific Data, Volume 4, Article number:
+     A comprehensive survey on applications of transformers for deep learning tasks,               170117, URL: https://www.nature.com/articles/sdata2017117.
+     Expert Syst. Appl. 241 (2024) 122666, http://dx.doi.org/10.1016/j.eswa.2023.             [36] B.H. Menze, A. Jakab, S. Bauer, J. Kalpathy-Cramer, K. Farahani, J.K. et al., The
+     122666.                                                                                       multimodal brain tumor image segmentation benchmark (BRATS), 2015, http://
+[21] Z. Chen, L. Xie, J. Niu, X. Liu, L. Wei, Q. Tian, Visformer: The vision-friendly              dx.doi.org/10.1109/TMI.2014.2377694, IEEE Transactions on Medical Imaging,
+     transformer, in: Proceedings of the IEEE/CVF International Conference on Com-                 Vol. 34, No. 10, pp. 1993–2024.
+     puter Vision, ICCV, 2021, pp. 569–578, http://dx.doi.org/10.1109/ICCV48922.              [37] J. Hu, L. Shen, G. Sun, Squeeze-and-excitation networks, in: 2018 IEEE/CVF
+     2021.00063.                                                                                   Conference on Computer Vision and Pattern Recognition, CVPR, IEEE, Salt Lake
+[22] W. Wang, E. Xie, X. Li, D.-P. Fan, K. Song, D. Liang, T. Lu, P. Luo, L. Shao, PVT             City, UT, USA, 2018, pp. 7132–7141, http://dx.doi.org/10.1109/CVPR.2018.
+     v2: Improved baselines with pyramid vision transformer, Comput. Vis. Media 8                  00745.
+     (3) (2022) 415–424, http://dx.doi.org/10.1007/s41095-022-0274-8.                         [38] M. Sandler, A. Howard, M. Zhu, A. Zhmoginov, L.-C. Chen, MobileNetV2:
+[23] A. Dosovitskiy, L. Beyer, A. Kolesnikov, D. Weissenborn, X. Zhai, T. Unterthiner,             Inverted residuals and linear bottlenecks, in: 2018 IEEE/CVF Conference on
+     M. Dehghani, M. Minderer, G. Heigold, S. Gelly, J. Uszkoreit, N. Houlsby, An                  Computer Vision and Pattern Recognition, CVPR, IEEE, Salt Lake City, UT, USA,
+     image is worth 16x16 words: Transformers for image recognition at scale, 2021,                2018, pp. 4510–4520, http://dx.doi.org/10.1109/CVPR.2018.00474.
+     arXiv:2010.11929.                                                                        [39] Z. Liu, Y. Lin, Y. Cao, H. Hu, Y. Wei, Z. Zhang, S. Lin, B. Guo, Swin transformer:
+[24] A. Hatamizadeh, Y. Tang, V. Nath, D. Yang, A. Myronenko, B. Landman, H.R.                     Hierarchical vision transformer using shifted windows, in: 2021 IEEE/CVF
+     Roth, D. Xu, UNETR: Transformers for 3D medical image segmentation, in:                       International Conference on Computer Vision, ICCV, IEEE, Montreal, QC, Canada,
+     Proceedings of the IEEE/CVF Winter Conference on Applications of Computer                     2021, pp. 9992–10002, http://dx.doi.org/10.1109/ICCV48922.2021.00986.
+     Vision, WACV, 2022, pp. 574–584.                                                         [40] G. Xu, X. Wang, X. Wu, X. Leng, Y. Xu, Development of residual learning in
+[25] T.B. Nguyen-Tat, T.-Q.T. Nguyen, H.-N. Nguyen, V.M. Ngo, Enhancing brain                      deep neural networks for computer vision: A survey, Eng. Appl. Artif. Intell. 142
+     tumor segmentation in MRI images: A hybrid approach using UNet, attention                     (2025) 109890, http://dx.doi.org/10.1016/j.engappai.2024.109890.
+     mechanisms, and transformers, Egypt. Inform. J. 27 (2024) 100528, http://dx.             [41] J. Schlemper, O. Oktay, M. Schaap, M. Heinrich, B. Kainz, B. Glocker, D.
+     doi.org/10.1016/j.eij.2024.100528.                                                            Rueckert, Attention gated networks: Learning to leverage salient regions in
+[26] J. Chen, J. Mei, X. Li, Y. Lu, Q. Yu, Q. Wei, X. Luo, Y. Xie, E. Adeli, Y. Wang,              medical images, Med. Image Anal. 53 (2019) 197–207, http://dx.doi.org/10.
+     M.P. Lungren, S. Zhang, L. Xing, L. Lu, A. Yuille, Y. Zhou, TransUNet: Rethinking             1016/j.media.2019.01.012, URL: https://www.sciencedirect.com/science/article/
+     the U-net architecture design for medical image segmentation through the lens of              pii/S1361841518306133.
+     transformers, Med. Image Anal. 97 (2024) 103280, http://dx.doi.org/10.1016/j.            [42] L.R. Dice, Measures of the amount of ecologic association between species, 1945,
+     media.2024.103280.                                                                            Ecology, Vol. 26, No. 3, pp. 297–302. Published by Wiley and Ecological Society
+[27] A. Hatamizadeh, V. Nath, Y. Tang, D. Yang, H.R. Roth, D. Xu, Swin UNETR:                      of America, URL: http://www.jstor.org/stable/1932409.
+     Swin transformers for semantic segmentation of brain tumors in MRI images, in:           [43] M. Futrega, A. Milesi, M. Marcinkiewicz, P. Ribalta, Optimized U-net for brain
+     A. Crimi, S. Bakas (Eds.), Brainlesion: Glioma, Multiple Sclerosis, Stroke and                tumor segmentation, in: A. Crimi, S. Bakas (Eds.), Brainlesion: Glioma, Multiple
+     Traumatic Brain Injuries, Springer International Publishing, Cham, 2022, pp.                  Sclerosis, Stroke and Traumatic Brain Injuries, Springer International Publishing,
+     272–284, http://dx.doi.org/10.1007/978-3-031-08999-2_22.                                      Cham, 2022, pp. 15–29.
+[28] J. Lin, J. Lin, C. Lu, H. Chen, H. Lin, B. Zhao, Z. Shi, B. Qiu, X. Pan,                 [44] W. Wang, C. Chen, M. Ding, H. Yu, S. Zha, J. Li, TransBTS: Multimodal brain
+     Z. Xu, B. Huang, C. Liang, G. Han, Z. Liu, C. Han, CKD-TransBTS: Clinical                     tumor segmentation using transformer, in: M. de Bruijne, P.C. Cattin, S. Cotin,
+     knowledge-driven hybrid transformer with modality-correlated cross-attention for              N. Padoy, S. Speidel, Y. Zheng, C. Essert (Eds.), Medical Image Computing
+     brain tumor segmentation, IEEE Trans. Med. Imaging 42 (8) (2023) 2451–2461,                   and Computer Assisted Intervention – MICCAI 2021, Springer International
+     http://dx.doi.org/10.1109/TMI.2023.3250474.                                                   Publishing, Cham, 2021, pp. 109–119.
+[29] A.R. Khan, A. Khan, Multi-axis vision transformer for medical image segmenta-            [45] R. Zhang, P. Yang, C. Hu, B. Guo, MEASegNet: 3D U-net with multiple efficient
+     tion, Eng. Appl. Artif. Intell. 158 (2025) 111251, http://dx.doi.org/10.1016/j.               attention for segmentation of brain tumor images, Appl. Sci. 15 (7) (2025) http://
+     engappai.2025.111251.                                                                         dx.doi.org/10.3390/app15073791, URL: https://www.mdpi.com/2076-3417/15/
+[30] H. Peiris, M. Hayat, Z. Chen, G. Egan, M. Harandi, A robust volumetric                        7/3791.
+     transformer for accurate 3D tumor segmentation, in: L. Wang, Q. Dou, P.T.                [46] S.T. Bukhari, H. Mohy-ud Din, E1d3 U-net for brain tumor segmentation:
+     Fletcher, S. Speidel, S. Li (Eds.), Medical Image Computing and Computer                      Submission to the RSNA-asnr-MICCAI brats 2021 challenge, in: A. Crimi, S.
+     Assisted Intervention – MICCAI 2022, Springer Nature Switzerland, Cham, 2022,                 Bakas (Eds.), Brainlesion: Glioma, Multiple Sclerosis, Stroke and Traumatic Brain
+     pp. 162–172, http://dx.doi.org/10.1007/978-3-031-16443-9_16.                                  Injuries, Springer International Publishing, Cham, 2022, pp. 276–288.
+[31] T.B. Nguyen-Tat, H.-A. Vo, P.-S. Dang, QMaxViT-unet+: A query-based MaxViT-              [47] M. Kimura, Understanding test-time augmentation, in: T. Mantoro, M. Lee, M.A.
+     unet with edge enhancement for scribble-supervised segmentation of medical                    Ayu, K.W. Wong, A.N. Hidayanto (Eds.), Neural Information Processing, Springer
+     images, 2025, http://dx.doi.org/10.1016/j.compbiomed.2025.109762, Comput-                     International Publishing, Cham, 2021, pp. 558–569.
+     ers in Biology and Medicine, Vol. 187, Article 109762, URL: http://dx.doi.org/           [48] D. Jha, N.K. Tomar, K. Biswas, G. Durak, A. Medetalibeyoglu, M. Antalek, Y.
+     10.1016/j.compbiomed.2025.109762.                                                             Velichko, D. Ladner, A. Borhani, U. Bagci, CT Liver Segmentation Via PVT-Based
+[32] A.-M. Rickmann, A.G. Roy, I. Sarasua, N. Navab, C. Wachinger, Project & excite                Encoding and Refined Decoding, in: Proceedings of the 2024 IEEE International
+     modules for segmentation of volumetric medical scans, in: D. Shen, T. Liu,                    Symposium on Biomedical Imaging, ISBI, 2024, pp. 1–5, http://dx.doi.org/10.
+     T.M. Peters, L.H. Staib, C. Essert, S. Zhou, P.-T. Yap, A. Khan (Eds.), Medical               1109/ISBI56570.2024.10635659.
+     Image Computing and Computer Assisted Intervention – MICCAI 2019, Springer               [49] G. Hille, S. Agrawal, P. Tummala, C. Wybranski, M. Pech, A. Surov, S. Saalfeld,
+     International Publishing, Cham, 2019, pp. 39–47, http://dx.doi.org/10.1007/                   Joint liver and hepatic lesion segmentation in MRI using a hybrid cnn with trans-
+     978-3-030-32245-8_5.                                                                          former layers, 2023, http://dx.doi.org/10.1016/j.cmpb.2023.107647, Published
+[33] A.-M. Rickmann, A. Guha Roy, I. Sarasua, C. Wachinger, Recalibrating 3D                       in *Computer Methods and Programs in Biomedicine*, Volume 240, 107647,
+     ConvNets with project & excite, IEEE Trans. Med. Imaging 39 (7) (2020)                        URL: https://www.sciencedirect.com/science/article/pii/S0169260723003127.
+     2461–2471, http://dx.doi.org/10.1109/tmi.2020.2972059.
+[34] Z. Tu, H. Talebi, H. Zhang, F. Yang, P. Milanfar, A. Bovik, Y. Li, MaxViT: Multi-
+     axis vision transformer, in: S. Avidan, G. Brostow, M. Cissé, G.M. Farinella, T.
+     Hassner (Eds.), Computer Vision – ECCV 2022, Springer Nature Switzerland,
+     Cham, 2022, pp. 459–479, http://dx.doi.org/10.1007/978-3-031-20053-3_27.
+
+
+
+
+                                                                                         16
+

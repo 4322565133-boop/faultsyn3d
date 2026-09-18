@@ -1,0 +1,129 @@
+{
+  "status": "planned_not_implemented_or_trained",
+  "frozen_evaluation": {
+    "data": "thebe_spatial_v3",
+    "train": [
+      0,
+      868
+    ],
+    "val": [
+      900,
+      1068
+    ],
+    "test": [
+      1100,
+      1803
+    ],
+    "input": 128,
+    "scored_core": 64,
+    "threshold": 0.5,
+    "checkpoint_selection": "full_val_iou",
+    "full_every": 1,
+    "test_used_for_tuning": false
+  },
+  "diagnostic_implementation": {
+    "script": "train/diagnose_thebe_spatial.py",
+    "split": "val_only",
+    "cpu_metric_unit_check": "PASS",
+    "gpu_full_run": "not_run"
+  },
+  "screening": {
+    "epochs": 60,
+    "schedule_epochs": 100,
+    "samples_per_epoch": 2400,
+    "global_batch": 8,
+    "seed": 2026,
+    "compare_baseline_up_to_epoch": 60
+  },
+  "final": {
+    "epochs": 100,
+    "samples_per_epoch": 2400,
+    "global_batch": 8,
+    "seeds": [
+      2026,
+      2027,
+      2028
+    ]
+  },
+  "candidates": [
+    {
+      "id": "S1",
+      "change": "sampler only",
+      "uniform_fraction": 0.5,
+      "foreground_fraction": 0.5,
+      "foreground_min_core_fraction": 0.005,
+      "label_source": "train_only",
+      "loss": "unchanged L0"
+    },
+    {
+      "id": "L1",
+      "change": "Dice reduction only",
+      "requires": "S1 validated",
+      "dice_foreground_patches_only": true,
+      "focal_background_retained": true,
+      "ddp_global_reduction_required": true
+    },
+    {
+      "id": "D",
+      "change": "whole-network denoising pretraining",
+      "data": "Thebe_train_only_unlabeled",
+      "extra_noise_sigma_rms": [
+        0.05,
+        0.3
+      ],
+      "loss": "valid_support_L1",
+      "pretrain_updates": 9000
+    },
+    {
+      "id": "M",
+      "change": "whole-network masked reconstruction",
+      "data": "Thebe_train_only_unlabeled",
+      "mask_block": 16,
+      "mask_fraction": 0.5,
+      "loss": "masked_valid_support_L1",
+      "pretrain_updates": 9000
+    },
+    {
+      "id": "FOV",
+      "change": "dual-scale context architecture",
+      "requires": "current architecture evaluated fairly; failures indicate context bottleneck",
+      "fine_shape": [
+        128,
+        128,
+        128
+      ],
+      "coarse_extent": [
+        256,
+        256,
+        256
+      ],
+      "coarse_downsampled_shape": [
+        128,
+        128,
+        128
+      ],
+      "controls": [
+        "same_context_conv_fusion",
+        "same_context_grid_fusion",
+        "UNet_with_same_input_information"
+      ],
+      "implemented": false
+    }
+  ],
+  "adoption_gate": {
+    "practical_validation_iou_delta": 0.01,
+    "also_check": [
+      "AP",
+      "precision_recall_tradeoff",
+      "repeat_seed"
+    ],
+    "meaning": "engineering screening criterion; not a promised gain or statistical significance"
+  },
+  "architecture_pretraining_factorial_required": true,
+  "external_pretraining_data": "not required for first pilot",
+  "notes": [
+    "Do not apply training candidates in place to active runs.",
+    "Keep fixed-0.5 main metric; validation-chosen thresholds are supplementary.",
+    "Historical test was already inspected; do not claim untouched holdout."
+  ]
+}

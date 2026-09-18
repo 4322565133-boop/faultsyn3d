@@ -1,0 +1,6 @@
+maxvit_nano: maxvit3d 24.80M  world=4 global_batch=8 d2s=False profile=False trace=False
+smoke step 0 loss 0.5720 seg 0.5720 pr -0.0000 tr -0.0000
+smoke step 1 loss 0.6061 seg 0.6061 pr -0.0000 tr -0.0000
+smoke step 2 loss 0.6017 seg 0.6017 pr -0.0000 tr -0.0000
+epoch=001 train=0.59649 (seg 0.59649 pr 0.0000 tr 0.0000 ramp 0.00) val=0.59369 IoU=0.0271 P=0.028 R=0.574 lr=1.09e-05 11s
+stop at epoch 1; best val loss 0.59369

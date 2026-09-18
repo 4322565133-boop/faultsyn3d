@@ -1,0 +1,6 @@
+baseline: maxvit3d 40.16M  world=4 global_batch=8 d2s=False profile=False trace=False
+smoke step 0 loss 0.5734 seg 0.5734 pr -0.0000 tr -0.0000
+smoke step 1 loss 0.6059 seg 0.6059 pr -0.0000 tr -0.0000
+smoke step 2 loss 0.6018 seg 0.6018 pr -0.0000 tr -0.0000
+epoch=001 train=0.59694 (seg 0.59694 pr 0.0000 tr 0.0000 ramp 0.00) val=0.59332 IoU=0.0267 P=0.027 R=0.565 lr=1.09e-05 12s
+stop at epoch 1; best val loss 0.59332

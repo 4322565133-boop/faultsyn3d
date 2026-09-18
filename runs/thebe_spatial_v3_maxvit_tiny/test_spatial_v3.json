@@ -1,0 +1,15 @@
+{
+ "iou": 0.389605642506824,
+ "dice": 0.5607427468472024,
+ "precision": 0.5139048658553836,
+ "recall": 0.6169745142274782,
+ "ap": 0.5556182810125067,
+ "valid_voxels": 2303341553,
+ "positive_voxels": 57680496,
+ "fault_fraction": 0.025042094137047853,
+ "loss": 0.5426784174149267,
+ "cores": 9538,
+ "seconds": 804,
+ "epoch": 47,
+ "checkpoint": "best_fullval"
+}

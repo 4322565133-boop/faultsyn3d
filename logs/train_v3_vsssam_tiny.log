@@ -1,0 +1,136 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+vsssam_tiny (vss_sam3d) params=17,777,585 world=4 batch=8 train=2400 fast=96 full=2433
+/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/autograd/graph.py:865: UserWarning: Grad strides do not match bucket view strides. This may indicate grad was not created according to the gradient layout contract, or that the param's strides changed since DDP was constructed.  This is not an error, but may impair performance.
+grad.sizes() = [288, 1, 3, 3, 3], strides() = [27, 1, 9, 3, 1]
+bucket_view.sizes() = [288, 1, 3, 3, 3], strides() = [27, 27, 9, 3, 1] (Triggered internally at /pytorch/torch/csrc/distributed/c10d/reducer.cpp:330.)
+  return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/autograd/graph.py:865: UserWarning: Grad strides do not match bucket view strides. This may indicate grad was not created according to the gradient layout contract, or that the param's strides changed since DDP was constructed.  This is not an error, but may impair performance.
+grad.sizes() = [288, 1, 3, 3, 3], strides() = [27, 1, 9, 3, 1]
+bucket_view.sizes() = [288, 1, 3, 3, 3], strides() = [27, 27, 9, 3, 1] (Triggered internally at /pytorch/torch/csrc/distributed/c10d/reducer.cpp:330.)
+  return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/autograd/graph.py:865: UserWarning: Grad strides do not match bucket view strides. This may indicate grad was not created according to the gradient layout contract, or that the param's strides changed since DDP was constructed.  This is not an error, but may impair performance.
+grad.sizes() = [288, 1, 3, 3, 3], strides() = [27, 1, 9, 3, 1]
+bucket_view.sizes() = [288, 1, 3, 3, 3], strides() = [27, 27, 9, 3, 1] (Triggered internally at /pytorch/torch/csrc/distributed/c10d/reducer.cpp:330.)
+  return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/autograd/graph.py:865: UserWarning: Grad strides do not match bucket view strides. This may indicate grad was not created according to the gradient layout contract, or that the param's strides changed since DDP was constructed.  This is not an error, but may impair performance.
+grad.sizes() = [288, 1, 3, 3, 3], strides() = [27, 1, 9, 3, 1]
+bucket_view.sizes() = [288, 1, 3, 3, 3], strides() = [27, 27, 9, 3, 1] (Triggered internally at /pytorch/torch/csrc/distributed/c10d/reducer.cpp:330.)
+  return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+epoch 1 microstep 1/300 loss=0.61122 lr=1e-06 elapsed=6s
+epoch 1 microstep 100/300 loss=0.61071 lr=1e-06 elapsed=37s
+epoch 1 microstep 200/300 loss=0.60903 lr=1e-06 elapsed=69s
+epoch 1 microstep 300/300 loss=0.61071 lr=1e-06 elapsed=101s
+epoch 1: full validation starts (2433 cores)
+{"epoch": 1, "lr": 1e-06, "train_loss": 0.5894595524668693, "fast_val": {"iou": 0.09395617889920288, "dice": 0.1717732039207395, "precision": 0.13630677950154144, "recall": 0.23218732433040792, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5745856097588936, "cores": 96}, "full_val": {"iou": 0.07522413076615571, "dice": 0.13992269818675743, "precision": 0.09671669045253209, "recall": 0.25290016124540887, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5838943883758291, "cores": 2433}, "seconds": 153.82084703445435, "skipped_optimizer_steps": 0, "unsup_loss": null, "lambda_u": null}
+/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+epoch 2 microstep 1/300 loss=0.61050 lr=1.2e-05 elapsed=1s
+epoch 2 microstep 100/300 loss=0.58703 lr=1.2e-05 elapsed=33s
+epoch 2 microstep 200/300 loss=0.58665 lr=1.2e-05 elapsed=65s
+epoch 2 microstep 300/300 loss=0.60945 lr=1.2e-05 elapsed=97s
+epoch 2: full validation starts (2433 cores)
+{"epoch": 2, "lr": 1.2000000000000002e-05, "train_loss": 0.5822733995815118, "fast_val": {"iou": 0.16818699723786867, "dice": 0.2879453334706517, "precision": 0.1780133291054096, "recall": 0.7528952705768386, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5620952810471257, "cores": 96}, "full_val": {"iou": 0.11217053456379289, "dice": 0.20171463112496066, "precision": 0.1173040586570264, "recall": 0.719350475210785, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5769218581231396, "cores": 2433}, "seconds": 148.25759434700012, "skipped_optimizer_steps": 0, "unsup_loss": null, "lambda_u": null}
+epoch 3 microstep 1/300 loss=0.60901 lr=2.3e-05 elapsed=1s
+epoch 3 microstep 100/300 loss=0.58123 lr=2.3e-05 elapsed=33s
+epoch 3 microstep 200/300 loss=0.46796 lr=2.3e-05 elapsed=65s
+epoch 3 microstep 300/300 loss=0.52922 lr=2.3e-05 elapsed=97s
+epoch 3: full validation starts (2433 cores)
+{"epoch": 3, "lr": 2.3000000000000003e-05, "train_loss": 0.577318730254968, "fast_val": {"iou": 0.21479997228439435, "dice": 0.3536384214439346, "precision": 0.40441020320245613, "recall": 0.3141929834692336, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5666684353103241, "cores": 96}, "full_val": {"iou": 0.17326380359262541, "dice": 0.29535353099972594, "precision": 0.29310802483470194, "recall": 0.29763370851367604, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5776807582530278, "cores": 2433}, "seconds": 145.0796377658844, "skipped_optimizer_steps": 0, "unsup_loss": null, "lambda_u": null}
+epoch 4 microstep 1/300 loss=0.56206 lr=3.4e-05 elapsed=1s
+epoch 4 microstep 100/300 loss=0.59707 lr=3.4e-05 elapsed=34s
+epoch 4 microstep 200/300 loss=0.58122 lr=3.4e-05 elapsed=66s
+epoch 4 microstep 300/300 loss=0.54222 lr=3.4e-05 elapsed=98s
+epoch 4: full validation starts (2433 cores)
+{"epoch": 4, "lr": 3.4e-05, "train_loss": 0.5733303571989139, "fast_val": {"iou": 0.2639189821635957, "dice": 0.41762009414846385, "precision": 0.40536106307191755, "recall": 0.43064372998766115, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5604385854676366, "cores": 96}, "full_val": {"iou": 0.20455333583478413, "dice": 0.33963350521631125, "precision": 0.29601258452064894, "recall": 0.3983324573611952, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5738717368905357, "cores": 2433}, "seconds": 146.0789659023285, "skipped_optimizer_steps": 0, "unsup_loss": null, "lambda_u": null}
+epoch 5 microstep 1/300 loss=0.57066 lr=4.5e-05 elapsed=1s
+epoch 5 microstep 100/300 loss=0.56037 lr=4.5e-05 elapsed=32s
+epoch 5 microstep 200/300 loss=0.60447 lr=4.5e-05 elapsed=65s
+epoch 5 microstep 300/300 loss=0.57016 lr=4.5e-05 elapsed=97s
+epoch 5: full validation starts (2433 cores)
+{"epoch": 5, "lr": 4.5e-05, "train_loss": 0.5722721077253421, "fast_val": {"iou": 0.2973432625491769, "dice": 0.4583879550350012, "precision": 0.33673823748653486, "recall": 0.717642913289784, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5484992523367206, "cores": 96}, "full_val": {"iou": 0.21087910577933924, "dice": 0.3483074483205562, "precision": 0.23749110944990867, "recall": 0.6530102399479562, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5666183344238931, "cores": 2433}, "seconds": 144.8710436820984, "skipped_optimizer_steps": 0, "unsup_loss": null, "lambda_u": null}
+epoch 6 microstep 1/300 loss=0.50920 lr=5.6e-05 elapsed=1s
+epoch 6 microstep 100/300 loss=0.53853 lr=5.6e-05 elapsed=33s
+epoch 6 microstep 200/300 loss=0.60250 lr=5.6e-05 elapsed=65s
+epoch 6 microstep 300/300 loss=0.58385 lr=5.6e-05 elapsed=98s
+epoch 6: full validation starts (2433 cores)
+{"epoch": 6, "lr": 5.6e-05, "train_loss": 0.5707201659927765, "fast_val": {"iou": 0.3435782705208179, "dice": 0.5114376706727104, "precision": 0.40434309401612223, "recall": 0.6957016707540844, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5442086265732845, "cores": 96}, "full_val": {"iou": 0.2520068976165119, "dice": 0.4025647112588054, "precision": 0.293049930145221, "recall": 0.6427736656207949, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5636621328461969, "cores": 2433}, "seconds": 146.6509039402008, "skipped_optimizer_steps": 0, "unsup_loss": null, "lambda_u": null}
+epoch 7 microstep 1/300 loss=0.60525 lr=6.7e-05 elapsed=1s
+epoch 7 microstep 100/300 loss=0.60399 lr=6.7e-05 elapsed=33s
+epoch 7 microstep 200/300 loss=0.54046 lr=6.7e-05 elapsed=65s
+epoch 7 microstep 300/300 loss=0.55279 lr=6.7e-05 elapsed=97s
+epoch 7: full validation starts (2433 cores)
+{"epoch": 7, "lr": 6.7e-05, "train_loss": 0.5678504147132237, "fast_val": {"iou": 0.33392382819237554, "dice": 0.5006640126443829, "precision": 0.4393883025591823, "recall": 0.5818000115492629, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5472977580502629, "cores": 96}, "full_val": {"iou": 0.2753756252654312, "dice": 0.43183454318898407, "precision": 0.36555843205426236, "recall": 0.5274643621781892, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5652011202849628, "cores": 2433}, "seconds": 145.35532689094543, "skipped_optimizer_steps": 0, "unsup_loss": null, "lambda_u": null}
+epoch 8 microstep 1/300 loss=0.59655 lr=7.8e-05 elapsed=1s
+epoch 8 microstep 100/300 loss=0.53680 lr=7.8e-05 elapsed=33s
+epoch 8 microstep 200/300 loss=0.60099 lr=7.8e-05 elapsed=65s
+epoch 8 microstep 300/300 loss=0.60194 lr=7.8e-05 elapsed=97s
+epoch 8: full validation starts (2433 cores)
+{"epoch": 8, "lr": 7.8e-05, "train_loss": 0.5652510342746973, "fast_val": {"iou": 0.3613750942571754, "dice": 0.5308971726919349, "precision": 0.4758383375319096, "recall": 0.6003648624282443, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5456120458741983, "cores": 96}, "full_val": {"iou": 0.2787475526042594, "dice": 0.43596963612805417, "precision": 0.37590695456754375, "recall": 0.5188760164638717, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.56499289841599, "cores": 2433}, "seconds": 144.88624620437622, "skipped_optimizer_steps": 0, "unsup_loss": null, "lambda_u": null}
+epoch 9 microstep 1/300 loss=0.53948 lr=8.9e-05 elapsed=1s
+epoch 9 microstep 100/300 loss=0.60177 lr=8.9e-05 elapsed=33s
+epoch 9 microstep 200/300 loss=0.60803 lr=8.9e-05 elapsed=65s
+epoch 9 microstep 300/300 loss=0.58854 lr=8.9e-05 elapsed=97s
+epoch 9: full validation starts (2433 cores)
+{"epoch": 9, "lr": 8.900000000000001e-05, "train_loss": 0.5641411467393239, "fast_val": {"iou": 0.4023207423493581, "dice": 0.5737927568201491, "precision": 0.5452977409243709, "recall": 0.6054300391614292, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5407681350285808, "cores": 96}, "full_val": {"iou": 0.32871432600257044, "dice": 0.49478555257472934, "precision": 0.46868071795040084, "recall": 0.5239699151012208, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5609906476084411, "cores": 2433}, "seconds": 145.37182426452637, "skipped_optimizer_steps": 0, "unsup_loss": null, "lambda_u": null}
+epoch 10 microstep 1/300 loss=0.56506 lr=0.0001 elapsed=1s
+epoch 10 microstep 100/300 loss=0.53683 lr=0.0001 elapsed=33s
+epoch 10 microstep 200/300 loss=0.59455 lr=0.0001 elapsed=64s
+epoch 10 microstep 300/300 loss=0.59273 lr=0.0001 elapsed=96s
+epoch 10: full validation starts (2433 cores)
+{"epoch": 10, "lr": 0.0001, "train_loss": 0.5612882496168216, "fast_val": {"iou": 0.3872505346486377, "dice": 0.5582993482092553, "precision": 0.43995003614911765, "recall": 0.7637539347042387, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5326845400656263, "cores": 96}, "full_val": {"iou": 0.30223409228670217, "dice": 0.4641778219090915, "precision": 0.3528663993818192, "recall": 0.6780765141866019, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5554178455362975, "cores": 2433}, "seconds": 144.57201218605042, "skipped_optimizer_steps": 0, "unsup_loss": null, "lambda_u": null}
+epoch 11 microstep 1/300 loss=0.49214 lr=0.0001 elapsed=1s
+epoch 11 microstep 100/300 loss=0.60043 lr=0.0001 elapsed=32s
+epoch 11 microstep 200/300 loss=0.55020 lr=0.0001 elapsed=64s
+epoch 11 microstep 300/300 loss=0.59286 lr=0.0001 elapsed=96s
+epoch 11: full validation starts (2433 cores)
+{"epoch": 11, "lr": 9.996957180960385e-05, "train_loss": 0.555235342135032, "fast_val": {"iou": 0.38756545631327577, "dice": 0.5586265563903944, "precision": 0.5410969571186679, "recall": 0.577329975404784, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5357925370335579, "cores": 96}, "full_val": {"iou": 0.32019431358502964, "dice": 0.4850714933251482, "precision": 0.48299932894838615, "recall": 0.4871615143152215, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.560156804669849, "cores": 2433}, "seconds": 144.21884441375732, "skipped_optimizer_steps": 0, "unsup_loss": null, "lambda_u": null}
+epoch 12 microstep 1/300 loss=0.59656 lr=9.99e-05 elapsed=1s
+epoch 12 microstep 100/300 loss=0.53924 lr=9.99e-05 elapsed=32s
+epoch 12 microstep 200/300 loss=0.60010 lr=9.99e-05 elapsed=64s
+epoch 12 microstep 300/300 loss=0.47063 lr=9.99e-05 elapsed=96s
+epoch 12: full validation starts (2433 cores)
+{"epoch": 12, "lr": 9.987832431047822e-05, "train_loss": 0.5528477701296409, "fast_val": {"iou": 0.4050476220791025, "dice": 0.5765607025899067, "precision": 0.5032667560769397, "recall": 0.6748422877439929, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5279067417917153, "cores": 96}, "full_val": {"iou": 0.31820885756037065, "dice": 0.48278974266533853, "precision": 0.403496715949799, "recall": 0.600869398247203, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5529906769324074, "cores": 2433}, "seconds": 145.25026082992554, "skipped_optimizer_steps": 0, "unsup_loss": null, "lambda_u": null}
+epoch 13 microstep 1/300 loss=0.60489 lr=9.97e-05 elapsed=1s
+epoch 13 microstep 100/300 loss=0.60120 lr=9.97e-05 elapsed=33s
+epoch 13 microstep 200/300 loss=0.60329 lr=9.97e-05 elapsed=65s
+epoch 13 microstep 300/300 loss=0.60107 lr=9.97e-05 elapsed=97s
+epoch 13: full validation starts (2433 cores)
+{"epoch": 13, "lr": 9.972636867364526e-05, "train_loss": 0.5498234490801891, "fast_val": {"iou": 0.38865362554639993, "dice": 0.5597560376418196, "precision": 0.5165253350605351, "recall": 0.6108841196456497, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5342245659170052, "cores": 96}, "full_val": {"iou": 0.2896228474919202, "dice": 0.44915898947538574, "precision": 0.40317590557408567, "recall": 0.506981303488712, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5594682860009424, "cores": 2433}, "seconds": 145.55915784835815, "skipped_optimizer_steps": 0, "unsup_loss": null, "lambda_u": null}
+epoch 14 microstep 1/300 loss=0.52064 lr=9.95e-05 elapsed=1s
+epoch 14 microstep 100/300 loss=0.54366 lr=9.95e-05 elapsed=33s
+epoch 14 microstep 200/300 loss=0.60029 lr=9.95e-05 elapsed=65s
+epoch 14 microstep 300/300 loss=0.50237 lr=9.95e-05 elapsed=97s
+epoch 14: full validation starts (2433 cores)
+W0918 16:18:41.560000 3589716 torch/distributed/elastic/agent/server/api.py:739] Received Signals.SIGTERM death signal, shutting down workers
+W0918 16:18:41.562000 3589716 torch/distributed/elastic/multiprocessing/api.py:1010] Sending process 3589751 closing signal SIGTERM
+W0918 16:18:41.563000 3589716 torch/distributed/elastic/multiprocessing/api.py:1010] Sending process 3589752 closing signal SIGTERM
+W0918 16:18:41.563000 3589716 torch/distributed/elastic/multiprocessing/api.py:1010] Sending process 3589753 closing signal SIGTERM
+W0918 16:18:41.564000 3589716 torch/distributed/elastic/multiprocessing/api.py:1010] Sending process 3589754 closing signal SIGTERM
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/run.py", line 995, in <module>
+    main()
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 362, in wrapper
+    return f(*args, **kwargs)
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/run.py", line 991, in main
+    run(args)
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/run.py", line 982, in run
+    elastic_launch(
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 170, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 308, in launch_agent
+    result = agent.run()
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/elastic/metrics/api.py", line 134, in wrapper
+    result = f(*args, **kwargs)
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/elastic/agent/server/api.py", line 731, in run
+    result = self._invoke_run(role)
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/elastic/agent/server/api.py", line 908, in _invoke_run
+    time.sleep(monitor_interval)
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/api.py", line 86, in _terminate_process_handler
+    raise SignalException(f"Process {os.getpid()} got signal: {sigval}", sigval=sigval)
+torch.distributed.elastic.multiprocessing.api.SignalException: Process 3589716 got signal: 15

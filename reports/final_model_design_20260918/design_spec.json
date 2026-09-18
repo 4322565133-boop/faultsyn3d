@@ -1,0 +1,113 @@
+{
+  "status": "design_only_not_implemented_or_trained",
+  "name": "SC-MaxViT3D",
+  "date": "2026-09-18",
+  "design_document": "docs/SC_MAXVIT_DESIGN_20260918.md",
+  "hypothesis": "Geometry-structured cross-view retrieval with symmetric side-feature comparison can improve the precision-recall tradeoff relative to matched unconstrained retrieval. Unverified.",
+  "coordinate_order": ["sample", "raw_axis1", "section"],
+  "fine_shape": [128, 128, 128],
+  "context_raw_shape": [256, 256, 128],
+  "context_downsample_factors": [2, 2, 1],
+  "augmentation_geometry": "Shapes and strides specified before augmentation. Rotate/flip fine and downsampled cubic context together; pass per-sample transformed affine. Odd rotations of axes 1/2 swap spacing (2,2,1) to (2,1,2).",
+  "context_network_shape": [128, 128, 128],
+  "context_same_center_as_fine": true,
+  "context_normalization": "Use the fine input's supported mean/std; exclude invalid padding; masked normalized low-pass before decimation",
+  "split_access": "Strictly within current split for labels AND amplitudes",
+  "preserved_baseline": {
+    "class": "models.maxvit3d.MaxViT3DUNet",
+    "kwargs": {"full_res_skip": true, "drop_path_rate": 0.2, "img_size": 128},
+    "decoder": "Preserve dec4, dec3, dec2, dec1, dec0 and enc_full",
+    "parameters_measured_existing": 40164233
+  },
+  "context_encoder": {
+    "channels": [24, 48, 96],
+    "spatial_sizes": [64, 32, 16],
+    "blocks": "depthwise separable 3-D residual convolution + GroupNorm + GELU",
+    "sampled_levels": [32, 16],
+    "projected_channels": 96,
+    "original_index_strides": [[8, 8, 4], [16, 16, 8]]
+  },
+  "fusion": {
+    "fine_feature": "f2",
+    "fine_feature_channels": 128,
+    "fine_feature_shape": [16, 16, 16],
+    "query_channels": 96,
+    "attention_heads": 4,
+    "all_queries_processed": true,
+    "sampling_coordinates_shared_across_heads": true,
+    "surface_anchors_per_level": 8,
+    "side_points_per_anchor": 2,
+    "free_points_per_level": 4,
+    "feature_reads_per_query_per_level": 28,
+    "feature_reads_per_query_total": 56,
+    "direction_source": "learned feature vectors, orthonormalized with numerical safeguards; no ground truth used as input",
+    "tangential_offset_bound_index_units": 96,
+    "normal_residual_bound_index_units": 8,
+    "side_offset_range_index_units": [8, 16],
+    "descriptors": ["h0", "h0 - (h_plus + h_minus)/2", "abs(h_plus - h_minus)"],
+    "invalid_sides": "Do not synthesize contrast against zeros; disable side descriptors and provide validity state",
+    "residual": "f2 + W_out(attended_context)",
+    "residual_initialization": "small nonzero; no trainable zero-initialized global gate",
+    "physical_normal_claim": false
+  },
+  "budget": {
+    "new_parameters_target_upper_bound": 3000000,
+    "total_parameters_target_upper_bound": 43164233,
+    "new_model_parameters_measured": null,
+    "new_model_flops_measured": null,
+    "new_model_peak_memory_measured": null
+  },
+  "first_architecture_protocol": {
+    "data": "data/thebe_spatial_v3",
+    "protocol_sha256": "f8063803bc0db36222cad249d0a181603baa7dc74889ce5d1262999a2b889761",
+    "train_section_range": [0, 868],
+    "validation_section_range": [900, 1068],
+    "test_section_range": [1100, 1803],
+    "samples_per_epoch": 2400,
+    "epochs": 100,
+    "sampler": "existing uniform v3, not FG50",
+    "effective_batch": 8,
+    "world_size": 4,
+    "per_rank_batch_starting_point": 2,
+    "gradient_accumulation": 1,
+    "memory_fallback": "Use context activation checkpointing first; if batch1/accum2 becomes necessary, rerun matched baselines at that microbatch",
+    "fairness_note": "Batch normalization makes batch1/accum2 different from batch2 despite identical effective batch",
+    "initialization": "random for all primary controls, shared initial state for shared layers where possible",
+    "loss": {"dice_weight": 0.6, "focal_weight": 0.4, "focal_alpha": 0.75, "focal_gamma": 2.0, "auxiliary_losses": []},
+    "optimizer_recipe": "reuse current v3 AdamW and 10-epoch warmup plus cosine schedule without new changes",
+    "selection": "max full validation micro IoU at threshold 0.5",
+    "validation_cores": 2433,
+    "evaluation_core": [64, 64, 64],
+    "evaluation_stride": [64, 64, 64],
+    "validation_support_voxels": 510945619,
+    "seed_first": 2026,
+    "seeds_confirmation": [2026, 2027, 2028],
+    "test_use": "only after architecture and threshold rules frozen; previously examined test is not a new blind holdout"
+  },
+  "primary_controls": [
+    "UNet-L baseline, matched recipe",
+    "MaxViT baseline, matched recipe",
+    "MaxViT + identical context + unconstrained three-point groups, same reads and projections",
+    "SC-MaxViT3D"
+  ],
+  "required_followup_controls_if_promising": [
+    "UNet with same context FOV and simple convolution fusion",
+    "standard CoTr-style free-point context aggregation at matched sampling budget",
+    "structured surface sampling with ordinary aggregation and no side contrast",
+    "fixed versus learned orientation",
+    "without free points at fixed total reading budget",
+    "matched-capacity extra convolution and measured time/memory comparison"
+  ],
+  "engineering_targets_not_forecasts": {
+    "validation_iou_target_range": [0.415, 0.435],
+    "condition": "AP must also improve over matched MaxViT; multi-seed and same-FOV controls must support independent mechanism value",
+    "promised_superiority": false
+  },
+  "implementation_gates": [
+    "coordinate-ramp alignment and grid_sample axis tests",
+    "split-boundary sentinel test and exact evaluation-support counts",
+    "normal-sign invariance, all-invalid fallback and gradient checks",
+    "parameter and training peak-memory/throughput measurement",
+    "fixed-slice FP/FN plus offset and branch-contribution diagnostics"
+  ]
+}

@@ -1,0 +1,2 @@
+/hdd1/hukaixiao/projects/faultsyn3d/qc/live_iou.py:47: UserWarning: No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+  ax.set_xlabel("epoch"); ax.set_ylabel("val IoU"); ax.legend(loc="lower right")

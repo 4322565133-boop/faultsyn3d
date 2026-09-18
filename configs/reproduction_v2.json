@@ -1,0 +1,294 @@
+{
+  "grid": [
+    128,
+    128,
+    128
+  ],
+  "d_z": 4.0,
+  "pso_particles": 200,
+  "pso_iters": 200,
+  "surface_samples": 193,
+  "beta_strike": [
+    0.05,
+    0.15
+  ],
+  "beta_dip": [
+    0.12,
+    0.22
+  ],
+  "beta_listric": [
+    0.3,
+    0.45
+  ],
+  "curvature_scales": [
+    1.0,
+    0.7,
+    0.4,
+    0.2
+  ],
+  "min_area": 700,
+  "min_instance_voxels": 600,
+  "min_visible_fraction": 0.12,
+  "label_half_thickness": 0.75,
+  "drag_distance": 18.0,
+  "freq_hz": [
+    24.0,
+    34.0
+  ],
+  "dt": 0.004,
+  "tilt": 0.06,
+  "n_folds": [
+    3,
+    7
+  ],
+  "fold_amp": [
+    4.0,
+    15.0
+  ],
+  "fold_sigma": [
+    25.0,
+    70.0
+  ],
+  "snr_db": [
+    8.0,
+    22.0
+  ],
+  "per_category": 200,
+  "seed": 20260915,
+  "max_attempts": 2000,
+  "main_fault_ranges": {
+    "en_echelon": {
+      "strike": [
+        150,
+        210
+      ],
+      "dip": [
+        62,
+        80
+      ],
+      "phi_dis": [
+        35,
+        55
+      ],
+      "throughgoing": false,
+      "drag": "normal"
+    },
+    "horsetail": {
+      "strike": [
+        150,
+        210
+      ],
+      "dip": [
+        66,
+        84
+      ],
+      "phi_dis": [
+        35,
+        55
+      ],
+      "throughgoing": true,
+      "drag": "normal"
+    },
+    "negative_flower": {
+      "strike": [
+        150,
+        210
+      ],
+      "dip": [
+        72,
+        88
+      ],
+      "phi_dis": [
+        35,
+        55
+      ],
+      "throughgoing": true,
+      "drag": "normal"
+    },
+    "positive_flower": {
+      "strike": [
+        150,
+        210
+      ],
+      "dip": [
+        72,
+        88
+      ],
+      "phi_dis": [
+        35,
+        55
+      ],
+      "throughgoing": true,
+      "drag": "normal"
+    },
+    "listric_assemblage": {
+      "strike": [
+        150,
+        210
+      ],
+      "dip": [
+        32,
+        52
+      ],
+      "phi_dis": [
+        0,
+        16
+      ],
+      "throughgoing": false,
+      "drag": "reverse"
+    }
+  },
+  "tree_specs": {
+    "en_echelon": [
+      [
+        0,
+        [
+          "P",
+          "P"
+        ]
+      ],
+      [
+        0,
+        [
+          "P",
+          "P"
+        ]
+      ],
+      [
+        0,
+        [
+          "P",
+          "P"
+        ]
+      ]
+    ],
+    "horsetail": [
+      [
+        0,
+        [
+          "Y",
+          "P"
+        ]
+      ],
+      [
+        0,
+        [
+          "Y",
+          "P"
+        ]
+      ],
+      [
+        0,
+        [
+          "Y",
+          "P"
+        ]
+      ]
+    ],
+    "negative_flower": [
+      [
+        0,
+        [
+          "X",
+          "P"
+        ]
+      ],
+      [
+        1,
+        [
+          "Y",
+          "Y"
+        ]
+      ],
+      [
+        1,
+        [
+          "Y",
+          "Y"
+        ]
+      ]
+    ],
+    "positive_flower": [
+      [
+        0,
+        [
+          "P",
+          "X"
+        ]
+      ],
+      [
+        1,
+        [
+          "P",
+          "X"
+        ]
+      ],
+      [
+        2,
+        [
+          "P",
+          "X"
+        ]
+      ]
+    ],
+    "listric_assemblage": [
+      [
+        0,
+        [
+          "P",
+          "Y"
+        ]
+      ],
+      [
+        0,
+        [
+          "P",
+          "Y"
+        ]
+      ],
+      [
+        0,
+        [
+          "P",
+          "Y"
+        ]
+      ],
+      [
+        3,
+        [
+          "Y",
+          "Y"
+        ]
+      ]
+    ]
+  },
+  "main_half_extent_ratio": [
+    0.65,
+    0.85
+  ],
+  "main_d_max": [
+    12.0,
+    26.0
+  ],
+  "description": "Quadratic Bezier / PSO reproduction with explicit numerical conventions; geometric labels are not filtered.",
+  "y_support_center_u": [
+    -0.5,
+    0.5
+  ],
+  "y_support_center_v": [
+    -0.35,
+    0.35
+  ],
+  "y_support_half_u": [
+    0.4,
+    0.8
+  ],
+  "y_support_half_v": [
+    0.6,
+    1.0
+  ],
+  "curvature_jitter": [
+    0.92,
+    1.08
+  ]
+}

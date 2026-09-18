@@ -1,0 +1,5 @@
+{
+  "status": "completed_trial",
+  "last_completed_epoch": 30,
+  "best_fullval_iou": 0.34916154811484273
+}

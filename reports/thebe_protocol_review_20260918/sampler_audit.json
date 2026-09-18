@@ -1,0 +1,4234 @@
+{
+  "epoch": 47,
+  "n": 384,
+  "empty_fraction": 0.484375,
+  "below_0_5_percent": 0.6041666666666666,
+  "mean_fraction": 0.025643120901690963,
+  "median_fraction": 8.559226989746094e-05,
+  "samples": [
+    {
+      "index": 0,
+      "origin": [
+        457,
+        657,
+        359
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 1,
+      "origin": [
+        357,
+        1594,
+        140
+      ],
+      "support_fraction": 0.7616128921508789,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 2,
+      "origin": [
+        951,
+        1041,
+        110
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.11493110656738281,
+      "core_fraction": 0.032299041748046875
+    },
+    {
+      "index": 3,
+      "origin": [
+        1225,
+        592,
+        504
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 5.054473876953125e-05,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 4,
+      "origin": [
+        1098,
+        1458,
+        310
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0076007843017578125,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 5,
+      "origin": [
+        913,
+        1565,
+        649
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.09576272964477539,
+      "core_fraction": 0.05229949951171875
+    },
+    {
+      "index": 6,
+      "origin": [
+        891,
+        484,
+        690
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.05226612091064453,
+      "core_fraction": 0.08292388916015625
+    },
+    {
+      "index": 7,
+      "origin": [
+        1138,
+        2246,
+        591
+      ],
+      "support_fraction": 0.84661865234375,
+      "fault_fraction": 0.019156424328684807,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 8,
+      "origin": [
+        770,
+        977,
+        636
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.07462644577026367,
+      "core_fraction": 0.16858673095703125
+    },
+    {
+      "index": 9,
+      "origin": [
+        1252,
+        1042,
+        272
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.010428905487060547,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 10,
+      "origin": [
+        1286,
+        1901,
+        433
+      ],
+      "support_fraction": 0.710352897644043,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 11,
+      "origin": [
+        411,
+        1041,
+        228
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 12,
+      "origin": [
+        1106,
+        1429,
+        565
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 13,
+      "origin": [
+        1125,
+        1279,
+        586
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 14,
+      "origin": [
+        1070,
+        724,
+        359
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0853123664855957,
+      "core_fraction": 0.10074615478515625
+    },
+    {
+      "index": 15,
+      "origin": [
+        703,
+        2003,
+        535
+      ],
+      "support_fraction": 0.69036865234375,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 16,
+      "origin": [
+        414,
+        198,
+        449
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 17,
+      "origin": [
+        266,
+        174,
+        50
+      ],
+      "support_fraction": 0.48264598846435547,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 18,
+      "origin": [
+        1135,
+        1281,
+        58
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.13480329513549805,
+      "core_fraction": 0.23485946655273438
+    },
+    {
+      "index": 19,
+      "origin": [
+        974,
+        350,
+        385
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 20,
+      "origin": [
+        779,
+        381,
+        201
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.06405830383300781,
+      "core_fraction": 0.09953689575195312
+    },
+    {
+      "index": 21,
+      "origin": [
+        482,
+        725,
+        707
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 22,
+      "origin": [
+        994,
+        91,
+        522
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.09993839263916016,
+      "core_fraction": 0.01799774169921875
+    },
+    {
+      "index": 23,
+      "origin": [
+        1107,
+        792,
+        223
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 8.440017700195312e-05,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 24,
+      "origin": [
+        1279,
+        2201,
+        517
+      ],
+      "support_fraction": 0.27239131927490234,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 25,
+      "origin": [
+        1144,
+        1650,
+        59
+      ],
+      "support_fraction": 0.4427351951599121,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 26,
+      "origin": [
+        1218,
+        2021,
+        654
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.022904396057128906,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 27,
+      "origin": [
+        1006,
+        1488,
+        635
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0590357780456543,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 28,
+      "origin": [
+        688,
+        1312,
+        453
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0022363662719726562,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 29,
+      "origin": [
+        305,
+        735,
+        143
+      ],
+      "support_fraction": 0.790743350982666,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 30,
+      "origin": [
+        864,
+        104,
+        408
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.019649505615234375,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 31,
+      "origin": [
+        798,
+        312,
+        147
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.10219240188598633,
+      "core_fraction": 0.15503692626953125
+    },
+    {
+      "index": 32,
+      "origin": [
+        654,
+        732,
+        410
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0013117790222167969,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 33,
+      "origin": [
+        751,
+        2049,
+        640
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.00023794174194335938,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 34,
+      "origin": [
+        978,
+        1617,
+        452
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.09305810928344727,
+      "core_fraction": 0.15349578857421875
+    },
+    {
+      "index": 35,
+      "origin": [
+        604,
+        1138,
+        353
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 36,
+      "origin": [
+        1044,
+        703,
+        620
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.028966903686523438,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 37,
+      "origin": [
+        1236,
+        1641,
+        522
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.010421276092529297,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 38,
+      "origin": [
+        916,
+        158,
+        272
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 39,
+      "origin": [
+        925,
+        1212,
+        10
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.18023967742919922,
+      "core_fraction": 0.12126541137695312
+    },
+    {
+      "index": 40,
+      "origin": [
+        1398,
+        136,
+        244
+      ],
+      "support_fraction": 0.8183088302612305,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 41,
+      "origin": [
+        674,
+        1447,
+        723
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.07677507400512695,
+      "core_fraction": 0.014068603515625
+    },
+    {
+      "index": 42,
+      "origin": [
+        889,
+        1429,
+        224
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.08426284790039062,
+      "core_fraction": 0.1098480224609375
+    },
+    {
+      "index": 43,
+      "origin": [
+        631,
+        1433,
+        719
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.07453298568725586,
+      "core_fraction": 0.02523040771484375
+    },
+    {
+      "index": 44,
+      "origin": [
+        1087,
+        1213,
+        297
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.10260534286499023,
+      "core_fraction": 0.19296646118164062
+    },
+    {
+      "index": 45,
+      "origin": [
+        710,
+        1664,
+        733
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 46,
+      "origin": [
+        1221,
+        425,
+        269
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 47,
+      "origin": [
+        343,
+        445,
+        41
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 48,
+      "origin": [
+        841,
+        612,
+        262
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.09631872177124023,
+      "core_fraction": 0.12522125244140625
+    },
+    {
+      "index": 49,
+      "origin": [
+        858,
+        345,
+        446
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 50,
+      "origin": [
+        586,
+        1686,
+        452
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 51,
+      "origin": [
+        833,
+        580,
+        724
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.06191205978393555,
+      "core_fraction": 0.060054779052734375
+    },
+    {
+      "index": 52,
+      "origin": [
+        761,
+        2284,
+        530
+      ],
+      "support_fraction": 0.27005720138549805,
+      "fault_fraction": 0.0005032215267419815,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 53,
+      "origin": [
+        499,
+        1757,
+        710
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 54,
+      "origin": [
+        509,
+        102,
+        691
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 55,
+      "origin": [
+        245,
+        960,
+        332
+      ],
+      "support_fraction": 0.32268190383911133,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 56,
+      "origin": [
+        1125,
+        1518,
+        332
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.02158832550048828,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 57,
+      "origin": [
+        341,
+        381,
+        1
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 58,
+      "origin": [
+        392,
+        221,
+        670
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.003959178924560547,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 59,
+      "origin": [
+        271,
+        1641,
+        630
+      ],
+      "support_fraction": 0.5275473594665527,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 60,
+      "origin": [
+        1064,
+        37,
+        1
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 61,
+      "origin": [
+        1013,
+        1867,
+        531
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0498509407043457,
+      "core_fraction": 0.058460235595703125
+    },
+    {
+      "index": 62,
+      "origin": [
+        574,
+        498,
+        53
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 63,
+      "origin": [
+        755,
+        1024,
+        352
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.00011777877807617188,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 64,
+      "origin": [
+        1265,
+        1093,
+        191
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.007682323455810547,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 65,
+      "origin": [
+        563,
+        1695,
+        261
+      ],
+      "support_fraction": 0.892822265625,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 66,
+      "origin": [
+        994,
+        393,
+        386
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 67,
+      "origin": [
+        324,
+        290,
+        57
+      ],
+      "support_fraction": 0.9364547729492188,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 68,
+      "origin": [
+        1130,
+        1827,
+        246
+      ],
+      "support_fraction": 0.30105018615722656,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 69,
+      "origin": [
+        751,
+        1674,
+        343
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 70,
+      "origin": [
+        492,
+        295,
+        353
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 71,
+      "origin": [
+        1362,
+        1693,
+        393
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.02591991424560547,
+      "core_fraction": 0.012767791748046875
+    },
+    {
+      "index": 72,
+      "origin": [
+        1187,
+        932,
+        183
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.000579833984375,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 73,
+      "origin": [
+        591,
+        2027,
+        618
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 74,
+      "origin": [
+        1045,
+        795,
+        694
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.13767147064208984,
+      "core_fraction": 0.2819252014160156
+    },
+    {
+      "index": 75,
+      "origin": [
+        417,
+        444,
+        84
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 76,
+      "origin": [
+        852,
+        467,
+        295
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.009210586547851562,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 77,
+      "origin": [
+        709,
+        1745,
+        587
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0036134719848632812,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 78,
+      "origin": [
+        1405,
+        457,
+        493
+      ],
+      "support_fraction": 0.7617874145507812,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 79,
+      "origin": [
+        1367,
+        1140,
+        365
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.007873058319091797,
+      "core_fraction": 7.62939453125e-05
+    },
+    {
+      "index": 80,
+      "origin": [
+        1315,
+        1833,
+        407
+      ],
+      "support_fraction": 0.9359006881713867,
+      "fault_fraction": 0.0006679485668428242,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 81,
+      "origin": [
+        273,
+        830,
+        170
+      ],
+      "support_fraction": 0.5406255722045898,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 82,
+      "origin": [
+        663,
+        1495,
+        532
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.012619972229003906,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 83,
+      "origin": [
+        693,
+        2009,
+        666
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 84,
+      "origin": [
+        371,
+        852,
+        719
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 85,
+      "origin": [
+        1031,
+        1140,
+        81
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.03652143478393555,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 86,
+      "origin": [
+        1371,
+        1446,
+        134
+      ],
+      "support_fraction": 0.9999990463256836,
+      "fault_fraction": 0.001219273777678609,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 87,
+      "origin": [
+        420,
+        1106,
+        513
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 88,
+      "origin": [
+        720,
+        1366,
+        216
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.08340978622436523,
+      "core_fraction": 0.08085250854492188
+    },
+    {
+      "index": 89,
+      "origin": [
+        675,
+        988,
+        70
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0006604194641113281,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 90,
+      "origin": [
+        1305,
+        761,
+        459
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.03697395324707031,
+      "core_fraction": 0.06067657470703125
+    },
+    {
+      "index": 91,
+      "origin": [
+        957,
+        188,
+        586
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.10931873321533203,
+      "core_fraction": 0.19215774536132812
+    },
+    {
+      "index": 92,
+      "origin": [
+        564,
+        822,
+        583
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 93,
+      "origin": [
+        1265,
+        544,
+        720
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.08593034744262695,
+      "core_fraction": 0.10967254638671875
+    },
+    {
+      "index": 94,
+      "origin": [
+        1039,
+        1562,
+        377
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.08077573776245117,
+      "core_fraction": 0.07510757446289062
+    },
+    {
+      "index": 95,
+      "origin": [
+        528,
+        1416,
+        679
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.016737937927246094,
+      "core_fraction": 0.00592041015625
+    },
+    {
+      "index": 96,
+      "origin": [
+        269,
+        1175,
+        532
+      ],
+      "support_fraction": 0.5099773406982422,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 97,
+      "origin": [
+        455,
+        1381,
+        724
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.00038909912109375,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 98,
+      "origin": [
+        563,
+        1709,
+        300
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 99,
+      "origin": [
+        1336,
+        1648,
+        82
+      ],
+      "support_fraction": 0.75927734375,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 100,
+      "origin": [
+        1298,
+        7,
+        711
+      ],
+      "support_fraction": 0.8458833694458008,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 101,
+      "origin": [
+        755,
+        399,
+        628
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0485835075378418,
+      "core_fraction": 0.002410888671875
+    },
+    {
+      "index": 102,
+      "origin": [
+        794,
+        1247,
+        447
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.03334760665893555,
+      "core_fraction": 6.866455078125e-05
+    },
+    {
+      "index": 103,
+      "origin": [
+        927,
+        859,
+        610
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.17389202117919922,
+      "core_fraction": 0.07523727416992188
+    },
+    {
+      "index": 104,
+      "origin": [
+        422,
+        1233,
+        619
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 105,
+      "origin": [
+        576,
+        597,
+        213
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 106,
+      "origin": [
+        964,
+        922,
+        476
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.06037569046020508,
+      "core_fraction": 0.0001678466796875
+    },
+    {
+      "index": 107,
+      "origin": [
+        495,
+        728,
+        298
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 108,
+      "origin": [
+        452,
+        136,
+        629
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 109,
+      "origin": [
+        1365,
+        854,
+        28
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 110,
+      "origin": [
+        1341,
+        805,
+        325
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.04290914535522461,
+      "core_fraction": 0.10287094116210938
+    },
+    {
+      "index": 111,
+      "origin": [
+        963,
+        560,
+        486
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.1311497688293457,
+      "core_fraction": 0.1859893798828125
+    },
+    {
+      "index": 112,
+      "origin": [
+        1189,
+        584,
+        723
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.02581644058227539,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 113,
+      "origin": [
+        857,
+        1125,
+        662
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 114,
+      "origin": [
+        1115,
+        1452,
+        572
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 115,
+      "origin": [
+        759,
+        1219,
+        488
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.00016641616821289062,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 116,
+      "origin": [
+        605,
+        730,
+        7
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 117,
+      "origin": [
+        996,
+        1442,
+        149
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.06404256820678711,
+      "core_fraction": 0.07171249389648438
+    },
+    {
+      "index": 118,
+      "origin": [
+        716,
+        644,
+        541
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.03334617614746094,
+      "core_fraction": 0.029506683349609375
+    },
+    {
+      "index": 119,
+      "origin": [
+        1367,
+        1107,
+        319
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.017091751098632812,
+      "core_fraction": 0.021759033203125
+    },
+    {
+      "index": 120,
+      "origin": [
+        948,
+        818,
+        535
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.18250513076782227,
+      "core_fraction": 0.2672119140625
+    },
+    {
+      "index": 121,
+      "origin": [
+        868,
+        1313,
+        328
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.09211540222167969,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 122,
+      "origin": [
+        365,
+        838,
+        299
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 123,
+      "origin": [
+        731,
+        774,
+        156
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.04688596725463867,
+      "core_fraction": 0.0311279296875
+    },
+    {
+      "index": 124,
+      "origin": [
+        579,
+        1848,
+        298
+      ],
+      "support_fraction": 0.47979736328125,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 125,
+      "origin": [
+        709,
+        559,
+        62
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.053009986877441406,
+      "core_fraction": 0.0480499267578125
+    },
+    {
+      "index": 126,
+      "origin": [
+        941,
+        1146,
+        441
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 127,
+      "origin": [
+        1088,
+        501,
+        267
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.005331993103027344,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 128,
+      "origin": [
+        393,
+        809,
+        140
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 129,
+      "origin": [
+        411,
+        472,
+        655
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 130,
+      "origin": [
+        265,
+        1287,
+        257
+      ],
+      "support_fraction": 0.4798130989074707,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 131,
+      "origin": [
+        731,
+        1988,
+        483
+      ],
+      "support_fraction": 0.45172119140625,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 132,
+      "origin": [
+        1335,
+        1597,
+        681
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.05353069305419922,
+      "core_fraction": 0.03464508056640625
+    },
+    {
+      "index": 133,
+      "origin": [
+        743,
+        742,
+        275
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 134,
+      "origin": [
+        1127,
+        387,
+        358
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 135,
+      "origin": [
+        1245,
+        1050,
+        408
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 136,
+      "origin": [
+        1298,
+        1066,
+        411
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.00040721893310546875,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 137,
+      "origin": [
+        528,
+        2075,
+        668
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 138,
+      "origin": [
+        434,
+        590,
+        607
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 139,
+      "origin": [
+        1195,
+        797,
+        290
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.033761024475097656,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 140,
+      "origin": [
+        483,
+        1082,
+        141
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 141,
+      "origin": [
+        615,
+        685,
+        77
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 142,
+      "origin": [
+        817,
+        478,
+        439
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.013620853424072266,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 143,
+      "origin": [
+        627,
+        562,
+        711
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 144,
+      "origin": [
+        843,
+        724,
+        38
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.13515806198120117,
+      "core_fraction": 0.15714263916015625
+    },
+    {
+      "index": 145,
+      "origin": [
+        1000,
+        1647,
+        84
+      ],
+      "support_fraction": 0.4650263786315918,
+      "fault_fraction": 0.0058714295737445354,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 146,
+      "origin": [
+        1281,
+        1952,
+        645
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0021867752075195312,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 147,
+      "origin": [
+        830,
+        1655,
+        686
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.04683399200439453,
+      "core_fraction": 0.002285003662109375
+    },
+    {
+      "index": 148,
+      "origin": [
+        849,
+        1773,
+        488
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.036846160888671875,
+      "core_fraction": 0.045074462890625
+    },
+    {
+      "index": 149,
+      "origin": [
+        921,
+        1769,
+        430
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.07707357406616211,
+      "core_fraction": 0.14810562133789062
+    },
+    {
+      "index": 150,
+      "origin": [
+        934,
+        2232,
+        603
+      ],
+      "support_fraction": 0.94207763671875,
+      "fault_fraction": 0.05505800619721413,
+      "core_fraction": 0.07328414916992188
+    },
+    {
+      "index": 151,
+      "origin": [
+        446,
+        1859,
+        585
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 152,
+      "origin": [
+        701,
+        24,
+        187
+      ],
+      "support_fraction": 0.9113388061523438,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 153,
+      "origin": [
+        993,
+        606,
+        64
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.09155654907226562,
+      "core_fraction": 0.11392593383789062
+    },
+    {
+      "index": 154,
+      "origin": [
+        731,
+        1337,
+        417
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.02092742919921875,
+      "core_fraction": 0.013275146484375
+    },
+    {
+      "index": 155,
+      "origin": [
+        471,
+        1841,
+        662
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 156,
+      "origin": [
+        363,
+        1742,
+        589
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 157,
+      "origin": [
+        293,
+        792,
+        571
+      ],
+      "support_fraction": 0.6972627639770508,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 158,
+      "origin": [
+        1251,
+        894,
+        276
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0002899169921875,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 159,
+      "origin": [
+        392,
+        1425,
+        83
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 160,
+      "origin": [
+        530,
+        1225,
+        738
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 161,
+      "origin": [
+        421,
+        1150,
+        295
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 162,
+      "origin": [
+        916,
+        1273,
+        230
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.09563255310058594,
+      "core_fraction": 0.1083831787109375
+    },
+    {
+      "index": 163,
+      "origin": [
+        521,
+        1252,
+        739
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 164,
+      "origin": [
+        1238,
+        668,
+        703
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 8.249282836914062e-05,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 165,
+      "origin": [
+        307,
+        209,
+        211
+      ],
+      "support_fraction": 0.8027606010437012,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 166,
+      "origin": [
+        913,
+        2317,
+        685
+      ],
+      "support_fraction": 0.6089315414428711,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 167,
+      "origin": [
+        281,
+        857,
+        196
+      ],
+      "support_fraction": 0.6028528213500977,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 168,
+      "origin": [
+        1156,
+        387,
+        702
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.02650594711303711,
+      "core_fraction": 3.4332275390625e-05
+    },
+    {
+      "index": 169,
+      "origin": [
+        283,
+        179,
+        134
+      ],
+      "support_fraction": 0.6151366233825684,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 170,
+      "origin": [
+        854,
+        1437,
+        630
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.022455692291259766,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 171,
+      "origin": [
+        282,
+        570,
+        50
+      ],
+      "support_fraction": 0.6110982894897461,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 172,
+      "origin": [
+        522,
+        546,
+        438
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.057910919189453125,
+      "core_fraction": 0.019866943359375
+    },
+    {
+      "index": 173,
+      "origin": [
+        671,
+        1619,
+        491
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.032039642333984375,
+      "core_fraction": 0.00116729736328125
+    },
+    {
+      "index": 174,
+      "origin": [
+        1021,
+        1324,
+        488
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0034666061401367188,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 175,
+      "origin": [
+        666,
+        1044,
+        658
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0018773078918457031,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 176,
+      "origin": [
+        692,
+        1626,
+        526
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.03415250778198242,
+      "core_fraction": 0.005756378173828125
+    },
+    {
+      "index": 177,
+      "origin": [
+        408,
+        1114,
+        556
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 178,
+      "origin": [
+        1245,
+        446,
+        130
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0437321662902832,
+      "core_fraction": 0.1345672607421875
+    },
+    {
+      "index": 179,
+      "origin": [
+        1295,
+        1844,
+        327
+      ],
+      "support_fraction": 0.5310630798339844,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 180,
+      "origin": [
+        503,
+        1715,
+        369
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 181,
+      "origin": [
+        1285,
+        1442,
+        82
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.028230667114257812,
+      "core_fraction": 0.03379058837890625
+    },
+    {
+      "index": 182,
+      "origin": [
+        679,
+        1233,
+        56
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.010952949523925781,
+      "core_fraction": 3.814697265625e-05
+    },
+    {
+      "index": 183,
+      "origin": [
+        873,
+        996,
+        174
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0008649826049804688,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 184,
+      "origin": [
+        658,
+        1617,
+        253
+      ],
+      "support_fraction": 0.9972362518310547,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 185,
+      "origin": [
+        950,
+        843,
+        605
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.16983270645141602,
+      "core_fraction": 0.17486953735351562
+    },
+    {
+      "index": 186,
+      "origin": [
+        1078,
+        943,
+        141
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.018384933471679688,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 187,
+      "origin": [
+        880,
+        2228,
+        571
+      ],
+      "support_fraction": 0.69256591796875,
+      "fault_fraction": 0.0649552196264267,
+      "core_fraction": 0.045978836715221405
+    },
+    {
+      "index": 188,
+      "origin": [
+        1122,
+        809,
+        40
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 189,
+      "origin": [
+        303,
+        844,
+        260
+      ],
+      "support_fraction": 0.7753267288208008,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 190,
+      "origin": [
+        852,
+        1281,
+        463
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.04211997985839844,
+      "core_fraction": 0.10691070556640625
+    },
+    {
+      "index": 191,
+      "origin": [
+        1267,
+        1144,
+        143
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 192,
+      "origin": [
+        865,
+        1401,
+        687
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.023929595947265625,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 193,
+      "origin": [
+        773,
+        2188,
+        517
+      ],
+      "support_fraction": 0.2734375,
+      "fault_fraction": 0.0023437500931322575,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 194,
+      "origin": [
+        918,
+        224,
+        685
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.056145668029785156,
+      "core_fraction": 0.1305389404296875
+    },
+    {
+      "index": 195,
+      "origin": [
+        868,
+        307,
+        51
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.11963081359863281,
+      "core_fraction": 0.12126922607421875
+    },
+    {
+      "index": 196,
+      "origin": [
+        1147,
+        755,
+        121
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 7.581710815429688e-05,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 197,
+      "origin": [
+        529,
+        2124,
+        668
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 198,
+      "origin": [
+        1108,
+        943,
+        675
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.016232967376708984,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 199,
+      "origin": [
+        245,
+        965,
+        446
+      ],
+      "support_fraction": 0.32190513610839844,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 200,
+      "origin": [
+        1331,
+        38,
+        158
+      ],
+      "support_fraction": 0.9997401237487793,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 201,
+      "origin": [
+        977,
+        869,
+        690
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.15757131576538086,
+      "core_fraction": 0.040714263916015625
+    },
+    {
+      "index": 202,
+      "origin": [
+        1231,
+        1670,
+        525
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.020740032196044922,
+      "core_fraction": 0.001224517822265625
+    },
+    {
+      "index": 203,
+      "origin": [
+        845,
+        178,
+        171
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.002986431121826172,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 204,
+      "origin": [
+        1371,
+        1773,
+        624
+      ],
+      "support_fraction": 0.9999995231628418,
+      "fault_fraction": 0.0002899171377066523,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 205,
+      "origin": [
+        275,
+        446,
+        623
+      ],
+      "support_fraction": 0.5555214881896973,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 206,
+      "origin": [
+        525,
+        655,
+        460
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 207,
+      "origin": [
+        1201,
+        64,
+        559
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 208,
+      "origin": [
+        1223,
+        1226,
+        240
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.018907546997070312,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 209,
+      "origin": [
+        1034,
+        205,
+        589
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.05742216110229492,
+      "core_fraction": 0.10791397094726562
+    },
+    {
+      "index": 210,
+      "origin": [
+        1350,
+        301,
+        250
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 211,
+      "origin": [
+        938,
+        53,
+        464
+      ],
+      "support_fraction": 0.9917163848876953,
+      "fault_fraction": 0.04800844192504883,
+      "core_fraction": 0.08160400390625
+    },
+    {
+      "index": 212,
+      "origin": [
+        1316,
+        589,
+        69
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 8.344650268554688e-05,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 213,
+      "origin": [
+        878,
+        209,
+        233
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 214,
+      "origin": [
+        561,
+        2096,
+        597
+      ],
+      "support_fraction": 0.8984375,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 215,
+      "origin": [
+        928,
+        708,
+        488
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.09489965438842773,
+      "core_fraction": 0.12210845947265625
+    },
+    {
+      "index": 216,
+      "origin": [
+        1261,
+        1663,
+        368
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0773172378540039,
+      "core_fraction": 0.17304229736328125
+    },
+    {
+      "index": 217,
+      "origin": [
+        434,
+        1500,
+        92
+      ],
+      "support_fraction": 0.9889798164367676,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 218,
+      "origin": [
+        628,
+        713,
+        520
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 219,
+      "origin": [
+        547,
+        1377,
+        712
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.02977132797241211,
+      "core_fraction": 0.098419189453125
+    },
+    {
+      "index": 220,
+      "origin": [
+        742,
+        717,
+        681
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.049733638763427734,
+      "core_fraction": 0.08190155029296875
+    },
+    {
+      "index": 221,
+      "origin": [
+        415,
+        93,
+        542
+      ],
+      "support_fraction": 0.9498291015625,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 222,
+      "origin": [
+        889,
+        704,
+        13
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.17426109313964844,
+      "core_fraction": 0.2751426696777344
+    },
+    {
+      "index": 223,
+      "origin": [
+        623,
+        1511,
+        330
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.024576187133789062,
+      "core_fraction": 0.001598358154296875
+    },
+    {
+      "index": 224,
+      "origin": [
+        1045,
+        306,
+        587
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 225,
+      "origin": [
+        788,
+        1542,
+        351
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.07419347763061523,
+      "core_fraction": 0.16803359985351562
+    },
+    {
+      "index": 226,
+      "origin": [
+        1082,
+        1694,
+        526
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.07981538772583008,
+      "core_fraction": 0.09901809692382812
+    },
+    {
+      "index": 227,
+      "origin": [
+        480,
+        1085,
+        58
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 228,
+      "origin": [
+        396,
+        1181,
+        604
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 229,
+      "origin": [
+        1066,
+        1725,
+        542
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.059784889221191406,
+      "core_fraction": 0.0536346435546875
+    },
+    {
+      "index": 230,
+      "origin": [
+        781,
+        167,
+        466
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.03391695022583008,
+      "core_fraction": 0.012622833251953125
+    },
+    {
+      "index": 231,
+      "origin": [
+        828,
+        1456,
+        398
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.001712799072265625,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 232,
+      "origin": [
+        388,
+        1085,
+        280
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 233,
+      "origin": [
+        1251,
+        1538,
+        737
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.07186365127563477,
+      "core_fraction": 0.1317596435546875
+    },
+    {
+      "index": 234,
+      "origin": [
+        525,
+        1255,
+        448
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 235,
+      "origin": [
+        272,
+        2091,
+        639
+      ],
+      "support_fraction": 0.5362339019775391,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 236,
+      "origin": [
+        740,
+        971,
+        62
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0025053024291992188,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 237,
+      "origin": [
+        995,
+        611,
+        666
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.08446407318115234,
+      "core_fraction": 0.16762924194335938
+    },
+    {
+      "index": 238,
+      "origin": [
+        679,
+        451,
+        166
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.05785083770751953,
+      "core_fraction": 0.00376129150390625
+    },
+    {
+      "index": 239,
+      "origin": [
+        985,
+        1664,
+        325
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.06659173965454102,
+      "core_fraction": 0.06907272338867188
+    },
+    {
+      "index": 240,
+      "origin": [
+        343,
+        1492,
+        202
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 241,
+      "origin": [
+        613,
+        1112,
+        399
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 242,
+      "origin": [
+        767,
+        43,
+        621
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.058492183685302734,
+      "core_fraction": 0.060176849365234375
+    },
+    {
+      "index": 243,
+      "origin": [
+        1043,
+        749,
+        728
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.09363412857055664,
+      "core_fraction": 0.022716522216796875
+    },
+    {
+      "index": 244,
+      "origin": [
+        901,
+        468,
+        667
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.046747684478759766,
+      "core_fraction": 0.10820388793945312
+    },
+    {
+      "index": 245,
+      "origin": [
+        1090,
+        1072,
+        672
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 246,
+      "origin": [
+        612,
+        1198,
+        263
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 247,
+      "origin": [
+        1165,
+        987,
+        623
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 248,
+      "origin": [
+        1383,
+        1621,
+        404
+      ],
+      "support_fraction": 0.9281811714172363,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 249,
+      "origin": [
+        1326,
+        1629,
+        358
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.030121326446533203,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 250,
+      "origin": [
+        1362,
+        688,
+        698
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.00044536590576171875,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 251,
+      "origin": [
+        1396,
+        925,
+        635
+      ],
+      "support_fraction": 0.8356952667236328,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 252,
+      "origin": [
+        756,
+        1609,
+        372
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.01855945587158203,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 253,
+      "origin": [
+        1130,
+        1743,
+        309
+      ],
+      "support_fraction": 0.9979829788208008,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 254,
+      "origin": [
+        1219,
+        1538,
+        218
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.11747360229492188,
+      "core_fraction": 0.21039962768554688
+    },
+    {
+      "index": 255,
+      "origin": [
+        399,
+        74,
+        428
+      ],
+      "support_fraction": 0.72528076171875,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 256,
+      "origin": [
+        776,
+        1394,
+        544
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 257,
+      "origin": [
+        620,
+        947,
+        694
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 258,
+      "origin": [
+        1005,
+        1763,
+        405
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.06979513168334961,
+      "core_fraction": 0.01004791259765625
+    },
+    {
+      "index": 259,
+      "origin": [
+        1250,
+        2325,
+        613
+      ],
+      "support_fraction": 0.8445553779602051,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 260,
+      "origin": [
+        1008,
+        62,
+        211
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 261,
+      "origin": [
+        593,
+        1005,
+        277
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 262,
+      "origin": [
+        1065,
+        1211,
+        723
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 263,
+      "origin": [
+        1245,
+        1693,
+        213
+      ],
+      "support_fraction": 0.9632415771484375,
+      "fault_fraction": 0.002734566805884242,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 264,
+      "origin": [
+        1109,
+        1736,
+        348
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 2.002716064453125e-05,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 265,
+      "origin": [
+        1143,
+        1013,
+        325
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 266,
+      "origin": [
+        411,
+        606,
+        85
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 267,
+      "origin": [
+        1406,
+        680,
+        82
+      ],
+      "support_fraction": 0.7555570602416992,
+      "fault_fraction": 0.014302141033113003,
+      "core_fraction": 0.0047637661918997765
+    },
+    {
+      "index": 268,
+      "origin": [
+        424,
+        685,
+        13
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 269,
+      "origin": [
+        1136,
+        1062,
+        169
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.09140205383300781,
+      "core_fraction": 0.17392730712890625
+    },
+    {
+      "index": 270,
+      "origin": [
+        1060,
+        588,
+        564
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.10018205642700195,
+      "core_fraction": 0.02094268798828125
+    },
+    {
+      "index": 271,
+      "origin": [
+        1260,
+        35,
+        344
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 272,
+      "origin": [
+        851,
+        180,
+        574
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.11910343170166016,
+      "core_fraction": 0.06608963012695312
+    },
+    {
+      "index": 273,
+      "origin": [
+        811,
+        1145,
+        19
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.1572108268737793,
+      "core_fraction": 0.22307968139648438
+    },
+    {
+      "index": 274,
+      "origin": [
+        1048,
+        1402,
+        516
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 275,
+      "origin": [
+        816,
+        1013,
+        729
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.08269262313842773,
+      "core_fraction": 0.058414459228515625
+    },
+    {
+      "index": 276,
+      "origin": [
+        1002,
+        857,
+        550
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.2016744613647461,
+      "core_fraction": 0.33626556396484375
+    },
+    {
+      "index": 277,
+      "origin": [
+        1364,
+        1708,
+        518
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 8.678436279296875e-05,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 278,
+      "origin": [
+        1330,
+        41,
+        33
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 279,
+      "origin": [
+        483,
+        607,
+        670
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 280,
+      "origin": [
+        328,
+        114,
+        500
+      ],
+      "support_fraction": 0.9661269187927246,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 281,
+      "origin": [
+        499,
+        840,
+        437
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 282,
+      "origin": [
+        658,
+        356,
+        168
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.02580547332763672,
+      "core_fraction": 0.010776519775390625
+    },
+    {
+      "index": 283,
+      "origin": [
+        696,
+        1291,
+        439
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.006203651428222656,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 284,
+      "origin": [
+        1112,
+        1955,
+        569
+      ],
+      "support_fraction": 0.9730210304260254,
+      "fault_fraction": 0.045282378792762756,
+      "core_fraction": 0.08661651611328125
+    },
+    {
+      "index": 285,
+      "origin": [
+        357,
+        1625,
+        373
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 286,
+      "origin": [
+        342,
+        1643,
+        578
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 287,
+      "origin": [
+        1134,
+        1154,
+        93
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.002006053924560547,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 288,
+      "origin": [
+        808,
+        387,
+        623
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0927267074584961,
+      "core_fraction": 0.05986785888671875
+    },
+    {
+      "index": 289,
+      "origin": [
+        1109,
+        1263,
+        163
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.004550457000732422,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 290,
+      "origin": [
+        1086,
+        169,
+        544
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.031766414642333984,
+      "core_fraction": 0.02104949951171875
+    },
+    {
+      "index": 291,
+      "origin": [
+        1020,
+        77,
+        304
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 292,
+      "origin": [
+        997,
+        195,
+        317
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 293,
+      "origin": [
+        667,
+        763,
+        579
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 294,
+      "origin": [
+        460,
+        305,
+        70
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 295,
+      "origin": [
+        968,
+        1834,
+        367
+      ],
+      "support_fraction": 0.89337158203125,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 296,
+      "origin": [
+        370,
+        1149,
+        598
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 297,
+      "origin": [
+        1006,
+        2,
+        219
+      ],
+      "support_fraction": 0.8381671905517578,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 298,
+      "origin": [
+        1325,
+        607,
+        583
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 299,
+      "origin": [
+        1082,
+        1924,
+        377
+      ],
+      "support_fraction": 0.3350944519042969,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 300,
+      "origin": [
+        297,
+        1462,
+        37
+      ],
+      "support_fraction": 0.7058444023132324,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 301,
+      "origin": [
+        666,
+        796,
+        338
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.001739501953125,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 302,
+      "origin": [
+        1312,
+        1158,
+        58
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 303,
+      "origin": [
+        1230,
+        1600,
+        158
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.039872169494628906,
+      "core_fraction": 0.000728607177734375
+    },
+    {
+      "index": 304,
+      "origin": [
+        947,
+        1742,
+        399
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.11954498291015625,
+      "core_fraction": 0.17044830322265625
+    },
+    {
+      "index": 305,
+      "origin": [
+        1008,
+        881,
+        512
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.15747833251953125,
+      "core_fraction": 0.16717910766601562
+    },
+    {
+      "index": 306,
+      "origin": [
+        779,
+        458,
+        353
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 307,
+      "origin": [
+        656,
+        1197,
+        61
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.006060123443603516,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 308,
+      "origin": [
+        1401,
+        47,
+        83
+      ],
+      "support_fraction": 0.790412425994873,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 309,
+      "origin": [
+        1064,
+        900,
+        629
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.08089351654052734,
+      "core_fraction": 0.14923477172851562
+    },
+    {
+      "index": 310,
+      "origin": [
+        1409,
+        649,
+        193
+      ],
+      "support_fraction": 0.7326769828796387,
+      "fault_fraction": 0.0102607486769557,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 311,
+      "origin": [
+        956,
+        1490,
+        102
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.05907630920410156,
+      "core_fraction": 0.025669097900390625
+    },
+    {
+      "index": 312,
+      "origin": [
+        855,
+        1837,
+        371
+      ],
+      "support_fraction": 0.89422607421875,
+      "fault_fraction": 0.0015591939445585012,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 313,
+      "origin": [
+        1344,
+        820,
+        97
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.003429412841796875,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 314,
+      "origin": [
+        1176,
+        1337,
+        260
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 315,
+      "origin": [
+        430,
+        1390,
+        578
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 316,
+      "origin": [
+        333,
+        522,
+        338
+      ],
+      "support_fraction": 0.999882698059082,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 317,
+      "origin": [
+        804,
+        1917,
+        711
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.004168987274169922,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 318,
+      "origin": [
+        787,
+        1704,
+        314
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.006153583526611328,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 319,
+      "origin": [
+        877,
+        1848,
+        337
+      ],
+      "support_fraction": 0.69146728515625,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 320,
+      "origin": [
+        376,
+        1193,
+        601
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 321,
+      "origin": [
+        763,
+        1026,
+        733
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0414118766784668,
+      "core_fraction": 0.021209716796875
+    },
+    {
+      "index": 322,
+      "origin": [
+        995,
+        440,
+        158
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0519261360168457,
+      "core_fraction": 0.07790756225585938
+    },
+    {
+      "index": 323,
+      "origin": [
+        439,
+        719,
+        668
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 324,
+      "origin": [
+        430,
+        981,
+        714
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 325,
+      "origin": [
+        649,
+        914,
+        110
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0005660057067871094,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 326,
+      "origin": [
+        717,
+        1943,
+        631
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0007996559143066406,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 327,
+      "origin": [
+        727,
+        2004,
+        544
+      ],
+      "support_fraction": 0.73529052734375,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 328,
+      "origin": [
+        384,
+        1292,
+        423
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 329,
+      "origin": [
+        285,
+        811,
+        96
+      ],
+      "support_fraction": 0.6349973678588867,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 330,
+      "origin": [
+        955,
+        636,
+        709
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.10183191299438477,
+      "core_fraction": 0.1422271728515625
+    },
+    {
+      "index": 331,
+      "origin": [
+        1262,
+        663,
+        103
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.06092405319213867,
+      "core_fraction": 0.130096435546875
+    },
+    {
+      "index": 332,
+      "origin": [
+        662,
+        1706,
+        347
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 333,
+      "origin": [
+        1406,
+        600,
+        64
+      ],
+      "support_fraction": 0.7568039894104004,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 334,
+      "origin": [
+        293,
+        1740,
+        333
+      ],
+      "support_fraction": 0.6998229026794434,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 335,
+      "origin": [
+        899,
+        391,
+        660
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.10556459426879883,
+      "core_fraction": 0.17306900024414062
+    },
+    {
+      "index": 336,
+      "origin": [
+        1142,
+        1328,
+        279
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 337,
+      "origin": [
+        526,
+        750,
+        199
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 338,
+      "origin": [
+        1020,
+        1519,
+        157
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.09475517272949219,
+      "core_fraction": 0.050525665283203125
+    },
+    {
+      "index": 339,
+      "origin": [
+        406,
+        1514,
+        81
+      ],
+      "support_fraction": 0.9339423179626465,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 340,
+      "origin": [
+        311,
+        1446,
+        410
+      ],
+      "support_fraction": 0.8385887145996094,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 341,
+      "origin": [
+        1374,
+        717,
+        120
+      ],
+      "support_fraction": 0.9984011650085449,
+      "fault_fraction": 0.05709955841302872,
+      "core_fraction": 0.09893035888671875
+    },
+    {
+      "index": 342,
+      "origin": [
+        308,
+        224,
+        389
+      ],
+      "support_fraction": 0.8113369941711426,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 343,
+      "origin": [
+        954,
+        1816,
+        389
+      ],
+      "support_fraction": 0.99176025390625,
+      "fault_fraction": 0.00151692028157413,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 344,
+      "origin": [
+        619,
+        1683,
+        719
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 345,
+      "origin": [
+        858,
+        20,
+        152
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 346,
+      "origin": [
+        992,
+        1836,
+        251
+      ],
+      "support_fraction": 0.2952880859375,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 347,
+      "origin": [
+        1226,
+        1107,
+        493
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 348,
+      "origin": [
+        858,
+        323,
+        168
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.07960987091064453,
+      "core_fraction": 0.08961105346679688
+    },
+    {
+      "index": 349,
+      "origin": [
+        1356,
+        1512,
+        448
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 350,
+      "origin": [
+        774,
+        1130,
+        404
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 351,
+      "origin": [
+        365,
+        815,
+        250
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 352,
+      "origin": [
+        1341,
+        725,
+        368
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.009470939636230469,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 353,
+      "origin": [
+        461,
+        2148,
+        664
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 354,
+      "origin": [
+        889,
+        1670,
+        690
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.13239192962646484,
+      "core_fraction": 0.15471267700195312
+    },
+    {
+      "index": 355,
+      "origin": [
+        939,
+        1043,
+        180
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.02918386459350586,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 356,
+      "origin": [
+        1196,
+        680,
+        244
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.08809232711791992,
+      "core_fraction": 0.15950775146484375
+    },
+    {
+      "index": 357,
+      "origin": [
+        828,
+        912,
+        694
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.10034751892089844,
+      "core_fraction": 0.0087432861328125
+    },
+    {
+      "index": 358,
+      "origin": [
+        813,
+        2013,
+        503
+      ],
+      "support_fraction": 0.4207763671875,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 359,
+      "origin": [
+        979,
+        1098,
+        387
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.020853042602539062,
+      "core_fraction": 0.051555633544921875
+    },
+    {
+      "index": 360,
+      "origin": [
+        379,
+        177,
+        326
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 361,
+      "origin": [
+        543,
+        597,
+        166
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 362,
+      "origin": [
+        1191,
+        533,
+        371
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 363,
+      "origin": [
+        643,
+        625,
+        619
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 364,
+      "origin": [
+        602,
+        921,
+        254
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 365,
+      "origin": [
+        1151,
+        1533,
+        373
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.004085063934326172,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 366,
+      "origin": [
+        1286,
+        14,
+        30
+      ],
+      "support_fraction": 0.9053225517272949,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 367,
+      "origin": [
+        1387,
+        1463,
+        92
+      ],
+      "support_fraction": 0.9046707153320312,
+      "fault_fraction": 0.0002050355396931991,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 368,
+      "origin": [
+        386,
+        2189,
+        578
+      ],
+      "support_fraction": 0.75,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 369,
+      "origin": [
+        1214,
+        1177,
+        435
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.013077735900878906,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 370,
+      "origin": [
+        456,
+        262,
+        722
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.019111156463623047,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 371,
+      "origin": [
+        1139,
+        1717,
+        481
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.08611679077148438,
+      "core_fraction": 0.16703033447265625
+    },
+    {
+      "index": 372,
+      "origin": [
+        1276,
+        1612,
+        673
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.08176565170288086,
+      "core_fraction": 0.13880538940429688
+    },
+    {
+      "index": 373,
+      "origin": [
+        845,
+        1513,
+        574
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.11849737167358398,
+      "core_fraction": 0.2668190002441406
+    },
+    {
+      "index": 374,
+      "origin": [
+        1388,
+        772,
+        59
+      ],
+      "support_fraction": 0.8962259292602539,
+      "fault_fraction": 0.0036785949487239122,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 375,
+      "origin": [
+        294,
+        334,
+        588
+      ],
+      "support_fraction": 0.7023687362670898,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 376,
+      "origin": [
+        1017,
+        878,
+        696
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.13489055633544922,
+      "core_fraction": 0.08486557006835938
+    },
+    {
+      "index": 377,
+      "origin": [
+        1248,
+        2262,
+        706
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 378,
+      "origin": [
+        1012,
+        1236,
+        302
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.11114168167114258,
+      "core_fraction": 0.21128082275390625
+    },
+    {
+      "index": 379,
+      "origin": [
+        1272,
+        1941,
+        627
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.003013134002685547,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 380,
+      "origin": [
+        454,
+        1144,
+        514
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    },
+    {
+      "index": 381,
+      "origin": [
+        1195,
+        804,
+        603
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.050627708435058594,
+      "core_fraction": 0.0540771484375
+    },
+    {
+      "index": 382,
+      "origin": [
+        736,
+        1425,
+        251
+      ],
+      "support_fraction": 1.0,
+      "fault_fraction": 0.08715629577636719,
+      "core_fraction": 0.18181991577148438
+    },
+    {
+      "index": 383,
+      "origin": [
+        315,
+        1317,
+        723
+      ],
+      "support_fraction": 0.8697924613952637,
+      "fault_fraction": 0.0,
+      "core_fraction": 0.0
+    }
+  ]
+}

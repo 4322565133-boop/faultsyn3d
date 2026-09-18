@@ -1,0 +1,55 @@
+{
+  "status_at_handoff": "running",
+  "last_completed_epoch": 1,
+  "first_epoch": {
+    "epoch": 1,
+    "lr": 1e-06,
+    "train_loss": 0.6036779520412286,
+    "fast_val": {
+      "iou": 0.04353819809344379,
+      "dice": 0.08344342003577554,
+      "precision": 0.04413728880785065,
+      "recall": 0.7623362037572816,
+      "valid_voxels": 20134972,
+      "positive_voxels": 848539,
+      "loss": 0.5869929818436503,
+      "cores": 96
+    },
+    "full_val": null,
+    "seconds": 242.41208148002625,
+    "skipped_optimizer_steps": 0
+  },
+  "supervisor": {
+    "status": "running",
+    "supervisor_pid": 3446553,
+    "command": [
+      "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/bin/python",
+      "-m",
+      "torch.distributed.run",
+      "--master_addr",
+      "127.0.0.1",
+      "--master_port",
+      "29862",
+      "--nproc_per_node",
+      "4",
+      "--",
+      "train/train_thebe_spatial_ddp.py",
+      "--run",
+      "/hdd1/hukaixiao/projects/faultsyn3d/runs/thebe_spatial_v3_unet_l_trial",
+      "--epochs",
+      "100",
+      "--stop-after",
+      "30",
+      "--samples",
+      "2400",
+      "--workers",
+      "2"
+    ],
+    "started": "2026-09-17T17:09:46.972746+09:00",
+    "torchrun_pid": 3446555
+  },
+  "checkpoint_bytes": 115800849,
+  "all_valid_loss_matches_original": true,
+  "raw_train_cache_sample_checks": 4096,
+  "test_evaluated": false
+}

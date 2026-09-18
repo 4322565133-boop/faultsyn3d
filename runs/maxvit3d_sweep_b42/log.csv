@@ -1,0 +1,4 @@
+epoch,train_loss,train_seg,train_profile,train_trace,ramp,val_loss,val_iou,val_dice,val_precision,val_recall,lr,seconds,val_iou_en_echelon,val_iou_horsetail,val_iou_negative_flower,val_iou_positive_flower,val_iou_listric_assemblage,val_iou_intersecting_conjugate
+1,0.59491,0.59491,0.00000,0.00000,0.00,0.58510,0.0869,0.1598,0.0884,0.8301,1.09e-05,80,0.0677,0.0703,0.0785,0.0709,0.0398,0.2090
+2,0.57975,0.57975,0.00000,0.00000,0.00,0.57404,0.1606,0.2768,0.1662,0.8267,2.08e-05,68,0.1422,0.1631,0.1568,0.1590,0.0660,0.2912
+3,0.57224,0.57224,0.00000,0.00000,0.00,0.56796,0.1686,0.2885,0.1726,0.8793,3.07e-05,68,0.1513,0.1760,0.1706,0.1740,0.0657,0.3051

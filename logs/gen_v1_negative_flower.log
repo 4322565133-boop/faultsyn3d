@@ -1,0 +1,202 @@
+[negative_flower      00] faults=4 depth=3 penalty=0.0 iters=172 fault%=1.52 dips=[76, 174, 134, 138] 59.0s
+[negative_flower      01] faults=4 depth=3 penalty=2.0 iters=200 fault%=1.50 dips=[78, 45, 110, 117] 43.4s
+[negative_flower      02] faults=4 depth=3 penalty=2.0 iters=200 fault%=0.91 dips=[85, 162, 140, 147] 88.3s
+[negative_flower      03] faults=4 depth=3 penalty=0.0 iters= 31 fault%=1.38 dips=[80, 136, 135, 136] 45.1s
+[negative_flower      04] faults=4 depth=3 penalty=0.0 iters= 17 fault%=1.44 dips=[79, 97, 96, 95] 55.8s
+[negative_flower      05] faults=4 depth=3 penalty=2.0 iters=200 fault%=1.97 dips=[83, 66, 136, 127] 81.8s
+[negative_flower      06] faults=4 depth=3 penalty=0.0 iters= 16 fault%=1.31 dips=[87, 148, 149, 150] 45.8s
+[negative_flower      07] faults=4 depth=3 penalty=0.0 iters=  6 fault%=1.51 dips=[78, 76, 22, 75] 30.0s
+[negative_flower      08] faults=4 depth=3 penalty=0.0 iters=  5 fault%=1.78 dips=[79, 35, 57, 77] 36.6s
+[negative_flower      09] faults=4 depth=3 penalty=2.0 iters=200 fault%=1.83 dips=[84, 83, 133, 117] 38.3s
+[negative_flower      10] faults=4 depth=3 penalty=0.0 iters= 19 fault%=1.42 dips=[76, 85, 71, 74] 33.9s
+[negative_flower      11] faults=4 depth=3 penalty=0.0 iters= 10 fault%=1.66 dips=[79, 71, 95, 92] 46.2s
+[negative_flower      12] faults=4 depth=3 penalty=0.0 iters= 22 fault%=1.09 dips=[72, 104, 103, 102] 49.0s
+[negative_flower      13] faults=4 depth=3 penalty=0.0 iters= 12 fault%=1.49 dips=[81, 76, 84, 95] 40.7s
+[negative_flower      14] faults=4 depth=3 penalty=0.0 iters= 10 fault%=1.57 dips=[78, 62, 95, 95] 39.3s
+[negative_flower      15] faults=4 depth=3 penalty=0.0 iters= 10 fault%=1.11 dips=[76, 129, 122, 124] 48.9s
+[negative_flower      16] faults=4 depth=3 penalty=0.0 iters= 10 fault%=1.05 dips=[80, 73, 95, 102] 54.1s
+[negative_flower      17] faults=4 depth=3 penalty=0.0 iters=  5 fault%=1.12 dips=[79, 79, 63, 78] 25.1s
+[negative_flower      18] faults=4 depth=3 penalty=0.0 iters=  6 fault%=1.05 dips=[87, 62, 106, 107] 46.0s
+[negative_flower      19] faults=4 depth=3 penalty=0.0 iters=  6 fault%=1.31 dips=[79, 101, 99, 84] 23.3s
+[negative_flower      20] faults=4 depth=3 penalty=0.0 iters=  8 fault%=1.71 dips=[78, 128, 125, 128] 41.3s
+[negative_flower      21] faults=4 depth=3 penalty=0.0 iters=  5 fault%=1.11 dips=[76, 43, 66, 74] 41.3s
+[negative_flower      22] faults=4 depth=3 penalty=0.0 iters= 13 fault%=1.06 dips=[75, 0, 33, 12] 24.8s
+[negative_flower      23] faults=4 depth=3 penalty=0.0 iters=  3 fault%=1.23 dips=[79, 71, 65, 38] 58.0s
+[negative_flower      24] faults=4 depth=3 penalty=0.0 iters= 11 fault%=1.33 dips=[84, 52, 97, 95] 36.8s
+[negative_flower      25] faults=4 depth=3 penalty=0.0 iters=  3 fault%=1.02 dips=[79, 34, 48, 80] 43.2s
+[negative_flower      26] faults=4 depth=3 penalty=0.0 iters= 15 fault%=1.69 dips=[83, 91, 84, 89] 48.0s
+[negative_flower      27] faults=4 depth=3 penalty=0.0 iters=  6 fault%=2.45 dips=[75, 107, 116, 111] 53.0s
+[negative_flower      28] faults=4 depth=3 penalty=0.0 iters= 29 fault%=1.36 dips=[82, 89, 108, 96] 63.1s
+[negative_flower      29] faults=4 depth=3 penalty=0.0 iters=  6 fault%=1.58 dips=[73, 116, 116, 115] 53.4s
+[negative_flower      30] faults=4 depth=3 penalty=0.0 iters=  6 fault%=1.13 dips=[78, 46, 107, 112] 73.9s
+[negative_flower      31] faults=4 depth=3 penalty=0.0 iters= 10 fault%=1.53 dips=[82, 115, 108, 106] 46.3s
+[negative_flower      32] faults=4 depth=3 penalty=0.0 iters=  4 fault%=1.52 dips=[86, 137, 127, 137] 46.0s
+[negative_flower      33] faults=4 depth=3 penalty=0.0 iters=  5 fault%=1.46 dips=[79, 70, 67, 65] 48.6s
+[negative_flower      34] faults=4 depth=3 penalty=2.0 iters=200 fault%=1.13 dips=[83, 62, 178, 2] 59.0s
+[negative_flower      35] faults=4 depth=3 penalty=0.0 iters=  4 fault%=0.88 dips=[76, 35, 178, 6] 43.8s
+[negative_flower      36] faults=4 depth=3 penalty=0.0 iters=  4 fault%=1.84 dips=[87, 82, 76, 45] 33.8s
+[negative_flower      37] faults=4 depth=3 penalty=0.0 iters=  8 fault%=1.82 dips=[77, 110, 106, 102] 42.9s
+[negative_flower      38] faults=4 depth=3 penalty=0.0 iters= 13 fault%=1.59 dips=[81, 172, 116, 119] 62.7s
+[negative_flower      39] faults=4 depth=3 penalty=0.0 iters=  3 fault%=1.60 dips=[84, 82, 59, 47] 44.2s
+[negative_flower      40] faults=4 depth=3 penalty=0.0 iters= 15 fault%=1.48 dips=[74, 122, 122, 118] 38.3s
+[negative_flower      41] faults=4 depth=3 penalty=0.0 iters=  3 fault%=1.34 dips=[80, 39, 104, 104] 47.0s
+[negative_flower      42] faults=4 depth=3 penalty=2.0 iters=200 fault%=1.68 dips=[72, 34, 168, 163] 53.4s
+[negative_flower      43] faults=4 depth=3 penalty=2.0 iters=200 fault%=1.94 dips=[84, 113, 144, 130] 78.6s
+[negative_flower      44] faults=4 depth=3 penalty=0.0 iters= 13 fault%=1.33 dips=[74, 153, 101, 98] 43.8s
+[negative_flower      45] faults=4 depth=3 penalty=0.0 iters= 16 fault%=1.38 dips=[88, 108, 105, 91] 33.7s
+[negative_flower      46] faults=4 depth=3 penalty=0.0 iters=  3 fault%=1.32 dips=[74, 77, 47, 76] 35.1s
+[negative_flower      47] faults=4 depth=3 penalty=0.0 iters=  3 fault%=1.93 dips=[73, 103, 84, 96] 32.5s
+[negative_flower      48] faults=4 depth=3 penalty=0.0 iters= 14 fault%=1.56 dips=[83, 98, 96, 73] 31.8s
+[negative_flower      49] faults=4 depth=3 penalty=2.0 iters=200 fault%=1.29 dips=[79, 75, 123, 123] 44.3s
+[negative_flower      50] faults=4 depth=3 penalty=0.0 iters=  5 fault%=1.18 dips=[86, 23, 103, 101] 39.1s
+[negative_flower      51] faults=4 depth=3 penalty=0.0 iters= 11 fault%=1.56 dips=[82, 23, 96, 98] 38.6s
+[negative_flower      52] faults=4 depth=3 penalty=0.0 iters=  8 fault%=1.41 dips=[82, 96, 74, 69] 32.8s
+[negative_flower      53] faults=4 depth=3 penalty=0.0 iters=  5 fault%=1.70 dips=[86, 52, 83, 57] 59.7s
+[negative_flower      54] faults=4 depth=3 penalty=0.0 iters=  4 fault%=1.67 dips=[78, 34, 72, 76] 49.0s
+[negative_flower      55] faults=4 depth=3 penalty=0.0 iters= 69 fault%=1.22 dips=[85, 127, 150, 134] 34.1s
+[negative_flower      56] faults=4 depth=3 penalty=2.0 iters=200 fault%=1.70 dips=[83, 54, 95, 131] 33.1s
+[negative_flower      57] faults=4 depth=3 penalty=0.0 iters= 10 fault%=1.64 dips=[86, 104, 110, 122] 39.1s
+[negative_flower      58] faults=4 depth=3 penalty=0.0 iters=  3 fault%=0.80 dips=[86, 3, 80, 63] 44.5s
+[negative_flower      59] faults=4 depth=3 penalty=0.0 iters=  7 fault%=1.16 dips=[83, 115, 78, 108] 28.1s
+[negative_flower      60] faults=4 depth=3 penalty=0.0 iters=  6 fault%=1.19 dips=[81, 114, 118, 115] 62.2s
+[negative_flower      61] faults=4 depth=3 penalty=2.0 iters=200 fault%=1.24 dips=[76, 145, 139, 148] 40.4s
+[negative_flower      62] faults=4 depth=3 penalty=0.0 iters= 19 fault%=1.33 dips=[81, 60, 129, 148] 68.2s
+[negative_flower      63] faults=4 depth=3 penalty=2.0 iters=200 fault%=1.22 dips=[76, 6, 145, 153] 42.5s
+[negative_flower      64] faults=4 depth=3 penalty=0.0 iters=  4 fault%=1.49 dips=[74, 103, 112, 111] 44.4s
+[negative_flower      65] faults=4 depth=3 penalty=0.0 iters=181 fault%=1.08 dips=[76, 127, 126, 124] 52.3s
+[negative_flower      66] faults=4 depth=3 penalty=0.0 iters=  6 fault%=1.17 dips=[74, 40, 57, 56] 48.4s
+[negative_flower      67] faults=4 depth=3 penalty=2.0 iters=200 fault%=0.84 dips=[83, 169, 141, 151] 53.4s
+[negative_flower      68] faults=4 depth=3 penalty=0.0 iters=130 fault%=1.42 dips=[79, 14, 73, 69] 38.2s
+[negative_flower      69] faults=4 depth=3 penalty=0.0 iters= 13 fault%=1.57 dips=[78, 102, 100, 90] 47.8s
+[negative_flower      70] faults=4 depth=3 penalty=0.0 iters=  3 fault%=1.51 dips=[88, 104, 95, 91] 34.8s
+[negative_flower      71] faults=4 depth=3 penalty=2.0 iters=200 fault%=1.47 dips=[81, 78, 120, 127] 54.3s
+[negative_flower      72] faults=4 depth=3 penalty=2.0 iters=200 fault%=1.84 dips=[73, 54, 112, 98] 58.3s
+[negative_flower      73] faults=4 depth=3 penalty=0.0 iters=  9 fault%=1.19 dips=[82, 145, 176, 152] 49.6s
+[negative_flower      74] faults=4 depth=3 penalty=0.0 iters=  5 fault%=1.58 dips=[86, 140, 139, 140] 77.5s
+[negative_flower      75] faults=4 depth=3 penalty=2.0 iters=200 fault%=1.09 dips=[82, 154, 149, 131] 34.5s
+[negative_flower      76] faults=4 depth=3 penalty=0.0 iters=  7 fault%=1.36 dips=[81, 103, 105, 104] 52.9s
+[negative_flower      77] faults=4 depth=3 penalty=0.0 iters=  3 fault%=0.95 dips=[77, 68, 9, 48] 48.2s
+[negative_flower      78] faults=4 depth=3 penalty=0.0 iters=  5 fault%=1.44 dips=[73, 104, 79, 104] 55.5s
+[negative_flower      79] faults=4 depth=3 penalty=0.0 iters= 10 fault%=1.72 dips=[77, 122, 127, 127] 84.7s
+[negative_flower      80] faults=4 depth=3 penalty=2.0 iters=200 fault%=1.39 dips=[86, 98, 144, 143] 65.4s
+[negative_flower      81] faults=4 depth=3 penalty=2.0 iters=200 fault%=1.48 dips=[79, 157, 140, 138] 47.5s
+[negative_flower      82] faults=4 depth=3 penalty=0.0 iters= 13 fault%=0.85 dips=[85, 93, 58, 90] 44.8s
+[negative_flower      83] faults=4 depth=3 penalty=0.0 iters=  8 fault%=1.95 dips=[78, 107, 106, 105] 65.4s
+[negative_flower      84] faults=4 depth=3 penalty=0.0 iters=  3 fault%=1.47 dips=[78, 70, 50, 162] 56.3s
+[negative_flower      85] faults=4 depth=3 penalty=0.0 iters=  3 fault%=1.85 dips=[85, 57, 84, 82] 28.8s
+[negative_flower      86] faults=4 depth=3 penalty=0.0 iters= 12 fault%=1.30 dips=[79, 83, 95, 94] 31.2s
+[negative_flower      87] faults=4 depth=3 penalty=0.0 iters= 17 fault%=1.25 dips=[79, 71, 83, 79] 43.4s
+[negative_flower      88] faults=4 depth=3 penalty=0.0 iters= 16 fault%=1.21 dips=[73, 135, 83, 116] 55.4s
+[negative_flower      89] faults=4 depth=3 penalty=0.0 iters= 15 fault%=1.87 dips=[76, 118, 117, 98] 53.8s
+[negative_flower      90] faults=4 depth=3 penalty=0.0 iters= 21 fault%=1.44 dips=[81, 48, 71, 100] 48.6s
+[negative_flower      91] faults=4 depth=3 penalty=2.0 iters=200 fault%=1.42 dips=[85, 70, 122, 142] 60.3s
+[negative_flower      92] faults=4 depth=3 penalty=0.0 iters= 15 fault%=1.66 dips=[82, 147, 90, 83] 46.2s
+[negative_flower      93] faults=4 depth=3 penalty=0.0 iters= 79 fault%=1.32 dips=[85, 34, 79, 76] 29.5s
+[negative_flower      94] faults=4 depth=3 penalty=0.0 iters= 19 fault%=1.37 dips=[80, 166, 14, 17] 41.1s
+[negative_flower      95] faults=4 depth=3 penalty=0.0 iters=  9 fault%=1.58 dips=[75, 60, 81, 84] 36.8s
+[negative_flower      96] faults=4 depth=3 penalty=0.0 iters= 14 fault%=1.88 dips=[87, 81, 99, 95] 42.4s
+[negative_flower      97] faults=4 depth=3 penalty=0.0 iters= 17 fault%=1.64 dips=[75, 58, 100, 77] 38.5s
+[negative_flower      98] faults=4 depth=3 penalty=0.0 iters= 90 fault%=1.38 dips=[77, 65, 67, 94] 32.8s
+[negative_flower      99] faults=4 depth=3 penalty=0.0 iters=  8 fault%=1.43 dips=[85, 153, 73, 161] 32.3s
+[negative_flower      100] faults=4 depth=3 penalty=0.0 iters=  3 fault%=1.76 dips=[77, 69, 88, 103] 71.2s
+[negative_flower      101] faults=4 depth=3 penalty=0.0 iters=  3 fault%=1.82 dips=[80, 46, 73, 82] 36.6s
+[negative_flower      102] faults=4 depth=3 penalty=0.0 iters=  3 fault%=1.42 dips=[77, 111, 90, 103] 45.3s
+[negative_flower      103] faults=4 depth=3 penalty=0.0 iters=  3 fault%=1.32 dips=[75, 74, 66, 72] 32.2s
+[negative_flower      104] faults=4 depth=3 penalty=0.0 iters= 11 fault%=1.38 dips=[80, 5, 144, 156] 44.4s
+[negative_flower      105] faults=4 depth=3 penalty=0.0 iters=  7 fault%=1.12 dips=[78, 95, 94, 93] 32.5s
+[negative_flower      106] faults=4 depth=3 penalty=0.0 iters= 11 fault%=1.94 dips=[84, 113, 116, 116] 49.7s
+[negative_flower      107] faults=4 depth=3 penalty=0.0 iters=  6 fault%=1.07 dips=[74, 144, 170, 11] 34.3s
+[negative_flower      108] faults=4 depth=3 penalty=0.0 iters= 12 fault%=1.30 dips=[86, 174, 133, 131] 63.3s
+[negative_flower      109] faults=4 depth=3 penalty=0.0 iters= 12 fault%=1.50 dips=[79, 94, 50, 73] 55.8s
+[negative_flower      110] faults=4 depth=3 penalty=0.0 iters=  6 fault%=1.59 dips=[87, 108, 123, 122] 51.5s
+[negative_flower      111] faults=4 depth=3 penalty=0.0 iters=  3 fault%=1.62 dips=[82, 166, 101, 113] 39.8s
+[negative_flower      112] faults=4 depth=3 penalty=0.0 iters= 11 fault%=1.55 dips=[80, 97, 91, 96] 44.1s
+[negative_flower      113] faults=4 depth=3 penalty=0.0 iters=  9 fault%=1.04 dips=[88, 125, 125, 109] 62.4s
+[negative_flower      114] faults=4 depth=3 penalty=2.0 iters=200 fault%=1.26 dips=[75, 51, 126, 137] 77.5s
+[negative_flower      115] faults=4 depth=3 penalty=0.0 iters= 18 fault%=1.60 dips=[84, 140, 140, 140] 78.0s
+[negative_flower      116] faults=4 depth=3 penalty=0.0 iters=  8 fault%=1.38 dips=[84, 137, 132, 123] 49.0s
+[negative_flower      117] faults=4 depth=3 penalty=0.0 iters=  3 fault%=1.10 dips=[79, 0, 63, 41] 53.8s
+[negative_flower      118] faults=4 depth=3 penalty=0.0 iters=  7 fault%=1.47 dips=[83, 83, 82, 80] 32.0s
+[negative_flower      119] faults=4 depth=3 penalty=0.0 iters= 14 fault%=1.11 dips=[78, 15, 66, 19] 41.2s
+[negative_flower      120] faults=4 depth=3 penalty=0.0 iters= 17 fault%=1.84 dips=[79, 120, 117, 119] 41.4s
+[negative_flower      121] faults=4 depth=3 penalty=0.0 iters= 23 fault%=1.07 dips=[85, 155, 180, 163] 39.7s
+[negative_flower      122] faults=4 depth=3 penalty=0.0 iters=  5 fault%=2.11 dips=[73, 95, 108, 107] 49.6s
+[negative_flower      123] faults=4 depth=3 penalty=0.0 iters= 10 fault%=1.56 dips=[83, 113, 112, 112] 28.0s
+[negative_flower      124] faults=4 depth=3 penalty=0.0 iters=  8 fault%=0.99 dips=[85, 93, 105, 104] 42.1s
+[negative_flower      125] faults=4 depth=3 penalty=0.0 iters=  9 fault%=1.50 dips=[77, 71, 104, 115] 28.6s
+[negative_flower      126] faults=4 depth=3 penalty=0.0 iters=  6 fault%=1.57 dips=[81, 108, 110, 116] 44.3s
+[negative_flower      127] faults=4 depth=3 penalty=0.0 iters= 29 fault%=1.22 dips=[77, 33, 93, 102] 64.8s
+[negative_flower      128] faults=4 depth=3 penalty=0.0 iters=  5 fault%=1.61 dips=[88, 42, 82, 87] 21.8s
+[negative_flower      129] faults=4 depth=3 penalty=0.0 iters= 55 fault%=1.58 dips=[74, 109, 108, 107] 50.3s
+[negative_flower      130] faults=4 depth=3 penalty=0.0 iters=  3 fault%=1.57 dips=[84, 82, 100, 94] 37.3s
+[negative_flower      131] faults=4 depth=3 penalty=0.0 iters=  3 fault%=1.78 dips=[75, 110, 97, 18] 50.2s
+[negative_flower      132] faults=4 depth=3 penalty=0.0 iters=  7 fault%=1.66 dips=[75, 116, 110, 104] 40.2s
+[negative_flower      133] faults=4 depth=3 penalty=0.0 iters=  3 fault%=1.62 dips=[74, 63, 60, 26] 75.5s
+[negative_flower      134] faults=4 depth=3 penalty=0.0 iters= 23 fault%=1.73 dips=[81, 77, 87, 89] 31.3s
+[negative_flower      135] faults=4 depth=3 penalty=0.0 iters= 15 fault%=1.28 dips=[76, 120, 121, 112] 59.6s
+[negative_flower      136] faults=4 depth=3 penalty=0.0 iters=  5 fault%=1.71 dips=[76, 93, 84, 74] 38.3s
+[negative_flower      137] faults=4 depth=3 penalty=0.0 iters= 36 fault%=1.56 dips=[87, 73, 114, 108] 37.7s
+[negative_flower      138] faults=4 depth=3 penalty=0.0 iters= 52 fault%=0.97 dips=[77, 3, 134, 136] 42.9s
+[negative_flower      139] faults=4 depth=3 penalty=0.0 iters= 12 fault%=1.03 dips=[77, 60, 71, 85] 68.3s
+[negative_flower      140] faults=4 depth=3 penalty=0.0 iters=  4 fault%=1.26 dips=[87, 60, 87, 86] 53.3s
+[negative_flower      141] faults=4 depth=3 penalty=0.0 iters=  6 fault%=1.52 dips=[76, 79, 77, 75] 37.9s
+[negative_flower      142] faults=4 depth=3 penalty=0.0 iters= 23 fault%=1.25 dips=[75, 32, 49, 59] 49.0s
+[negative_flower      143] faults=4 depth=3 penalty=0.0 iters= 12 fault%=1.35 dips=[76, 177, 146, 147] 71.9s
+[negative_flower      144] faults=4 depth=3 penalty=2.0 iters=200 fault%=1.29 dips=[76, 125, 123, 136] 65.5s
+[negative_flower      145] faults=4 depth=3 penalty=0.0 iters= 13 fault%=1.62 dips=[81, 98, 108, 108] 28.8s
+[negative_flower      146] faults=4 depth=3 penalty=0.0 iters=  8 fault%=1.16 dips=[78, 113, 112, 111] 45.0s
+[negative_flower      147] faults=4 depth=3 penalty=0.0 iters=  6 fault%=0.86 dips=[84, 148, 117, 115] 58.4s
+[negative_flower      148] faults=4 depth=3 penalty=0.0 iters=  8 fault%=1.42 dips=[82, 98, 107, 101] 65.3s
+[negative_flower      149] faults=4 depth=3 penalty=2.0 iters=200 fault%=1.48 dips=[83, 109, 127, 135] 47.2s
+[negative_flower      150] faults=4 depth=3 penalty=0.0 iters=  4 fault%=1.45 dips=[78, 132, 123, 119] 46.4s
+[negative_flower      151] faults=4 depth=3 penalty=0.0 iters= 52 fault%=1.32 dips=[83, 108, 114, 111] 66.3s
+[negative_flower      152] faults=4 depth=3 penalty=2.0 iters=200 fault%=1.95 dips=[84, 106, 131, 125] 34.0s
+[negative_flower      153] faults=4 depth=3 penalty=0.0 iters=  7 fault%=1.63 dips=[84, 90, 88, 68] 29.7s
+[negative_flower      154] faults=4 depth=3 penalty=0.0 iters=  7 fault%=1.33 dips=[84, 119, 118, 115] 57.4s
+[negative_flower      155] faults=4 depth=3 penalty=0.0 iters=  3 fault%=1.39 dips=[84, 81, 83, 89] 28.4s
+[negative_flower      156] faults=4 depth=3 penalty=0.0 iters=  4 fault%=1.85 dips=[87, 41, 93, 89] 26.1s
+[negative_flower      157] faults=4 depth=3 penalty=0.0 iters= 21 fault%=1.53 dips=[86, 72, 164, 126] 48.2s
+[negative_flower      158] faults=4 depth=3 penalty=0.0 iters=  8 fault%=1.69 dips=[74, 139, 136, 136] 85.3s
+[negative_flower      159] faults=4 depth=3 penalty=0.0 iters=  4 fault%=1.05 dips=[79, 149, 72, 118] 71.1s
+[negative_flower      160] faults=4 depth=3 penalty=0.0 iters=  6 fault%=1.79 dips=[82, 100, 112, 111] 37.2s
+[negative_flower      161] faults=4 depth=3 penalty=0.0 iters= 64 fault%=1.36 dips=[74, 33, 79, 78] 44.2s
+[negative_flower      162] faults=4 depth=3 penalty=2.0 iters=200 fault%=1.36 dips=[83, 74, 118, 114] 49.9s
+[negative_flower      163] faults=4 depth=3 penalty=0.0 iters=  5 fault%=1.74 dips=[84, 63, 96, 85] 30.1s
+[negative_flower      164] faults=4 depth=3 penalty=2.0 iters=200 fault%=1.29 dips=[75, 121, 3, 9] 48.9s
+[negative_flower      165] faults=4 depth=3 penalty=0.0 iters=  3 fault%=1.22 dips=[88, 28, 70, 86] 35.8s
+[negative_flower      166] faults=4 depth=3 penalty=0.0 iters=  3 fault%=1.26 dips=[78, 48, 171, 170] 39.7s
+[negative_flower      167] faults=4 depth=3 penalty=0.0 iters=  6 fault%=1.31 dips=[78, 106, 86, 78] 42.3s
+[negative_flower      168] faults=4 depth=3 penalty=0.0 iters=  7 fault%=1.62 dips=[79, 80, 68, 52] 53.4s
+[negative_flower      169] faults=4 depth=3 penalty=0.0 iters=  7 fault%=1.93 dips=[75, 127, 127, 128] 38.1s
+[negative_flower      170] faults=4 depth=3 penalty=0.0 iters=  8 fault%=1.52 dips=[86, 109, 77, 107] 23.4s
+[negative_flower      171] faults=4 depth=3 penalty=0.0 iters=  3 fault%=1.25 dips=[81, 1, 57, 17] 37.7s
+[negative_flower      172] faults=4 depth=3 penalty=0.0 iters=  3 fault%=1.23 dips=[81, 33, 92, 101] 46.0s
+[negative_flower      173] faults=4 depth=3 penalty=0.0 iters=  9 fault%=2.14 dips=[88, 110, 109, 109] 37.0s
+[negative_flower      174] faults=4 depth=3 penalty=0.0 iters= 14 fault%=1.51 dips=[74, 150, 140, 144] 59.8s
+[negative_flower      175] faults=4 depth=3 penalty=0.0 iters=  5 fault%=1.58 dips=[87, 87, 78, 61] 44.0s
+[negative_flower      176] faults=4 depth=3 penalty=0.0 iters=  9 fault%=1.12 dips=[76, 112, 119, 116] 59.8s
+[negative_flower      177] faults=4 depth=3 penalty=0.0 iters=  6 fault%=1.33 dips=[83, 102, 55, 100] 34.8s
+[negative_flower      178] faults=4 depth=3 penalty=2.0 iters=200 fault%=1.19 dips=[82, 62, 169, 161] 48.5s
+[negative_flower      179] faults=4 depth=3 penalty=2.0 iters=200 fault%=1.62 dips=[78, 121, 126, 130] 64.8s
+[negative_flower      180] faults=4 depth=3 penalty=0.0 iters=  5 fault%=1.54 dips=[81, 91, 51, 85] 29.0s
+[negative_flower      181] faults=4 depth=3 penalty=2.0 iters=200 fault%=1.46 dips=[79, 115, 50, 163] 61.9s
+[negative_flower      182] faults=4 depth=3 penalty=2.0 iters=200 fault%=0.99 dips=[77, 149, 136, 148] 70.2s
+[negative_flower      183] faults=4 depth=3 penalty=0.0 iters= 10 fault%=0.79 dips=[85, 172, 100, 83] 43.9s
+[negative_flower      184] faults=4 depth=3 penalty=0.0 iters=  3 fault%=1.16 dips=[78, 17, 73, 71] 32.4s
+[negative_flower      185] faults=4 depth=3 penalty=0.0 iters= 45 fault%=1.21 dips=[77, 72, 98, 97] 39.3s
+[negative_flower      186] faults=4 depth=3 penalty=0.0 iters=  4 fault%=1.15 dips=[79, 113, 102, 108] 49.1s
+[negative_flower      187] faults=4 depth=3 penalty=0.0 iters=  7 fault%=1.43 dips=[81, 152, 160, 155] 46.0s
+[negative_flower      188] faults=4 depth=3 penalty=0.0 iters=  4 fault%=1.45 dips=[73, 78, 51, 64] 47.5s
+[negative_flower      189] faults=4 depth=3 penalty=0.0 iters= 10 fault%=1.10 dips=[76, 91, 0, 137] 39.1s
+[negative_flower      190] faults=4 depth=3 penalty=0.0 iters=  3 fault%=1.68 dips=[79, 105, 55, 86] 57.5s
+[negative_flower      191] faults=4 depth=3 penalty=0.0 iters=  6 fault%=0.81 dips=[86, 156, 1, 70] 37.5s
+[negative_flower      192] faults=4 depth=3 penalty=0.0 iters= 14 fault%=1.44 dips=[81, 117, 122, 116] 40.9s
+[negative_flower      193] faults=4 depth=3 penalty=0.0 iters=  4 fault%=0.98 dips=[78, 56, 73, 71] 56.4s
+[negative_flower      194] faults=4 depth=3 penalty=2.0 iters=200 fault%=1.11 dips=[80, 119, 136, 134] 50.8s
+[negative_flower      195] faults=4 depth=3 penalty=0.0 iters= 10 fault%=1.17 dips=[74, 153, 147, 141] 51.6s
+[negative_flower      196] faults=4 depth=3 penalty=0.0 iters=  3 fault%=1.63 dips=[82, 74, 71, 53] 67.1s
+[negative_flower      197] faults=4 depth=3 penalty=0.0 iters= 20 fault%=1.30 dips=[81, 95, 111, 104] 40.1s
+[negative_flower      198] faults=4 depth=3 penalty=0.0 iters= 11 fault%=0.90 dips=[77, 14, 39, 61] 33.5s
+[negative_flower      199] faults=4 depth=3 penalty=0.0 iters=  8 fault%=1.82 dips=[85, 126, 125, 125] 40.2s
+
+wrote 200 volumes to data/dataset_v1_parts/negative_flower

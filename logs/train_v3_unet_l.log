@@ -1,0 +1,605 @@
+unet_l (unet3d) params=9,643,495 world=4 batch=8 train=2400 fast=96 full=2433
+/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+epoch 1 microstep 1/300 loss=0.62856 lr=1e-06 elapsed=12s
+epoch 1 microstep 100/300 loss=0.62648 lr=1e-06 elapsed=69s
+epoch 1 microstep 200/300 loss=0.61962 lr=1e-06 elapsed=128s
+epoch 1 microstep 300/300 loss=0.62457 lr=1e-06 elapsed=187s
+epoch 1: full validation starts (2433 cores)
+{"epoch": 1, "lr": 1e-06, "train_loss": 0.6036778976023197, "fast_val": {"iou": 0.04353884353480508, "dice": 0.08344460544913666, "precision": 0.04413798373920499, "recall": 0.7623267757875596, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5869926605373621, "cores": 96}, "full_val": {"iou": 0.028586333110830853, "dice": 0.05558373116697956, "precision": 0.028857562598596575, "recall": 0.7525642743092108, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5974235208961536, "cores": 2433}, "seconds": 254.42207288742065, "skipped_optimizer_steps": 0}
+/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+epoch 2 microstep 1/300 loss=0.62410 lr=1.2e-05 elapsed=1s
+epoch 2 microstep 100/300 loss=0.59692 lr=1.2e-05 elapsed=59s
+epoch 2 microstep 200/300 loss=0.59194 lr=1.2e-05 elapsed=118s
+epoch 2 microstep 300/300 loss=0.61291 lr=1.2e-05 elapsed=177s
+epoch 2: full validation starts (2433 cores)
+{"epoch": 2, "lr": 1.2000000000000002e-05, "train_loss": 0.5893570406734944, "fast_val": {"iou": 0.15885247853022147, "dice": 0.2741547892820575, "precision": 0.18974719603548465, "recall": 0.4938323400574399, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5692175021395087, "cores": 96}, "full_val": {"iou": 0.10630605951638543, "dice": 0.19218200714340558, "precision": 0.12145512226976363, "recall": 0.46012813324035234, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5826018611884048, "cores": 2433}, "seconds": 241.889901638031, "skipped_optimizer_steps": 0}
+epoch 3 microstep 1/300 loss=0.60900 lr=2.3e-05 elapsed=1s
+epoch 3 microstep 100/300 loss=0.58703 lr=2.3e-05 elapsed=59s
+epoch 3 microstep 200/300 loss=0.48188 lr=2.3e-05 elapsed=118s
+epoch 3 microstep 300/300 loss=0.51214 lr=2.3e-05 elapsed=177s
+epoch 3: full validation starts (2433 cores)
+{"epoch": 3, "lr": 2.3000000000000003e-05, "train_loss": 0.5802098625401656, "fast_val": {"iou": 0.18006512577755898, "dice": 0.30517828523898105, "precision": 0.24187576759988882, "recall": 0.413361082990882, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5683758718272051, "cores": 96}, "full_val": {"iou": 0.1257376618992613, "dice": 0.2233871463216857, "precision": 0.16049151545870977, "recall": 0.3673489081601197, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5808188610124921, "cores": 2433}, "seconds": 241.6388862133026, "skipped_optimizer_steps": 0}
+epoch 4 microstep 1/300 loss=0.56264 lr=3.4e-05 elapsed=1s
+epoch 4 microstep 100/300 loss=0.59731 lr=3.4e-05 elapsed=59s
+epoch 4 microstep 200/300 loss=0.58344 lr=3.4e-05 elapsed=118s
+epoch 4 microstep 300/300 loss=0.55003 lr=3.4e-05 elapsed=177s
+epoch 4: full validation starts (2433 cores)
+{"epoch": 4, "lr": 3.4e-05, "train_loss": 0.576043674548467, "fast_val": {"iou": 0.21227349513265195, "dice": 0.35020726920936945, "precision": 0.33200943659235105, "recall": 0.37051567458891105, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5650193660209576, "cores": 96}, "full_val": {"iou": 0.15914572534157745, "dice": 0.27459140272407134, "precision": 0.23480522141016572, "recall": 0.33061128329894807, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.578402471270426, "cores": 2433}, "seconds": 241.92455434799194, "skipped_optimizer_steps": 0}
+epoch 5 microstep 1/300 loss=0.57685 lr=4.5e-05 elapsed=1s
+epoch 5 microstep 100/300 loss=0.56632 lr=4.5e-05 elapsed=59s
+epoch 5 microstep 200/300 loss=0.60514 lr=4.5e-05 elapsed=118s
+epoch 5 microstep 300/300 loss=0.57347 lr=4.5e-05 elapsed=177s
+epoch 5: full validation starts (2433 cores)
+{"epoch": 5, "lr": 4.5e-05, "train_loss": 0.5740455019225676, "fast_val": {"iou": 0.2516016932595246, "dice": 0.4020475437425826, "precision": 0.3108072449049206, "recall": 0.5691170352806412, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5561732199663917, "cores": 96}, "full_val": {"iou": 0.18674319323076788, "dice": 0.3147154233467843, "precision": 0.22694532472031595, "recall": 0.513188991679928, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5726521099809262, "cores": 2433}, "seconds": 241.85038995742798, "skipped_optimizer_steps": 0}
+epoch 6 microstep 1/300 loss=0.51303 lr=5.6e-05 elapsed=1s
+epoch 6 microstep 100/300 loss=0.53897 lr=5.6e-05 elapsed=59s
+epoch 6 microstep 200/300 loss=0.60339 lr=5.6e-05 elapsed=118s
+epoch 6 microstep 300/300 loss=0.57935 lr=5.6e-05 elapsed=176s
+epoch 6: full validation starts (2433 cores)
+{"epoch": 6, "lr": 5.6e-05, "train_loss": 0.5710448458790779, "fast_val": {"iou": 0.3366731782589425, "dice": 0.5037479373940451, "precision": 0.43191134128651504, "recall": 0.604248007457524, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5493514472618699, "cores": 96}, "full_val": {"iou": 0.2530184452809835, "dice": 0.4038543027580816, "precision": 0.32595180926460793, "recall": 0.5306889892199903, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5685250093380316, "cores": 2433}, "seconds": 241.5006992816925, "skipped_optimizer_steps": 0}
+epoch 7 microstep 1/300 loss=0.60406 lr=6.7e-05 elapsed=1s
+epoch 7 microstep 100/300 loss=0.60591 lr=6.7e-05 elapsed=59s
+epoch 7 microstep 200/300 loss=0.53188 lr=6.7e-05 elapsed=118s
+epoch 7 microstep 300/300 loss=0.56113 lr=6.7e-05 elapsed=177s
+epoch 7: full validation starts (2433 cores)
+{"epoch": 7, "lr": 6.7e-05, "train_loss": 0.5659497426450253, "fast_val": {"iou": 0.32856418759563744, "dice": 0.49461545127188, "precision": 0.5053458148940121, "recall": 0.4843313035700186, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5538074538732568, "cores": 96}, "full_val": {"iou": 0.262194842073629, "dice": 0.4154585858438076, "precision": 0.41578321308434396, "recall": 0.41513446512026075, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5715604395813477, "cores": 2433}, "seconds": 241.6845588684082, "skipped_optimizer_steps": 0}
+epoch 8 microstep 1/300 loss=0.59530 lr=7.8e-05 elapsed=1s
+epoch 8 microstep 100/300 loss=0.51790 lr=7.8e-05 elapsed=59s
+epoch 8 microstep 200/300 loss=0.60291 lr=7.8e-05 elapsed=118s
+epoch 8 microstep 300/300 loss=0.60226 lr=7.8e-05 elapsed=177s
+epoch 8: full validation starts (2433 cores)
+{"epoch": 8, "lr": 7.8e-05, "train_loss": 0.5629882338394722, "fast_val": {"iou": 0.33488303944892994, "dice": 0.50174139539173, "precision": 0.43651085724252203, "recall": 0.5898927450594492, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5458495607599616, "cores": 96}, "full_val": {"iou": 0.2654802231829908, "dice": 0.41957229883094244, "precision": 0.34636077473364785, "recall": 0.532029233619731, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5668279914284164, "cores": 2433}, "seconds": 241.80499958992004, "skipped_optimizer_steps": 0}
+epoch 9 microstep 1/300 loss=0.52259 lr=8.9e-05 elapsed=1s
+epoch 9 microstep 100/300 loss=0.60295 lr=8.9e-05 elapsed=59s
+epoch 9 microstep 200/300 loss=0.60182 lr=8.9e-05 elapsed=118s
+epoch 9 microstep 300/300 loss=0.58314 lr=8.9e-05 elapsed=177s
+epoch 9: full validation starts (2433 cores)
+{"epoch": 9, "lr": 8.900000000000001e-05, "train_loss": 0.5598044780890147, "fast_val": {"iou": 0.4055399000137378, "dice": 0.577059249630372, "precision": 0.4983226235453097, "recall": 0.6853462245106, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5307471017974118, "cores": 96}, "full_val": {"iou": 0.32461134526438684, "dice": 0.4901231541235151, "precision": 0.4158570738801922, "recall": 0.5966819515487839, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5573018088207978, "cores": 2433}, "seconds": 241.73138523101807, "skipped_optimizer_steps": 0}
+epoch 10 microstep 1/300 loss=0.53855 lr=0.0001 elapsed=1s
+epoch 10 microstep 100/300 loss=0.52761 lr=0.0001 elapsed=59s
+epoch 10 microstep 200/300 loss=0.59314 lr=0.0001 elapsed=118s
+epoch 10 microstep 300/300 loss=0.58411 lr=0.0001 elapsed=177s
+epoch 10: full validation starts (2433 cores)
+{"epoch": 10, "lr": 0.0001, "train_loss": 0.5545563131322463, "fast_val": {"iou": 0.37165322419452, "dice": 0.5419055161158055, "precision": 0.47235661469379103, "recall": 0.6354710861846067, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.532245211613675, "cores": 96}, "full_val": {"iou": 0.2961203355708468, "dice": 0.45693339953720785, "precision": 0.37626641722262405, "recall": 0.5816272727541084, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5561867025204269, "cores": 2433}, "seconds": 241.79508185386658, "skipped_optimizer_steps": 0}
+epoch 11 microstep 1/300 loss=0.47326 lr=0.0001 elapsed=1s
+epoch 11 microstep 100/300 loss=0.60019 lr=0.0001 elapsed=59s
+epoch 11 microstep 200/300 loss=0.56767 lr=0.0001 elapsed=118s
+epoch 11 microstep 300/300 loss=0.58561 lr=0.0001 elapsed=177s
+epoch 11: full validation starts (2433 cores)
+{"epoch": 11, "lr": 9.996957180960385e-05, "train_loss": 0.5459814003606638, "fast_val": {"iou": 0.32520918208927, "dice": 0.4908042994035986, "precision": 0.5132101339211649, "recall": 0.4702730222181892, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5505057267534236, "cores": 96}, "full_val": {"iou": 0.2756748645203292, "dice": 0.4322023929255463, "precision": 0.4308444154397242, "recall": 0.4335689578902224, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5679189023097454, "cores": 2433}, "seconds": 241.6376838684082, "skipped_optimizer_steps": 0}
+epoch 12 microstep 1/300 loss=0.59127 lr=9.99e-05 elapsed=1s
+epoch 12 microstep 100/300 loss=0.53618 lr=9.99e-05 elapsed=59s
+epoch 12 microstep 200/300 loss=0.60001 lr=9.99e-05 elapsed=118s
+epoch 12 microstep 300/300 loss=0.44925 lr=9.99e-05 elapsed=176s
+epoch 12: full validation starts (2433 cores)
+{"epoch": 12, "lr": 9.987832431047822e-05, "train_loss": 0.5422036355485519, "fast_val": {"iou": 0.36941273863163515, "dice": 0.5395199390371748, "precision": 0.4918569935738896, "recall": 0.5974115509128043, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5332287556181351, "cores": 96}, "full_val": {"iou": 0.30653507759542736, "dice": 0.46923359786035057, "precision": 0.4058870155639035, "recall": 0.5560097615954791, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5543938452968175, "cores": 2433}, "seconds": 241.5005588531494, "skipped_optimizer_steps": 0}
+epoch 13 microstep 1/300 loss=0.60101 lr=9.97e-05 elapsed=1s
+epoch 13 microstep 100/300 loss=0.60139 lr=9.97e-05 elapsed=59s
+epoch 13 microstep 200/300 loss=0.59368 lr=9.97e-05 elapsed=118s
+epoch 13 microstep 300/300 loss=0.60028 lr=9.97e-05 elapsed=177s
+epoch 13: full validation starts (2433 cores)
+{"epoch": 13, "lr": 9.972636867364526e-05, "train_loss": 0.5366829739014307, "fast_val": {"iou": 0.39628449222596807, "dice": 0.5676271482385485, "precision": 0.5137985106126963, "recall": 0.6340545337338649, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5260762670077384, "cores": 96}, "full_val": {"iou": 0.3091700981321383, "dice": 0.47231463439815424, "precision": 0.41589425880593106, "recall": 0.5464456639800865, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5558630926676165, "cores": 2433}, "seconds": 241.80242133140564, "skipped_optimizer_steps": 0}
+epoch 14 microstep 1/300 loss=0.47994 lr=9.95e-05 elapsed=1s
+epoch 14 microstep 100/300 loss=0.51944 lr=9.95e-05 elapsed=59s
+epoch 14 microstep 200/300 loss=0.60245 lr=9.95e-05 elapsed=118s
+epoch 14 microstep 300/300 loss=0.46895 lr=9.95e-05 elapsed=177s
+epoch 14: full validation starts (2433 cores)
+{"epoch": 14, "lr": 9.951389003364144e-05, "train_loss": 0.5325316867480675, "fast_val": {"iou": 0.39685848188491085, "dice": 0.5682157312734972, "precision": 0.50135760470408, "recall": 0.6556492983822783, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5244655112425486, "cores": 96}, "full_val": {"iou": 0.32423669057525484, "dice": 0.48969597789108965, "precision": 0.4270807832128735, "recall": 0.5738257557174928, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5507904263163514, "cores": 2433}, "seconds": 241.708190202713, "skipped_optimizer_steps": 0}
+epoch 15 microstep 1/300 loss=0.60056 lr=9.92e-05 elapsed=1s
+epoch 15 microstep 100/300 loss=0.42313 lr=9.92e-05 elapsed=59s
+epoch 15 microstep 200/300 loss=0.59419 lr=9.92e-05 elapsed=118s
+epoch 15 microstep 300/300 loss=0.60151 lr=9.92e-05 elapsed=177s
+epoch 15: full validation starts (2433 cores)
+{"epoch": 15, "lr": 9.92411472629598e-05, "train_loss": 0.5290764312446118, "fast_val": {"iou": 0.3791701910134673, "dice": 0.549852648330281, "precision": 0.5021747241047102, "recall": 0.6075336549056672, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5255874701154729, "cores": 96}, "full_val": {"iou": 0.30003096304106636, "dice": 0.4615751033178873, "precision": 0.4053065559843118, "recall": 0.5359857975842286, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5527818714774934, "cores": 2433}, "seconds": 241.69313883781433, "skipped_optimizer_steps": 0}
+epoch 16 microstep 1/300 loss=0.60025 lr=9.89e-05 elapsed=1s
+epoch 16 microstep 100/300 loss=0.48605 lr=9.89e-05 elapsed=59s
+epoch 16 microstep 200/300 loss=0.60025 lr=9.89e-05 elapsed=118s
+epoch 16 microstep 300/300 loss=0.42027 lr=9.89e-05 elapsed=177s
+epoch 16: full validation starts (2433 cores)
+{"epoch": 16, "lr": 9.89084726566536e-05, "train_loss": 0.5238964674870173, "fast_val": {"iou": 0.39169037421452463, "dice": 0.5628987330398059, "precision": 0.5376670553942116, "recall": 0.5906151632394032, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5264703404779235, "cores": 96}, "full_val": {"iou": 0.318763873780712, "dice": 0.48342827721972775, "precision": 0.45110101180145834, "recall": 0.5207465531702905, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5536586556582112, "cores": 2433}, "seconds": 241.88588881492615, "skipped_optimizer_steps": 0}
+epoch 17 microstep 1/300 loss=0.41131 lr=9.85e-05 elapsed=1s
+epoch 17 microstep 100/300 loss=0.59571 lr=9.85e-05 elapsed=59s
+epoch 17 microstep 200/300 loss=0.60167 lr=9.85e-05 elapsed=118s
+epoch 17 microstep 300/300 loss=0.57435 lr=9.85e-05 elapsed=177s
+epoch 17: full validation starts (2433 cores)
+{"epoch": 17, "lr": 9.851627152748602e-05, "train_loss": 0.5225821709260344, "fast_val": {"iou": 0.4044189523316658, "dice": 0.5759235186341444, "precision": 0.5887666038827541, "recall": 0.5636287784061782, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5306977002571026, "cores": 96}, "full_val": {"iou": 0.33443821105694177, "dice": 0.5012419582800316, "precision": 0.5028933063183403, "recall": 0.4996014197917599, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5555087382466127, "cores": 2433}, "seconds": 241.84452366828918, "skipped_optimizer_steps": 0}
+epoch 18 microstep 1/300 loss=0.60045 lr=9.81e-05 elapsed=1s
+epoch 18 microstep 100/300 loss=0.40620 lr=9.81e-05 elapsed=59s
+epoch 18 microstep 200/300 loss=0.40489 lr=9.81e-05 elapsed=118s
+epoch 18 microstep 300/300 loss=0.56807 lr=9.81e-05 elapsed=177s
+epoch 18: full validation starts (2433 cores)
+{"epoch": 18, "lr": 9.806502171211903e-05, "train_loss": 0.5183752242351571, "fast_val": {"iou": 0.40001721192614365, "dice": 0.5714461344025906, "precision": 0.5972477064220183, "recall": 0.5477815397995849, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.530706646386534, "cores": 96}, "full_val": {"iou": 0.33903286786312326, "dice": 0.5063846840506074, "precision": 0.52278147236679, "recall": 0.49098517135434755, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5561045479723028, "cores": 2433}, "seconds": 241.55149364471436, "skipped_optimizer_steps": 0}
+epoch 19 microstep 1/300 loss=0.60068 lr=9.76e-05 elapsed=1s
+epoch 19 microstep 100/300 loss=0.56201 lr=9.76e-05 elapsed=59s
+epoch 19 microstep 200/300 loss=0.60002 lr=9.76e-05 elapsed=118s
+epoch 19 microstep 300/300 loss=0.34532 lr=9.76e-05 elapsed=177s
+epoch 19: full validation starts (2433 cores)
+{"epoch": 19, "lr": 9.755527298894293e-05, "train_loss": 0.5145141506567598, "fast_val": {"iou": 0.41599733510540915, "dice": 0.5875679632891987, "precision": 0.5970412344045001, "recall": 0.5783906219985174, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5229573695299526, "cores": 96}, "full_val": {"iou": 0.33019666611795184, "dice": 0.49646292842034906, "precision": 0.4940181390825375, "recall": 0.49893203557323085, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.556862744523011, "cores": 2433}, "seconds": 241.7672312259674, "skipped_optimizer_steps": 0}
+epoch 20 microstep 1/300 loss=0.60243 lr=9.7e-05 elapsed=1s
+epoch 20 microstep 100/300 loss=0.60198 lr=9.7e-05 elapsed=59s
+epoch 20 microstep 200/300 loss=0.45030 lr=9.7e-05 elapsed=118s
+epoch 20 microstep 300/300 loss=0.54686 lr=9.7e-05 elapsed=177s
+epoch 20: full validation starts (2433 cores)
+{"epoch": 20, "lr": 9.698764640825613e-05, "train_loss": 0.5174556508163611, "fast_val": {"iou": 0.3530536868487007, "dice": 0.5218620521569584, "precision": 0.5725125633090863, "recall": 0.4794452582615531, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5414252880339822, "cores": 96}, "full_val": {"iou": 0.2841876994167097, "dice": 0.44259526788146386, "precision": 0.5068673264366967, "recall": 0.39278867124140127, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5695258783573875, "cores": 2433}, "seconds": 241.73068070411682, "skipped_optimizer_steps": 0}
+epoch 21 microstep 1/300 loss=0.55176 lr=9.64e-05 elapsed=1s
+epoch 21 microstep 100/300 loss=0.53784 lr=9.64e-05 elapsed=59s
+epoch 21 microstep 200/300 loss=0.44752 lr=9.64e-05 elapsed=118s
+epoch 21 microstep 300/300 loss=0.56960 lr=9.64e-05 elapsed=177s
+epoch 21: full validation starts (2433 cores)
+{"epoch": 21, "lr": 9.636283353561104e-05, "train_loss": 0.5074913160130382, "fast_val": {"iou": 0.39986976507494365, "dice": 0.5712956662844078, "precision": 0.5798112806820596, "recall": 0.5630265668401806, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5291739092984548, "cores": 96}, "full_val": {"iou": 0.3189223763166348, "dice": 0.4836105324216151, "precision": 0.5102140916423762, "recall": 0.4596438066286468, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5621026743446854, "cores": 2433}, "seconds": 241.6999819278717, "skipped_optimizer_steps": 1}
+epoch 22 microstep 1/300 loss=0.60038 lr=9.57e-05 elapsed=1s
+epoch 22 microstep 100/300 loss=0.60028 lr=9.57e-05 elapsed=59s
+epoch 22 microstep 200/300 loss=0.60286 lr=9.57e-05 elapsed=118s
+epoch 22 microstep 300/300 loss=0.43309 lr=9.57e-05 elapsed=177s
+epoch 22: full validation starts (2433 cores)
+{"epoch": 22, "lr": 9.568159560924791e-05, "train_loss": 0.5053011745338639, "fast_val": {"iou": 0.404154590881143, "dice": 0.5756554064713425, "precision": 0.5041229581150674, "recall": 0.670844828581833, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5134764903535446, "cores": 96}, "full_val": {"iou": 0.3337914874899999, "dice": 0.500515246379547, "precision": 0.43118533044228347, "recall": 0.5964117800939303, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5444119504778855, "cores": 2433}, "seconds": 241.7854483127594, "skipped_optimizer_steps": 1}
+epoch 23 microstep 1/300 loss=0.47366 lr=9.49e-05 elapsed=1s
+epoch 23 microstep 100/300 loss=0.45407 lr=9.49e-05 elapsed=59s
+epoch 23 microstep 200/300 loss=0.41919 lr=9.49e-05 elapsed=118s
+epoch 23 microstep 300/300 loss=0.36055 lr=9.49e-05 elapsed=176s
+epoch 23: full validation starts (2433 cores)
+{"epoch": 23, "lr": 9.49447626126434e-05, "train_loss": 0.511883775293827, "fast_val": {"iou": 0.38369765302516556, "dice": 0.5545975339139889, "precision": 0.6617777298470247, "recall": 0.47729568116491994, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5374498650586853, "cores": 96}, "full_val": {"iou": 0.31111526670887657, "dice": 0.4745811060378071, "precision": 0.6021777347486263, "recall": 0.3916034732072711, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5688509018337633, "cores": 2433}, "seconds": 241.56798648834229, "skipped_optimizer_steps": 0}
+epoch 24 microstep 1/300 loss=0.56013 lr=9.42e-05 elapsed=1s
+epoch 24 microstep 100/300 loss=0.50353 lr=9.42e-05 elapsed=59s
+epoch 24 microstep 200/300 loss=0.39219 lr=9.42e-05 elapsed=118s
+epoch 24 microstep 300/300 loss=0.51852 lr=9.42e-05 elapsed=176s
+epoch 24: full validation starts (2433 cores)
+{"epoch": 24, "lr": 9.41532322633034e-05, "train_loss": 0.5029758474354943, "fast_val": {"iou": 0.3951153983883746, "dice": 0.5664268329986302, "precision": 0.649953226173199, "recall": 0.501923895071411, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5367639091952393, "cores": 96}, "full_val": {"iou": 0.331952895727334, "dice": 0.4984453981701295, "precision": 0.5876507406553034, "recall": 0.43275345336611565, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5654595400349525, "cores": 2433}, "seconds": 241.53648734092712, "skipped_optimizer_steps": 0}
+epoch 25 microstep 1/300 loss=0.42948 lr=9.33e-05 elapsed=1s
+epoch 25 microstep 100/300 loss=0.43375 lr=9.33e-05 elapsed=59s
+epoch 25 microstep 200/300 loss=0.44981 lr=9.33e-05 elapsed=118s
+epoch 25 microstep 300/300 loss=0.24685 lr=9.33e-05 elapsed=177s
+epoch 25: full validation starts (2433 cores)
+{"epoch": 25, "lr": 9.330796891903273e-05, "train_loss": 0.499914156931142, "fast_val": {"iou": 0.3969776684745614, "dice": 0.5683378874739546, "precision": 0.6091595851500428, "recall": 0.5326437559145779, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5349211308639497, "cores": 96}, "full_val": {"iou": 0.3082192539291605, "dice": 0.4712042771170687, "precision": 0.5018714284193722, "recall": 0.4440691672660715, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5663374077897723, "cores": 2433}, "seconds": 241.5430510044098, "skipped_optimizer_steps": 0}
+epoch 26 microstep 1/300 loss=0.57483 lr=9.24e-05 elapsed=1s
+epoch 26 microstep 100/300 loss=0.57796 lr=9.24e-05 elapsed=59s
+epoch 26 microstep 200/300 loss=0.49990 lr=9.24e-05 elapsed=118s
+epoch 26 microstep 300/300 loss=0.60050 lr=9.24e-05 elapsed=177s
+epoch 26: full validation starts (2433 cores)
+{"epoch": 26, "lr": 9.241000240301348e-05, "train_loss": 0.49867868452022474, "fast_val": {"iou": 0.4185700786338632, "dice": 0.590129574757367, "precision": 0.595703446296681, "recall": 0.5846590433674822, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5231132740154862, "cores": 96}, "full_val": {"iou": 0.338792056819389, "dice": 0.5061160246562384, "precision": 0.5102107310916315, "recall": 0.5020865192456397, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5575777893044602, "cores": 2433}, "seconds": 241.5679850578308, "skipped_optimizer_steps": 0}
+epoch 27 microstep 1/300 loss=0.42609 lr=9.15e-05 elapsed=1s
+epoch 27 microstep 100/300 loss=0.29367 lr=9.15e-05 elapsed=59s
+epoch 27 microstep 200/300 loss=0.60015 lr=9.15e-05 elapsed=118s
+epoch 27 microstep 300/300 loss=0.60219 lr=9.15e-05 elapsed=176s
+epoch 27: full validation starts (2433 cores)
+{"epoch": 27, "lr": 9.146042674912433e-05, "train_loss": 0.5001787362496058, "fast_val": {"iou": 0.4168748904796828, "dice": 0.5884427669383707, "precision": 0.5722469261188304, "recall": 0.6055820651731977, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5192748579041412, "cores": 96}, "full_val": {"iou": 0.3433059719130095, "dice": 0.5111359274672256, "precision": 0.497837562399277, "recall": 0.5251642500471957, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5528985198037496, "cores": 2433}, "seconds": 241.47831058502197, "skipped_optimizer_steps": 1}
+epoch 28 microstep 1/300 loss=0.60065 lr=9.05e-05 elapsed=1s
+epoch 28 microstep 100/300 loss=0.38687 lr=9.05e-05 elapsed=59s
+epoch 28 microstep 200/300 loss=0.48523 lr=9.05e-05 elapsed=118s
+epoch 28 microstep 300/300 loss=0.60223 lr=9.05e-05 elapsed=176s
+epoch 28: full validation starts (2433 cores)
+{"epoch": 28, "lr": 9.046039886902862e-05, "train_loss": 0.5037070138752461, "fast_val": {"iou": 0.41777464624387967, "dice": 0.5893385769744056, "precision": 0.6367073629492835, "recall": 0.5485298848962746, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5264915026103457, "cores": 96}, "full_val": {"iou": 0.33531036032368217, "dice": 0.502220862335558, "precision": 0.5569313274192662, "recall": 0.4572979396544926, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5610741124512529, "cores": 2433}, "seconds": 241.4034924507141, "skipped_optimizer_steps": 0}
+epoch 29 microstep 1/300 loss=0.35646 lr=8.94e-05 elapsed=1s
+epoch 29 microstep 100/300 loss=0.60344 lr=8.94e-05 elapsed=59s
+epoch 29 microstep 200/300 loss=0.58104 lr=8.94e-05 elapsed=118s
+epoch 29 microstep 300/300 loss=0.60305 lr=8.94e-05 elapsed=176s
+epoch 29: full validation starts (2433 cores)
+{"epoch": 29, "lr": 8.941113714265577e-05, "train_loss": 0.4989005893593033, "fast_val": {"iou": 0.4124327466438844, "dice": 0.5840033766193482, "precision": 0.5509590653176104, "recall": 0.6212643143096546, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5142721859738231, "cores": 96}, "full_val": {"iou": 0.348983551868999, "dice": 0.5174022342755579, "precision": 0.4876450041182283, "recall": 0.5510271927147606, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5487280900353176, "cores": 2433}, "seconds": 241.33182096481323, "skipped_optimizer_steps": 0}
+epoch 30 microstep 1/300 loss=0.42441 lr=8.83e-05 elapsed=1s
+epoch 30 microstep 100/300 loss=0.48684 lr=8.83e-05 elapsed=59s
+epoch 30 microstep 200/300 loss=0.21578 lr=8.83e-05 elapsed=118s
+epoch 30 microstep 300/300 loss=0.50267 lr=8.83e-05 elapsed=176s
+epoch 30: full validation starts (2433 cores)
+{"epoch": 30, "lr": 8.831391993379295e-05, "train_loss": 0.49864313227434953, "fast_val": {"iou": 0.42019797015705374, "dice": 0.591745628407828, "precision": 0.6261027520956729, "recall": 0.5609630199672614, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5212460627468923, "cores": 96}, "full_val": {"iou": 0.3515464271845912, "dice": 0.5202136162157569, "precision": 0.5586861509148752, "recall": 0.48669834316863325, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5557523397166103, "cores": 2433}, "seconds": 241.35019969940186, "skipped_optimizer_steps": 0}
+epoch 31 microstep 1/300 loss=0.60144 lr=8.72e-05 elapsed=1s
+epoch 31 microstep 100/300 loss=0.45743 lr=8.72e-05 elapsed=59s
+epoch 31 microstep 200/300 loss=0.60101 lr=8.72e-05 elapsed=118s
+epoch 31 microstep 300/300 loss=0.48502 lr=8.72e-05 elapsed=177s
+epoch 31: full validation starts (2433 cores)
+{"epoch": 31, "lr": 8.717008403259584e-05, "train_loss": 0.48955886660764614, "fast_val": {"iou": 0.43541855588413797, "dice": 0.6066781763399239, "precision": 0.5686343626864395, "recall": 0.6501775404548288, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5157088132885596, "cores": 96}, "full_val": {"iou": 0.35250610566207025, "dice": 0.5212636071458083, "precision": 0.4811897342392997, "recall": 0.568618629657207, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5486075723588932, "cores": 2433}, "seconds": 241.60105395317078, "skipped_optimizer_steps": 0}
+epoch 32 microstep 1/300 loss=0.31341 lr=8.6e-05 elapsed=1s
+epoch 32 microstep 100/300 loss=0.21227 lr=8.6e-05 elapsed=59s
+epoch 32 microstep 200/300 loss=0.34718 lr=8.6e-05 elapsed=118s
+epoch 32 microstep 300/300 loss=0.60000 lr=8.6e-05 elapsed=176s
+epoch 32: full validation starts (2433 cores)
+{"epoch": 32, "lr": 8.598102302691562e-05, "train_loss": 0.4935800322890282, "fast_val": {"iou": 0.40790584396283586, "dice": 0.5794504592930765, "precision": 0.64555965331774, "recall": 0.5256234539602777, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5369768798506508, "cores": 96}, "full_val": {"iou": 0.3440254251525887, "dice": 0.5119329124499726, "precision": 0.5991636180544437, "recall": 0.4468737072148289, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5673161693134771, "cores": 2433}, "seconds": 241.2847032546997, "skipped_optimizer_steps": 0}
+epoch 33 microstep 1/300 loss=0.27379 lr=8.47e-05 elapsed=1s
+epoch 33 microstep 100/300 loss=0.60016 lr=8.47e-05 elapsed=59s
+epoch 33 microstep 200/300 loss=0.60194 lr=8.47e-05 elapsed=118s
+epoch 33 microstep 300/300 loss=0.45893 lr=8.47e-05 elapsed=176s
+epoch 33: full validation starts (2433 cores)
+{"epoch": 33, "lr": 8.474818560442691e-05, "train_loss": 0.4882084812720617, "fast_val": {"iou": 0.3892475075262605, "dice": 0.5603717198231543, "precision": 0.5717195374673517, "recall": 0.5494656108911906, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5319033201473454, "cores": 96}, "full_val": {"iou": 0.326362667812679, "dice": 0.49211678786298724, "precision": 0.4938381674150836, "recall": 0.49040736710607713, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.561693950395065, "cores": 2433}, "seconds": 241.37935853004456, "skipped_optimizer_steps": 0}
+epoch 34 microstep 1/300 loss=0.60134 lr=8.35e-05 elapsed=1s
+epoch 34 microstep 100/300 loss=0.60812 lr=8.35e-05 elapsed=59s
+epoch 34 microstep 200/300 loss=0.60054 lr=8.35e-05 elapsed=118s
+epoch 34 microstep 300/300 loss=0.41684 lr=8.35e-05 elapsed=177s
+epoch 34: full validation starts (2433 cores)
+{"epoch": 34, "lr": 8.347307378762497e-05, "train_loss": 0.48915761762609083, "fast_val": {"iou": 0.4060345839837544, "dice": 0.5775598816827479, "precision": 0.6029496233159479, "recall": 0.5542220216159776, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5281450170247505, "cores": 96}, "full_val": {"iou": 0.3391507815348061, "dice": 0.5065161984912618, "precision": 0.5462677695251322, "recall": 0.4721575805232527, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5625500096474417, "cores": 2433}, "seconds": 241.51530766487122, "skipped_optimizer_steps": 0}
+epoch 35 microstep 1/300 loss=0.60019 lr=8.22e-05 elapsed=1s
+epoch 35 microstep 100/300 loss=0.46560 lr=8.22e-05 elapsed=59s
+epoch 35 microstep 200/300 loss=0.59854 lr=8.22e-05 elapsed=118s
+epoch 35 microstep 300/300 loss=0.39086 lr=8.22e-05 elapsed=176s
+epoch 35: full validation starts (2433 cores)
+{"epoch": 35, "lr": 8.215724110384264e-05, "train_loss": 0.4874220664302508, "fast_val": {"iou": 0.4332141550972557, "dice": 0.6045351332269788, "precision": 0.6046195812340417, "recall": 0.6044507088065487, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5175322288026413, "cores": 96}, "full_val": {"iou": 0.3447187361988878, "dice": 0.5127001311416292, "precision": 0.5026123448027768, "recall": 0.5232011493953965, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5537643272458797, "cores": 2433}, "seconds": 241.6628999710083, "skipped_optimizer_steps": 0}
+epoch 36 microstep 1/300 loss=0.53305 lr=8.08e-05 elapsed=1s
+epoch 36 microstep 100/300 loss=0.46930 lr=8.08e-05 elapsed=59s
+epoch 36 microstep 200/300 loss=0.60251 lr=8.08e-05 elapsed=118s
+epoch 36 microstep 300/300 loss=0.60122 lr=8.08e-05 elapsed=177s
+epoch 36: full validation starts (2433 cores)
+{"epoch": 36, "lr": 8.080229069251662e-05, "train_loss": 0.48436609680453935, "fast_val": {"iou": 0.4172474643165222, "dice": 0.5888138448958069, "precision": 0.522876115866267, "recall": 0.6737816411502594, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5140441637486219, "cores": 96}, "full_val": {"iou": 0.3425130382816935, "dice": 0.5102565539625329, "precision": 0.4564400008296562, "recall": 0.5784598568372425, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5467554059689592, "cores": 2433}, "seconds": 241.7750906944275, "skipped_optimizer_steps": 1}
+epoch 37 microstep 1/300 loss=0.41196 lr=7.94e-05 elapsed=1s
+epoch 37 microstep 100/300 loss=0.40194 lr=7.94e-05 elapsed=59s
+epoch 37 microstep 200/300 loss=0.40173 lr=7.94e-05 elapsed=118s
+epoch 37 microstep 300/300 loss=0.58527 lr=7.94e-05 elapsed=176s
+epoch 37: full validation starts (2433 cores)
+{"epoch": 37, "lr": 7.940987335200904e-05, "train_loss": 0.48247935487578314, "fast_val": {"iou": 0.43830135246722546, "dice": 0.609470820166267, "precision": 0.5718142738215494, "recall": 0.6524367176994811, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5094889742322266, "cores": 96}, "full_val": {"iou": 0.3599809859403183, "dice": 0.529391204232786, "precision": 0.5092385829519285, "recall": 0.5512045893724221, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5475296820577064, "cores": 2433}, "seconds": 241.58050298690796, "skipped_optimizer_steps": 0}
+epoch 38 microstep 1/300 loss=0.54183 lr=7.8e-05 elapsed=1s
+epoch 38 microstep 100/300 loss=0.60202 lr=7.8e-05 elapsed=59s
+epoch 38 microstep 200/300 loss=0.60013 lr=7.8e-05 elapsed=118s
+epoch 38 microstep 300/300 loss=0.57036 lr=7.8e-05 elapsed=176s
+epoch 38: full validation starts (2433 cores)
+{"epoch": 38, "lr": 7.798168552836381e-05, "train_loss": 0.48779911920428276, "fast_val": {"iou": 0.4320144514636549, "dice": 0.6033660498636659, "precision": 0.6234464242619259, "recall": 0.5845388367535258, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5180887856986374, "cores": 96}, "full_val": {"iou": 0.36012026674804515, "dice": 0.5295417994308227, "precision": 0.5554624607212763, "recall": 0.5059324562928793, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5556349074226861, "cores": 2433}, "seconds": 241.49832558631897, "skipped_optimizer_steps": 0}
+epoch 39 microstep 1/300 loss=0.38665 lr=7.65e-05 elapsed=1s
+epoch 39 microstep 100/300 loss=0.43948 lr=7.65e-05 elapsed=59s
+epoch 39 microstep 200/300 loss=0.60067 lr=7.65e-05 elapsed=118s
+epoch 39 microstep 300/300 loss=0.60564 lr=7.65e-05 elapsed=176s
+epoch 39: full validation starts (2433 cores)
+{"epoch": 39, "lr": 7.65194672484486e-05, "train_loss": 0.48310862377285957, "fast_val": {"iou": 0.4520063421365566, "dice": 0.62259554799389, "precision": 0.5993259127764717, "recall": 0.6477451242665334, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5098210305441171, "cores": 96}, "full_val": {"iou": 0.3645448518508311, "dice": 0.5343098123251464, "precision": 0.5135095880234626, "recall": 0.5568662416550124, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.548077021312065, "cores": 2433}, "seconds": 241.57857871055603, "skipped_optimizer_steps": 0}
+epoch 40 microstep 1/300 loss=0.38748 lr=7.5e-05 elapsed=1s
+epoch 40 microstep 100/300 loss=0.46078 lr=7.5e-05 elapsed=59s
+epoch 40 microstep 200/300 loss=0.54304 lr=7.5e-05 elapsed=118s
+epoch 40 microstep 300/300 loss=0.53279 lr=7.5e-05 elapsed=176s
+epoch 40: full validation starts (2433 cores)
+{"epoch": 40, "lr": 7.502500000000001e-05, "train_loss": 0.4801100199048718, "fast_val": {"iou": 0.4395945559091446, "dice": 0.6107199476473822, "precision": 0.5733557568291853, "recall": 0.6532934844479747, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5161319600107769, "cores": 96}, "full_val": {"iou": 0.34987183497102453, "dice": 0.5183778576705168, "precision": 0.4842113516787103, "recall": 0.5577320694782022, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5530758129131926, "cores": 2433}, "seconds": 241.52400922775269, "skipped_optimizer_steps": 0}
+epoch 41 microstep 1/300 loss=0.60037 lr=7.35e-05 elapsed=1s
+epoch 41 microstep 100/300 loss=0.59423 lr=7.35e-05 elapsed=59s
+epoch 41 microstep 200/300 loss=0.57124 lr=7.35e-05 elapsed=118s
+epoch 41 microstep 300/300 loss=0.60048 lr=7.35e-05 elapsed=177s
+epoch 41: full validation starts (2433 cores)
+{"epoch": 41, "lr": 7.350010456115525e-05, "train_loss": 0.4841187433898449, "fast_val": {"iou": 0.44293920881152143, "dice": 0.6139402216069086, "precision": 0.612258603654656, "recall": 0.6156311024007146, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5135973411767433, "cores": 96}, "full_val": {"iou": 0.3702847741552742, "dice": 0.5404493739391361, "precision": 0.5520576497298191, "recall": 0.5293192255665975, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5518646298987747, "cores": 2433}, "seconds": 241.6737198829651, "skipped_optimizer_steps": 0}
+epoch 42 microstep 1/300 loss=0.47753 lr=7.19e-05 elapsed=1s
+epoch 42 microstep 100/300 loss=0.60057 lr=7.19e-05 elapsed=59s
+epoch 42 microstep 200/300 loss=0.60003 lr=7.19e-05 elapsed=118s
+epoch 42 microstep 300/300 loss=0.51222 lr=7.19e-05 elapsed=176s
+epoch 42: full validation starts (2433 cores)
+{"epoch": 42, "lr": 7.194663878211442e-05, "train_loss": 0.492480241805315, "fast_val": {"iou": 0.4386373520924517, "dice": 0.6097955839315138, "precision": 0.6209467383337405, "recall": 0.5990378756898622, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5209357761777937, "cores": 96}, "full_val": {"iou": 0.348013232775343, "dice": 0.5163350393212974, "precision": 0.5358388100950817, "recall": 0.4982012231935306, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5593153130388645, "cores": 2433}, "seconds": 241.61932516098022, "skipped_optimizer_steps": 0}
+epoch 43 microstep 1/300 loss=0.60011 lr=7.04e-05 elapsed=1s
+epoch 43 microstep 100/300 loss=0.46385 lr=7.04e-05 elapsed=59s
+epoch 43 microstep 200/300 loss=0.45269 lr=7.04e-05 elapsed=118s
+epoch 43 microstep 300/300 loss=0.60030 lr=7.04e-05 elapsed=176s
+epoch 43: full validation starts (2433 cores)
+{"epoch": 43, "lr": 7.036649532163622e-05, "train_loss": 0.4819244738171498, "fast_val": {"iou": 0.3825771679990273, "dice": 0.5534261332446602, "precision": 0.6635403315354024, "recall": 0.4746570281389541, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5372394116905829, "cores": 96}, "full_val": {"iou": 0.3182676171182199, "dice": 0.4828573697561718, "precision": 0.6012723097323199, "recall": 0.40340962842147476, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5712585614552431, "cores": 2433}, "seconds": 241.67953372001648, "skipped_optimizer_steps": 0}
+epoch 44 microstep 1/300 loss=0.60002 lr=6.88e-05 elapsed=1s
+epoch 44 microstep 100/300 loss=0.60056 lr=6.88e-05 elapsed=66s
+epoch 44 microstep 200/300 loss=0.46280 lr=6.88e-05 elapsed=152s
+epoch 44 microstep 300/300 loss=0.55923 lr=6.88e-05 elapsed=235s
+epoch 44: full validation starts (2433 cores)
+{"epoch": 44, "lr": 6.876159934112481e-05, "train_loss": 0.48937167507906754, "fast_val": {"iou": 0.4056851995783227, "dice": 0.5772063328261835, "precision": 0.6043593743956058, "recall": 0.5523882815050339, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5306182499819746, "cores": 96}, "full_val": {"iou": 0.33932473876391767, "dice": 0.5067101785592125, "precision": 0.546695468475609, "recall": 0.4721752920754439, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5646561350301368, "cores": 2433}, "seconds": 315.1267216205597, "skipped_optimizer_steps": 0}
+epoch 45 microstep 1/300 loss=0.37643 lr=6.71e-05 elapsed=1s
+epoch 45 microstep 100/300 loss=0.40347 lr=6.71e-05 elapsed=59s
+epoch 45 microstep 200/300 loss=0.60001 lr=6.71e-05 elapsed=118s
+epoch 45 microstep 300/300 loss=0.52759 lr=6.71e-05 elapsed=176s
+epoch 45: full validation starts (2433 cores)
+{"epoch": 45, "lr": 6.713390615911717e-05, "train_loss": 0.48630601678043606, "fast_val": {"iou": 0.4227090830625689, "dice": 0.5942312284288392, "precision": 0.6345943789722803, "recall": 0.5586955932491022, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5239155457820743, "cores": 96}, "full_val": {"iou": 0.34312144038505604, "dice": 0.510931372351092, "precision": 0.5577477333626071, "recall": 0.4713657616860048, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5635184618612645, "cores": 2433}, "seconds": 241.62338256835938, "skipped_optimizer_steps": 0}
+epoch 46 microstep 1/300 loss=0.42014 lr=6.55e-05 elapsed=1s
+epoch 46 microstep 100/300 loss=0.22709 lr=6.55e-05 elapsed=59s
+epoch 46 microstep 200/300 loss=0.35934 lr=6.55e-05 elapsed=118s
+epoch 46 microstep 300/300 loss=0.60018 lr=6.55e-05 elapsed=176s
+epoch 46: full validation starts (2433 cores)
+{"epoch": 46, "lr": 6.548539886902863e-05, "train_loss": 0.4827775195365151, "fast_val": {"iou": 0.4162176821240931, "dice": 0.5877877213054354, "precision": 0.604970380543591, "recall": 0.5715541654537977, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5252727655073007, "cores": 96}, "full_val": {"iou": 0.33903114180163046, "dice": 0.5063827587243014, "precision": 0.5509834334086382, "recall": 0.4684619808178267, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5644314338334833, "cores": 2433}, "seconds": 241.4690978527069, "skipped_optimizer_steps": 1}
+epoch 47 microstep 1/300 loss=0.24608 lr=6.38e-05 elapsed=1s
+epoch 47 microstep 100/300 loss=0.41453 lr=6.38e-05 elapsed=59s
+epoch 47 microstep 200/300 loss=0.46804 lr=6.38e-05 elapsed=118s
+epoch 47 microstep 300/300 loss=0.53015 lr=6.38e-05 elapsed=176s
+epoch 47: full validation starts (2433 cores)
+{"epoch": 47, "lr": 6.38180859230591e-05, "train_loss": 0.47702415989091, "fast_val": {"iou": 0.44895626907225267, "dice": 0.6196960924979653, "precision": 0.6304818931822755, "recall": 0.6092731153193901, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5127247876953334, "cores": 96}, "full_val": {"iou": 0.3762896080284827, "dice": 0.54681748061371, "precision": 0.5939206503868906, "recall": 0.5066367013442927, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5551380269991926, "cores": 2433}, "seconds": 241.62484884262085, "skipped_optimizer_steps": 0}
+epoch 48 microstep 1/300 loss=0.60092 lr=6.21e-05 elapsed=1s
+epoch 48 microstep 100/300 loss=0.22474 lr=6.21e-05 elapsed=59s
+epoch 48 microstep 200/300 loss=0.60044 lr=6.21e-05 elapsed=118s
+epoch 48 microstep 300/300 loss=0.52139 lr=6.21e-05 elapsed=176s
+epoch 48: full validation starts (2433 cores)
+{"epoch": 48, "lr": 6.21339986852034e-05, "train_loss": 0.4819178769675394, "fast_val": {"iou": 0.4119531772693331, "dice": 0.5835224338898203, "precision": 0.6213550354861084, "recall": 0.5500324675707304, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5287411840787778, "cores": 96}, "full_val": {"iou": 0.33636919348856514, "dice": 0.5034075839633508, "precision": 0.5724159609117604, "recall": 0.44924789861570164, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5678702608069373, "cores": 2433}, "seconds": 241.3481752872467, "skipped_optimizer_steps": 0}
+epoch 49 microstep 1/300 loss=0.60015 lr=6.04e-05 elapsed=1s
+epoch 49 microstep 100/300 loss=0.60068 lr=6.04e-05 elapsed=59s
+epoch 49 microstep 200/300 loss=0.60107 lr=6.04e-05 elapsed=118s
+epoch 49 microstep 300/300 loss=0.60008 lr=6.04e-05 elapsed=176s
+epoch 49: full validation starts (2433 cores)
+{"epoch": 49, "lr": 6.043518895634708e-05, "train_loss": 0.48305350698530675, "fast_val": {"iou": 0.42645003812191573, "dice": 0.5979179455642005, "precision": 0.5651082786108695, "recall": 0.6347722379289579, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5146536263637245, "cores": 96}, "full_val": {"iou": 0.34383899195622897, "dice": 0.5117264702309343, "precision": 0.48978845398200205, "recall": 0.5357218813997917, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.55341308636218, "cores": 2433}, "seconds": 241.32591104507446, "skipped_optimizer_steps": 0}
+epoch 50 microstep 1/300 loss=0.60799 lr=5.87e-05 elapsed=1s
+epoch 50 microstep 100/300 loss=0.60076 lr=5.87e-05 elapsed=59s
+epoch 50 microstep 200/300 loss=0.58971 lr=5.87e-05 elapsed=118s
+epoch 50 microstep 300/300 loss=0.60192 lr=5.87e-05 elapsed=176s
+epoch 50: full validation starts (2433 cores)
+{"epoch": 50, "lr": 5.872372647446318e-05, "train_loss": 0.47872832444806895, "fast_val": {"iou": 0.4369110656323179, "dice": 0.6081254102390166, "precision": 0.5694915672715077, "recall": 0.6523825068735791, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5105276795414587, "cores": 96}, "full_val": {"iou": 0.35373136846270387, "dice": 0.5226020120437941, "precision": 0.5055413749205583, "recall": 0.5408543659187003, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5533903770005113, "cores": 2433}, "seconds": 241.67212438583374, "skipped_optimizer_steps": 0}
+epoch 51 microstep 1/300 loss=0.60019 lr=5.7e-05 elapsed=1s
+epoch 51 microstep 100/300 loss=0.47683 lr=5.7e-05 elapsed=59s
+epoch 51 microstep 200/300 loss=0.60004 lr=5.7e-05 elapsed=118s
+epoch 51 microstep 300/300 loss=0.37766 lr=5.7e-05 elapsed=176s
+epoch 51: full validation starts (2433 cores)
+{"epoch": 51, "lr": 5.7001696392955283e-05, "train_loss": 0.48112591478973626, "fast_val": {"iou": 0.41169982650812054, "dice": 0.5832682256913946, "precision": 0.6009577344368154, "recall": 0.566590339395125, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5248232431864986, "cores": 96}, "full_val": {"iou": 0.34237795176359087, "dice": 0.510106637722679, "precision": 0.5342441408111777, "recall": 0.48805594770087884, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5607655001560026, "cores": 2433}, "seconds": 241.2951991558075, "skipped_optimizer_steps": 1}
+epoch 52 microstep 1/300 loss=0.45919 lr=5.53e-05 elapsed=1s
+epoch 52 microstep 100/300 loss=0.27058 lr=5.53e-05 elapsed=59s
+epoch 52 microstep 200/300 loss=0.42324 lr=5.53e-05 elapsed=118s
+epoch 52 microstep 300/300 loss=0.60120 lr=5.53e-05 elapsed=176s
+epoch 52: full validation starts (2433 cores)
+{"epoch": 52, "lr": 5.52711967402193e-05, "train_loss": 0.4791635237261653, "fast_val": {"iou": 0.4293872018803064, "dice": 0.6007990015797865, "precision": 0.615371688414393, "recall": 0.5869005431689056, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5174001248087734, "cores": 96}, "full_val": {"iou": 0.3585903489139148, "dice": 0.5278859064479287, "precision": 0.5718744616357483, "recall": 0.49018119339595256, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5581419914960861, "cores": 2433}, "seconds": 241.41541957855225, "skipped_optimizer_steps": 0}
+epoch 53 microstep 1/300 loss=0.52447 lr=5.35e-05 elapsed=1s
+epoch 53 microstep 100/300 loss=0.38520 lr=5.35e-05 elapsed=59s
+epoch 53 microstep 200/300 loss=0.54878 lr=5.35e-05 elapsed=118s
+epoch 53 microstep 300/300 loss=0.60000 lr=5.35e-05 elapsed=176s
+epoch 53: full validation starts (2433 cores)
+{"epoch": 53, "lr": 5.353433586351907e-05, "train_loss": 0.47691692851483825, "fast_val": {"iou": 0.39844070005179033, "dice": 0.5698356748870859, "precision": 0.6061232108859445, "recall": 0.5376476508445693, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5319970798833916, "cores": 96}, "full_val": {"iou": 0.3401762589973703, "dice": 0.5076589839785213, "precision": 0.5786280239359829, "recall": 0.45219680177160504, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5671269185198, "cores": 2433}, "seconds": 241.15918970108032, "skipped_optimizer_steps": 0}
+epoch 54 microstep 1/300 loss=0.44507 lr=5.18e-05 elapsed=1s
+epoch 54 microstep 100/300 loss=0.42905 lr=5.18e-05 elapsed=59s
+epoch 54 microstep 200/300 loss=0.39264 lr=5.18e-05 elapsed=118s
+epoch 54 microstep 300/300 loss=0.60037 lr=5.18e-05 elapsed=176s
+epoch 54: full validation starts (2433 cores)
+{"epoch": 54, "lr": 5.179322986028994e-05, "train_loss": 0.47849623040606576, "fast_val": {"iou": 0.4039978066180186, "dice": 0.5754963500850155, "precision": 0.6288181974378423, "recall": 0.5305106777649583, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5285496286426982, "cores": 96}, "full_val": {"iou": 0.32802090753371116, "dice": 0.49399961351946486, "precision": 0.579312657956258, "recall": 0.43058856753042346, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5684941316632103, "cores": 2433}, "seconds": 241.1791832447052, "skipped_optimizer_steps": 0}
+epoch 55 microstep 1/300 loss=0.39939 lr=5.01e-05 elapsed=1s
+epoch 55 microstep 100/300 loss=0.60043 lr=5.01e-05 elapsed=59s
+epoch 55 microstep 200/300 loss=0.44035 lr=5.01e-05 elapsed=118s
+epoch 55 microstep 300/300 loss=0.60027 lr=5.01e-05 elapsed=176s
+epoch 55: full validation starts (2433 cores)
+{"epoch": 55, "lr": 5.0050000000000004e-05, "train_loss": 0.47317135479301214, "fast_val": {"iou": 0.40584321504473675, "dice": 0.5773662535076104, "precision": 0.6596514130205975, "recall": 0.5133329169313373, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5308156698786964, "cores": 96}, "full_val": {"iou": 0.3400566883411864, "dice": 0.5075258252874836, "precision": 0.6156858849469345, "recall": 0.4316892139880216, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5674899409171879, "cores": 2433}, "seconds": 241.36370944976807, "skipped_optimizer_steps": 0}
+epoch 56 microstep 1/300 loss=0.60011 lr=4.83e-05 elapsed=1s
+epoch 56 microstep 100/300 loss=0.40873 lr=4.83e-05 elapsed=59s
+epoch 56 microstep 200/300 loss=0.50112 lr=4.83e-05 elapsed=118s
+epoch 56 microstep 300/300 loss=0.19778 lr=4.83e-05 elapsed=176s
+epoch 56: full validation starts (2433 cores)
+{"epoch": 56, "lr": 4.8306770139710096e-05, "train_loss": 0.4714508290837208, "fast_val": {"iou": 0.3810139819652911, "dice": 0.5517887392031736, "precision": 0.6211510072013533, "recall": 0.4963613929353866, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5358115429989994, "cores": 96}, "full_val": {"iou": 0.3342373684337834, "dice": 0.5010163503756958, "precision": 0.6154461354098365, "recall": 0.42246711801136944, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.570002862868048, "cores": 2433}, "seconds": 241.27238082885742, "skipped_optimizer_steps": 0}
+epoch 57 microstep 1/300 loss=0.22991 lr=4.66e-05 elapsed=1s
+epoch 57 microstep 100/300 loss=0.60020 lr=4.66e-05 elapsed=59s
+epoch 57 microstep 200/300 loss=0.40475 lr=4.66e-05 elapsed=118s
+epoch 57 microstep 300/300 loss=0.60065 lr=4.66e-05 elapsed=176s
+epoch 57: full validation starts (2433 cores)
+{"epoch": 57, "lr": 4.6565664136480944e-05, "train_loss": 0.47258152761807043, "fast_val": {"iou": 0.4079165277848067, "dice": 0.5794612389792967, "precision": 0.6110939001196055, "recall": 0.5509422666489107, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5275292808655649, "cores": 96}, "full_val": {"iou": 0.3404790442165904, "dice": 0.5079960715321363, "precision": 0.5620281061273349, "recall": 0.46344188031460776, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5642553891504297, "cores": 2433}, "seconds": 241.5892162322998, "skipped_optimizer_steps": 0}
+epoch 58 microstep 1/300 loss=0.51654 lr=4.48e-05 elapsed=1s
+epoch 58 microstep 100/300 loss=0.60042 lr=4.48e-05 elapsed=59s
+epoch 58 microstep 200/300 loss=0.60109 lr=4.48e-05 elapsed=118s
+epoch 58 microstep 300/300 loss=0.59112 lr=4.48e-05 elapsed=177s
+epoch 58: full validation starts (2433 cores)
+{"epoch": 58, "lr": 4.4828803259780724e-05, "train_loss": 0.4673702985669176, "fast_val": {"iou": 0.40506194071716956, "dice": 0.5765752085070619, "precision": 0.6484371204324917, "recall": 0.5190521590639912, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5297058126113067, "cores": 96}, "full_val": {"iou": 0.33956671020841894, "dice": 0.5069799176415586, "precision": 0.5950140860194588, "recall": 0.4416381864438872, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5664567108782437, "cores": 2433}, "seconds": 241.72678089141846, "skipped_optimizer_steps": 0}
+epoch 59 microstep 1/300 loss=0.36716 lr=4.31e-05 elapsed=1s
+epoch 59 microstep 100/300 loss=0.50894 lr=4.31e-05 elapsed=59s
+epoch 59 microstep 200/300 loss=0.40368 lr=4.31e-05 elapsed=118s
+epoch 59 microstep 300/300 loss=0.59740 lr=4.31e-05 elapsed=176s
+epoch 59: full validation starts (2433 cores)
+{"epoch": 59, "lr": 4.309830360704474e-05, "train_loss": 0.4666366194561124, "fast_val": {"iou": 0.4008958473875106, "dice": 0.5723421168463444, "precision": 0.6466463093295884, "recall": 0.5133541298632119, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.530593681614846, "cores": 96}, "full_val": {"iou": 0.33719072029035263, "dice": 0.5043270420200587, "precision": 0.6150561607278683, "recall": 0.42738460396617883, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5697213681567073, "cores": 2433}, "seconds": 241.55787420272827, "skipped_optimizer_steps": 0}
+epoch 60 microstep 1/300 loss=0.60007 lr=4.14e-05 elapsed=1s
+epoch 60 microstep 100/300 loss=0.56135 lr=4.14e-05 elapsed=59s
+epoch 60 microstep 200/300 loss=0.39174 lr=4.14e-05 elapsed=118s
+epoch 60 microstep 300/300 loss=0.36504 lr=4.14e-05 elapsed=177s
+epoch 60: full validation starts (2433 cores)
+{"epoch": 60, "lr": 4.1376273525536834e-05, "train_loss": 0.4681931686277191, "fast_val": {"iou": 0.3942776578320429, "dice": 0.5655654820505461, "precision": 0.6521126803920603, "recall": 0.49929938400002827, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5384410995369157, "cores": 96}, "full_val": {"iou": 0.334166706939172, "dice": 0.5009369596784692, "precision": 0.6104139852135801, "recall": 0.42475724982327107, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5718569497347061, "cores": 2433}, "seconds": 241.6448106765747, "skipped_optimizer_steps": 0}
+epoch 61 microstep 1/300 loss=0.36109 lr=3.97e-05 elapsed=1s
+epoch 61 microstep 100/300 loss=0.60083 lr=3.97e-05 elapsed=59s
+epoch 61 microstep 200/300 loss=0.38526 lr=3.97e-05 elapsed=118s
+epoch 61 microstep 300/300 loss=0.39822 lr=3.97e-05 elapsed=177s
+epoch 61: full validation starts (2433 cores)
+{"epoch": 61, "lr": 3.966481104365293e-05, "train_loss": 0.46617206241314607, "fast_val": {"iou": 0.4334780275973957, "dice": 0.6047920083210953, "precision": 0.6107998831743406, "recall": 0.5989011701288921, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5178402523354938, "cores": 96}, "full_val": {"iou": 0.36613233332466516, "dice": 0.5360129826275809, "precision": 0.5753494646882528, "recall": 0.5017111327366977, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5588681184083064, "cores": 2433}, "seconds": 241.73200392723083, "skipped_optimizer_steps": 0}
+epoch 62 microstep 1/300 loss=0.42086 lr=3.8e-05 elapsed=1s
+epoch 62 microstep 100/300 loss=0.43117 lr=3.8e-05 elapsed=59s
+epoch 62 microstep 200/300 loss=0.46949 lr=3.8e-05 elapsed=118s
+epoch 62 microstep 300/300 loss=0.60017 lr=3.8e-05 elapsed=176s
+epoch 62: full validation starts (2433 cores)
+{"epoch": 62, "lr": 3.7966001314796595e-05, "train_loss": 0.46976419726386665, "fast_val": {"iou": 0.41916815708769045, "dice": 0.5907237348784314, "precision": 0.6354880561081994, "recall": 0.5518508872308756, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5296138969715685, "cores": 96}, "full_val": {"iou": 0.3416563307299367, "dice": 0.5093052861667733, "precision": 0.57518865072697, "recall": 0.4569636692488517, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5681620542762325, "cores": 2433}, "seconds": 241.39515829086304, "skipped_optimizer_steps": 0}
+epoch 63 microstep 1/300 loss=0.37670 lr=3.63e-05 elapsed=1s
+epoch 63 microstep 100/300 loss=0.38734 lr=3.63e-05 elapsed=59s
+epoch 63 microstep 200/300 loss=0.53902 lr=3.63e-05 elapsed=118s
+epoch 63 microstep 300/300 loss=0.37960 lr=3.63e-05 elapsed=176s
+epoch 63: full validation starts (2433 cores)
+{"epoch": 63, "lr": 3.6281914076940896e-05, "train_loss": 0.4682683633764585, "fast_val": {"iou": 0.3838038621207223, "dice": 0.5547084707980667, "precision": 0.6031060113222695, "recall": 0.5135014418901194, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5350422170013189, "cores": 96}, "full_val": {"iou": 0.3241156480995572, "dice": 0.48955791522401476, "precision": 0.5687868824030532, "recall": 0.42970263850117535, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5715752600943704, "cores": 2433}, "seconds": 241.4483723640442, "skipped_optimizer_steps": 0}
+epoch 64 microstep 1/300 loss=0.60070 lr=3.46e-05 elapsed=1s
+epoch 64 microstep 100/300 loss=0.60020 lr=3.46e-05 elapsed=59s
+epoch 64 microstep 200/300 loss=0.60045 lr=3.46e-05 elapsed=118s
+epoch 64 microstep 300/300 loss=0.43900 lr=3.46e-05 elapsed=176s
+epoch 64: full validation starts (2433 cores)
+{"epoch": 64, "lr": 3.461460113097139e-05, "train_loss": 0.4784075175101558, "fast_val": {"iou": 0.4318388057586501, "dice": 0.6031947227884262, "precision": 0.6532535987732017, "recall": 0.560261814719182, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5205090064555407, "cores": 96}, "full_val": {"iou": 0.3595403992776503, "dice": 0.5289146236017421, "precision": 0.6161561080514806, "recall": 0.46331403383271946, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5626193859024556, "cores": 2433}, "seconds": 241.33651661872864, "skipped_optimizer_steps": 0}
+epoch 65 microstep 1/300 loss=0.43355 lr=3.3e-05 elapsed=1s
+epoch 65 microstep 100/300 loss=0.28265 lr=3.3e-05 elapsed=59s
+epoch 65 microstep 200/300 loss=0.44054 lr=3.3e-05 elapsed=118s
+epoch 65 microstep 300/300 loss=0.60040 lr=3.3e-05 elapsed=176s
+epoch 65: full validation starts (2433 cores)
+{"epoch": 65, "lr": 3.2966093840882855e-05, "train_loss": 0.474659677396218, "fast_val": {"iou": 0.44863609309979746, "dice": 0.6193910192307912, "precision": 0.6012078090490278, "recall": 0.6387084152879243, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5124809372549256, "cores": 96}, "full_val": {"iou": 0.3632819885165858, "dice": 0.5329520841273347, "precision": 0.5416379391178207, "recall": 0.5245404098200155, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5548329890074428, "cores": 2433}, "seconds": 241.35503268241882, "skipped_optimizer_steps": 1}
+epoch 66 microstep 1/300 loss=0.37182 lr=3.13e-05 elapsed=1s
+epoch 66 microstep 100/300 loss=0.39018 lr=3.13e-05 elapsed=59s
+epoch 66 microstep 200/300 loss=0.49281 lr=3.13e-05 elapsed=118s
+epoch 66 microstep 300/300 loss=0.60011 lr=3.13e-05 elapsed=177s
+epoch 66: full validation starts (2433 cores)
+{"epoch": 66, "lr": 3.1338400658875194e-05, "train_loss": 0.4654109120431046, "fast_val": {"iou": 0.4312645123433505, "dice": 0.6026342561058248, "precision": 0.5990035953465411, "recall": 0.6063091973380127, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5212572684201101, "cores": 96}, "full_val": {"iou": 0.3605440034025797, "dice": 0.5299997684762807, "precision": 0.5544481996894726, "recall": 0.5076163891458547, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5606840712638045, "cores": 2433}, "seconds": 241.56236505508423, "skipped_optimizer_steps": 0}
+epoch 67 microstep 1/300 loss=0.42519 lr=2.97e-05 elapsed=1s
+epoch 67 microstep 100/300 loss=0.60068 lr=2.97e-05 elapsed=59s
+epoch 67 microstep 200/300 loss=0.43180 lr=2.97e-05 elapsed=118s
+epoch 67 microstep 300/300 loss=0.43078 lr=2.97e-05 elapsed=176s
+epoch 67: full validation starts (2433 cores)
+{"epoch": 67, "lr": 2.9733504678363788e-05, "train_loss": 0.47134128528336683, "fast_val": {"iou": 0.4300555195115985, "dice": 0.6014528997566104, "precision": 0.6343257630823455, "recall": 0.571819327102231, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5223266045407703, "cores": 96}, "full_val": {"iou": 0.3516063613702205, "dice": 0.5202792342790867, "precision": 0.5747640763038059, "recall": 0.47522976170512204, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5625151335798815, "cores": 2433}, "seconds": 241.37639689445496, "skipped_optimizer_steps": 1}
+epoch 68 microstep 1/300 loss=0.51594 lr=2.82e-05 elapsed=1s
+epoch 68 microstep 100/300 loss=0.37294 lr=2.82e-05 elapsed=59s
+epoch 68 microstep 200/300 loss=0.15469 lr=2.82e-05 elapsed=118s
+epoch 68 microstep 300/300 loss=0.43058 lr=2.82e-05 elapsed=176s
+epoch 68: full validation starts (2433 cores)
+{"epoch": 68, "lr": 2.815336121788558e-05, "train_loss": 0.46249071390678487, "fast_val": {"iou": 0.40374879510303896, "dice": 0.5752436568587085, "precision": 0.654874261156388, "recall": 0.5128791958884624, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5353235871686289, "cores": 96}, "full_val": {"iou": 0.3401473207348605, "dice": 0.5076267593451488, "precision": 0.6233065760601428, "recall": 0.4281636311268441, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5722011578680811, "cores": 2433}, "seconds": 241.49812054634094, "skipped_optimizer_steps": 0}
+epoch 69 microstep 1/300 loss=0.38880 lr=2.66e-05 elapsed=1s
+epoch 69 microstep 100/300 loss=0.57676 lr=2.66e-05 elapsed=59s
+epoch 69 microstep 200/300 loss=0.60000 lr=2.66e-05 elapsed=118s
+epoch 69 microstep 300/300 loss=0.45102 lr=2.66e-05 elapsed=176s
+epoch 69: full validation starts (2433 cores)
+{"epoch": 69, "lr": 2.6599895438844767e-05, "train_loss": 0.4664502701722085, "fast_val": {"iou": 0.4349212797838887, "dice": 0.6061953166509476, "precision": 0.631463838762477, "recall": 0.5828712646089337, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5200901709807416, "cores": 96}, "full_val": {"iou": 0.3581267321618686, "dice": 0.5273833784153587, "precision": 0.5849904440361013, "recall": 0.48010493672969684, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5637581223397652, "cores": 2433}, "seconds": 241.2139220237732, "skipped_optimizer_steps": 0}
+epoch 70 microstep 1/300 loss=0.60197 lr=2.51e-05 elapsed=1s
+epoch 70 microstep 100/300 loss=0.29646 lr=2.51e-05 elapsed=59s
+epoch 70 microstep 200/300 loss=0.51056 lr=2.51e-05 elapsed=118s
+epoch 70 microstep 300/300 loss=0.34832 lr=2.51e-05 elapsed=176s
+epoch 70: full validation starts (2433 cores)
+{"epoch": 70, "lr": 2.507500000000001e-05, "train_loss": 0.4660609078593552, "fast_val": {"iou": 0.440923507378787, "dice": 0.612001268798619, "precision": 0.5901606333405562, "recall": 0.6355205830256476, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5140905387233943, "cores": 96}, "full_val": {"iou": 0.35689792618323446, "dice": 0.5260497776529717, "precision": 0.5249245370537553, "recall": 0.5271798528001331, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5564652559967759, "cores": 2433}, "seconds": 241.1725902557373, "skipped_optimizer_steps": 1}
+epoch 71 microstep 1/300 loss=0.40016 lr=2.36e-05 elapsed=1s
+epoch 71 microstep 100/300 loss=0.60017 lr=2.36e-05 elapsed=59s
+epoch 71 microstep 200/300 loss=0.60027 lr=2.36e-05 elapsed=118s
+epoch 71 microstep 300/300 loss=0.40895 lr=2.36e-05 elapsed=176s
+epoch 71: full validation starts (2433 cores)
+{"epoch": 71, "lr": 2.358053275155142e-05, "train_loss": 0.46848567556589843, "fast_val": {"iou": 0.4362864173314535, "dice": 0.607520076868862, "precision": 0.6293457899064873, "recall": 0.5871574553438321, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5212257678310076, "cores": 96}, "full_val": {"iou": 0.36004617808013845, "dice": 0.5294616960556222, "precision": 0.5885706444621595, "recall": 0.4811416248043822, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5632652740357493, "cores": 2433}, "seconds": 241.4172489643097, "skipped_optimizer_steps": 0}
+epoch 72 microstep 1/300 loss=0.35343 lr=2.21e-05 elapsed=1s
+epoch 72 microstep 100/300 loss=0.39879 lr=2.21e-05 elapsed=59s
+epoch 72 microstep 200/300 loss=0.60019 lr=2.21e-05 elapsed=118s
+epoch 72 microstep 300/300 loss=0.60524 lr=2.21e-05 elapsed=176s
+epoch 72: full validation starts (2433 cores)
+{"epoch": 72, "lr": 2.21183144716362e-05, "train_loss": 0.4676549112424254, "fast_val": {"iou": 0.43283206150416653, "dice": 0.6041630043506783, "precision": 0.6289970411182533, "recall": 0.5812154774264943, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5184699598078927, "cores": 96}, "full_val": {"iou": 0.35593499075770824, "dice": 0.5250030321273864, "precision": 0.580305982578273, "recall": 0.479323660483039, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5618947923704128, "cores": 2433}, "seconds": 241.24366164207458, "skipped_optimizer_steps": 0}
+epoch 73 microstep 1/300 loss=0.42352 lr=2.07e-05 elapsed=1s
+epoch 73 microstep 100/300 loss=0.27644 lr=2.07e-05 elapsed=59s
+epoch 73 microstep 200/300 loss=0.60065 lr=2.07e-05 elapsed=118s
+epoch 73 microstep 300/300 loss=0.48160 lr=2.07e-05 elapsed=176s
+epoch 73: full validation starts (2433 cores)
+{"epoch": 73, "lr": 2.069012664799097e-05, "train_loss": 0.4708657562111815, "fast_val": {"iou": 0.39780028541871915, "dice": 0.5691804323813766, "precision": 0.6384789662034825, "recall": 0.5134519450490784, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5399727244706204, "cores": 96}, "full_val": {"iou": 0.33437005167846573, "dice": 0.5011654019930547, "precision": 0.607766536060599, "recall": 0.4263792625275144, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5752387523725384, "cores": 2433}, "seconds": 241.12671542167664, "skipped_optimizer_steps": 0}
+epoch 74 microstep 1/300 loss=0.60021 lr=1.93e-05 elapsed=1s
+epoch 74 microstep 100/300 loss=0.60004 lr=1.93e-05 elapsed=59s
+epoch 74 microstep 200/300 loss=0.33915 lr=1.93e-05 elapsed=117s
+epoch 74 microstep 300/300 loss=0.20055 lr=1.93e-05 elapsed=176s
+epoch 74: full validation starts (2433 cores)
+{"epoch": 74, "lr": 1.929770930748337e-05, "train_loss": 0.4619972233163814, "fast_val": {"iou": 0.4039457350513793, "dice": 0.5754435160367454, "precision": 0.6354916135465262, "recall": 0.5257636950098935, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5350431273691356, "cores": 96}, "full_val": {"iou": 0.3299625934841203, "dice": 0.49619830678051335, "precision": 0.5818214168079411, "recall": 0.43254351524549967, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5723311966748282, "cores": 2433}, "seconds": 241.01042294502258, "skipped_optimizer_steps": 0}
+epoch 75 microstep 1/300 loss=0.60042 lr=1.79e-05 elapsed=1s
+epoch 75 microstep 100/300 loss=0.60001 lr=1.79e-05 elapsed=59s
+epoch 75 microstep 200/300 loss=0.23459 lr=1.79e-05 elapsed=118s
+epoch 75 microstep 300/300 loss=0.39077 lr=1.79e-05 elapsed=176s
+epoch 75: full validation starts (2433 cores)
+{"epoch": 75, "lr": 1.7942758896157357e-05, "train_loss": 0.4666474664087097, "fast_val": {"iou": 0.4221718222130261, "dice": 0.5937001642404771, "precision": 0.6344692349552458, "recall": 0.5578541469514071, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5246066088632991, "cores": 96}, "full_val": {"iou": 0.34456385293229774, "dice": 0.5125288057995225, "precision": 0.5792453624082569, "recall": 0.459593553613501, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5648294205816009, "cores": 2433}, "seconds": 241.37325477600098, "skipped_optimizer_steps": 0}
+epoch 76 microstep 1/300 loss=0.47152 lr=1.66e-05 elapsed=1s
+epoch 76 microstep 100/300 loss=0.52247 lr=1.66e-05 elapsed=59s
+epoch 76 microstep 200/300 loss=0.38895 lr=1.66e-05 elapsed=118s
+epoch 76 microstep 300/300 loss=0.43734 lr=1.66e-05 elapsed=176s
+epoch 76: full validation starts (2433 cores)
+{"epoch": 76, "lr": 1.6626926212375032e-05, "train_loss": 0.46150470357388257, "fast_val": {"iou": 0.43499999561796737, "dice": 0.6062717727474826, "precision": 0.6292174856654611, "recall": 0.5849407039629292, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5220051938667893, "cores": 96}, "full_val": {"iou": 0.3587644685748571, "dice": 0.5280745513623093, "precision": 0.5806612509887328, "recall": 0.48422174807116275, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5616716164169221, "cores": 2433}, "seconds": 241.20029163360596, "skipped_optimizer_steps": 0}
+epoch 77 microstep 1/300 loss=0.35494 lr=1.54e-05 elapsed=1s
+epoch 77 microstep 100/300 loss=0.50897 lr=1.54e-05 elapsed=59s
+epoch 77 microstep 200/300 loss=0.15474 lr=1.54e-05 elapsed=118s
+epoch 77 microstep 300/300 loss=0.60005 lr=1.54e-05 elapsed=176s
+epoch 77: full validation starts (2433 cores)
+{"epoch": 77, "lr": 1.53518143955731e-05, "train_loss": 0.46258150899161893, "fast_val": {"iou": 0.4299487355920333, "dice": 0.6013484608090152, "precision": 0.6274646931189688, "recall": 0.5773193689388466, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5238261598472794, "cores": 96}, "full_val": {"iou": 0.34670287139233685, "dice": 0.5148914118433351, "precision": 0.5699157331790093, "recall": 0.46955658285681995, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5646063527524888, "cores": 2433}, "seconds": 241.27343916893005, "skipped_optimizer_steps": 0}
+epoch 78 microstep 1/300 loss=0.21972 lr=1.41e-05 elapsed=1s
+epoch 78 microstep 100/300 loss=0.60000 lr=1.41e-05 elapsed=59s
+epoch 78 microstep 200/300 loss=0.46034 lr=1.41e-05 elapsed=118s
+epoch 78 microstep 300/300 loss=0.39613 lr=1.41e-05 elapsed=176s
+epoch 78: full validation starts (2433 cores)
+{"epoch": 78, "lr": 1.4118976973084375e-05, "train_loss": 0.4573967577641209, "fast_val": {"iou": 0.4280643243219077, "dice": 0.5995028613646893, "precision": 0.6395195838637672, "recall": 0.5641991705743638, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5236409467179328, "cores": 96}, "full_val": {"iou": 0.3559169616111188, "dice": 0.5249834196162182, "precision": 0.600603847240228, "recall": 0.46627586923307995, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5634204049225693, "cores": 2433}, "seconds": 241.6225757598877, "skipped_optimizer_steps": 0}
+epoch 79 microstep 1/300 loss=0.60003 lr=1.29e-05 elapsed=1s
+epoch 79 microstep 100/300 loss=0.42146 lr=1.29e-05 elapsed=59s
+epoch 79 microstep 200/300 loss=0.35090 lr=1.29e-05 elapsed=118s
+epoch 79 microstep 300/300 loss=0.60018 lr=1.29e-05 elapsed=176s
+epoch 79: full validation starts (2433 cores)
+{"epoch": 79, "lr": 1.292991596740417e-05, "train_loss": 0.46612004133562246, "fast_val": {"iou": 0.41584297186612423, "dice": 0.5874139719294301, "precision": 0.6411857300806297, "recall": 0.5419633039848493, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5306600117279837, "cores": 96}, "full_val": {"iou": 0.3426248111670604, "dice": 0.5103805744052025, "precision": 0.598916162590001, "recall": 0.4446496423039581, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5697530030873496, "cores": 2433}, "seconds": 241.22974252700806, "skipped_optimizer_steps": 0}
+epoch 80 microstep 1/300 loss=0.59979 lr=1.18e-05 elapsed=1s
+epoch 80 microstep 100/300 loss=0.35718 lr=1.18e-05 elapsed=59s
+epoch 80 microstep 200/300 loss=0.40503 lr=1.18e-05 elapsed=118s
+epoch 80 microstep 300/300 loss=0.60090 lr=1.18e-05 elapsed=176s
+epoch 80: full validation starts (2433 cores)
+{"epoch": 80, "lr": 1.1786080066207056e-05, "train_loss": 0.4574704089326163, "fast_val": {"iou": 0.4059042338085332, "dice": 0.5774279983622446, "precision": 0.6411917638917065, "recall": 0.5251991953227843, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5319888528902084, "cores": 96}, "full_val": {"iou": 0.34386903002227764, "dice": 0.5117597360162057, "precision": 0.6089828653852384, "recall": 0.441305954272427, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5700349633754573, "cores": 2433}, "seconds": 241.4605576992035, "skipped_optimizer_steps": 0}
+epoch 81 microstep 1/300 loss=0.60001 lr=1.07e-05 elapsed=1s
+epoch 81 microstep 100/300 loss=0.42312 lr=1.07e-05 elapsed=59s
+epoch 81 microstep 200/300 loss=0.45226 lr=1.07e-05 elapsed=118s
+epoch 81 microstep 300/300 loss=0.38479 lr=1.07e-05 elapsed=176s
+epoch 81: full validation starts (2433 cores)
+{"epoch": 81, "lr": 1.0688862857344241e-05, "train_loss": 0.46266214608525236, "fast_val": {"iou": 0.40113824324139596, "dice": 0.5725891005778302, "precision": 0.6389132823465716, "recall": 0.5187398575669474, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5349005642347038, "cores": 96}, "full_val": {"iou": 0.3364961314549671, "dice": 0.5035497275830391, "precision": 0.6018425627600036, "recall": 0.4328557867787761, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5719217950347283, "cores": 2433}, "seconds": 241.28419852256775, "skipped_optimizer_steps": 0}
+epoch 82 microstep 1/300 loss=0.60006 lr=9.64e-06 elapsed=1s
+epoch 82 microstep 100/300 loss=0.46683 lr=9.64e-06 elapsed=59s
+epoch 82 microstep 200/300 loss=0.54525 lr=9.64e-06 elapsed=118s
+epoch 82 microstep 300/300 loss=0.38094 lr=9.64e-06 elapsed=176s
+epoch 82: full validation starts (2433 cores)
+{"epoch": 82, "lr": 9.639601130971381e-06, "train_loss": 0.4638183506081502, "fast_val": {"iou": 0.3999839873835478, "dice": 0.571412231837143, "precision": 0.6556867676548779, "recall": 0.5063338279089117, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5363510620469848, "cores": 96}, "full_val": {"iou": 0.34160751708103293, "dice": 0.5092510480625161, "precision": 0.6296622962217152, "recall": 0.42749965877148455, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.572349094632252, "cores": 2433}, "seconds": 241.50719499588013, "skipped_optimizer_steps": 0}
+epoch 83 microstep 1/300 loss=0.44620 lr=8.64e-06 elapsed=1s
+epoch 83 microstep 100/300 loss=0.42805 lr=8.64e-06 elapsed=59s
+epoch 83 microstep 200/300 loss=0.60073 lr=8.64e-06 elapsed=118s
+epoch 83 microstep 300/300 loss=0.44709 lr=8.64e-06 elapsed=176s
+epoch 83: full validation starts (2433 cores)
+{"epoch": 83, "lr": 8.639573250875672e-06, "train_loss": 0.4608147829460601, "fast_val": {"iou": 0.442934375386147, "dice": 0.6139355786954792, "precision": 0.6333903950794896, "recall": 0.5956402711012694, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5193839834537357, "cores": 96}, "full_val": {"iou": 0.3607267261585242, "dice": 0.5301971648295525, "precision": 0.5822779253682043, "recall": 0.48666805079167125, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5609731431170055, "cores": 2433}, "seconds": 241.482093334198, "skipped_optimizer_steps": 0}
+epoch 84 microstep 1/300 loss=0.39089 lr=7.69e-06 elapsed=1s
+epoch 84 microstep 100/300 loss=0.60019 lr=7.69e-06 elapsed=59s
+epoch 84 microstep 200/300 loss=0.60007 lr=7.69e-06 elapsed=118s
+epoch 84 microstep 300/300 loss=0.60006 lr=7.69e-06 elapsed=176s
+epoch 84: full validation starts (2433 cores)
+{"epoch": 84, "lr": 7.689997596986523e-06, "train_loss": 0.46296225051085155, "fast_val": {"iou": 0.4156575427265134, "dice": 0.5872289451105097, "precision": 0.6384280563840314, "recall": 0.5436320546256566, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5265164212323725, "cores": 96}, "full_val": {"iou": 0.3503463506084967, "dice": 0.5188985040032473, "precision": 0.6025175261129394, "recall": 0.45566067533586235, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5656232908896358, "cores": 2433}, "seconds": 241.43047165870667, "skipped_optimizer_steps": 1}
+epoch 85 microstep 1/300 loss=0.60045 lr=6.79e-06 elapsed=1s
+epoch 85 microstep 100/300 loss=0.53532 lr=6.79e-06 elapsed=59s
+epoch 85 microstep 200/300 loss=0.60054 lr=6.79e-06 elapsed=118s
+epoch 85 microstep 300/300 loss=0.19392 lr=6.79e-06 elapsed=176s
+epoch 85: full validation starts (2433 cores)
+{"epoch": 85, "lr": 6.792031080967287e-06, "train_loss": 0.45475170517961183, "fast_val": {"iou": 0.4149322773800914, "dice": 0.586504787562534, "precision": 0.6433244139817167, "recall": 0.5389074632986817, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5295743774622679, "cores": 96}, "full_val": {"iou": 0.3453964648597427, "dice": 0.5134493420803662, "precision": 0.6052945865381028, "recall": 0.44580454796112623, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5679048838693322, "cores": 2433}, "seconds": 241.69383215904236, "skipped_optimizer_steps": 0}
+epoch 86 microstep 1/300 loss=0.49427 lr=5.95e-06 elapsed=1s
+epoch 86 microstep 100/300 loss=0.60001 lr=5.95e-06 elapsed=59s
+epoch 86 microstep 200/300 loss=0.60002 lr=5.95e-06 elapsed=118s
+epoch 86 microstep 300/300 loss=0.39914 lr=5.95e-06 elapsed=176s
+epoch 86: full validation starts (2433 cores)
+{"epoch": 86, "lr": 5.946767736696608e-06, "train_loss": 0.46213142028699317, "fast_val": {"iou": 0.4193520814505825, "dice": 0.5909063535835355, "precision": 0.6317039640014217, "recall": 0.5550587539288118, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5252151233920207, "cores": 96}, "full_val": {"iou": 0.35228021418942956, "dice": 0.5210165918172365, "precision": 0.5921675354441995, "recall": 0.46512967878413286, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5648212113434528, "cores": 2433}, "seconds": 241.54861903190613, "skipped_optimizer_steps": 0}
+epoch 87 microstep 1/300 loss=0.47693 lr=5.16e-06 elapsed=1s
+epoch 87 microstep 100/300 loss=0.51829 lr=5.16e-06 elapsed=59s
+epoch 87 microstep 200/300 loss=0.19798 lr=5.16e-06 elapsed=118s
+epoch 87 microstep 300/300 loss=0.39431 lr=5.16e-06 elapsed=176s
+epoch 87: full validation starts (2433 cores)
+{"epoch": 87, "lr": 5.155237387356606e-06, "train_loss": 0.45568037242939075, "fast_val": {"iou": 0.42740385260455566, "dice": 0.5988548396092392, "precision": 0.6394555820240357, "recall": 0.5631019905979572, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5257440990147492, "cores": 96}, "full_val": {"iou": 0.3539374629594273, "dice": 0.5228268995316714, "precision": 0.5959870146213694, "recall": 0.465664469262796, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5657632945069452, "cores": 2433}, "seconds": 241.78025031089783, "skipped_optimizer_steps": 0}
+epoch 88 microstep 1/300 loss=0.60011 lr=4.42e-06 elapsed=1s
+epoch 88 microstep 100/300 loss=0.41982 lr=4.42e-06 elapsed=59s
+epoch 88 microstep 200/300 loss=0.29773 lr=4.42e-06 elapsed=118s
+epoch 88 microstep 300/300 loss=0.60008 lr=4.42e-06 elapsed=176s
+epoch 88: full validation starts (2433 cores)
+{"epoch": 88, "lr": 4.418404390752092e-06, "train_loss": 0.4546657934288184, "fast_val": {"iou": 0.4204622874339573, "dice": 0.59200767405591, "precision": 0.642161753923671, "recall": 0.5491203115001196, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5277879848921051, "cores": 96}, "full_val": {"iou": 0.349120637636331, "dice": 0.5175528828140867, "precision": 0.6060621866879661, "recall": 0.45160107511933156, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5681397834837902, "cores": 2433}, "seconds": 241.56708240509033, "skipped_optimizer_steps": 0}
+epoch 89 microstep 1/300 loss=0.60108 lr=3.74e-06 elapsed=1s
+epoch 89 microstep 100/300 loss=0.60055 lr=3.74e-06 elapsed=59s
+epoch 89 microstep 200/300 loss=0.60336 lr=3.74e-06 elapsed=118s
+epoch 89 microstep 300/300 loss=0.48035 lr=3.74e-06 elapsed=176s
+epoch 89: full validation starts (2433 cores)
+{"epoch": 89, "lr": 3.7371664643889735e-06, "train_loss": 0.4595241450766722, "fast_val": {"iou": 0.41477972344204594, "dice": 0.5863523721317125, "precision": 0.6438103426404882, "recall": 0.5383099657175451, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.531026258909454, "cores": 96}, "full_val": {"iou": 0.3465343821597645, "dice": 0.5147055830894464, "precision": 0.611401605976027, "recall": 0.44441868928609934, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5703255021129304, "cores": 2433}, "seconds": 241.73779463768005, "skipped_optimizer_steps": 0}
+epoch 90 microstep 1/300 loss=0.58125 lr=3.11e-06 elapsed=1s
+epoch 90 microstep 100/300 loss=0.34254 lr=3.11e-06 elapsed=59s
+epoch 90 microstep 200/300 loss=0.20498 lr=3.11e-06 elapsed=118s
+epoch 90 microstep 300/300 loss=0.39363 lr=3.11e-06 elapsed=176s
+epoch 90: full validation starts (2433 cores)
+{"epoch": 90, "lr": 3.1123535917438795e-06, "train_loss": 0.4584026509647568, "fast_val": {"iou": 0.41645027631849507, "dice": 0.5880196195815551, "precision": 0.6462451625291378, "recall": 0.5394189306561042, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5313965843524784, "cores": 96}, "full_val": {"iou": 0.3459596483903549, "dice": 0.5140713524422387, "precision": 0.6106819405527594, "recall": 0.4438532550107879, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5707572145296427, "cores": 2433}, "seconds": 241.38080024719238, "skipped_optimizer_steps": 0}
+epoch 91 microstep 1/300 loss=0.60035 lr=2.54e-06 elapsed=1s
+epoch 91 microstep 100/300 loss=0.37526 lr=2.54e-06 elapsed=59s
+epoch 91 microstep 200/300 loss=0.59356 lr=2.54e-06 elapsed=118s
+epoch 91 microstep 300/300 loss=0.60011 lr=2.54e-06 elapsed=176s
+epoch 91: full validation starts (2433 cores)
+{"epoch": 91, "lr": 2.544727011057081e-06, "train_loss": 0.4625235629081726, "fast_val": {"iou": 0.41162758772170666, "dice": 0.5831957257027715, "precision": 0.6481848708008474, "recall": 0.5300510642410072, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5335988286727419, "cores": 96}, "full_val": {"iou": 0.34373675191417946, "dice": 0.5116132329111631, "precision": 0.6151835345397556, "recall": 0.4378912794642565, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5722601610785936, "cores": 2433}, "seconds": 241.56227612495422, "skipped_optimizer_steps": 0}
+epoch 92 microstep 1/300 loss=0.17295 lr=2.03e-06 elapsed=1s
+epoch 92 microstep 100/300 loss=0.44341 lr=2.03e-06 elapsed=59s
+epoch 92 microstep 200/300 loss=0.36686 lr=2.03e-06 elapsed=118s
+epoch 92 microstep 300/300 loss=0.44133 lr=2.03e-06 elapsed=177s
+epoch 92: full validation starts (2433 cores)
+{"epoch": 92, "lr": 2.034978287880982e-06, "train_loss": 0.4569473481116196, "fast_val": {"iou": 0.414261789607578, "dice": 0.5858346632168082, "precision": 0.646173546976842, "recall": 0.5358021257714731, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5326052491242687, "cores": 96}, "full_val": {"iou": 0.3425050644881353, "dice": 0.5102477056482825, "precision": 0.6086090461915283, "recall": 0.4392565449456642, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5715779260327627, "cores": 2433}, "seconds": 241.81575345993042, "skipped_optimizer_steps": 0}
+epoch 93 microstep 1/300 loss=0.56156 lr=1.58e-06 elapsed=1s
+epoch 93 microstep 100/300 loss=0.32148 lr=1.58e-06 elapsed=59s
+epoch 93 microstep 200/300 loss=0.60007 lr=1.58e-06 elapsed=118s
+epoch 93 microstep 300/300 loss=0.39600 lr=1.58e-06 elapsed=177s
+epoch 93: full validation starts (2433 cores)
+{"epoch": 93, "lr": 1.5837284725139763e-06, "train_loss": 0.4639054123684764, "fast_val": {"iou": 0.4216845712252962, "dice": 0.5932181860310437, "precision": 0.6470995359926026, "recall": 0.5476200858180944, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5298601662895331, "cores": 96}, "full_val": {"iou": 0.3479685015139228, "dice": 0.5162858050809264, "precision": 0.6075351793527707, "recall": 0.4488676625150882, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5696952895701936, "cores": 2433}, "seconds": 241.8765733242035, "skipped_optimizer_steps": 0}
+epoch 94 microstep 1/300 loss=0.60001 lr=1.19e-06 elapsed=1s
+epoch 94 microstep 100/300 loss=0.60050 lr=1.19e-06 elapsed=59s
+epoch 94 microstep 200/300 loss=0.36002 lr=1.19e-06 elapsed=118s
+epoch 94 microstep 300/300 loss=0.60072 lr=1.19e-06 elapsed=176s
+epoch 94: full validation starts (2433 cores)
+{"epoch": 94, "lr": 1.1915273433464057e-06, "train_loss": 0.4547843613227208, "fast_val": {"iou": 0.41327108092812675, "dice": 0.5848433276604265, "precision": 0.647018389267116, "recall": 0.5335700539397717, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5328132347203791, "cores": 96}, "full_val": {"iou": 0.344411490050871, "dice": 0.5123602298844365, "precision": 0.6133583660075126, "recall": 0.4399210092885846, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5715123843286835, "cores": 2433}, "seconds": 241.59100890159607, "skipped_optimizer_steps": 0}
+epoch 95 microstep 1/300 loss=0.36463 lr=8.59e-07 elapsed=1s
+epoch 95 microstep 100/300 loss=0.27512 lr=8.59e-07 elapsed=59s
+epoch 95 microstep 200/300 loss=0.38402 lr=8.59e-07 elapsed=118s
+epoch 95 microstep 300/300 loss=0.44617 lr=8.59e-07 elapsed=176s
+epoch 95: full validation starts (2433 cores)
+{"epoch": 95, "lr": 8.588527370402094e-07, "train_loss": 0.45440829732765753, "fast_val": {"iou": 0.41774412819622814, "dice": 0.5893082113875047, "precision": 0.6419517805524804, "recall": 0.5446443828745644, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5306523380956302, "cores": 96}, "full_val": {"iou": 0.34612707374503376, "dice": 0.514256165700732, "precision": 0.6041336742413608, "recall": 0.4476577245350401, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5700645795175434, "cores": 2433}, "seconds": 241.69048762321472, "skipped_optimizer_steps": 1}
+epoch 96 microstep 1/300 loss=0.60015 lr=5.86e-07 elapsed=1s
+epoch 96 microstep 100/300 loss=0.60096 lr=5.86e-07 elapsed=59s
+epoch 96 microstep 200/300 loss=0.48245 lr=5.86e-07 elapsed=118s
+epoch 96 microstep 300/300 loss=0.60023 lr=5.86e-07 elapsed=177s
+epoch 96: full validation starts (2433 cores)
+{"epoch": 96, "lr": 5.86109966358566e-07, "train_loss": 0.4555055430655678, "fast_val": {"iou": 0.4197077056139195, "dice": 0.5912593190193706, "precision": 0.6436995801292635, "recall": 0.5467197147096362, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5302027993990729, "cores": 96}, "full_val": {"iou": 0.34613789899485875, "dice": 0.5142681136209222, "precision": 0.6033696442611737, "recall": 0.448096296303585, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5698553767840754, "cores": 2433}, "seconds": 241.6358187198639, "skipped_optimizer_steps": 0}
+epoch 97 microstep 1/300 loss=0.35381 lr=3.74e-07 elapsed=1s
+epoch 97 microstep 100/300 loss=0.37328 lr=3.74e-07 elapsed=59s
+epoch 97 microstep 200/300 loss=0.38769 lr=3.74e-07 elapsed=118s
+epoch 97 microstep 300/300 loss=0.32646 lr=3.74e-07 elapsed=176s
+epoch 97: full validation starts (2433 cores)
+{"epoch": 97, "lr": 3.736313263547492e-07, "train_loss": 0.45757699584588407, "fast_val": {"iou": 0.41697479327505726, "dice": 0.5885422877725333, "precision": 0.6453790114724984, "recall": 0.5409061928797616, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5315620445956787, "cores": 96}, "full_val": {"iou": 0.3444905762478716, "dice": 0.5124477364642547, "precision": 0.6056226351476659, "recall": 0.4441199825527154, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5707480873601749, "cores": 2433}, "seconds": 241.65511083602905, "skipped_optimizer_steps": 0}
+epoch 98 microstep 1/300 loss=0.60290 lr=2.22e-07 elapsed=1s
+epoch 98 microstep 100/300 loss=0.60019 lr=2.22e-07 elapsed=59s
+epoch 98 microstep 200/300 loss=0.26034 lr=2.22e-07 elapsed=118s
+epoch 98 microstep 300/300 loss=0.60001 lr=2.22e-07 elapsed=176s
+epoch 98: full validation starts (2433 cores)
+{"epoch": 98, "lr": 2.2167568952178134e-07, "train_loss": 0.4621435283993681, "fast_val": {"iou": 0.41618237980880707, "dice": 0.5877525179560477, "precision": 0.6456526185857874, "recall": 0.5393823972734312, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5316704352541516, "cores": 96}, "full_val": {"iou": 0.34448411673518464, "dice": 0.5124405895871743, "precision": 0.6069252411737962, "recall": 0.4434113798971915, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5708050007284594, "cores": 2433}, "seconds": 241.39186191558838, "skipped_optimizer_steps": 0}
+epoch 99 microstep 1/300 loss=0.31312 lr=1.3e-07 elapsed=2s
+epoch 99 microstep 100/300 loss=0.43919 lr=1.3e-07 elapsed=59s
+epoch 99 microstep 200/300 loss=0.21265 lr=1.3e-07 elapsed=118s
+epoch 99 microstep 300/300 loss=0.24729 lr=1.3e-07 elapsed=176s
+epoch 99: full validation starts (2433 cores)
+{"epoch": 99, "lr": 1.3042819039616666e-07, "train_loss": 0.45630407315368454, "fast_val": {"iou": 0.41759372871656886, "dice": 0.5891585441685624, "precision": 0.6443677591522077, "recall": 0.5426633307367134, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5311462179136773, "cores": 96}, "full_val": {"iou": 0.34486569569156883, "dice": 0.512862655053788, "precision": 0.6040618544167258, "recall": 0.4455891276934035, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.570450184993106, "cores": 2433}, "seconds": 241.54502415657043, "skipped_optimizer_steps": 0}
+epoch 100 microstep 1/300 loss=0.36675 lr=1e-07 elapsed=1s
+epoch 100 microstep 100/300 loss=0.47308 lr=1e-07 elapsed=59s
+epoch 100 microstep 200/300 loss=0.46870 lr=1e-07 elapsed=118s
+epoch 100 microstep 300/300 loss=0.41872 lr=1e-07 elapsed=176s
+epoch 100: full validation starts (2433 cores)
+{"epoch": 100, "lr": 1e-07, "train_loss": 0.4558737085138758, "fast_val": {"iou": 0.4171356236205593, "dice": 0.5887024737333794, "precision": 0.6440294505943739, "recall": 0.5421294719512009, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5312515796783069, "cores": 96}, "full_val": {"iou": 0.3446489391133424, "dice": 0.5126229294325743, "precision": 0.6038914701743895, "recall": 0.4453199402136716, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5705053908218339, "cores": 2433}, "seconds": 241.3281466960907, "skipped_optimizer_steps": 0}

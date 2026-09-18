@@ -1,0 +1,23 @@
+{
+  "loss": 1.6794942107290278,
+  "iou": 0.36146190549959006,
+  "dice": 0.5309908474698765,
+  "precision": 0.44149906014975965,
+  "recall": 0.6659861264273659,
+  "ap": 0.5275861352358481,
+  "iou_fault_none": 0.010616753505645872,
+  "ap_fault_none": 0.022747321733615225,
+  "iou_fault_sparse": 0.14736804197491907,
+  "ap_fault_sparse": 0.2759994369420246,
+  "iou_fault_dense": 0.41933420365118246,
+  "ap_fault_dense": 0.6099105105820524,
+  "model": "maxvit3d",
+  "run": "maxvit3d_thebe_maxvit_tiny",
+  "epoch": 53,
+  "n_test": 718,
+  "dataset": "dataset_reproduction_v2",
+  "split": "test",
+  "checkpoint": "best.pt",
+  "selection": "loss",
+  "threshold": 0.5
+}

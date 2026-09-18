@@ -1,0 +1,73 @@
+target=10 existing=0 workers=10
+1/10 000002_horsetail fault=2.057% visible=0.826 attempts=2 seconds=3.2
+2/10 000000_en_echelon fault=3.524% visible=0.980 attempts=1 seconds=3.4
+3/10 000001_en_echelon fault=3.833% visible=0.948 attempts=1 seconds=3.6
+4/10 000003_horsetail fault=2.742% visible=0.819 attempts=10 seconds=3.9
+5/10 000006_positive_flower fault=4.678% visible=0.976 attempts=4 seconds=4.4
+6/10 000007_positive_flower fault=4.085% visible=0.974 attempts=8 seconds=4.5
+7/10 000005_negative_flower fault=3.579% visible=0.802 attempts=31 seconds=7.0
+8/10 000008_listric_assemblage fault=2.621% visible=0.758 attempts=8 seconds=10.3
+9/10 000004_negative_flower fault=3.808% visible=0.800 attempts=61 seconds=10.7
+10/10 000009_listric_assemblage fault=2.707% visible=0.799 attempts=207 seconds=187.9
+{
+  "en_echelon": {
+    "n": 2,
+    "fault_percent_mean": 3.678750991821289,
+    "fault_percent_range": [
+      3.5240650177001953,
+      3.833436965942383
+    ],
+    "visible_fraction_mean": 0.9639339768217803,
+    "attempts_mean": 1.0,
+    "pso_zero_count": 2,
+    "geometry_qc_pass_count": 2
+  },
+  "horsetail": {
+    "n": 2,
+    "fault_percent_mean": 2.3998260498046875,
+    "fault_percent_range": [
+      2.0574569702148438,
+      2.7421951293945312
+    ],
+    "visible_fraction_mean": 0.8224561502356851,
+    "attempts_mean": 6.0,
+    "pso_zero_count": 2,
+    "geometry_qc_pass_count": 2
+  },
+  "negative_flower": {
+    "n": 2,
+    "fault_percent_mean": 3.6936044692993164,
+    "fault_percent_range": [
+      3.579378128051758,
+      3.807830810546875
+    ],
+    "visible_fraction_mean": 0.8007082389612166,
+    "attempts_mean": 46.0,
+    "pso_zero_count": 2,
+    "geometry_qc_pass_count": 2
+  },
+  "positive_flower": {
+    "n": 2,
+    "fault_percent_mean": 4.3816328048706055,
+    "fault_percent_range": [
+      4.085350036621094,
+      4.677915573120117
+    ],
+    "visible_fraction_mean": 0.975319856212907,
+    "attempts_mean": 6.0,
+    "pso_zero_count": 2,
+    "geometry_qc_pass_count": 2
+  },
+  "listric_assemblage": {
+    "n": 2,
+    "fault_percent_mean": 2.664065361022949,
+    "fault_percent_range": [
+      2.620697021484375,
+      2.7074337005615234
+    ],
+    "visible_fraction_mean": 0.7780783235688471,
+    "attempts_mean": 107.5,
+    "pso_zero_count": 2,
+    "geometry_qc_pass_count": 2
+  }
+}

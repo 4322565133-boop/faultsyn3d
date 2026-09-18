@@ -1,0 +1,129 @@
+dbvit (dbvit) params=7,867,925 world=4 batch=8 train=2400 fast=96 full=2433
+/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+epoch 1 microstep 1/600 loss=0.64251 lr=1e-06 elapsed=5s
+epoch 1 microstep 100/600 loss=0.54058 lr=1e-06 elapsed=36s
+epoch 1 microstep 200/600 loss=0.63421 lr=1e-06 elapsed=68s
+epoch 1 microstep 300/600 loss=0.63259 lr=1e-06 elapsed=100s
+epoch 1 microstep 400/600 loss=0.62371 lr=1e-06 elapsed=132s
+epoch 1 microstep 500/600 loss=0.62477 lr=1e-06 elapsed=164s
+epoch 1 microstep 600/600 loss=0.62560 lr=1e-06 elapsed=196s
+epoch 1: full validation starts (2433 cores)
+{"epoch": 1, "lr": 1e-06, "train_loss": 0.6107499486207962, "fast_val": {"iou": 0.041914805374197166, "dice": 0.08045726034028997, "precision": 0.04472758477394822, "recall": 0.39994390358015364, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5891692613561949, "cores": 96}, "full_val": {"iou": 0.02755682396233389, "dice": 0.05363562057049608, "precision": 0.028815459204482946, "recall": 0.3868385033963307, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5987588404090229, "cores": 2433}, "seconds": 265.40629839897156, "skipped_optimizer_steps": 0}
+/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+epoch 2 microstep 1/600 loss=0.62608 lr=1.2e-05 elapsed=1s
+epoch 2 microstep 100/600 loss=0.52418 lr=1.2e-05 elapsed=32s
+epoch 2 microstep 200/600 loss=0.56999 lr=1.2e-05 elapsed=64s
+epoch 2 microstep 300/600 loss=0.60783 lr=1.2e-05 elapsed=96s
+epoch 2 microstep 400/600 loss=0.56217 lr=1.2e-05 elapsed=128s
+epoch 2 microstep 500/600 loss=0.60271 lr=1.2e-05 elapsed=160s
+epoch 2 microstep 600/600 loss=0.60390 lr=1.2e-05 elapsed=192s
+epoch 2: full validation starts (2433 cores)
+{"epoch": 2, "lr": 1.2000000000000002e-05, "train_loss": 0.5845069557180007, "fast_val": {"iou": 0.11553215583737986, "dice": 0.20713370785919671, "precision": 0.15278455285691164, "recall": 0.32149848150762667, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5693170626958212, "cores": 96}, "full_val": {"iou": 0.07841396364930321, "dice": 0.14542460741875776, "precision": 0.09727576460019476, "recall": 0.2879539235375424, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5802191829686296, "cores": 2433}, "seconds": 261.33872413635254, "skipped_optimizer_steps": 0}
+epoch 3 microstep 1/600 loss=0.60477 lr=2.3e-05 elapsed=1s
+epoch 3 microstep 100/600 loss=0.60630 lr=2.3e-05 elapsed=32s
+epoch 3 microstep 200/600 loss=0.55482 lr=2.3e-05 elapsed=64s
+epoch 3 microstep 300/600 loss=0.59122 lr=2.3e-05 elapsed=97s
+epoch 3 microstep 400/600 loss=0.54623 lr=2.3e-05 elapsed=129s
+epoch 3 microstep 500/600 loss=0.46436 lr=2.3e-05 elapsed=161s
+epoch 3 microstep 600/600 loss=0.60068 lr=2.3e-05 elapsed=193s
+epoch 3: full validation starts (2433 cores)
+{"epoch": 3, "lr": 2.3000000000000003e-05, "train_loss": 0.5702309075370431, "fast_val": {"iou": 0.15558616736425443, "dice": 0.2692766178036325, "precision": 0.25596542184604437, "recall": 0.2840482287791133, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5669253043209513, "cores": 96}, "full_val": {"iou": 0.1190621072077989, "dice": 0.2127890962278651, "precision": 0.17288715430721588, "recall": 0.27663603083553123, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5782601641643405, "cores": 2433}, "seconds": 261.5317757129669, "skipped_optimizer_steps": 0}
+epoch 4 microstep 1/600 loss=0.60285 lr=3.4e-05 elapsed=1s
+epoch 4 microstep 100/600 loss=0.60025 lr=3.4e-05 elapsed=32s
+epoch 4 microstep 200/600 loss=0.60176 lr=3.4e-05 elapsed=64s
+epoch 4 microstep 300/600 loss=0.60495 lr=3.4e-05 elapsed=96s
+epoch 4 microstep 400/600 loss=0.60291 lr=3.4e-05 elapsed=128s
+epoch 4 microstep 500/600 loss=0.58642 lr=3.4e-05 elapsed=161s
+epoch 4 microstep 600/600 loss=0.60637 lr=3.4e-05 elapsed=192s
+epoch 4: full validation starts (2433 cores)
+{"epoch": 4, "lr": 3.4e-05, "train_loss": 0.5563554521401723, "fast_val": {"iou": 0.2085673108121364, "dice": 0.3451480260077244, "precision": 0.36700794939579545, "recall": 0.32574578186742154, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5643406511905292, "cores": 96}, "full_val": {"iou": 0.15184511208937818, "dice": 0.2636554350852611, "precision": 0.25132726301768993, "recall": 0.2772554431746636, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5793607922196633, "cores": 2433}, "seconds": 261.43795680999756, "skipped_optimizer_steps": 0}
+epoch 5 microstep 1/600 loss=0.60054 lr=4.5e-05 elapsed=1s
+epoch 5 microstep 100/600 loss=0.39660 lr=4.5e-05 elapsed=32s
+epoch 5 microstep 200/600 loss=0.48020 lr=4.5e-05 elapsed=64s
+epoch 5 microstep 300/600 loss=0.60014 lr=4.5e-05 elapsed=96s
+epoch 5 microstep 400/600 loss=0.60385 lr=4.5e-05 elapsed=129s
+epoch 5 microstep 500/600 loss=0.60097 lr=4.5e-05 elapsed=161s
+epoch 5 microstep 600/600 loss=0.43430 lr=4.5e-05 elapsed=193s
+epoch 5: full validation starts (2433 cores)
+{"epoch": 5, "lr": 4.5e-05, "train_loss": 0.5507555099080006, "fast_val": {"iou": 0.22544905127613693, "dice": 0.3679452051333553, "precision": 0.3964582978868207, "recall": 0.3432582356261763, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5632207424690326, "cores": 96}, "full_val": {"iou": 0.1769516907891901, "dice": 0.3006949090162526, "precision": 0.2910231220650562, "recall": 0.31103165433909835, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5767021041395632, "cores": 2433}, "seconds": 261.4627547264099, "skipped_optimizer_steps": 0}
+epoch 6 microstep 1/600 loss=0.38631 lr=5.6e-05 elapsed=1s
+epoch 6 microstep 100/600 loss=0.60282 lr=5.6e-05 elapsed=32s
+epoch 6 microstep 200/600 loss=0.60052 lr=5.6e-05 elapsed=64s
+epoch 6 microstep 300/600 loss=0.60058 lr=5.6e-05 elapsed=96s
+epoch 6 microstep 400/600 loss=0.59709 lr=5.6e-05 elapsed=129s
+epoch 6 microstep 500/600 loss=0.52331 lr=5.6e-05 elapsed=161s
+epoch 6 microstep 600/600 loss=0.60141 lr=5.6e-05 elapsed=193s
+epoch 6: full validation starts (2433 cores)
+{"epoch": 6, "lr": 5.6e-05, "train_loss": 0.5467385863699019, "fast_val": {"iou": 0.26913168501669604, "dice": 0.4241194009952647, "precision": 0.46491037014033604, "recall": 0.3899090083072198, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.557890930523475, "cores": 96}, "full_val": {"iou": 0.21824861586861627, "dice": 0.35829897612976824, "precision": 0.3620665948950487, "recall": 0.3546089605553893, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5727605474641967, "cores": 2433}, "seconds": 261.60738348960876, "skipped_optimizer_steps": 0}
+epoch 7 microstep 1/600 loss=0.60003 lr=6.7e-05 elapsed=1s
+epoch 7 microstep 100/600 loss=0.60272 lr=6.7e-05 elapsed=32s
+epoch 7 microstep 200/600 loss=0.60134 lr=6.7e-05 elapsed=64s
+epoch 7 microstep 300/600 loss=0.60847 lr=6.7e-05 elapsed=96s
+epoch 7 microstep 400/600 loss=0.46691 lr=6.7e-05 elapsed=128s
+epoch 7 microstep 500/600 loss=0.60000 lr=6.7e-05 elapsed=160s
+epoch 7 microstep 600/600 loss=0.39569 lr=6.7e-05 elapsed=192s
+epoch 7: full validation starts (2433 cores)
+{"epoch": 7, "lr": 6.7e-05, "train_loss": 0.5401113919789592, "fast_val": {"iou": 0.24305116957111592, "dice": 0.39105577553170995, "precision": 0.5606694836920639, "recall": 0.30023016031084016, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5679218528481821, "cores": 96}, "full_val": {"iou": 0.209197432704444, "dice": 0.3460103818390701, "precision": 0.4573323048426157, "recall": 0.2782740682774714, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5815249151388314, "cores": 2433}, "seconds": 261.37448477745056, "skipped_optimizer_steps": 0}
+epoch 8 microstep 1/600 loss=0.57158 lr=7.8e-05 elapsed=1s
+epoch 8 microstep 100/600 loss=0.57072 lr=7.8e-05 elapsed=32s
+epoch 8 microstep 200/600 loss=0.36302 lr=7.8e-05 elapsed=64s
+epoch 8 microstep 300/600 loss=0.54724 lr=7.8e-05 elapsed=96s
+epoch 8 microstep 400/600 loss=0.60004 lr=7.8e-05 elapsed=128s
+epoch 8 microstep 500/600 loss=0.60008 lr=7.8e-05 elapsed=160s
+epoch 8 microstep 600/600 loss=0.60255 lr=7.8e-05 elapsed=192s
+epoch 8: full validation starts (2433 cores)
+{"epoch": 8, "lr": 7.8e-05, "train_loss": 0.5378189742751419, "fast_val": {"iou": 0.2882599451792416, "dice": 0.44751829203093735, "precision": 0.4865029053314458, "recall": 0.4143180219176726, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5519714886322618, "cores": 96}, "full_val": {"iou": 0.23485834715417336, "dice": 0.38038103349331137, "precision": 0.3921368550599403, "recall": 0.3693095488741146, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5709178114606185, "cores": 2433}, "seconds": 261.43318367004395, "skipped_optimizer_steps": 0}
+epoch 9 microstep 1/600 loss=0.60588 lr=8.9e-05 elapsed=1s
+epoch 9 microstep 100/600 loss=0.60139 lr=8.9e-05 elapsed=32s
+epoch 9 microstep 200/600 loss=0.60218 lr=8.9e-05 elapsed=65s
+epoch 9 microstep 300/600 loss=0.60496 lr=8.9e-05 elapsed=97s
+epoch 9 microstep 400/600 loss=0.60060 lr=8.9e-05 elapsed=129s
+epoch 9 microstep 500/600 loss=0.55517 lr=8.9e-05 elapsed=161s
+epoch 9 microstep 600/600 loss=0.60052 lr=8.9e-05 elapsed=193s
+epoch 9: full validation starts (2433 cores)
+{"epoch": 9, "lr": 8.900000000000001e-05, "train_loss": 0.5360820957397421, "fast_val": {"iou": 0.312422698097892, "dice": 0.47610072357128463, "precision": 0.5186796759623947, "recall": 0.4399821339973767, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5496628394660851, "cores": 96}, "full_val": {"iou": 0.2465896828669001, "dice": 0.3956228520996492, "precision": 0.4195336277905515, "recall": 0.37429064179215044, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5706770016646806, "cores": 2433}, "seconds": 261.63113284111023, "skipped_optimizer_steps": 0}
+epoch 10 microstep 1/600 loss=0.60841 lr=0.0001 elapsed=1s
+epoch 10 microstep 100/600 loss=0.60002 lr=0.0001 elapsed=32s
+epoch 10 microstep 200/600 loss=0.47562 lr=0.0001 elapsed=64s
+epoch 10 microstep 300/600 loss=0.60007 lr=0.0001 elapsed=96s
+epoch 10 microstep 400/600 loss=0.60121 lr=0.0001 elapsed=128s
+epoch 10 microstep 500/600 loss=0.60018 lr=0.0001 elapsed=160s
+epoch 10 microstep 600/600 loss=0.60001 lr=0.0001 elapsed=192s
+epoch 10: full validation starts (2433 cores)
+{"epoch": 10, "lr": 0.0001, "train_loss": 0.5331773437000811, "fast_val": {"iou": 0.2918914957846216, "dice": 0.45188237051958186, "precision": 0.547034341844126, "recall": 0.38492750480531834, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5611205113430818, "cores": 96}, "full_val": {"iou": 0.23116433943654227, "dice": 0.3755214994975204, "precision": 0.45377264034787684, "recall": 0.3202890328522585, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5811136187139578, "cores": 2433}, "seconds": 261.29867601394653, "skipped_optimizer_steps": 0}
+epoch 11 microstep 1/600 loss=0.60318 lr=0.0001 elapsed=1s
+epoch 11 microstep 100/600 loss=0.60070 lr=0.0001 elapsed=33s
+epoch 11 microstep 200/600 loss=0.60006 lr=0.0001 elapsed=65s
+W0918 10:22:13.849000 3548334 torch/distributed/elastic/agent/server/api.py:739] Received Signals.SIGTERM death signal, shutting down workers
+W0918 10:22:13.855000 3548334 torch/distributed/elastic/multiprocessing/api.py:1010] Sending process 3548359 closing signal SIGTERM
+W0918 10:22:13.855000 3548334 torch/distributed/elastic/multiprocessing/api.py:1010] Sending process 3548360 closing signal SIGTERM
+W0918 10:22:13.856000 3548334 torch/distributed/elastic/multiprocessing/api.py:1010] Sending process 3548361 closing signal SIGTERM
+W0918 10:22:13.856000 3548334 torch/distributed/elastic/multiprocessing/api.py:1010] Sending process 3548362 closing signal SIGTERM
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/run.py", line 995, in <module>
+    main()
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 362, in wrapper
+    return f(*args, **kwargs)
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/run.py", line 991, in main
+    run(args)
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/run.py", line 982, in run
+    elastic_launch(
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 170, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 308, in launch_agent
+    result = agent.run()
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/elastic/metrics/api.py", line 134, in wrapper
+    result = f(*args, **kwargs)
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/elastic/agent/server/api.py", line 731, in run
+    result = self._invoke_run(role)
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/elastic/agent/server/api.py", line 908, in _invoke_run
+    time.sleep(monitor_interval)
+  File "/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/api.py", line 86, in _terminate_process_handler
+    raise SignalException(f"Process {os.getpid()} got signal: {sigval}", sigval=sigval)
+torch.distributed.elastic.multiprocessing.api.SignalException: Process 3548334 got signal: 15

@@ -1,0 +1,15 @@
+{
+  "model": "resnet3d",
+  "data": "data/dataset_v1_parts",
+  "out": "runs/resnet3d_v1",
+  "gpu": 1,
+  "epochs": 60,
+  "batch": 1,
+  "accum": 4,
+  "lr": 0.0002,
+  "wd": 0.0001,
+  "workers": 4,
+  "patience": 12,
+  "seed": 42,
+  "no_amp": false
+}

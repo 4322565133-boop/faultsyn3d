@@ -1,0 +1,6 @@
+unet_b30: unet3d 4.92M  world=4 global_batch=8 d2s=False profile=False trace=False
+epoch=001 train=0.57274 (seg 0.57274 pr 0.0000 tr 0.0000 ramp 0.00) val=0.56633 IoU=0.0946 P=0.099 R=0.660 lr=1.09e-05 104s
+epoch=002 train=0.56284 (seg 0.56284 pr 0.0000 tr 0.0000 ramp 0.00) val=0.56005 IoU=0.1124 P=0.118 R=0.692 lr=2.08e-05 98s
+epoch=003 train=0.55413 (seg 0.55413 pr 0.0000 tr 0.0000 ramp 0.00) val=0.55258 IoU=0.1429 P=0.151 R=0.732 lr=3.07e-05 98s
+epoch=004 train=0.55039 (seg 0.55039 pr 0.0000 tr 0.0000 ramp 0.00) val=0.54761 IoU=0.2075 P=0.231 R=0.670 lr=4.06e-05 98s
+epoch=005 train=0.54137 (seg 0.54137 pr 0.0000 tr 0.0000 ramp 0.00) val=0.54249 IoU=0.1679 P=0.179 R=0.728 lr=5.05e-05 98s

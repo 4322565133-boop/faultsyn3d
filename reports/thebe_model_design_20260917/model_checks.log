@@ -1,0 +1,67 @@
+{
+  "partition": "PASS: exact inversion on non-cubic shapes; block adjacent/grid dispersed",
+  "fusion_block": {
+    "shape": [
+      1,
+      32,
+      8,
+      8,
+      8
+    ],
+    "params": 11662,
+    "gradient": "all finite; local and context inputs used"
+  },
+  "fusion_grid": {
+    "shape": [
+      1,
+      32,
+      8,
+      8,
+      8
+    ],
+    "params": 11662,
+    "gradient": "all finite; local and context inputs used"
+  },
+  "fusion_both": {
+    "shape": [
+      1,
+      32,
+      8,
+      8,
+      8
+    ],
+    "params": 11662,
+    "gradient": "all finite; local and context inputs used"
+  },
+  "fusion_conv": {
+    "shape": [
+      1,
+      32,
+      8,
+      8,
+      8
+    ],
+    "params": 5600,
+    "gradient": "all finite; local and context inputs used"
+  },
+  "attention_reference": "PASS",
+  "params": 32449615,
+  "encoder_params": 30436344,
+  "full_cpu_forward": {
+    "shape": [
+      1,
+      1,
+      128,
+      128,
+      128
+    ],
+    "seconds": 8.781094789505005,
+    "status": "PASS"
+  },
+  "full_cpu_backward": {
+    "loss": 0.5327615737915039,
+    "seconds": 32.117045640945435,
+    "status": "PASS; real Thebe train cube; all parameter gradients present and finite; no optimizer update"
+  },
+  "limitations": "No CUDA AMP or DDP benchmark yet: 4 GPUs occupied by existing training. No training or efficacy claim."
+}

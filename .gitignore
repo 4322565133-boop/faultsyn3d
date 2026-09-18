@@ -1,0 +1,20 @@
+# large artefacts stay local: data/ (139 GB), checkpoints and volumes under runs/ (104 GB), QC renders, third-party PDFs
+data/
+qc/out/
+thesis/
+*.pt
+*.pth
+*.npy
+*.npz
+*.dat
+*.sgy
+*.segy
+*.h5
+*.hdf5
+*.pkl
+runs/**/source_snapshot/
+__pycache__/
+*.pyc
+*.tmp.png
+.venv/
+reports/**/papers/

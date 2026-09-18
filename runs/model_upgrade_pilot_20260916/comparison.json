@@ -1,0 +1,6 @@
+{
+  "kind": "20-epoch warm-start pilot; single seed; not a from-scratch comparison",
+  "historical_test_iou": 0.8325868632244817,
+  "rows": [],
+  "complete": false
+}

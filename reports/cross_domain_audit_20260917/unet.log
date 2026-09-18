@@ -1,0 +1,54 @@
+unet v2_val 10 seconds 3
+unet v2_val 20 seconds 5
+unet v2_val 30 seconds 7
+unet v2_val 40 seconds 9
+unet v2_val 50 seconds 12
+unet v2_val 60 seconds 14
+unet v2_val 70 seconds 16
+unet v2_val 80 seconds 18
+unet v2_val 90 seconds 21
+unet v2_val 100 seconds 23
+DONE unet v2_val {'iou': 0.8219464976612758, 'precision': 0.906063062959624, 'recall': 0.8985143635394136, 'dice': 0.9022729248266725, 'tol2_precision': 0.9992950489779109, 'tol2_recall': 0.9855885155885719, 'label_fraction': 0.034759535789489746, 'predicted_fraction': 0.03446994304656983, 'ap': 0.9466867958894576}
+unet v2_test 10 seconds 2
+unet v2_test 20 seconds 4
+unet v2_test 30 seconds 7
+unet v2_test 40 seconds 9
+unet v2_test 50 seconds 11
+unet v2_test 60 seconds 13
+unet v2_test 70 seconds 16
+unet v2_test 80 seconds 18
+unet v2_test 90 seconds 20
+unet v2_test 100 seconds 22
+DONE unet v2_test {'iou': 0.835478257327516, 'precision': 0.9111845122650998, 'recall': 0.9095484299051759, 'dice': 0.9103657360060314, 'tol2_precision': 0.9989639742474382, 'tol2_recall': 0.9921422035061441, 'label_fraction': 0.034839506149291995, 'predicted_fraction': 0.034776949882507326, 'ap': 0.9566073706443923}
+unet faultseg3d20 10 seconds 3
+unet faultseg3d20 20 seconds 6
+DONE unet faultseg3d20 {'iou': 0.5481085467141271, 'precision': 0.884540332092873, 'recall': 0.590344757533924, 'dice': 0.7081009246767508, 'tol2_precision': 0.996681344322386, 'tol2_recall': 0.9030989856270228, 'label_fraction': 0.07229371070861816, 'predicted_fraction': 0.048249030113220216, 'ap': 0.7646514266647493}
+unet wu_style_test 10 seconds 2
+unet wu_style_test 20 seconds 5
+unet wu_style_test 30 seconds 7
+unet wu_style_test 40 seconds 9
+unet wu_style_test 50 seconds 12
+unet wu_style_test 60 seconds 14
+unet wu_style_test 70 seconds 16
+unet wu_style_test 80 seconds 19
+unet wu_style_test 90 seconds 21
+unet wu_style_test 100 seconds 23
+DONE unet wu_style_test {'iou': 0.6563518693276881, 'precision': 0.9448372006721435, 'recall': 0.682505513040104, 'dice': 0.7925270970281221, 'tol2_precision': 0.9812116344130726, 'tol2_recall': 0.9621738110472385, 'label_fraction': 0.06652794361114502, 'predicted_fraction': 0.048056626319885255, 'ap': 0.8702962446148547}
+unet v2_style_noise_0.25 10 seconds 3
+unet v2_style_noise_0.25 20 seconds 5
+DONE unet v2_style_noise_0.25 {'iou': 0.7977709907356709, 'precision': 0.8953194678700406, 'recall': 0.8798380504399667, 'dice': 0.8875112512625568, 'tol2_precision': 0.9997389652605334, 'tol2_recall': 0.9761644597231665, 'label_fraction': 0.0346491813659668, 'predicted_fraction': 0.03405004501342773, 'ap': 0.9329046203269398}
+unet v2_style_noise_0.50 10 seconds 3
+unet v2_style_noise_0.50 20 seconds 5
+DONE unet v2_style_noise_0.50 {'iou': 0.7417306323278012, 'precision': 0.8605007466703223, 'recall': 0.8431104003875339, 'dice': 0.8517168137951245, 'tol2_precision': 0.9992831065980037, 'tol2_recall': 0.9587634143723354, 'label_fraction': 0.0346491813659668, 'predicted_fraction': 0.033948936462402345, 'ap': 0.8915370684530441}
+unet v2_style_lowpass_0.6 10 seconds 3
+unet v2_style_lowpass_0.6 20 seconds 5
+DONE unet v2_style_lowpass_0.6 {'iou': 0.8190285762648337, 'precision': 0.9061462608769321, 'recall': 0.8949474709831197, 'dice': 0.9005120501697833, 'tol2_precision': 0.9997018109827195, 'tol2_recall': 0.9826039089185106, 'label_fraction': 0.0346491813659668, 'predicted_fraction': 0.03422096252441406, 'ap': 0.94659915647807}
+unet v2_style_lowpass_1.0 10 seconds 3
+unet v2_style_lowpass_1.0 20 seconds 5
+DONE unet v2_style_lowpass_1.0 {'iou': 0.8135433080358421, 'precision': 0.9028756344540977, 'recall': 0.891568659292145, 'dice': 0.8971865236755223, 'tol2_precision': 0.9996053214706793, 'tol2_recall': 0.9812552467088513, 'label_fraction': 0.0346491813659668, 'predicted_fraction': 0.034215259552001956, 'ap': 0.942869481941484}
+unet v2_style_phase_30 10 seconds 3
+unet v2_style_phase_30 20 seconds 7
+DONE unet v2_style_phase_30 {'iou': 0.79369345322556, 'precision': 0.8893815198706645, 'recall': 0.8806263297396532, 'dice': 0.8849822714112919, 'tol2_precision': 0.9996052774954801, 'tol2_recall': 0.9832600743690876, 'label_fraction': 0.0346491813659668, 'predicted_fraction': 0.03430809020996094, 'ap': 0.9296991711319728}
+unet v2_style_phase_60 10 seconds 3
+unet v2_style_phase_60 20 seconds 7
+DONE unet v2_style_phase_60 {'iou': 0.7717083257372432, 'precision': 0.870806046531583, 'recall': 0.871486253278763, 'dice': 0.8711460171257253, 'tol2_precision': 0.9993817497362536, 'tol2_recall': 0.9837378861233668, 'label_fraction': 0.0346491813659668, 'predicted_fraction': 0.034676246643066407, 'ap': 0.9108124906845343}

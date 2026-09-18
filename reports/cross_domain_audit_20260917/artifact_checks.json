@@ -1,0 +1,8 @@
+{
+  "html_links": 28,
+  "missing_links": [],
+  "fixed_sample_figures": 15,
+  "checkpoint_hashes_unchanged": true,
+  "syntax_check": "PASS",
+  "note": "PNG plots visually inspected; no browser screenshot test performed"
+}

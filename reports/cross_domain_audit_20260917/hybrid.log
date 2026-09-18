@@ -1,0 +1,54 @@
+hybrid v2_val 10 seconds 3
+hybrid v2_val 20 seconds 5
+hybrid v2_val 30 seconds 8
+hybrid v2_val 40 seconds 10
+hybrid v2_val 50 seconds 12
+hybrid v2_val 60 seconds 14
+hybrid v2_val 70 seconds 17
+hybrid v2_val 80 seconds 19
+hybrid v2_val 90 seconds 21
+hybrid v2_val 100 seconds 24
+DONE hybrid v2_val {'iou': 0.7969064083086888, 'precision': 0.8651651157721931, 'recall': 0.9099149843962696, 'dice': 0.8869759767385603, 'tol2_precision': 0.9980679960519919, 'tol2_recall': 0.9864763554338968, 'label_fraction': 0.034759535789489746, 'predicted_fraction': 0.03655744075775146, 'ap': 0.9410419525921163}
+hybrid v2_test 10 seconds 2
+hybrid v2_test 20 seconds 5
+hybrid v2_test 30 seconds 7
+hybrid v2_test 40 seconds 10
+hybrid v2_test 50 seconds 12
+hybrid v2_test 60 seconds 15
+hybrid v2_test 70 seconds 17
+hybrid v2_test 80 seconds 20
+hybrid v2_test 90 seconds 22
+hybrid v2_test 100 seconds 25
+DONE hybrid v2_test {'iou': 0.8118247420639615, 'precision': 0.8730202698869961, 'recall': 0.920518577340826, 'dice': 0.8961404745352597, 'tol2_precision': 0.9979194928900215, 'tol2_recall': 0.9924955935735017, 'label_fraction': 0.034839506149291995, 'predicted_fraction': 0.03673501491546631, 'ap': 0.9521861815468127}
+hybrid faultseg3d20 10 seconds 3
+hybrid faultseg3d20 20 seconds 7
+DONE hybrid faultseg3d20 {'iou': 0.563929984459545, 'precision': 0.8589746979230672, 'recall': 0.6214688389818938, 'dice': 0.7211703721563022, 'tol2_precision': 0.9954467383713828, 'tol2_recall': 0.9160914551658225, 'label_fraction': 0.07229371070861816, 'predicted_fraction': 0.052304553985595706, 'ap': 0.7858151920610313}
+hybrid wu_style_test 10 seconds 2
+hybrid wu_style_test 20 seconds 5
+hybrid wu_style_test 30 seconds 7
+hybrid wu_style_test 40 seconds 10
+hybrid wu_style_test 50 seconds 13
+hybrid wu_style_test 60 seconds 15
+hybrid wu_style_test 70 seconds 18
+hybrid wu_style_test 80 seconds 20
+hybrid wu_style_test 90 seconds 23
+hybrid wu_style_test 100 seconds 25
+DONE hybrid wu_style_test {'iou': 0.6688119753904211, 'precision': 0.9272146845612208, 'recall': 0.7058708976348131, 'dice': 0.8015426366220215, 'tol2_precision': 0.9796277905633681, 'tol2_recall': 0.9637343846772068, 'label_fraction': 0.06652794361114502, 'predicted_fraction': 0.050646457672119144, 'ap': 0.8903278944703075}
+hybrid v2_style_noise_0.25 10 seconds 3
+hybrid v2_style_noise_0.25 20 seconds 6
+DONE hybrid v2_style_noise_0.25 {'iou': 0.7687859654447208, 'precision': 0.847297365098213, 'recall': 0.8924356564269259, 'dice': 0.8692809423682046, 'tol2_precision': 0.9988230326038784, 'tol2_recall': 0.980155398915015, 'label_fraction': 0.0346491813659668, 'predicted_fraction': 0.03649505615234375, 'ap': 0.927271240385068}
+hybrid v2_style_noise_0.50 10 seconds 3
+hybrid v2_style_noise_0.50 20 seconds 6
+DONE hybrid v2_style_noise_0.50 {'iou': 0.7145013658038663, 'precision': 0.8105657091222918, 'recall': 0.8577276968427543, 'dice': 0.8334800777121143, 'tol2_precision': 0.997976916350251, 'tol2_recall': 0.9657973758886721, 'label_fraction': 0.0346491813659668, 'predicted_fraction': 0.036665210723876955, 'ap': 0.8882031391912297}
+hybrid v2_style_lowpass_0.6 10 seconds 3
+hybrid v2_style_lowpass_0.6 20 seconds 6
+DONE hybrid v2_style_lowpass_0.6 {'iou': 0.7918766121746426, 'precision': 0.8626447973570683, 'recall': 0.9061276054640086, 'dice': 0.8838517192471326, 'tol2_precision': 0.99890157343317, 'tol2_recall': 0.984860303366426, 'label_fraction': 0.0346491813659668, 'predicted_fraction': 0.036395721435546875, 'ap': 0.9407125782236636}
+hybrid v2_style_lowpass_1.0 10 seconds 3
+hybrid v2_style_lowpass_1.0 20 seconds 6
+DONE hybrid v2_style_lowpass_1.0 {'iou': 0.7870071560878519, 'precision': 0.8590186596566941, 'recall': 0.9037363447951272, 'dice': 0.880810301633914, 'tol2_precision': 0.9989728869359381, 'tol2_recall': 0.9839828472185906, 'label_fraction': 0.0346491813659668, 'predicted_fraction': 0.03645290374755859, 'ap': 0.9376604774266525}
+hybrid v2_style_phase_30 10 seconds 3
+hybrid v2_style_phase_30 20 seconds 7
+DONE hybrid v2_style_phase_30 {'iou': 0.7827789042772975, 'precision': 0.8564157327650481, 'recall': 0.9010285613627543, 'dice': 0.8781558974017815, 'tol2_precision': 0.9987955507582222, 'tol2_recall': 0.9849390212015204, 'label_fraction': 0.0346491813659668, 'predicted_fraction': 0.036454143524169924, 'ap': 0.9347711322699573}
+hybrid v2_style_phase_60 10 seconds 3
+hybrid v2_style_phase_60 20 seconds 7
+DONE hybrid v2_style_phase_60 {'iou': 0.7691740099447211, 'precision': 0.844294141773651, 'recall': 0.8963187026420018, 'dice': 0.8695289503701836, 'tol2_precision': 0.9979730917428766, 'tol2_recall': 0.9855043583808347, 'label_fraction': 0.0346491813659668, 'predicted_fraction': 0.03678422927856445, 'ap': 0.9262091677733884}

@@ -1,0 +1,11 @@
+<!doctype html><meta charset="utf-8"><title>Thebe spatial v3</title>
+    <style>body{max-width:1100px;margin:30px auto;font-family:sans-serif;line-height:1.65}img{max-width:100%}</style>
+    <h1>Thebe 空间划分与 UNet-L 试跑</h1>
+    <p>训练/验证/测试先按空间划分；32 张剖面缓冲。测试集本轮不运行。完整方案：
+    <a href="../../docs/THEBE_SPATIAL_V3_TRAINING.md">协议说明</a>。</p>
+    <img src="split.png"><img src="patch_cores.png"><h2>固定样本示意</h2><p>示意图只用于检查，不是模型预测。</p>
+    <img src="patch_examples.png"><h2>实时验证曲线</h2>
+    <p>96 核心快速验证用于观察；完整验证才选择 checkpoint。首轮完成后产生曲线，刷新页面更新。</p>
+    <img src="../../runs/thebe_spatial_v3_unet_l_trial/live_curves.png">
+    <p><a href="checks.json">不变量检查</a> · <a href="annotation_audit.json">训练/验证标签统计</a> ·
+    <a href="../../runs/thebe_spatial_v3_unet_l_trial/train.log">训练日志</a></p>

@@ -1,0 +1,5 @@
+{
+  "unet": "PASS: raw-axis reproduces old scores; canonical-axis agrees across independent evaluators",
+  "maxvit": "PASS: raw-axis reproduces old scores; canonical-axis agrees across independent evaluators",
+  "hybrid": "PASS: raw-axis reproduces old scores; canonical-axis agrees across independent evaluators"
+}

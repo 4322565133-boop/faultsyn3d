@@ -1,0 +1,82 @@
+{
+  "version": "thebe_spatial_v3",
+  "axes": [
+    "sample",
+    "raw_axis_1",
+    "raw_axis_0"
+  ],
+  "intervals_zero_based_half_open": {
+    "train": [
+      0,
+      868
+    ],
+    "val": [
+      900,
+      1068
+    ],
+    "test": [
+      1100,
+      1803
+    ]
+  },
+  "excluded_sections": [
+    [
+      868,
+      900
+    ],
+    [
+      1068,
+      1100
+    ]
+  ],
+  "support": "per trace first-to-last finite nonzero seismic sample; interior zero amplitudes are valid",
+  "patch": 128,
+  "evaluation_core": 64,
+  "halo": 32,
+  "fast_val_cores": 96,
+  "train_sampling": "uniform origins over training extent; accept >=25% signal support; no label filtering",
+  "selection": "full validation core-stitched IoU at threshold 0.5 every 10 epochs and final",
+  "test_policy": "sealed until model/protocol frozen; not run by training entry",
+  "records": {
+    "train": {
+      "seismic": "/hdd1/hukaixiao/projects/faultsyn3d/data/thebe_cubes/train_seis.npy",
+      "labels": "/hdd1/hukaixiao/projects/faultsyn3d/data/thebe_cubes/train_fault.npy",
+      "support": "/hdd1/hukaixiao/projects/faultsyn3d/data/thebe_spatial_v3/train_support.npz",
+      "shape": [
+        1537,
+        3174,
+        868
+      ],
+      "valid_traces": 1768693,
+      "support_voxels": 2008566263,
+      "support_sha256": "4d2701285814aecd05f0ae99612e921be4784328e72fcce06fb04be458534c4e"
+    },
+    "val": {
+      "seismic": "/hdd1/hukaixiao/projects/faultsyn3d/data/thebe_spatial_v3/val_seis.npy",
+      "labels": "/hdd1/hukaixiao/projects/faultsyn3d/data/thebe_spatial_v3/val_fault.npy",
+      "support": "/hdd1/hukaixiao/projects/faultsyn3d/data/thebe_spatial_v3/val_support.npz",
+      "shape": [
+        1537,
+        3174,
+        168
+      ],
+      "valid_traces": 445497,
+      "support_voxels": 510945619,
+      "support_sha256": "c96077ca0895afc73f0098bea6cd38b26a5234e29dcc3dbc548d79d182fd8b13"
+    },
+    "test": {
+      "seismic": "/hdd1/hukaixiao/projects/faultsyn3d/data/thebe_spatial_v3/test_seis.npy",
+      "labels": "/hdd1/hukaixiao/projects/faultsyn3d/data/thebe_spatial_v3/test_fault.npy",
+      "support": "/hdd1/hukaixiao/projects/faultsyn3d/data/thebe_spatial_v3/test_support.npz",
+      "shape": [
+        1537,
+        3174,
+        703
+      ],
+      "valid_traces": 2007983,
+      "support_voxels": 2303341553,
+      "support_sha256": "5992c5d444bfadd7869a806d9fb4f3eb831ac42104f695bf8b4cca713b30b453"
+    }
+  },
+  "protocol_sha256": "f8063803bc0db36222cad249d0a181603baa7dc74889ce5d1262999a2b889761"
+}

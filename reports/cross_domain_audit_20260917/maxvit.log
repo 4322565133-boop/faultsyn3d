@@ -1,0 +1,54 @@
+maxvit v2_val 10 seconds 3
+maxvit v2_val 20 seconds 5
+maxvit v2_val 30 seconds 7
+maxvit v2_val 40 seconds 9
+maxvit v2_val 50 seconds 11
+maxvit v2_val 60 seconds 13
+maxvit v2_val 70 seconds 15
+maxvit v2_val 80 seconds 17
+maxvit v2_val 90 seconds 19
+maxvit v2_val 100 seconds 21
+DONE maxvit v2_val {'iou': 0.8207012879617328, 'precision': 0.9089604262343637, 'recall': 0.8942046638205126, 'dice': 0.9015221699332177, 'tol2_precision': 0.998836467647414, 'tol2_recall': 0.9837722301200765, 'label_fraction': 0.034759535789489746, 'predicted_fraction': 0.034195261001586916, 'ap': 0.9471525111166642}
+maxvit v2_test 10 seconds 2
+maxvit v2_test 20 seconds 4
+maxvit v2_test 30 seconds 6
+maxvit v2_test 40 seconds 8
+maxvit v2_test 50 seconds 10
+maxvit v2_test 60 seconds 12
+maxvit v2_test 70 seconds 14
+maxvit v2_test 80 seconds 16
+maxvit v2_test 90 seconds 18
+maxvit v2_test 100 seconds 20
+DONE maxvit v2_test {'iou': 0.8325868632244817, 'precision': 0.9112664880992203, 'recall': 0.9060416288572143, 'dice': 0.9086465476015959, 'tol2_precision': 0.9990519626863966, 'tol2_recall': 0.9907926968972571, 'label_fraction': 0.034839506149291995, 'predicted_fraction': 0.03463974952697754, 'ap': 0.9560102934247912}
+maxvit faultseg3d20 10 seconds 3
+maxvit faultseg3d20 20 seconds 6
+DONE maxvit faultseg3d20 {'iou': 0.4384504910382993, 'precision': 0.8788149982796719, 'recall': 0.46666532551419454, 'dice': 0.6096149902549901, 'tol2_precision': 0.9970971792830269, 'tol2_recall': 0.759456279198923, 'label_fraction': 0.07229371070861816, 'predicted_fraction': 0.038389158248901364, 'ap': 0.6479242678376751}
+maxvit wu_style_test 10 seconds 2
+maxvit wu_style_test 20 seconds 4
+maxvit wu_style_test 30 seconds 6
+maxvit wu_style_test 40 seconds 8
+maxvit wu_style_test 50 seconds 10
+maxvit wu_style_test 60 seconds 13
+maxvit wu_style_test 70 seconds 15
+maxvit wu_style_test 80 seconds 17
+maxvit wu_style_test 90 seconds 19
+maxvit wu_style_test 100 seconds 21
+DONE maxvit wu_style_test {'iou': 0.648797202173768, 'precision': 0.9477193937765884, 'recall': 0.6728800284921338, 'dice': 0.7869945452580781, 'tol2_precision': 0.9852861737399091, 'tol2_recall': 0.9548621297382632, 'label_fraction': 0.06652794361114502, 'predicted_fraction': 0.047234787940979, 'ap': 0.8649082191675934}
+maxvit v2_style_noise_0.25 10 seconds 2
+maxvit v2_style_noise_0.25 20 seconds 5
+DONE maxvit v2_style_noise_0.25 {'iou': 0.7898320386238007, 'precision': 0.8917173760359601, 'recall': 0.8736215433649948, 'dice': 0.8825767128753617, 'tol2_precision': 0.9994162101418739, 'tol2_recall': 0.9788353613726629, 'label_fraction': 0.0346491813659668, 'predicted_fraction': 0.03394603729248047, 'ap': 0.933016798319598}
+maxvit v2_style_noise_0.50 10 seconds 2
+maxvit v2_style_noise_0.50 20 seconds 5
+DONE maxvit v2_style_noise_0.50 {'iou': 0.7146306563691357, 'precision': 0.8486647188944929, 'recall': 0.8189990724506844, 'dice': 0.8335680383580939, 'tol2_precision': 0.9991865902616716, 'tol2_recall': 0.9548858729009724, 'label_fraction': 0.0346491813659668, 'predicted_fraction': 0.03343799591064453, 'ap': 0.8751964646189045}
+maxvit v2_style_lowpass_0.6 10 seconds 2
+maxvit v2_style_lowpass_0.6 20 seconds 5
+DONE maxvit v2_style_lowpass_0.6 {'iou': 0.8142176850516506, 'precision': 0.9061987713540351, 'recall': 0.8891559301227833, 'dice': 0.8975964590803445, 'tol2_precision': 0.9994283149597464, 'tol2_recall': 0.9841656047098587, 'label_fraction': 0.0346491813659668, 'predicted_fraction': 0.033997535705566406, 'ap': 0.946846650432028}
+maxvit v2_style_lowpass_1.0 10 seconds 2
+maxvit v2_style_lowpass_1.0 20 seconds 5
+DONE maxvit v2_style_lowpass_1.0 {'iou': 0.8108593772389697, 'precision': 0.9034741074959917, 'recall': 0.8877676337583913, 'dice': 0.8955520096489136, 'tol2_precision': 0.9993876867331378, 'tol2_recall': 0.9837896307142681, 'label_fraction': 0.0346491813659668, 'predicted_fraction': 0.03404682159423828, 'ap': 0.9444434242448314}
+maxvit v2_style_phase_30 10 seconds 3
+maxvit v2_style_phase_30 20 seconds 6
+DONE maxvit v2_style_phase_30 {'iou': 0.7872845033662486, 'precision': 0.8873153555191488, 'recall': 0.8747423091849401, 'dice': 0.8809839752803127, 'tol2_precision': 0.9992517619888389, 'tol2_recall': 0.983359710230291, 'label_fraction': 0.0346491813659668, 'predicted_fraction': 0.034158210754394534, 'ap': 0.9286702125587729}
+maxvit v2_style_phase_60 10 seconds 3
+maxvit v2_style_phase_60 20 seconds 6
+DONE maxvit v2_style_phase_60 {'iou': 0.7617250788778034, 'precision': 0.8640632788880028, 'recall': 0.8654359894639205, 'dice': 0.864749089412989, 'tol2_precision': 0.9985660903731298, 'tol2_recall': 0.9839008265372685, 'label_fraction': 0.0346491813659668, 'predicted_fraction': 0.03470422744750976, 'ap': 0.9069804025495352}

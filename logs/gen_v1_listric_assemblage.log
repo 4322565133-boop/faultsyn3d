@@ -1,0 +1,202 @@
+[listric_assemblage   00] faults=5 depth=3 penalty=0.0 iters= 10 fault%=0.80 dips=[33, 19, 29, 30, 40] 76.3s
+[listric_assemblage   01] faults=5 depth=3 penalty=0.0 iters=  6 fault%=0.69 dips=[50, 1, 1, 179, 180] 31.4s
+[listric_assemblage   02] faults=5 depth=3 penalty=0.0 iters=  3 fault%=1.18 dips=[37, 7, 30, 7, 35] 66.5s
+[listric_assemblage   03] faults=5 depth=3 penalty=0.0 iters=  8 fault%=0.56 dips=[49, 97, 114, 142, 141] 79.7s
+[listric_assemblage   04] faults=5 depth=3 penalty=0.0 iters=  3 fault%=0.69 dips=[43, 23, 166, 6, 3] 62.3s
+[listric_assemblage   05] faults=5 depth=3 penalty=0.0 iters=  6 fault%=0.98 dips=[49, 4, 171, 174, 175] 29.4s
+[listric_assemblage   06] faults=5 depth=3 penalty=2.0 iters=200 fault%=0.70 dips=[45, 138, 140, 14, 4] 47.4s
+[listric_assemblage   07] faults=5 depth=3 penalty=0.0 iters=  4 fault%=1.04 dips=[52, 114, 143, 90, 68] 66.1s
+[listric_assemblage   08] faults=5 depth=3 penalty=0.0 iters= 19 fault%=0.77 dips=[44, 171, 23, 54, 41] 92.3s
+[listric_assemblage   09] faults=5 depth=3 penalty=0.0 iters=  6 fault%=1.09 dips=[35, 15, 26, 161, 0] 42.9s
+[listric_assemblage   10] faults=5 depth=3 penalty=0.0 iters=  5 fault%=0.53 dips=[34, 8, 18, 179, 180] 36.7s
+[listric_assemblage   11] faults=5 depth=3 penalty=0.0 iters= 15 fault%=0.84 dips=[41, 21, 32, 2, 178] 59.0s
+[listric_assemblage   12] faults=5 depth=3 penalty=0.0 iters= 10 fault%=1.13 dips=[45, 178, 155, 63, 26] 94.2s
+[listric_assemblage   13] faults=5 depth=3 penalty=0.0 iters=  4 fault%=0.78 dips=[34, 37, 40, 60, 58] 88.6s
+[listric_assemblage   14] faults=5 depth=3 penalty=0.0 iters=  4 fault%=0.70 dips=[33, 24, 176, 180, 2] 55.5s
+[listric_assemblage   15] faults=5 depth=3 penalty=0.0 iters= 11 fault%=0.47 dips=[49, 123, 139, 134, 92] 68.7s
+[listric_assemblage   16] faults=5 depth=3 penalty=0.0 iters=121 fault%=1.55 dips=[50, 20, 38, 31, 25] 54.6s
+[listric_assemblage   17] faults=5 depth=3 penalty=0.0 iters= 36 fault%=0.86 dips=[38, 149, 176, 12, 40] 101.1s
+[listric_assemblage   18] faults=5 depth=3 penalty=0.0 iters=  5 fault%=1.02 dips=[45, 105, 123, 79, 88] 73.6s
+[listric_assemblage   19] faults=5 depth=3 penalty=1.0 iters=200 fault%=1.05 dips=[35, 166, 173, 164, 162] 51.5s
+[listric_assemblage   20] faults=5 depth=3 penalty=0.0 iters= 19 fault%=0.75 dips=[50, 2, 173, 2, 178] 32.3s
+[listric_assemblage   21] faults=5 depth=3 penalty=0.0 iters=  6 fault%=0.59 dips=[41, 12, 2, 180, 1] 34.4s
+[listric_assemblage   22] faults=5 depth=3 penalty=0.0 iters= 87 fault%=0.75 dips=[41, 47, 22, 60, 63] 82.1s
+[listric_assemblage   23] faults=5 depth=3 penalty=0.0 iters= 19 fault%=1.22 dips=[37, 158, 179, 165, 166] 65.6s
+[listric_assemblage   24] faults=5 depth=3 penalty=0.0 iters=  3 fault%=1.05 dips=[49, 149, 5, 151, 35] 41.9s
+[listric_assemblage   25] faults=5 depth=3 penalty=0.0 iters=  5 fault%=0.48 dips=[44, 52, 40, 82, 80] 87.2s
+[listric_assemblage   26] faults=5 depth=3 penalty=0.0 iters= 11 fault%=1.24 dips=[41, 130, 113, 98, 99] 107.6s
+[listric_assemblage   27] faults=5 depth=3 penalty=4.0 iters=200 fault%=0.72 dips=[37, 160, 138, 161, 144] 51.5s
+[listric_assemblage   28] faults=5 depth=3 penalty=0.0 iters=  8 fault%=0.93 dips=[35, 179, 1, 174, 165] 34.7s
+[listric_assemblage   29] faults=5 depth=3 penalty=0.0 iters= 11 fault%=0.57 dips=[32, 173, 14, 174, 1] 39.1s
+[listric_assemblage   30] faults=5 depth=3 penalty=0.0 iters= 25 fault%=0.91 dips=[52, 167, 164, 171, 170] 43.9s
+[listric_assemblage   31] faults=5 depth=3 penalty=0.0 iters= 13 fault%=1.26 dips=[46, 50, 98, 71, 67] 60.5s
+[listric_assemblage   32] faults=5 depth=3 penalty=0.0 iters= 35 fault%=1.11 dips=[47, 174, 174, 152, 152] 53.2s
+[listric_assemblage   33] faults=5 depth=3 penalty=0.0 iters=  4 fault%=0.79 dips=[40, 5, 8, 170, 170] 35.3s
+[listric_assemblage   34] faults=5 depth=3 penalty=0.0 iters=  9 fault%=0.74 dips=[36, 135, 151, 173, 169] 69.2s
+[listric_assemblage   35] faults=5 depth=3 penalty=0.0 iters=  4 fault%=0.85 dips=[44, 3, 70, 96, 84] 63.4s
+[listric_assemblage   36] faults=5 depth=3 penalty=0.0 iters= 11 fault%=0.74 dips=[41, 2, 177, 170, 162] 37.7s
+[listric_assemblage   37] faults=5 depth=3 penalty=0.0 iters=  4 fault%=0.89 dips=[34, 174, 178, 167, 169] 41.3s
+[listric_assemblage   38] faults=5 depth=3 penalty=0.0 iters=  5 fault%=0.76 dips=[43, 5, 1, 1, 2] 30.7s
+[listric_assemblage   39] faults=5 depth=3 penalty=2.0 iters=200 fault%=1.20 dips=[38, 27, 40, 3, 53] 62.0s
+[listric_assemblage   40] faults=5 depth=3 penalty=0.0 iters=  6 fault%=1.11 dips=[45, 0, 15, 166, 167] 44.4s
+[listric_assemblage   41] faults=5 depth=3 penalty=0.0 iters=  4 fault%=0.75 dips=[43, 178, 174, 166, 170] 40.7s
+[listric_assemblage   42] faults=5 depth=3 penalty=0.0 iters= 60 fault%=0.93 dips=[39, 171, 168, 32, 18] 66.1s
+[listric_assemblage   43] faults=5 depth=3 penalty=0.0 iters= 25 fault%=0.55 dips=[49, 116, 133, 126, 63] 91.9s
+[listric_assemblage   44] faults=5 depth=3 penalty=2.0 iters=200 fault%=1.13 dips=[38, 76, 74, 41, 84] 76.7s
+[listric_assemblage   45] faults=5 depth=3 penalty=0.0 iters=  3 fault%=1.10 dips=[39, 1, 171, 5, 3] 30.9s
+[listric_assemblage   46] faults=5 depth=3 penalty=0.0 iters=  6 fault%=1.13 dips=[37, 45, 175, 50, 47] 47.2s
+[listric_assemblage   47] faults=5 depth=3 penalty=0.0 iters=  4 fault%=0.97 dips=[43, 118, 142, 96, 90] 76.6s
+[listric_assemblage   48] faults=5 depth=3 penalty=0.0 iters=  6 fault%=0.69 dips=[40, 15, 165, 171, 170] 45.2s
+[listric_assemblage   49] faults=5 depth=3 penalty=0.0 iters=  6 fault%=0.98 dips=[51, 15, 23, 169, 170] 35.1s
+[listric_assemblage   50] faults=5 depth=3 penalty=0.0 iters=  6 fault%=0.67 dips=[50, 5, 7, 8, 10] 25.3s
+[listric_assemblage   51] faults=5 depth=3 penalty=0.0 iters=  5 fault%=1.26 dips=[44, 24, 20, 15, 13] 44.9s
+[listric_assemblage   52] faults=5 depth=3 penalty=0.0 iters=  4 fault%=1.42 dips=[42, 7, 18, 21, 8] 43.0s
+[listric_assemblage   53] faults=5 depth=3 penalty=0.0 iters=  5 fault%=0.67 dips=[46, 3, 176, 176, 177] 29.0s
+[listric_assemblage   54] faults=5 depth=3 penalty=0.0 iters= 24 fault%=0.61 dips=[38, 147, 138, 156, 175] 88.9s
+[listric_assemblage   55] faults=5 depth=3 penalty=0.0 iters=  7 fault%=0.69 dips=[38, 147, 145, 156, 154] 108.7s
+[listric_assemblage   56] faults=5 depth=3 penalty=0.0 iters=  6 fault%=0.35 dips=[50, 6, 178, 6, 171] 32.6s
+[listric_assemblage   57] faults=5 depth=3 penalty=0.0 iters= 25 fault%=1.34 dips=[41, 56, 78, 70, 80] 82.2s
+[listric_assemblage   58] faults=5 depth=3 penalty=0.0 iters= 15 fault%=1.26 dips=[38, 175, 15, 160, 164] 50.5s
+[listric_assemblage   59] faults=5 depth=3 penalty=0.0 iters=  6 fault%=0.86 dips=[49, 99, 95, 100, 78] 62.5s
+[listric_assemblage   60] faults=5 depth=3 penalty=0.0 iters= 10 fault%=0.53 dips=[42, 51, 167, 68, 8] 62.1s
+[listric_assemblage   61] faults=5 depth=3 penalty=0.0 iters=  9 fault%=1.43 dips=[33, 146, 135, 148, 148] 85.3s
+[listric_assemblage   62] faults=5 depth=3 penalty=0.0 iters=  3 fault%=1.03 dips=[38, 24, 158, 164, 30] 95.8s
+[listric_assemblage   63] faults=5 depth=3 penalty=0.0 iters= 26 fault%=1.16 dips=[44, 148, 31, 18, 97] 77.6s
+[listric_assemblage   64] faults=5 depth=3 penalty=0.0 iters=  6 fault%=0.95 dips=[46, 172, 11, 3, 15] 37.6s
+[listric_assemblage   65] faults=5 depth=3 penalty=0.0 iters=  3 fault%=0.86 dips=[33, 15, 6, 3, 5] 45.3s
+[listric_assemblage   66] faults=5 depth=3 penalty=0.0 iters=  4 fault%=1.11 dips=[41, 148, 112, 109, 110] 113.8s
+[listric_assemblage   67] faults=5 depth=3 penalty=0.0 iters= 35 fault%=1.19 dips=[46, 75, 127, 96, 98] 75.5s
+[listric_assemblage   68] faults=5 depth=3 penalty=0.0 iters= 11 fault%=0.78 dips=[38, 31, 9, 78, 55] 56.3s
+[listric_assemblage   69] faults=5 depth=3 penalty=0.0 iters=  4 fault%=1.12 dips=[33, 168, 18, 177, 178] 40.4s
+[listric_assemblage   70] faults=5 depth=3 penalty=0.0 iters=  2 fault%=0.56 dips=[51, 43, 12, 6, 3] 40.5s
+[listric_assemblage   71] faults=5 depth=3 penalty=0.0 iters= 20 fault%=0.82 dips=[48, 171, 179, 1, 2] 30.4s
+[listric_assemblage   72] faults=5 depth=3 penalty=0.0 iters=  7 fault%=0.21 dips=[32, 178, 155, 163, 4] 72.0s
+[listric_assemblage   73] faults=5 depth=3 penalty=0.0 iters=  9 fault%=0.65 dips=[33, 145, 6, 30, 10] 90.5s
+[listric_assemblage   74] faults=5 depth=3 penalty=0.0 iters=  3 fault%=1.61 dips=[47, 36, 98, 109, 107] 78.8s
+[listric_assemblage   75] faults=5 depth=3 penalty=0.0 iters=  9 fault%=0.93 dips=[37, 140, 159, 167, 172] 73.3s
+[listric_assemblage   76] faults=5 depth=3 penalty=2.0 iters=200 fault%=1.18 dips=[49, 137, 159, 32, 22] 91.2s
+[listric_assemblage   77] faults=5 depth=3 penalty=10.0 iters=200 fault%=0.53 dips=[36, 21, 44, 149, 158] 105.2s
+[listric_assemblage   78] faults=5 depth=3 penalty=1.0 iters=200 fault%=0.81 dips=[39, 118, 129, 32, 37] 136.4s
+[listric_assemblage   79] faults=5 depth=3 penalty=0.0 iters= 16 fault%=0.81 dips=[41, 17, 9, 171, 6] 40.7s
+[listric_assemblage   80] faults=5 depth=3 penalty=4.0 iters=200 fault%=0.90 dips=[48, 170, 158, 170, 150] 51.4s
+[listric_assemblage   81] faults=5 depth=3 penalty=0.0 iters=  9 fault%=1.60 dips=[38, 26, 14, 163, 164] 66.9s
+[listric_assemblage   82] faults=5 depth=3 penalty=0.0 iters=  6 fault%=1.17 dips=[43, 81, 81, 92, 91] 58.1s
+[listric_assemblage   83] faults=5 depth=3 penalty=0.0 iters= 42 fault%=0.44 dips=[38, 145, 128, 155, 172] 80.3s
+[listric_assemblage   84] faults=5 depth=3 penalty=0.0 iters=  9 fault%=0.86 dips=[41, 1, 22, 177, 1] 35.0s
+[listric_assemblage   85] faults=5 depth=3 penalty=0.0 iters=  3 fault%=1.34 dips=[35, 132, 173, 148, 164] 86.1s
+[listric_assemblage   86] faults=5 depth=3 penalty=2.0 iters=200 fault%=1.00 dips=[35, 165, 170, 1, 162] 45.9s
+[listric_assemblage   87] faults=5 depth=3 penalty=0.0 iters=  7 fault%=0.87 dips=[43, 13, 7, 165, 166] 43.6s
+[listric_assemblage   88] faults=5 depth=3 penalty=0.0 iters=  3 fault%=0.58 dips=[34, 12, 175, 179, 0] 39.4s
+[listric_assemblage   89] faults=5 depth=3 penalty=0.0 iters= 24 fault%=1.26 dips=[36, 12, 19, 170, 162] 52.1s
+[listric_assemblage   90] faults=5 depth=3 penalty=0.0 iters= 12 fault%=0.71 dips=[44, 111, 126, 145, 145] 115.2s
+[listric_assemblage   91] faults=5 depth=3 penalty=0.0 iters=  9 fault%=1.08 dips=[45, 175, 173, 65, 64] 63.8s
+[listric_assemblage   92] faults=5 depth=3 penalty=0.0 iters=  3 fault%=0.96 dips=[49, 79, 93, 101, 120] 63.9s
+[listric_assemblage   93] faults=5 depth=3 penalty=0.0 iters=  4 fault%=0.99 dips=[32, 162, 24, 157, 159] 76.6s
+[listric_assemblage   94] faults=5 depth=3 penalty=0.0 iters= 14 fault%=0.94 dips=[44, 1, 155, 44, 83] 80.0s
+[listric_assemblage   95] faults=5 depth=3 penalty=2.0 iters=200 fault%=0.84 dips=[46, 137, 142, 172, 153] 65.9s
+[listric_assemblage   96] faults=5 depth=3 penalty=0.0 iters= 14 fault%=1.16 dips=[40, 16, 36, 179, 1] 46.9s
+[listric_assemblage   97] faults=5 depth=3 penalty=2.0 iters=200 fault%=1.01 dips=[37, 138, 137, 10, 169] 40.3s
+[listric_assemblage   98] faults=5 depth=3 penalty=1.0 iters=200 fault%=0.92 dips=[37, 177, 62, 9, 84] 40.4s
+[listric_assemblage   99] faults=5 depth=3 penalty=0.0 iters=  6 fault%=2.00 dips=[48, 12, 18, 163, 162] 57.2s
+[listric_assemblage   100] faults=5 depth=3 penalty=0.0 iters= 18 fault%=0.84 dips=[45, 26, 34, 45, 63] 77.5s
+[listric_assemblage   101] faults=5 depth=3 penalty=0.0 iters=  4 fault%=0.85 dips=[36, 8, 162, 34, 61] 78.6s
+[listric_assemblage   102] faults=5 depth=3 penalty=0.0 iters=  3 fault%=0.54 dips=[33, 145, 179, 164, 162] 60.3s
+[listric_assemblage   103] faults=5 depth=3 penalty=0.0 iters= 30 fault%=0.62 dips=[50, 180, 179, 178, 179] 26.5s
+[listric_assemblage   104] faults=5 depth=3 penalty=0.0 iters=  9 fault%=0.87 dips=[50, 4, 17, 165, 166] 41.0s
+[listric_assemblage   105] faults=5 depth=3 penalty=0.0 iters=  8 fault%=1.04 dips=[50, 132, 89, 145, 147] 118.6s
+[listric_assemblage   106] faults=5 depth=3 penalty=0.0 iters=  8 fault%=0.88 dips=[42, 24, 1, 80, 83] 60.7s
+[listric_assemblage   107] faults=5 depth=3 penalty=0.0 iters=  4 fault%=1.41 dips=[51, 95, 117, 67, 60] 60.8s
+[listric_assemblage   108] faults=5 depth=3 penalty=1.0 iters=200 fault%=1.05 dips=[34, 20, 168, 179, 162] 63.2s
+[listric_assemblage   109] faults=5 depth=3 penalty=0.0 iters=  9 fault%=0.62 dips=[34, 14, 7, 179, 180] 29.9s
+[listric_assemblage   110] faults=5 depth=3 penalty=0.0 iters= 17 fault%=1.47 dips=[38, 70, 52, 68, 65] 78.0s
+[listric_assemblage   111] faults=5 depth=3 penalty=0.0 iters=  4 fault%=0.74 dips=[42, 11, 176, 4, 3] 31.9s
+[listric_assemblage   112] faults=5 depth=3 penalty=0.0 iters=  4 fault%=0.84 dips=[43, 58, 20, 6, 69] 80.6s
+[listric_assemblage   113] faults=5 depth=3 penalty=0.0 iters=  3 fault%=0.91 dips=[36, 151, 60, 18, 34] 76.8s
+[listric_assemblage   114] faults=5 depth=3 penalty=0.0 iters=  6 fault%=1.24 dips=[47, 8, 180, 161, 161] 40.8s
+[listric_assemblage   115] faults=5 depth=3 penalty=0.0 iters= 11 fault%=0.87 dips=[51, 120, 24, 4, 13] 79.7s
+[listric_assemblage   116] faults=5 depth=3 penalty=0.0 iters= 36 fault%=0.77 dips=[39, 133, 15, 24, 31] 92.0s
+[listric_assemblage   117] faults=5 depth=3 penalty=0.0 iters=  4 fault%=1.32 dips=[37, 8, 10, 16, 24] 62.0s
+[listric_assemblage   118] faults=5 depth=3 penalty=0.0 iters=  3 fault%=0.94 dips=[40, 4, 13, 180, 19] 44.8s
+[listric_assemblage   119] faults=5 depth=3 penalty=0.0 iters=  5 fault%=0.53 dips=[38, 29, 151, 66, 64] 121.2s
+[listric_assemblage   120] faults=5 depth=3 penalty=2.0 iters=200 fault%=0.93 dips=[37, 0, 2, 176, 160] 46.4s
+[listric_assemblage   121] faults=5 depth=3 penalty=0.0 iters=  5 fault%=0.87 dips=[35, 165, 123, 151, 152] 83.3s
+[listric_assemblage   122] faults=5 depth=3 penalty=0.0 iters= 11 fault%=0.74 dips=[42, 8, 172, 177, 177] 27.0s
+[listric_assemblage   123] faults=5 depth=3 penalty=0.0 iters=100 fault%=1.17 dips=[46, 103, 112, 110, 76] 82.9s
+[listric_assemblage   124] faults=5 depth=3 penalty=0.0 iters=  5 fault%=0.70 dips=[46, 131, 120, 178, 174] 72.3s
+[listric_assemblage   125] faults=5 depth=3 penalty=0.0 iters=  4 fault%=1.09 dips=[49, 3, 167, 0, 1] 27.9s
+[listric_assemblage   126] faults=5 depth=3 penalty=0.0 iters=  6 fault%=0.75 dips=[51, 100, 52, 62, 76] 51.8s
+[listric_assemblage   127] faults=5 depth=3 penalty=0.0 iters=  6 fault%=0.70 dips=[47, 3, 10, 162, 163] 50.1s
+[listric_assemblage   128] faults=5 depth=3 penalty=0.0 iters=  5 fault%=1.26 dips=[35, 127, 136, 127, 127] 131.1s
+[listric_assemblage   129] faults=5 depth=3 penalty=0.0 iters= 10 fault%=1.48 dips=[44, 7, 20, 166, 162] 41.8s
+[listric_assemblage   130] faults=5 depth=3 penalty=0.0 iters= 13 fault%=0.63 dips=[52, 125, 132, 87, 58] 103.5s
+[listric_assemblage   131] faults=5 depth=3 penalty=0.0 iters=  4 fault%=1.02 dips=[45, 12, 21, 0, 3] 35.0s
+[listric_assemblage   132] faults=5 depth=3 penalty=0.0 iters=  4 fault%=1.17 dips=[42, 161, 141, 158, 149] 98.9s
+[listric_assemblage   133] faults=5 depth=3 penalty=0.0 iters= 13 fault%=1.34 dips=[42, 18, 23, 169, 162] 50.7s
+[listric_assemblage   134] faults=5 depth=3 penalty=0.0 iters= 31 fault%=1.27 dips=[36, 126, 137, 126, 124] 87.1s
+[listric_assemblage   135] faults=5 depth=3 penalty=0.0 iters=  4 fault%=1.45 dips=[50, 170, 61, 43, 53] 92.5s
+[listric_assemblage   136] faults=5 depth=3 penalty=0.0 iters=  3 fault%=1.02 dips=[42, 25, 6, 71, 39] 77.1s
+[listric_assemblage   137] faults=5 depth=3 penalty=0.0 iters= 10 fault%=0.93 dips=[33, 175, 154, 159, 162] 77.6s
+[listric_assemblage   138] faults=5 depth=3 penalty=0.0 iters= 40 fault%=0.73 dips=[40, 135, 108, 117, 118] 86.3s
+[listric_assemblage   139] faults=5 depth=3 penalty=0.0 iters=  9 fault%=0.88 dips=[42, 76, 29, 62, 65] 66.1s
+[listric_assemblage   140] faults=5 depth=3 penalty=0.0 iters=  6 fault%=0.96 dips=[48, 172, 169, 8, 180] 28.8s
+[listric_assemblage   141] faults=5 depth=3 penalty=0.0 iters= 25 fault%=0.94 dips=[44, 138, 125, 177, 22] 67.8s
+[listric_assemblage   142] faults=5 depth=3 penalty=0.0 iters= 14 fault%=0.88 dips=[50, 20, 170, 12, 3] 35.5s
+[listric_assemblage   143] faults=5 depth=3 penalty=0.0 iters=  9 fault%=1.44 dips=[44, 67, 101, 96, 95] 67.7s
+[listric_assemblage   144] faults=5 depth=3 penalty=0.0 iters= 16 fault%=1.74 dips=[38, 73, 1, 68, 66] 84.1s
+[listric_assemblage   145] faults=5 depth=3 penalty=0.0 iters=  5 fault%=0.83 dips=[52, 4, 157, 99, 95] 73.8s
+[listric_assemblage   146] faults=5 depth=3 penalty=0.0 iters=  4 fault%=0.93 dips=[46, 1, 24, 162, 163] 53.1s
+[listric_assemblage   147] faults=5 depth=3 penalty=0.0 iters= 17 fault%=1.33 dips=[49, 160, 7, 176, 177] 37.2s
+[listric_assemblage   148] faults=5 depth=3 penalty=0.0 iters=  5 fault%=1.20 dips=[51, 114, 113, 139, 138] 120.1s
+[listric_assemblage   149] faults=5 depth=3 penalty=0.0 iters=  3 fault%=0.64 dips=[43, 148, 159, 170, 146] 82.7s
+[listric_assemblage   150] faults=5 depth=3 penalty=0.0 iters=  4 fault%=0.77 dips=[41, 10, 11, 180, 1] 37.2s
+[listric_assemblage   151] faults=5 depth=3 penalty=0.0 iters=  9 fault%=0.63 dips=[35, 15, 11, 174, 167] 48.4s
+[listric_assemblage   152] faults=5 depth=3 penalty=0.0 iters=  4 fault%=1.05 dips=[37, 54, 62, 74, 72] 50.4s
+[listric_assemblage   153] faults=5 depth=3 penalty=0.0 iters= 12 fault%=0.77 dips=[36, 178, 174, 6, 6] 28.7s
+[listric_assemblage   154] faults=5 depth=3 penalty=0.0 iters=  5 fault%=0.98 dips=[51, 104, 76, 88, 90] 47.8s
+[listric_assemblage   155] faults=5 depth=3 penalty=0.0 iters=  7 fault%=0.76 dips=[42, 175, 13, 2, 3] 32.9s
+[listric_assemblage   156] faults=5 depth=3 penalty=0.0 iters=  5 fault%=0.73 dips=[46, 50, 153, 60, 93] 60.6s
+[listric_assemblage   157] faults=5 depth=3 penalty=0.0 iters=  5 fault%=1.09 dips=[50, 33, 8, 180, 169] 29.7s
+[listric_assemblage   158] faults=5 depth=3 penalty=0.0 iters=  6 fault%=0.67 dips=[44, 172, 9, 0, 3] 29.6s
+[listric_assemblage   159] faults=5 depth=3 penalty=0.0 iters=  4 fault%=0.49 dips=[32, 12, 180, 25, 17] 72.7s
+[listric_assemblage   160] faults=5 depth=3 penalty=0.0 iters= 15 fault%=0.99 dips=[43, 147, 121, 136, 136] 107.9s
+[listric_assemblage   161] faults=5 depth=3 penalty=0.0 iters= 51 fault%=1.52 dips=[44, 108, 119, 142, 105] 98.0s
+[listric_assemblage   162] faults=5 depth=3 penalty=0.0 iters= 34 fault%=0.89 dips=[43, 168, 10, 173, 173] 36.3s
+[listric_assemblage   163] faults=5 depth=3 penalty=0.0 iters=  6 fault%=1.06 dips=[36, 0, 178, 174, 170] 41.0s
+[listric_assemblage   164] faults=5 depth=3 penalty=0.0 iters=  4 fault%=0.76 dips=[43, 8, 19, 20, 9] 45.4s
+[listric_assemblage   165] faults=5 depth=3 penalty=2.0 iters=200 fault%=0.65 dips=[44, 177, 9, 152, 177] 40.5s
+[listric_assemblage   166] faults=5 depth=3 penalty=0.0 iters= 11 fault%=1.37 dips=[44, 124, 104, 153, 157] 51.3s
+[listric_assemblage   167] faults=5 depth=3 penalty=0.0 iters= 12 fault%=0.67 dips=[42, 1, 2, 3, 2] 29.4s
+[listric_assemblage   168] faults=5 depth=3 penalty=0.0 iters=  3 fault%=1.22 dips=[37, 160, 179, 33, 27] 71.1s
+[listric_assemblage   169] faults=5 depth=3 penalty=0.0 iters=  5 fault%=0.78 dips=[43, 14, 12, 10, 2] 25.2s
+[listric_assemblage   170] faults=5 depth=3 penalty=0.0 iters=  6 fault%=1.18 dips=[45, 18, 54, 88, 86] 68.9s
+[listric_assemblage   171] faults=5 depth=3 penalty=0.0 iters= 12 fault%=1.49 dips=[47, 172, 118, 109, 113] 98.6s
+[listric_assemblage   172] faults=5 depth=3 penalty=0.0 iters=  5 fault%=1.39 dips=[38, 2, 21, 166, 169] 41.0s
+[listric_assemblage   173] faults=5 depth=3 penalty=0.0 iters=  7 fault%=0.75 dips=[43, 144, 104, 96, 112] 74.2s
+[listric_assemblage   174] faults=5 depth=3 penalty=0.0 iters=  4 fault%=0.63 dips=[52, 6, 2, 180, 1] 28.2s
+[listric_assemblage   175] faults=5 depth=3 penalty=0.0 iters=  7 fault%=0.85 dips=[52, 167, 151, 168, 72] 75.2s
+[listric_assemblage   176] faults=5 depth=3 penalty=0.0 iters= 10 fault%=0.76 dips=[50, 117, 128, 150, 162] 62.4s
+[listric_assemblage   177] faults=5 depth=3 penalty=0.0 iters= 15 fault%=1.01 dips=[51, 20, 8, 178, 4] 36.9s
+[listric_assemblage   178] faults=5 depth=3 penalty=0.0 iters= 15 fault%=0.97 dips=[48, 106, 115, 132, 122] 71.2s
+[listric_assemblage   179] faults=5 depth=3 penalty=0.0 iters=  8 fault%=0.87 dips=[52, 8, 179, 160, 161] 51.5s
+[listric_assemblage   180] faults=5 depth=3 penalty=0.0 iters=  4 fault%=0.67 dips=[46, 3, 8, 1, 178] 30.0s
+[listric_assemblage   181] faults=5 depth=3 penalty=0.0 iters= 25 fault%=1.17 dips=[43, 22, 173, 60, 65] 50.1s
+[listric_assemblage   182] faults=5 depth=3 penalty=0.0 iters= 12 fault%=0.69 dips=[35, 17, 21, 2, 177] 42.4s
+[listric_assemblage   183] faults=5 depth=3 penalty=0.0 iters= 18 fault%=1.07 dips=[36, 19, 22, 172, 166] 44.0s
+[listric_assemblage   184] faults=5 depth=3 penalty=0.0 iters= 21 fault%=1.06 dips=[47, 112, 84, 76, 77] 88.6s
+[listric_assemblage   185] faults=5 depth=3 penalty=0.0 iters=  8 fault%=1.15 dips=[46, 124, 124, 146, 163] 94.2s
+[listric_assemblage   186] faults=5 depth=3 penalty=0.0 iters= 61 fault%=1.21 dips=[43, 14, 171, 174, 173] 30.9s
+[listric_assemblage   187] faults=5 depth=3 penalty=0.0 iters=  7 fault%=0.86 dips=[46, 10, 10, 4, 169] 22.3s
+[listric_assemblage   188] faults=5 depth=3 penalty=0.0 iters=  5 fault%=1.10 dips=[42, 3, 18, 178, 179] 35.5s
+[listric_assemblage   189] faults=5 depth=3 penalty=0.0 iters=  6 fault%=0.79 dips=[49, 3, 127, 145, 174] 40.5s
+[listric_assemblage   190] faults=5 depth=3 penalty=0.0 iters=  5 fault%=1.49 dips=[45, 7, 22, 12, 33] 39.8s
+[listric_assemblage   191] faults=5 depth=3 penalty=0.0 iters=  4 fault%=0.87 dips=[42, 16, 15, 171, 179] 38.4s
+[listric_assemblage   192] faults=5 depth=3 penalty=0.0 iters=  3 fault%=1.28 dips=[47, 19, 9, 21, 1] 32.7s
+[listric_assemblage   193] faults=5 depth=3 penalty=0.0 iters=  4 fault%=1.68 dips=[50, 96, 76, 37, 43] 55.3s
+[listric_assemblage   194] faults=5 depth=3 penalty=0.0 iters=  5 fault%=0.66 dips=[46, 21, 6, 0, 5] 29.8s
+[listric_assemblage   195] faults=5 depth=3 penalty=0.0 iters= 10 fault%=0.84 dips=[51, 15, 9, 178, 175] 31.8s
+[listric_assemblage   196] faults=5 depth=3 penalty=0.0 iters=  4 fault%=0.66 dips=[42, 12, 178, 1, 13] 32.7s
+[listric_assemblage   197] faults=5 depth=3 penalty=0.0 iters=  9 fault%=0.67 dips=[43, 5, 166, 1, 2] 46.2s
+[listric_assemblage   198] faults=5 depth=3 penalty=0.0 iters=  6 fault%=0.74 dips=[40, 47, 30, 33, 62] 67.1s
+[listric_assemblage   199] faults=5 depth=3 penalty=0.0 iters=  6 fault%=0.52 dips=[46, 124, 121, 129, 110] 71.0s
+
+wrote 200 volumes to data/dataset_v1_parts/listric_assemblage

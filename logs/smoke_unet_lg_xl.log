@@ -1,0 +1,9 @@
+unet_lg_xl: unet_maxvit3d 39.04M  world=4 global_batch=8 d2s=False profile=False trace=False
+smoke step 0 loss 0.5945 seg 0.5945 pr -0.0000 tr -0.0000
+smoke step 1 loss 0.5497 seg 0.5497 pr -0.0000 tr -0.0000
+smoke step 2 loss 0.6023 seg 0.6023 pr -0.0000 tr -0.0000
+smoke step 3 loss 0.6026 seg 0.6026 pr -0.0000 tr -0.0000
+smoke step 4 loss 0.6003 seg 0.6003 pr -0.0000 tr -0.0000
+smoke step 5 loss 0.5972 seg 0.5972 pr -0.0000 tr -0.0000
+epoch=001 train=0.59412 (seg 0.59412 pr 0.0000 tr 0.0000 ramp 0.00) val=0.58934 IoU=0.0343 P=0.036 R=0.413 lr=1.09e-05 26s
+stop at epoch 1; best val loss 0.58934

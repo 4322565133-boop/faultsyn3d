@@ -1,0 +1,6 @@
+thebe_spatial_v3_unet_l          ep  47  IoU 0.3775  Dice 0.5481  AP 0.5293  P 0.5159  R 0.5845  (1053s)
+thebe_spatial_v3_maxvit_tiny     ep  47  IoU 0.3896  Dice 0.5607  AP 0.5556  P 0.5139  R 0.6170  (804s)
+
+run                               ep     IoU    Dice      AP       P       R
+thebe_spatial_v3_unet_l           47  0.3775  0.5481  0.5293  0.5159  0.5845
+thebe_spatial_v3_maxvit_tiny      47  0.3896  0.5607  0.5556  0.5139  0.6170

@@ -1,0 +1,21 @@
+{
+  "model": "resnet3d",
+  "data": "data/dataset_reproduction_v2",
+  "out": null,
+  "tag": "v2",
+  "limit": null,
+  "no_aug": false,
+  "gpu": 1,
+  "epochs": 60,
+  "batch": 1,
+  "accum": 4,
+  "lr": 0.0002,
+  "wd": 0.0001,
+  "workers": 4,
+  "patience": 12,
+  "seed": 42,
+  "no_amp": false,
+  "data_source_sha256": "4caf323f71699d3195906146d8af908023d1ebf48f6070521a3d39a317105570",
+  "n_train": 800,
+  "n_val": 100
+}

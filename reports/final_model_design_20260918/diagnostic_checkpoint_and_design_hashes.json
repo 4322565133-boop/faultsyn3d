@@ -1,0 +1,9 @@
+{
+  "runs/thebe_spatial_v3_unet_l/best_fullval.pt": "a8ea824c54e221fddc8c0dccc871983383a5b45c9a52103e27df5db05c01d2ba",
+  "runs/thebe_spatial_v3_maxvit_tiny/best_fullval.pt": "44328a26170607c513088f1a50df74ac0392d36e31ee150bf3b3c496c7517e70",
+  "runs/thebe_spatial_v3_mv2d_tiny_ad/best_fullval.pt": "7531cd17de36bbb38e9b584e20aa3369e7358df0b1c8e3aa6f3f2927d6475488",
+  "train/diagnose_thebe_spatial.py": "4e70ab500ba9d5dcacd74a3971ec90eecff6999e25de21e270dc38003e6d0664",
+  "scripts/summarize_model_design_evidence_20260918.py": "f4648c037de2c3a7875eb0d8150c97ec18d43e3cd58e63203548dfd4688cbf24",
+  "docs/SC_MAXVIT_DESIGN_20260918.md": "b7c03d5f094a5311b34afed982b9807544b8c9e5dc893602b593331a327b1f4c",
+  "reports/final_model_design_20260918/design_spec.json": "25718c421ecbe3df30406d5fec9296a9426de3b299dfa722b5353a7104796893"
+}

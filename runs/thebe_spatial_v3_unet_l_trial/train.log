@@ -1,0 +1,248 @@
+UNet-L params=9,643,495 world=4 batch=8 train=2400 fast=96 full=2433
+/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+epoch 1 microstep 1/600 loss=0.62862 lr=1e-06 elapsed=1s
+epoch 1 microstep 100/600 loss=0.52487 lr=1e-06 elapsed=40s
+epoch 1 microstep 200/600 loss=0.62629 lr=1e-06 elapsed=79s
+epoch 1 microstep 300/600 loss=0.62719 lr=1e-06 elapsed=119s
+epoch 1 microstep 400/600 loss=0.61911 lr=1e-06 elapsed=159s
+epoch 1 microstep 500/600 loss=0.62391 lr=1e-06 elapsed=199s
+epoch 1 microstep 600/600 loss=0.62636 lr=1e-06 elapsed=239s
+{"epoch": 1, "lr": 1e-06, "train_loss": 0.6036779520412286, "fast_val": {"iou": 0.04353819809344379, "dice": 0.08344342003577554, "precision": 0.04413728880785065, "recall": 0.7623362037572816, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5869929818436503, "cores": 96}, "full_val": null, "seconds": 242.41208148002625, "skipped_optimizer_steps": 0}
+/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+epoch 2 microstep 1/600 loss=0.62652 lr=1.2e-05 elapsed=1s
+epoch 2 microstep 100/600 loss=0.52691 lr=1.2e-05 elapsed=41s
+epoch 2 microstep 200/600 loss=0.57750 lr=1.2e-05 elapsed=81s
+epoch 2 microstep 300/600 loss=0.61347 lr=1.2e-05 elapsed=121s
+epoch 2 microstep 400/600 loss=0.57170 lr=1.2e-05 elapsed=161s
+epoch 2 microstep 500/600 loss=0.61055 lr=1.2e-05 elapsed=202s
+epoch 2 microstep 600/600 loss=0.61142 lr=1.2e-05 elapsed=242s
+{"epoch": 2, "lr": 1.2000000000000002e-05, "train_loss": 0.5893575750167172, "fast_val": {"iou": 0.15796988469296236, "dice": 0.2728393661720285, "precision": 0.18876525724787105, "recall": 0.49194792460924014, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5693177009622256, "cores": 96}, "full_val": null, "seconds": 245.65977001190186, "skipped_optimizer_steps": 0}
+epoch 3 microstep 1/600 loss=0.60792 lr=2.3e-05 elapsed=1s
+epoch 3 microstep 100/600 loss=0.61085 lr=2.3e-05 elapsed=41s
+epoch 3 microstep 200/600 loss=0.57221 lr=2.3e-05 elapsed=81s
+epoch 3 microstep 300/600 loss=0.60125 lr=2.3e-05 elapsed=121s
+epoch 3 microstep 400/600 loss=0.52937 lr=2.3e-05 elapsed=162s
+epoch 3 microstep 500/600 loss=0.50701 lr=2.3e-05 elapsed=202s
+epoch 3 microstep 600/600 loss=0.60429 lr=2.3e-05 elapsed=243s
+{"epoch": 3, "lr": 2.3000000000000003e-05, "train_loss": 0.5801775472611189, "fast_val": {"iou": 0.17967406243864129, "dice": 0.30461644984753866, "precision": 0.2443269483392916, "recall": 0.404406868747341, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5684591587632895, "cores": 96}, "full_val": null, "seconds": 246.03679060935974, "skipped_optimizer_steps": 0}
+epoch 4 microstep 1/600 loss=0.60885 lr=3.4e-05 elapsed=1s
+epoch 4 microstep 100/600 loss=0.60281 lr=3.4e-05 elapsed=41s
+epoch 4 microstep 200/600 loss=0.60798 lr=3.4e-05 elapsed=81s
+epoch 4 microstep 300/600 loss=0.60913 lr=3.4e-05 elapsed=121s
+epoch 4 microstep 400/600 loss=0.58751 lr=3.4e-05 elapsed=162s
+epoch 4 microstep 500/600 loss=0.60447 lr=3.4e-05 elapsed=202s
+epoch 4 microstep 600/600 loss=0.61656 lr=3.4e-05 elapsed=243s
+{"epoch": 4, "lr": 3.4e-05, "train_loss": 0.5759823830301563, "fast_val": {"iou": 0.2154839615357619, "dice": 0.3545648784431483, "precision": 0.3352270877934208, "recall": 0.37627027160802273, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5647464143112302, "cores": 96}, "full_val": null, "seconds": 245.99830079078674, "skipped_optimizer_steps": 0}
+epoch 5 microstep 1/600 loss=0.60585 lr=4.5e-05 elapsed=1s
+epoch 5 microstep 100/600 loss=0.45357 lr=4.5e-05 elapsed=41s
+epoch 5 microstep 200/600 loss=0.53162 lr=4.5e-05 elapsed=81s
+epoch 5 microstep 300/600 loss=0.60035 lr=4.5e-05 elapsed=122s
+epoch 5 microstep 400/600 loss=0.60512 lr=4.5e-05 elapsed=162s
+epoch 5 microstep 500/600 loss=0.60756 lr=4.5e-05 elapsed=202s
+epoch 5 microstep 600/600 loss=0.53801 lr=4.5e-05 elapsed=243s
+{"epoch": 5, "lr": 4.5e-05, "train_loss": 0.5740116925785939, "fast_val": {"iou": 0.24216393056311758, "dice": 0.38990655678326763, "precision": 0.2886262096614364, "recall": 0.6006924843760865, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5570138472442826, "cores": 96}, "full_val": null, "seconds": 246.10490345954895, "skipped_optimizer_steps": 0}
+epoch 6 microstep 1/600 loss=0.41725 lr=5.6e-05 elapsed=1s
+epoch 6 microstep 100/600 loss=0.60480 lr=5.6e-05 elapsed=41s
+epoch 6 microstep 200/600 loss=0.60331 lr=5.6e-05 elapsed=81s
+epoch 6 microstep 300/600 loss=0.60463 lr=5.6e-05 elapsed=121s
+epoch 6 microstep 400/600 loss=0.60237 lr=5.6e-05 elapsed=162s
+epoch 6 microstep 500/600 loss=0.58530 lr=5.6e-05 elapsed=202s
+epoch 6 microstep 600/600 loss=0.60308 lr=5.6e-05 elapsed=242s
+{"epoch": 6, "lr": 5.6e-05, "train_loss": 0.5710734506199757, "fast_val": {"iou": 0.3274251854412577, "dice": 0.4933237504189982, "precision": 0.43396363180784997, "recall": 0.57149641913925, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5512980427592993, "cores": 96}, "full_val": null, "seconds": 245.77104806900024, "skipped_optimizer_steps": 0}
+epoch 7 microstep 1/600 loss=0.60067 lr=6.7e-05 elapsed=1s
+epoch 7 microstep 100/600 loss=0.60427 lr=6.7e-05 elapsed=41s
+epoch 7 microstep 200/600 loss=0.60308 lr=6.7e-05 elapsed=81s
+epoch 7 microstep 300/600 loss=0.60562 lr=6.7e-05 elapsed=121s
+epoch 7 microstep 400/600 loss=0.45922 lr=6.7e-05 elapsed=162s
+epoch 7 microstep 500/600 loss=0.60043 lr=6.7e-05 elapsed=202s
+epoch 7 microstep 600/600 loss=0.51271 lr=6.7e-05 elapsed=242s
+{"epoch": 7, "lr": 6.7e-05, "train_loss": 0.5659464584415158, "fast_val": {"iou": 0.3283305485279991, "dice": 0.49435067030844304, "precision": 0.5054131489099212, "recall": 0.4837620898980483, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5529507777343193, "cores": 96}, "full_val": null, "seconds": 245.70496916770935, "skipped_optimizer_steps": 0}
+epoch 8 microstep 1/600 loss=0.58885 lr=7.8e-05 elapsed=1s
+epoch 8 microstep 100/600 loss=0.60164 lr=7.8e-05 elapsed=41s
+epoch 8 microstep 200/600 loss=0.42918 lr=7.8e-05 elapsed=81s
+epoch 8 microstep 300/600 loss=0.59368 lr=7.8e-05 elapsed=121s
+epoch 8 microstep 400/600 loss=0.60469 lr=7.8e-05 elapsed=162s
+epoch 8 microstep 500/600 loss=0.60004 lr=7.8e-05 elapsed=202s
+epoch 8 microstep 600/600 loss=0.60188 lr=7.8e-05 elapsed=242s
+{"epoch": 8, "lr": 7.8e-05, "train_loss": 0.5628059290225307, "fast_val": {"iou": 0.35015347193680035, "dice": 0.5186869185093512, "precision": 0.4492843437739246, "recall": 0.6134485274100542, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5429332734396061, "cores": 96}, "full_val": null, "seconds": 245.7962200641632, "skipped_optimizer_steps": 0}
+epoch 9 microstep 1/600 loss=0.60279 lr=8.9e-05 elapsed=1s
+epoch 9 microstep 100/600 loss=0.60173 lr=8.9e-05 elapsed=41s
+epoch 9 microstep 200/600 loss=0.60270 lr=8.9e-05 elapsed=81s
+epoch 9 microstep 300/600 loss=0.60236 lr=8.9e-05 elapsed=121s
+epoch 9 microstep 400/600 loss=0.60147 lr=8.9e-05 elapsed=162s
+epoch 9 microstep 500/600 loss=0.54105 lr=8.9e-05 elapsed=202s
+epoch 9 microstep 600/600 loss=0.60119 lr=8.9e-05 elapsed=242s
+{"epoch": 9, "lr": 8.900000000000001e-05, "train_loss": 0.5597873060156902, "fast_val": {"iou": 0.3982583913038916, "dice": 0.5696492061563975, "precision": 0.47309925666948666, "recall": 0.7157113579929738, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5311945153710743, "cores": 96}, "full_val": null, "seconds": 245.89072394371033, "skipped_optimizer_steps": 0}
+epoch 10 microstep 1/600 loss=0.60692 lr=0.0001 elapsed=1s
+epoch 10 microstep 100/600 loss=0.60339 lr=0.0001 elapsed=41s
+epoch 10 microstep 200/600 loss=0.45080 lr=0.0001 elapsed=81s
+epoch 10 microstep 300/600 loss=0.60201 lr=0.0001 elapsed=121s
+epoch 10 microstep 400/600 loss=0.60052 lr=0.0001 elapsed=162s
+epoch 10 microstep 500/600 loss=0.60187 lr=0.0001 elapsed=202s
+epoch 10 microstep 600/600 loss=0.60000 lr=0.0001 elapsed=242s
+epoch 10: full validation starts (2433 cores)
+{"epoch": 10, "lr": 0.0001, "train_loss": 0.5547093137105306, "fast_val": {"iou": 0.3488990764560484, "dice": 0.5173093859219002, "precision": 0.5291007377304715, "recall": 0.5060321328778052, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5434173050646981, "cores": 96}, "full_val": {"iou": 0.28169300881909615, "dice": 0.4395639312703087, "precision": 0.4318597895321096, "recall": 0.44754794102502937, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5647599649708603, "cores": 2433}, "seconds": 314.40475726127625, "skipped_optimizer_steps": 0}
+epoch 11 microstep 1/600 loss=0.60349 lr=0.0001 elapsed=1s
+epoch 11 microstep 100/600 loss=0.60058 lr=0.0001 elapsed=41s
+epoch 11 microstep 200/600 loss=0.60037 lr=0.0001 elapsed=81s
+epoch 11 microstep 300/600 loss=0.28507 lr=0.0001 elapsed=121s
+epoch 11 microstep 400/600 loss=0.60016 lr=0.0001 elapsed=161s
+epoch 11 microstep 500/600 loss=0.59696 lr=0.0001 elapsed=202s
+epoch 11 microstep 600/600 loss=0.56845 lr=0.0001 elapsed=242s
+{"epoch": 11, "lr": 9.996957180960385e-05, "train_loss": 0.5458914744357268, "fast_val": {"iou": 0.3139936185452888, "dice": 0.47792259279448934, "precision": 0.5109133290951473, "recall": 0.4489339912484871, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5526666630369922, "cores": 96}, "full_val": null, "seconds": 245.6111991405487, "skipped_optimizer_steps": 0}
+epoch 12 microstep 1/600 loss=0.60529 lr=9.99e-05 elapsed=1s
+epoch 12 microstep 100/600 loss=0.60100 lr=9.99e-05 elapsed=41s
+epoch 12 microstep 200/600 loss=0.47062 lr=9.99e-05 elapsed=81s
+epoch 12 microstep 300/600 loss=0.46814 lr=9.99e-05 elapsed=121s
+epoch 12 microstep 400/600 loss=0.60002 lr=9.99e-05 elapsed=162s
+epoch 12 microstep 500/600 loss=0.60004 lr=9.99e-05 elapsed=202s
+epoch 12 microstep 600/600 loss=0.60025 lr=9.99e-05 elapsed=242s
+{"epoch": 12, "lr": 9.987832431047822e-05, "train_loss": 0.542032135669142, "fast_val": {"iou": 0.3609872729500645, "dice": 0.5304785432233934, "precision": 0.5019573485237322, "recall": 0.5624361402363356, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5393052445724607, "cores": 96}, "full_val": null, "seconds": 245.95065069198608, "skipped_optimizer_steps": 0}
+epoch 13 microstep 1/600 loss=0.60172 lr=9.97e-05 elapsed=1s
+epoch 13 microstep 100/600 loss=0.60054 lr=9.97e-05 elapsed=41s
+epoch 13 microstep 200/600 loss=0.60091 lr=9.97e-05 elapsed=81s
+epoch 13 microstep 300/600 loss=0.31372 lr=9.97e-05 elapsed=121s
+epoch 13 microstep 400/600 loss=0.60357 lr=9.97e-05 elapsed=161s
+epoch 13 microstep 500/600 loss=0.49897 lr=9.97e-05 elapsed=202s
+epoch 13 microstep 600/600 loss=0.60007 lr=9.97e-05 elapsed=242s
+{"epoch": 13, "lr": 9.972636867364526e-05, "train_loss": 0.5371353119052946, "fast_val": {"iou": 0.3815263315028091, "dice": 0.5523258193534234, "precision": 0.5143295335355195, "recall": 0.596383902213098, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5313952784053981, "cores": 96}, "full_val": null, "seconds": 245.5917055606842, "skipped_optimizer_steps": 0}
+epoch 14 microstep 1/600 loss=0.35769 lr=9.95e-05 elapsed=1s
+epoch 14 microstep 100/600 loss=0.32371 lr=9.95e-05 elapsed=41s
+epoch 14 microstep 200/600 loss=0.44102 lr=9.95e-05 elapsed=81s
+epoch 14 microstep 300/600 loss=0.60007 lr=9.95e-05 elapsed=121s
+epoch 14 microstep 400/600 loss=0.60000 lr=9.95e-05 elapsed=162s
+epoch 14 microstep 500/600 loss=0.29405 lr=9.95e-05 elapsed=202s
+epoch 14 microstep 600/600 loss=0.60379 lr=9.95e-05 elapsed=242s
+{"epoch": 14, "lr": 9.951389003364144e-05, "train_loss": 0.5327551111765206, "fast_val": {"iou": 0.38048290669609863, "dice": 0.5512316086646898, "precision": 0.4843941234811688, "recall": 0.6394661883543361, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5269153487558166, "cores": 96}, "full_val": null, "seconds": 245.73855447769165, "skipped_optimizer_steps": 0}
+epoch 15 microstep 1/600 loss=0.60013 lr=9.92e-05 elapsed=1s
+epoch 15 microstep 100/600 loss=0.53151 lr=9.92e-05 elapsed=41s
+epoch 15 microstep 200/600 loss=0.23955 lr=9.92e-05 elapsed=81s
+epoch 15 microstep 300/600 loss=0.60060 lr=9.92e-05 elapsed=121s
+epoch 15 microstep 400/600 loss=0.58314 lr=9.92e-05 elapsed=161s
+epoch 15 microstep 500/600 loss=0.60069 lr=9.92e-05 elapsed=202s
+epoch 15 microstep 600/600 loss=0.60013 lr=9.92e-05 elapsed=242s
+{"epoch": 15, "lr": 9.92411472629598e-05, "train_loss": 0.5285716942573587, "fast_val": {"iou": 0.3794583672844422, "dice": 0.5501555919102247, "precision": 0.5222621816133145, "recall": 0.5811966214870501, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5296335074429711, "cores": 96}, "full_val": null, "seconds": 245.651695728302, "skipped_optimizer_steps": 0}
+epoch 16 microstep 1/600 loss=0.60001 lr=9.89e-05 elapsed=1s
+epoch 16 microstep 100/600 loss=0.60074 lr=9.89e-05 elapsed=48s
+epoch 16 microstep 200/600 loss=0.36297 lr=9.89e-05 elapsed=88s
+epoch 16 microstep 300/600 loss=0.60332 lr=9.89e-05 elapsed=128s
+epoch 16 microstep 400/600 loss=0.60073 lr=9.89e-05 elapsed=169s
+epoch 16 microstep 500/600 loss=0.31327 lr=9.89e-05 elapsed=209s
+epoch 16 microstep 600/600 loss=0.51744 lr=9.89e-05 elapsed=249s
+{"epoch": 16, "lr": 9.89084726566536e-05, "train_loss": 0.5234767802618444, "fast_val": {"iou": 0.39508624960240646, "dice": 0.5663968800710413, "precision": 0.5373957526752053, "recall": 0.5987067182533743, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5259213588821391, "cores": 96}, "full_val": null, "seconds": 252.6609423160553, "skipped_optimizer_steps": 1}
+epoch 17 microstep 1/600 loss=0.60616 lr=9.85e-05 elapsed=1s
+epoch 17 microstep 100/600 loss=0.50158 lr=9.85e-05 elapsed=41s
+epoch 17 microstep 200/600 loss=0.60734 lr=9.85e-05 elapsed=81s
+epoch 17 microstep 300/600 loss=0.55015 lr=9.85e-05 elapsed=121s
+epoch 17 microstep 400/600 loss=0.60238 lr=9.85e-05 elapsed=161s
+epoch 17 microstep 500/600 loss=0.24398 lr=9.85e-05 elapsed=202s
+epoch 17 microstep 600/600 loss=0.54526 lr=9.85e-05 elapsed=242s
+{"epoch": 17, "lr": 9.851627152748602e-05, "train_loss": 0.5228143688788016, "fast_val": {"iou": 0.40607159031720014, "dice": 0.5775973188187283, "precision": 0.5927437259226, "recall": 0.5632056982649, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.528748226352036, "cores": 96}, "full_val": null, "seconds": 245.6157112121582, "skipped_optimizer_steps": 0}
+epoch 18 microstep 1/600 loss=0.60066 lr=9.81e-05 elapsed=1s
+epoch 18 microstep 100/600 loss=0.60014 lr=9.81e-05 elapsed=41s
+epoch 18 microstep 200/600 loss=0.60011 lr=9.81e-05 elapsed=81s
+epoch 18 microstep 300/600 loss=0.37832 lr=9.81e-05 elapsed=121s
+epoch 18 microstep 400/600 loss=0.41467 lr=9.81e-05 elapsed=161s
+epoch 18 microstep 500/600 loss=0.15948 lr=9.81e-05 elapsed=202s
+epoch 18 microstep 600/600 loss=0.60019 lr=9.81e-05 elapsed=242s
+{"epoch": 18, "lr": 9.806502171211903e-05, "train_loss": 0.5182449290311585, "fast_val": {"iou": 0.40313342347299197, "dice": 0.5746188020739592, "precision": 0.6046361184580461, "recall": 0.5474409543933749, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.53209123108536, "cores": 96}, "full_val": null, "seconds": 245.3612687587738, "skipped_optimizer_steps": 0}
+epoch 19 microstep 1/600 loss=0.60000 lr=9.76e-05 elapsed=1s
+epoch 19 microstep 100/600 loss=0.40665 lr=9.76e-05 elapsed=41s
+epoch 19 microstep 200/600 loss=0.60076 lr=9.76e-05 elapsed=81s
+epoch 19 microstep 300/600 loss=0.52911 lr=9.76e-05 elapsed=121s
+epoch 19 microstep 400/600 loss=0.60000 lr=9.76e-05 elapsed=161s
+epoch 19 microstep 500/600 loss=0.38068 lr=9.76e-05 elapsed=202s
+epoch 19 microstep 600/600 loss=0.33692 lr=9.76e-05 elapsed=242s
+{"epoch": 19, "lr": 9.755527298894293e-05, "train_loss": 0.5148759726248682, "fast_val": {"iou": 0.4128733104776612, "dice": 0.584444914368264, "precision": 0.5892012566036967, "recall": 0.57976474858551, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5253684635584553, "cores": 96}, "full_val": null, "seconds": 245.60955142974854, "skipped_optimizer_steps": 0}
+epoch 20 microstep 1/600 loss=0.60563 lr=9.7e-05 elapsed=1s
+epoch 20 microstep 100/600 loss=0.60029 lr=9.7e-05 elapsed=41s
+epoch 20 microstep 200/600 loss=0.60381 lr=9.7e-05 elapsed=81s
+epoch 20 microstep 300/600 loss=0.34219 lr=9.7e-05 elapsed=121s
+epoch 20 microstep 400/600 loss=0.51838 lr=9.7e-05 elapsed=161s
+epoch 20 microstep 500/600 loss=0.60004 lr=9.7e-05 elapsed=202s
+epoch 20 microstep 600/600 loss=0.60144 lr=9.7e-05 elapsed=242s
+epoch 20: full validation starts (2433 cores)
+{"epoch": 20, "lr": 9.698764640825613e-05, "train_loss": 0.5174733232520521, "fast_val": {"iou": 0.3370083319636377, "dice": 0.5041230094186179, "precision": 0.5905214635095809, "recall": 0.43977943264835206, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5498873183969408, "cores": 96}, "full_val": {"iou": 0.275489941191416, "dice": 0.43197509019018215, "precision": 0.5393867533366279, "recall": 0.36023842279471147, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5745766164005366, "cores": 2433}, "seconds": 314.1527826786041, "skipped_optimizer_steps": 0}
+epoch 21 microstep 1/600 loss=0.51629 lr=9.64e-05 elapsed=1s
+epoch 21 microstep 100/600 loss=0.25077 lr=9.64e-05 elapsed=41s
+epoch 21 microstep 200/600 loss=0.47621 lr=9.64e-05 elapsed=81s
+epoch 21 microstep 300/600 loss=0.60092 lr=9.64e-05 elapsed=121s
+epoch 21 microstep 400/600 loss=0.31670 lr=9.64e-05 elapsed=161s
+epoch 21 microstep 500/600 loss=0.60000 lr=9.64e-05 elapsed=202s
+epoch 21 microstep 600/600 loss=0.60001 lr=9.64e-05 elapsed=242s
+{"epoch": 21, "lr": 9.636283353561104e-05, "train_loss": 0.5081666250961522, "fast_val": {"iou": 0.3915598232053195, "dice": 0.5627639095003483, "precision": 0.5383770029675188, "recall": 0.5894649509333101, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.530045646475628, "cores": 96}, "full_val": null, "seconds": 245.47386002540588, "skipped_optimizer_steps": 0}
+epoch 22 microstep 1/600 loss=0.60040 lr=9.57e-05 elapsed=1s
+epoch 22 microstep 100/600 loss=0.60000 lr=9.57e-05 elapsed=40s
+epoch 22 microstep 200/600 loss=0.60001 lr=9.57e-05 elapsed=81s
+epoch 22 microstep 300/600 loss=0.60144 lr=9.57e-05 elapsed=121s
+epoch 22 microstep 400/600 loss=0.60165 lr=9.57e-05 elapsed=161s
+epoch 22 microstep 500/600 loss=0.60701 lr=9.57e-05 elapsed=202s
+epoch 22 microstep 600/600 loss=0.27242 lr=9.57e-05 elapsed=242s
+{"epoch": 22, "lr": 9.568159560924791e-05, "train_loss": 0.5059430071835717, "fast_val": {"iou": 0.39169008316977083, "dice": 0.5628984324981914, "precision": 0.4941837108272323, "recall": 0.6538084872940431, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5160896262774864, "cores": 96}, "full_val": null, "seconds": 245.47134137153625, "skipped_optimizer_steps": 0}
+epoch 23 microstep 1/600 loss=0.35025 lr=9.49e-05 elapsed=1s
+epoch 23 microstep 100/600 loss=0.60033 lr=9.49e-05 elapsed=41s
+epoch 23 microstep 200/600 loss=0.60006 lr=9.49e-05 elapsed=81s
+epoch 23 microstep 300/600 loss=0.39656 lr=9.49e-05 elapsed=121s
+epoch 23 microstep 400/600 loss=0.60000 lr=9.49e-05 elapsed=161s
+epoch 23 microstep 500/600 loss=0.28439 lr=9.49e-05 elapsed=202s
+epoch 23 microstep 600/600 loss=0.43442 lr=9.49e-05 elapsed=242s
+{"epoch": 23, "lr": 9.49447626126434e-05, "train_loss": 0.5117049319390208, "fast_val": {"iou": 0.40045821664916015, "dice": 0.5718959864540994, "precision": 0.6576777121216068, "recall": 0.5059095692714183, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5308233816176653, "cores": 96}, "full_val": null, "seconds": 245.5334815979004, "skipped_optimizer_steps": 1}
+epoch 24 microstep 1/600 loss=0.60000 lr=9.42e-05 elapsed=1s
+epoch 24 microstep 100/600 loss=0.60001 lr=9.42e-05 elapsed=41s
+epoch 24 microstep 200/600 loss=0.49688 lr=9.42e-05 elapsed=81s
+epoch 24 microstep 300/600 loss=0.60006 lr=9.42e-05 elapsed=121s
+epoch 24 microstep 400/600 loss=0.60007 lr=9.42e-05 elapsed=162s
+epoch 24 microstep 500/600 loss=0.31584 lr=9.42e-05 elapsed=202s
+epoch 24 microstep 600/600 loss=0.61147 lr=9.42e-05 elapsed=243s
+{"epoch": 24, "lr": 9.41532322633034e-05, "train_loss": 0.5029021456092596, "fast_val": {"iou": 0.3810445276934301, "dice": 0.5518207705146723, "precision": 0.6591161676921138, "recall": 0.4745674624265944, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.540392467752099, "cores": 96}, "full_val": null, "seconds": 246.24242520332336, "skipped_optimizer_steps": 0}
+epoch 25 microstep 1/600 loss=0.60000 lr=9.33e-05 elapsed=1s
+epoch 25 microstep 100/600 loss=0.60075 lr=9.33e-05 elapsed=41s
+epoch 25 microstep 200/600 loss=0.26483 lr=9.33e-05 elapsed=81s
+epoch 25 microstep 300/600 loss=0.60000 lr=9.33e-05 elapsed=121s
+epoch 25 microstep 400/600 loss=0.29526 lr=9.33e-05 elapsed=161s
+epoch 25 microstep 500/600 loss=0.20086 lr=9.33e-05 elapsed=202s
+epoch 25 microstep 600/600 loss=0.15779 lr=9.33e-05 elapsed=242s
+{"epoch": 25, "lr": 9.330796891903273e-05, "train_loss": 0.4996360402119656, "fast_val": {"iou": 0.3591616668633306, "dice": 0.5285047034797603, "precision": 0.6098236453611934, "recall": 0.46632152440842434, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5473214885375152, "cores": 96}, "full_val": null, "seconds": 245.46909070014954, "skipped_optimizer_steps": 0}
+epoch 26 microstep 1/600 loss=0.60001 lr=9.24e-05 elapsed=1s
+epoch 26 microstep 100/600 loss=0.25552 lr=9.24e-05 elapsed=41s
+epoch 26 microstep 200/600 loss=0.55004 lr=9.24e-05 elapsed=81s
+epoch 26 microstep 300/600 loss=0.20563 lr=9.24e-05 elapsed=121s
+epoch 26 microstep 400/600 loss=0.54183 lr=9.24e-05 elapsed=161s
+epoch 26 microstep 500/600 loss=0.29950 lr=9.24e-05 elapsed=202s
+epoch 26 microstep 600/600 loss=0.60173 lr=9.24e-05 elapsed=242s
+{"epoch": 26, "lr": 9.241000240301348e-05, "train_loss": 0.4982698140107095, "fast_val": {"iou": 0.4300062717990137, "dice": 0.6014047354604201, "precision": 0.5430106863153816, "recall": 0.6738712068626191, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5108586575370282, "cores": 96}, "full_val": null, "seconds": 245.57795548439026, "skipped_optimizer_steps": 0}
+epoch 27 microstep 1/600 loss=0.25087 lr=9.15e-05 elapsed=1s
+epoch 27 microstep 100/600 loss=0.60012 lr=9.15e-05 elapsed=40s
+epoch 27 microstep 200/600 loss=0.25145 lr=9.15e-05 elapsed=81s
+epoch 27 microstep 300/600 loss=0.50791 lr=9.15e-05 elapsed=121s
+epoch 27 microstep 400/600 loss=0.60098 lr=9.15e-05 elapsed=161s
+epoch 27 microstep 500/600 loss=0.34351 lr=9.15e-05 elapsed=202s
+epoch 27 microstep 600/600 loss=0.60054 lr=9.15e-05 elapsed=242s
+{"epoch": 27, "lr": 9.146042674912433e-05, "train_loss": 0.5004186031408608, "fast_val": {"iou": 0.4199620019895954, "dice": 0.5915116058051708, "precision": 0.5768260695238074, "recall": 0.606964441233697, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5216798274001727, "cores": 96}, "full_val": null, "seconds": 245.3869605064392, "skipped_optimizer_steps": 0}
+epoch 28 microstep 1/600 loss=0.60064 lr=9.05e-05 elapsed=1s
+epoch 28 microstep 100/600 loss=0.60896 lr=9.05e-05 elapsed=41s
+epoch 28 microstep 200/600 loss=0.41211 lr=9.05e-05 elapsed=81s
+epoch 28 microstep 300/600 loss=0.60007 lr=9.05e-05 elapsed=121s
+epoch 28 microstep 400/600 loss=0.60375 lr=9.05e-05 elapsed=161s
+epoch 28 microstep 500/600 loss=0.60000 lr=9.05e-05 elapsed=202s
+epoch 28 microstep 600/600 loss=0.60073 lr=9.05e-05 elapsed=242s
+{"epoch": 28, "lr": 9.046039886902862e-05, "train_loss": 0.502957837479189, "fast_val": {"iou": 0.4203189050872704, "dice": 0.5918655360873961, "precision": 0.6218082151959843, "recall": 0.5646741045491133, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5235404142489036, "cores": 96}, "full_val": null, "seconds": 245.27158737182617, "skipped_optimizer_steps": 0}
+epoch 29 microstep 1/600 loss=0.39819 lr=8.94e-05 elapsed=1s
+epoch 29 microstep 100/600 loss=0.60013 lr=8.94e-05 elapsed=41s
+epoch 29 microstep 200/600 loss=0.60693 lr=8.94e-05 elapsed=81s
+epoch 29 microstep 300/600 loss=0.60134 lr=8.94e-05 elapsed=121s
+epoch 29 microstep 400/600 loss=0.56438 lr=8.94e-05 elapsed=162s
+epoch 29 microstep 500/600 loss=0.26431 lr=8.94e-05 elapsed=202s
+epoch 29 microstep 600/600 loss=0.60124 lr=8.94e-05 elapsed=242s
+{"epoch": 29, "lr": 8.941113714265577e-05, "train_loss": 0.4993661240891864, "fast_val": {"iou": 0.40346293140539824, "dice": 0.5749534560223531, "precision": 0.5891915358888603, "recall": 0.5613872786047548, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5245197078523537, "cores": 96}, "full_val": null, "seconds": 245.62303757667542, "skipped_optimizer_steps": 1}
+epoch 30 microstep 1/600 loss=0.27560 lr=8.83e-05 elapsed=1s
+epoch 30 microstep 100/600 loss=0.60053 lr=8.83e-05 elapsed=40s
+epoch 30 microstep 200/600 loss=0.60029 lr=8.83e-05 elapsed=81s
+epoch 30 microstep 300/600 loss=0.60031 lr=8.83e-05 elapsed=121s
+epoch 30 microstep 400/600 loss=0.24605 lr=8.83e-05 elapsed=161s
+epoch 30 microstep 500/600 loss=0.33966 lr=8.83e-05 elapsed=201s
+epoch 30 microstep 600/600 loss=0.60000 lr=8.83e-05 elapsed=242s
+epoch 30: full validation starts (2433 cores)
+{"epoch": 30, "lr": 8.831391993379295e-05, "train_loss": 0.49823505393539863, "fast_val": {"iou": 0.4158686118705831, "dice": 0.5874395524894868, "precision": 0.6061494953141688, "recall": 0.5698500599265326, "valid_voxels": 20134972, "positive_voxels": 848539, "loss": 0.5239600432105362, "cores": 96}, "full_val": {"iou": 0.34916154811484273, "dice": 0.517597834896376, "precision": 0.5333762651936207, "recall": 0.5027261030747676, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5548986897631971, "cores": 2433}, "seconds": 313.85048174858093, "skipped_optimizer_steps": 0}

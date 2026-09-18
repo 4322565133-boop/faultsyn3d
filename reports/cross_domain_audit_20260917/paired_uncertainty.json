@@ -1,0 +1,82 @@
+[
+  {
+    "dataset": "v2_val",
+    "contrast": "hybrid-unet",
+    "macro_mean_delta": -0.024425359194980355,
+    "ci95": [
+      -0.02762415694287997,
+      -0.02140234360103671
+    ],
+    "n": 100
+  },
+  {
+    "dataset": "v2_val",
+    "contrast": "hybrid-maxvit",
+    "macro_mean_delta": -0.023227917128671054,
+    "ci95": [
+      -0.026421736552285878,
+      -0.019990599028098133
+    ],
+    "n": 100
+  },
+  {
+    "dataset": "v2_test",
+    "contrast": "hybrid-unet",
+    "macro_mean_delta": -0.02401041646908497,
+    "ci95": [
+      -0.027080052305642782,
+      -0.02102640786823673
+    ],
+    "n": 100
+  },
+  {
+    "dataset": "v2_test",
+    "contrast": "hybrid-maxvit",
+    "macro_mean_delta": -0.02041258975653935,
+    "ci95": [
+      -0.02394882432949694,
+      -0.0171534924707463
+    ],
+    "n": 100
+  },
+  {
+    "dataset": "faultseg3d20",
+    "contrast": "hybrid-unet",
+    "macro_mean_delta": 0.0159977662563465,
+    "ci95": [
+      0.010738201515467465,
+      0.021409552295414986
+    ],
+    "n": 20
+  },
+  {
+    "dataset": "faultseg3d20",
+    "contrast": "hybrid-maxvit",
+    "macro_mean_delta": 0.12539335101746946,
+    "ci95": [
+      0.09396092218865189,
+      0.1580578203421279
+    ],
+    "n": 20
+  },
+  {
+    "dataset": "wu_style_test",
+    "contrast": "hybrid-unet",
+    "macro_mean_delta": 0.013578173423231641,
+    "ci95": [
+      0.0100813617199699,
+      0.016571571655321155
+    ],
+    "n": 100
+  },
+  {
+    "dataset": "wu_style_test",
+    "contrast": "hybrid-maxvit",
+    "macro_mean_delta": 0.021753557616349544,
+    "ci95": [
+      0.017439145829600898,
+      0.02597625727232267
+    ],
+    "n": 100
+  }
+]

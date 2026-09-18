@@ -1,0 +1,26 @@
+{
+  "sample": "000000_en_echelon",
+  "fp32_reference": 0.0028424980118870735,
+  "actual_cuda_results": [
+    {
+      "autocast": false,
+      "probs_dtype": "torch.float16",
+      "sum_dtype": "torch.float16",
+      "sum": null,
+      "old_loss": 0.6000000238418579,
+      "finite_gradient": true,
+      "mean_absolute_gradient": 0.0,
+      "sum_nonfinite": true
+    },
+    {
+      "autocast": true,
+      "probs_dtype": "torch.float16",
+      "sum_dtype": "torch.float32",
+      "sum": 74547.6171875,
+      "old_loss": 0.002888989634811878,
+      "finite_gradient": true,
+      "mean_absolute_gradient": 0.0
+    }
+  ],
+  "scope": "CUDA:4 dtype/value probe on a real label with constructed logits; unscaled gradients are not an AMP training-gradient test."
+}
