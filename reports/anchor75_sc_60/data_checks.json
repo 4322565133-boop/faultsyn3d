@@ -1,0 +1,7 @@
+{
+  "all_60_epoch_quotas": true,
+  "ddp_accumulation_quotas": true,
+  "validation_unchanged": true,
+  "same_fine_data_across_models": true,
+  "plan_sha256": "1d3f4992adf153e127803bec851dc2e10605f167b8f435bf540adf2e8442885d"
+}

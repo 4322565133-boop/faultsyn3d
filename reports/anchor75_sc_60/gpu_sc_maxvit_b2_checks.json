@@ -1,0 +1,22 @@
+{
+  "model": "sc_maxvit",
+  "batch": 2,
+  "params": 40286603,
+  "peak_allocated_bytes": 10200207872,
+  "peak_reserved_bytes": 11100225536,
+  "finite_steps": 2,
+  "step_seconds": [
+    8.821802377700806,
+    0.5764875411987305
+  ],
+  "losses": [
+    0.5634266138076782,
+    0.5583595037460327
+  ],
+  "diagnostics": {
+    "valid_token_fraction": 0.7772013545036316,
+    "points_outside_fine_fraction": 0.4873788356781006,
+    "normal_residual_mean": 0.031061582267284393,
+    "residual_to_local_norm": 0.0020259316079318523
+  }
+}

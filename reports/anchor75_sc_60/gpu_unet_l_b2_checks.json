@@ -1,0 +1,17 @@
+{
+  "model": "unet_l",
+  "batch": 2,
+  "params": 9643495,
+  "peak_allocated_bytes": 9801699328,
+  "peak_reserved_bytes": 11184111616,
+  "finite_steps": 2,
+  "step_seconds": [
+    12.484431505203247,
+    0.6525545120239258
+  ],
+  "losses": [
+    0.569420337677002,
+    0.5675082206726074
+  ],
+  "diagnostics": null
+}

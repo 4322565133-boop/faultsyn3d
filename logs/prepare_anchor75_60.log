@@ -1,0 +1,20 @@
+anchor scan z 0
+anchor scan z 128
+anchor scan z 256
+anchor scan z 384
+anchor scan z 512
+anchor scan z 640
+anchor scan z 768
+anchor scan z 896
+anchor scan z 1024
+anchor scan z 1152
+anchor scan z 1280
+anchor scan z 1408
+anchor scan z 1536
+anchors 62245 cells 495
+pool 0 regular 1 sparse 0 seconds 0
+pool 2000 regular 1984 sparse 16 seconds 21
+pool 4000 regular 3976 sparse 24 seconds 42
+pool 6000 regular 5966 sparse 33 seconds 63
+pool 8000 regular 7961 sparse 38 seconds 84
+pool 10000 regular 9955 sparse 44 seconds 105

@@ -1,0 +1,78 @@
+{
+  "status": "ready_for_authorized_60_epoch_queue",
+  "plan_sha256": "1d3f4992adf153e127803bec851dc2e10605f167b8f435bf540adf2e8442885d",
+  "checks": {
+    "cpu_checks": {
+      "coordinate_ramp": true,
+      "anisotropic_augmentation_16_cases": true,
+      "split_sentinel": true,
+      "degenerate_frame": true,
+      "geometry_gradient": true,
+      "all_invalid_identity": true
+    },
+    "data_checks": {
+      "all_60_epoch_quotas": true,
+      "ddp_accumulation_quotas": true,
+      "validation_unchanged": true,
+      "same_fine_data_across_models": true,
+      "plan_sha256": "1d3f4992adf153e127803bec851dc2e10605f167b8f435bf540adf2e8442885d"
+    },
+    "gpu_unet_l_b2_checks": {
+      "model": "unet_l",
+      "batch": 2,
+      "params": 9643495,
+      "peak_allocated_bytes": 9801699328,
+      "peak_reserved_bytes": 11184111616,
+      "finite_steps": 2,
+      "step_seconds": [
+        12.484431505203247,
+        0.6525545120239258
+      ],
+      "losses": [
+        0.569420337677002,
+        0.5675082206726074
+      ],
+      "diagnostics": null
+    },
+    "gpu_sc_maxvit_b2_checks": {
+      "model": "sc_maxvit",
+      "batch": 2,
+      "params": 40286603,
+      "peak_allocated_bytes": 10200207872,
+      "peak_reserved_bytes": 11100225536,
+      "finite_steps": 2,
+      "step_seconds": [
+        8.821802377700806,
+        0.5764875411987305
+      ],
+      "losses": [
+        0.5634266138076782,
+        0.5583595037460327
+      ],
+      "diagnostics": {
+        "valid_token_fraction": 0.7772013545036316,
+        "points_outside_fine_fraction": 0.4873788356781006,
+        "normal_residual_mean": 0.031061582267284393,
+        "residual_to_local_norm": 0.0020259316079318523
+      }
+    }
+  },
+  "ddp_smoke": {
+    "unet_l": {
+      "status": "completed_trial",
+      "last_completed_epoch": 1,
+      "best_fullval_iou": 0.0
+    },
+    "sc_maxvit_diagnostics": {
+      "status": "completed_trial",
+      "last_completed_epoch": 1,
+      "best_fullval_iou": 0.0
+    }
+  },
+  "source_sha256": {
+    "models/sc_maxvit3d.py": "5c42c8ede1f9fe91dc85d7d14ffe2166c845e2647223fa9d6a58f3b0337c43b1",
+    "train/dataset_thebe_anchor.py": "fd97bb90c57248988d98657595b07f10a2b471af071cb3bf543ac2efb9e31d93",
+    "train/train_thebe_anchor_ddp.py": "b9fac52f50b5e9345cc798820036e645a4edc45336f28d3ae06751ad44a17b33",
+    "scripts/launch_anchor75_sc_60.py": "86f2d760b8312e90b5ab0607b2256b6bfadfd570c135161a8e1fd35e9ea7c657"
+  }
+}

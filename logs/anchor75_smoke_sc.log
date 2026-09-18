@@ -1,0 +1,6 @@
+START sc_maxvit params 40286603 epochs 60 plan 1d3f4992adf153e127803bec851dc2e10605f167b8f435bf540adf2e8442885d
+/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+epoch 1 microstep 1/2 loss=0.57608 lr=1e-06 seconds=11
+FULL VALIDATION 1 8
+{"epoch": 1, "lr": 1e-06, "train_loss": 0.5616081207990646, "fast_val": null, "full_val": {"iou": 0.0, "dice": 0.0, "precision": 0.0, "recall": 0.0, "ap": 0.0, "valid_voxels": 937484, "positive_voxels": 0, "loss": 0.6189229935407639, "cores": 8}, "seconds": 14.768194675445557, "skipped_optimizer_steps_all_ranks": 0, "context_diagnostics": {"valid_token_fraction": 0.255828857421875, "points_outside_fine_fraction": 0.4874442219734192, "normal_residual_mean": 0.027896076440811157, "residual_to_local_norm": 0.0019952233415097}}

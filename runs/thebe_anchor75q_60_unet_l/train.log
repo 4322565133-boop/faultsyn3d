@@ -1,0 +1,10 @@
+START unet_l params 9643495 epochs 60 plan 1d3f4992adf153e127803bec851dc2e10605f167b8f435bf540adf2e8442885d
+/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+epoch 1 microstep 1/300 loss=0.58553 lr=1e-06 seconds=14
+epoch 1 microstep 100/300 loss=0.55845 lr=1e-06 seconds=81
+epoch 1 microstep 200/300 loss=0.55092 lr=1e-06 seconds=150
+epoch 1 microstep 300/300 loss=0.60740 lr=1e-06 seconds=220
+FULL VALIDATION 1 2433
+{"epoch": 1, "lr": 1e-06, "train_loss": 0.569738795508941, "fast_val": null, "full_val": {"iou": 0.03106017990075656, "dice": 0.060249014570121835, "precision": 0.03124240262117953, "recall": 0.8419052794622885, "ap": 0.0422765399241887, "valid_voxels": 510945619, "positive_voxels": 14228002, "loss": 0.5984467645020726, "cores": 2433}, "seconds": 289.39059925079346, "skipped_optimizer_steps_all_ranks": 0, "validation_context_diagnostics_last_core": null, "training_context_diagnostics": null}
+epoch 2 microstep 1/300 loss=0.57637 lr=1.2e-05 seconds=1

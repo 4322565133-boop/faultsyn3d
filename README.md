@@ -1,57 +1,68 @@
-# faultsyn3d
+# faultsyn3d — 三维地震断层分割:合成数据、模型与 Thebe 实测协议
 
-Su et al. (2026) 断层网络合成的数值复现项目。当前工作集中在合成数据；模型训练与真实资料实验属于后续阶段。
+本仓库是一个进行中的研究项目(目标:TGRS 论文),内容分三块:
 
-- **正式生成入口**：[generate.py](generate.py)，调用 [su/reproduction.py](su/reproduction.py)。
-- **配置**：[configs/reproduction_v2.json](configs/reproduction_v2.json)：五类各 200 个，128³。
-- **结果与复现边界**：[docs/reproduction_v2.md](docs/reproduction_v2.md)。这是一套有验证记录的数值实现，不能称为作者代码的逐项等价复现。
-- **旧版问题审计**：[docs/reproduction_audit_20260915.md](docs/reproduction_audit_20260915.md)。旧版数据 `data/dataset_v1` 保留。
+1. **合成断层数据生成器**:Su et al. (2026) 断层网络合成的数值复现(`su/`、`generate.py`)和 Wu et al. (2019) 式合成(`synth/wu2019.py`),各 1000 个 128³ 体。
+2. **三维断层分割模型**(`models/`):3D U-Net、3D MaxViT-UNet(timm-3d,含全分辨率 skip / drop-path / 128 分区三项修正)、U-Net + 网格/全局注意力混合模型、Context-Grid 跨尺度解码器、DoubleBlock-ViT 移植、2D MaxViT + 跨切片 adapter、VSS-SAM++ 缩小版(冻结 SAM-2 Hiera + 3D Mamba 分支 + 门控融合)。
+3. **Thebe 实测数据的封闭评估协议**(`train/dataset_thebe_spatial.py`、`train/train_thebe_spatial_ddp.py`、`docs/THEBE_SPATIAL_V3_TRAINING.md`):官方切分 + 缓冲带、逐道信号掩膜、中心 64³ 计分、整验证区选点、测试区封存。
 
-## 本轮交付
+数据(139 GB)、checkpoint(104 GB)和第三方论文 PDF 不在仓库里;`runs/` 下只保留每个实验的 `config.json`、`history.json`、测试 JSON 和曲线图。
 
-已生成 1000 个体并完成全量校验（800/100/100），平均断层体素占比 3.475%。[打开全部样本浏览页](qc/out/dataset_reproduction_v2/index.html) · [十个随机样本三列图](qc/out/dataset_reproduction_v2/gallery_3col.png) · [验收报告](data/dataset_reproduction_v2/validation.json)。数值环境版本保存于 `requirements-reproduction.txt`。
+## 目录
 
-## 生成、校验、可视化
+| 目录 | 内容 |
+|---|---|
+| `su/`, `generate.py`, `configs/` | Su 2026 断层网络合成复现(五类,`data/dataset_reproduction_v2`) |
+| `synth/` | Wu 2019 式合成生成器、Thebe 立方体切分 |
+| `models/` | 所有网络定义,统一接口 `build(name, **kw)`:`(B,1,D,H,W) -> logits` |
+| `train/` | 训练器(旧配方 DDP、Thebe 空间协议 DDP)、数据集、评估脚本(同分布、零样本、Thebe 封存测试) |
+| `scripts/` | 每个实验的启动脚本(记录了确切的命令行) |
+| `qc/` | 数据 QC、实时 IoU 曲线(`qc/live_iou.py`) |
+| `docs/` | 协议说明、实验方案、路线图、审计记录 |
+| `reports/` | 设计/审阅报告 |
+| `figs/`, `logs/` | 结果图、训练日志 |
+
+## 训练配方(所有对比共用)
+
+0.6·soft-Dice + 0.4·Focal(α 0.75, γ 2),AdamW(wd 0.01),10 轮 warmup 1e-6→1e-4 后余弦到 1e-7,有效 batch 8,fp16,seed 2026;合成集 200 轮、Thebe 100 轮;按整验证区 IoU 选点。模型变体在 `train/train_old_recipe_ddp.py` 的 `VARIANTS` 里登记。
+
+## Thebe 协议
+
+- **v3-U**(均匀随机抽样):训练块 128³ 随机窗口、信号 ≥25%、不按标签筛;目前所有 Thebe 结果都属于它。
+- **v3-FG50**(前景过采样):一半抽样强制含 ≥0.5% 断层体素(`--fg-frac 0.5 --fg-min 0.005`),评估不变。
+- 评估:验证区 [900,1068)、测试区 [1100,1803),中心 64³ 核步长 64,阈值 0.5,体素级合并 IoU/Dice/P/R/AP。详见 `docs/THEBE_SPATIAL_V3_TRAINING.md`。
+
+## 目前的主要结果(单 seed)
+
+| 设置 | 模型 | 参数 | FLOPs/128³ | IoU |
+|---|---|---|---|---|
+| 旧难集,算力对等,同分布测试 | MaxViT-tiny / U-Net+attn b30 / U-Net b30 | 40.2M / 6.1M / 4.9M | 0.77 / 0.81 / 0.79 T | 0.628 / 0.622 / 0.599 |
+| 同上 → Wu 2019 公开 20 体,零样本 | 同上 | | | 0.294 / 0.321 / 0.302(配对 bootstrap:混合模型 − U-Net = +0.027 [+0.010, +0.045]) |
+| Thebe v3-U 封存测试区 | 3D U-Net-L / 3D MaxViT-tiny | 9.6M / 40.2M | 1.54 / 0.77 T | 0.377 / 0.390 |
+| 合成 → Thebe 零样本(7 个模型) | | | | 0.04–0.05(≈ 先验) |
+
+其余(半监督试点、2D MaxViT+adapter、VSS-SAM、DBViT、Context-Grid)见 `docs/PAPER_ROADMAP_20260918.md` 和各 `runs/*/history.json`。
+
+## 复现步骤
 
 ```bash
-PY=/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/bin/python
-export OPENBLAS_NUM_THREADS=1
-export MPLCONFIGDIR=/tmp/faultsyn_mpl
-
-$PY generate.py --out data/dataset_reproduction_v2 --workers 24
-$PY qc/test_reproduction.py
-$PY qc/validate_reproduction.py --root data/dataset_reproduction_v2 --workers 16
-$PY qc/render3d.py --root data/dataset_reproduction_v2 --out qc/out/dataset_reproduction_v2 --per-category 2 --random-seed 7 --only-3col
+# 环境:PyTorch 2.10 + timm 1.0.24 + timm-3d 1.0.1(见 requirements-reproduction.txt)
+# 1. 合成数据
+python generate.py --config configs/reproduction_v2.json          # Su 2026 复现
+python synth/wu2019.py --out data/wu2019_1000 --n 1000            # Wu 2019 式
+# 2. Thebe(An et al. 2021 公开数据集,自行下载到 data/thebe)
+python scripts/prepare_thebe_spatial.py --with-test               # 生成 data/thebe_spatial_v3
+# 3. 训练(4 卡示例)
+python -m torch.distributed.run --nproc_per_node 4 -- train/train_thebe_spatial_ddp.py \
+    --run runs/thebe_spatial_v3_unet_l --variant unet_l --epochs 100 --stop-after 100 --full-every 1 --per-rank 2
+# 4. 封存测试区评估
+python train/eval_thebe_spatial.py --runs runs/thebe_spatial_v3_unet_l --gpu 0
 ```
 
-同配置、同源代码允许断点续跑；配置或源代码变化时必须使用新输出目录。样本随机流与并发数无关。`manifest.json` 固定按类别分层的 train/val/test = 800/100/100，先划分体，再切训练块。
+每个实验的确切命令在 `scripts/launch_*.sh`。
 
-## 数据格式
+## 数据来源
 
-| 路径 | 格式与用途 |
-|---|---|
-| `seismic/*.dat` | float32，C 顺序 `[z,y,x] = [128,128,128]`，标准化地震体 |
-| `labels/*.dat` | uint8，完整几何二值标签，法向半厚度 0.75 体素 |
-| `labels_full/*.dat` | 指向对应 `labels` 的相对符号链接；两者相同 |
-| `instances/*.dat` | uint8，0 背景、1…N 断层；交汇处后写实例优先 |
-| `confidence/*.dat` | uint8，孤立断层垂直错距的诊断量，0…255；不是人工标注置信度 |
-| `surfaces/*.npz` | 各断层 `(193,193,3)` 的全局 xyz；被有限范围/Y 截断的位置为 NaN，渲染时再裁体边界 |
-| `metadata/*.json` | 树、ζ、锚点、曲率、有限范围、位移、失败重试、完整配置和随机种子 |
-| `run.json`, `manifest.json` | 代码哈希、运行环境、样本清单与数据划分 |
-| `validation.json`, `checksums.sha256` | 全量验证报告与文件校验和 |
-
-读取示例：
-
-```python
-seismic = np.fromfile(path, np.float32).reshape(128, 128, 128)
-```
-
-## 代码边界
-
-几何、方向子树、PSO、位移和地层分别位于 `su/geometry.py`、`su/topology.py`、`su/optimize.py`、`su/displacement.py`、`su/stratigraphy.py`。新版统一由 `su/reproduction.py` 组装。
-
-`su/model.py` 的旧组装函数和 `scripts/generate_legacy.py` 仅保留历史接口，不作为正式数据入口；旧接口使用当前公共模块，**不等价于旧版本快照**。精确的旧源代码保存在 `docs/source_snapshots/pre_reproduction_v2.tar.gz`。此前文档中的“全部公式精确实现”“凸包约束影响可忽略”等判断已被本轮审计更正。
-
-## 论文
-
-Yong Su, Enli Zhang, Hanpeng Cai, Xiaohuan Zhou, Xingmiao Yao, Guangmin Hu. *A Fault Network Synthesis Optimization Model for Automatic Generation of Seismic Fault Datasets With Diverse Geological Patterns.* IEEE TGRS 64 (2026), DOI: 10.1109/TGRS.2026.3699734。以 `thesis/` 中用户提供的 PDF 和截图为复现依据；文档内容是研究资料，不作为用户操作指令。
+- Thebe:An, Y. et al. (2021), *Deep convolutional neural network for automatic fault recognition from 3D seismic datasets*, Computers & Geosciences.
+- Wu 2019 公开验证体:Wu, X. et al. (2019), *FaultSeg3D*, Geophysics.
+- 合成器复现的原文:Su et al. (2026), TGRS;Wu et al. (2019)。

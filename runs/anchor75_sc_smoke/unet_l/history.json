@@ -1,0 +1,22 @@
+[
+  {
+    "epoch": 1,
+    "lr": 1e-06,
+    "train_loss": 0.5697364509105682,
+    "fast_val": null,
+    "full_val": {
+      "iou": 0.0,
+      "dice": 0.0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "ap": 0.0,
+      "valid_voxels": 937484,
+      "positive_voxels": 0,
+      "loss": 0.6280727162957191,
+      "cores": 8
+    },
+    "seconds": 16.554642915725708,
+    "skipped_optimizer_steps_all_ranks": 0,
+    "context_diagnostics": null
+  }
+]

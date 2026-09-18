@@ -1,0 +1,8 @@
+{
+  "coordinate_ramp": true,
+  "anisotropic_augmentation_16_cases": true,
+  "split_sentinel": true,
+  "degenerate_frame": true,
+  "geometry_gradient": true,
+  "all_invalid_identity": true
+}

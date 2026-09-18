@@ -1,0 +1,6 @@
+START sc_maxvit params 40286603 epochs 60 plan 1d3f4992adf153e127803bec851dc2e10605f167b8f435bf540adf2e8442885d
+/hdd1/hukaixiao/projects/FAULTSEG3D/.venv/lib/python3.10/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+epoch 1 microstep 1/2 loss=0.57608 lr=1e-06 seconds=12
+FULL VALIDATION 1 8
+{"epoch": 1, "lr": 1e-06, "train_loss": 0.5616081282496452, "fast_val": null, "full_val": {"iou": 0.0, "dice": 0.0, "precision": 0.0, "recall": 0.0, "ap": 0.0, "valid_voxels": 937484, "positive_voxels": 0, "loss": 0.6189199462532997, "cores": 8}, "seconds": 14.594631910324097, "skipped_optimizer_steps_all_ranks": 0, "validation_context_diagnostics_last_core": {"valid_token_fraction": 0.2558085322380066, "points_outside_fine_fraction": 0.4874616861343384, "normal_residual_mean": 0.02789902314543724, "residual_to_local_norm": 0.001995311351493001}, "training_context_diagnostics": {"valid_token_fraction": 0.7377904504537582, "points_outside_fine_fraction": 0.48724912106990814, "normal_residual_mean": 0.03476468287408352, "residual_to_local_norm": 0.0024160503526218235, "geometry_gradient_norm": 3.238905264879577e-06}}

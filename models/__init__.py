@@ -15,6 +15,9 @@ from .vss_sam3d import VSSSAM3D
 
 def build(name: str, **kw):
     name = name.lower()
+    if name == "sc_maxvit3d":
+        from .sc_maxvit3d import SCMaxViT3D
+        return SCMaxViT3D(**kw)
     if name == "vss_sam3d":
         # scaled-down VSS-SAM++: frozen SAM-2 Hiera per slice + 3-D Mamba branch + gated fusion + 3-D decoder (models/vss_sam3d.py)
         return VSSSAM3D(**kw)

@@ -1,0 +1,41 @@
+{
+  "args": {
+    "run": "/hdd1/hukaixiao/projects/faultsyn3d/runs/thebe_anchor75q_60_unet_l",
+    "model": "unet_l",
+    "plans": "/hdd1/hukaixiao/projects/faultsyn3d/data/thebe_anchor75q_60",
+    "root": "/hdd1/hukaixiao/projects/faultsyn3d/data/thebe_spatial_v3",
+    "epochs": 60,
+    "stop_after": 60,
+    "seed": 2026,
+    "workers": 3,
+    "per_rank": 2,
+    "accum": 1,
+    "resume": false,
+    "smoke": false
+  },
+  "params": 9643495,
+  "model": "unet3d",
+  "model_kwargs": {
+    "base": 42,
+    "checkpoint_highres": true
+  },
+  "world_size": 4,
+  "effective_batch": 8,
+  "sources": {
+    "train/train_thebe_anchor_ddp.py": "b9fac52f50b5e9345cc798820036e645a4edc45336f28d3ae06751ad44a17b33",
+    "train/dataset_thebe_anchor.py": "fd97bb90c57248988d98657595b07f10a2b471af071cb3bf543ac2efb9e31d93",
+    "train/dataset_thebe_spatial.py": "19b0b6fc63c4b6e2beb5468e306554b138a4b2e32914ad0ab0c41018f9aede04",
+    "train/train_thebe_spatial_ddp.py": "039ba7bf44f1ee6fd1b0f84bcb38df2164efa9c1d6b927d2ac09e01a4c3955ed",
+    "models/sc_maxvit3d.py": "5c42c8ede1f9fe91dc85d7d14ffe2166c845e2647223fa9d6a58f3b0337c43b1",
+    "models/maxvit3d.py": "e5eb289262199d36aa623682f6e09a6e619782114f38f7c99512b2c0e4aac024",
+    "models/unet3d.py": "61a8e1ea5a4e79db1365266cff5eaa1781899b15f9d7bd5122c1dad0ffea0251",
+    "models/__init__.py": "89f0dd4700554baf6489d6cdfcab1dae8b74108f9d3a7c3b52c8d10db122ba92",
+    "scripts/prepare_thebe_anchor75.py": "d8b1bd7cb11457eb48bec69d5418419aaafa54ac59ccd82e3581c1b193961d96"
+  },
+  "protocol_sha256": "f8063803bc0db36222cad249d0a181603baa7dc74889ce5d1262999a2b889761",
+  "plan_sha256": "1d3f4992adf153e127803bec851dc2e10605f167b8f435bf540adf2e8442885d",
+  "initialization": "random; no pretrained weights",
+  "sampling": "anchor75 train lower-quartile density stratification",
+  "full_val_cores": 2433,
+  "note": "UNet single FOV; SC uses additional context. Historical uniform/100-epoch curves are references only."
+}
